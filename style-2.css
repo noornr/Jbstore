@@ -1,0 +1,16 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#0a0a0a;color:#fff}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px 6%;background:#111;position:sticky;top:0}
+.logo{color:#D4AF37;font-size:28px;font-weight:700}
+nav a{color:#ddd;text-decoration:none;margin-left:18px}
+.hero{padding:80px 6%;background:linear-gradient(135deg,#1b1400,#0a0a0a)}
+.tag{color:#D4AF37;border:1px solid #D4AF37;padding:6px 12px;border-radius:20px}
+h1{font-size:48px;margin:18px 0} h1 span{color:#D4AF37}
+.btn{display:inline-block;background:#D4AF37;color:#111;padding:12px 20px;border-radius:10px;text-decoration:none;border:none;font-weight:bold}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:24px 6%}
+.stats div,.card{background:#111;padding:18px;border-radius:12px;border:1px solid #222}
+.stats h2{color:#D4AF37}
+.section{padding:50px 6%}
+#search,input{width:100%;padding:12px;margin:14px 0;background:#181818;color:#fff;border:none;border-radius:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+.price{color:#D4AF37;font-weight:bold;margin:8px 0}
