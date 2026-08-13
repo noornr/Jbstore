@@ -7,8 +7,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <div class="logo">JB STORE</div>
+
+<header class="header">
+  <div class="logo">JB <span>STORE</span></div>
+
   <nav>
     <a href="#home">Home</a>
     <a href="#shop">Shop</a>
@@ -17,32 +19,78 @@
 </header>
 
 <section class="hero" id="home">
-  <div>
-    <span class="tag">PREMIUM MOBILE STORE</span>
-    <h1>Buy & Sell <span>New</span> & Used Mobiles</h1>
-    <p>Premium smartphones with the best prices and quality assurance.</p>
-    <a class="btn" href="#shop">Shop Now</a>
+  <div class="hero-text">
+    <p class="tag">PREMIUM MOBILE STORE</p>
+
+    <h1>Buy & Sell<br><span>New & Used</span> Mobiles</h1>
+
+    <p class="desc">
+      Premium smartphones with warranty, quality check and best prices.
+    </p>
+
+    <div class="buttons">
+      <a href="#shop" class="btn gold">Shop Now</a>
+      <a href="#sell" class="btn dark">Sell Phone</a>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <div class="phone p1"></div>
+    <div class="phone p2"></div>
+    <div class="phone p3"></div>
   </div>
 </section>
 
 <section class="stats">
-  <div><h2>1000+</h2><p>Sold</p></div>
-  <div><h2>500+</h2><p>Customers</p></div>
-  <div><h2>4.9★</h2><p>Rating</p></div>
+  <div>
+    <h2>1000+</h2>
+    <p>Mobiles Sold</p>
+  </div>
+
+  <div>
+    <h2>500+</h2>
+    <p>Customers</p>
+  </div>
+
+  <div>
+    <h2>4.9★</h2>
+    <p>Rating</p>
+  </div>
 </section>
 
-<section id="shop" class="section">
+<section class="shop" id="shop">
   <h2>Featured Mobiles</h2>
-  <input id="search" placeholder="Search phone...">
+
+  <input
+    type="text"
+    id="search"
+    placeholder="Search iPhone, Samsung..."
+  >
+
   <div id="products" class="grid"></div>
 </section>
 
-<section id="sell" class="section">
+<section class="sell" id="sell">
   <h2>Sell Your Phone</h2>
+
   <form id="sellForm">
-    <input id="name" placeholder="Your Name" required>
-    <input id="model" placeholder="Phone Model" required>
-    <button class="btn" type="submit">WhatsApp Enquiry</button>
+    <input
+      type="text"
+      id="name"
+      placeholder="Your Name"
+      required
+    >
+
+    <input
+      type="text"
+      id="model"
+      placeholder="Phone Model"
+      required
+    >
+
+    <button type="submit" class="btn gold">
+      WhatsApp Enquiry
+    </button>
   </form>
 </section>
 
