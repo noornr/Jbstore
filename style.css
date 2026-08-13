@@ -221,4 +221,26 @@ nav{
   grid-template-columns:1fr;
 }
 
+  .filters{
+  display:flex;
+  gap:10px;
+  margin-bottom:20px;
+  flex-wrap:wrap;
+}
+
+.filter{
+  background:#181818;
+  color:#fff;
+  border:1px solid #333;
+  padding:10px 16px;
+  border-radius:30px;
+  cursor:pointer;
+}
+
+.filter.active{
+  background:#D4AF37;
+  color:#111;
+  border-color:#D4AF37;
+}
+  
 }
