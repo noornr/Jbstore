@@ -58,16 +58,25 @@
   </div>
 </section>
 
-<section class="shop" id="shop">
+<section id="shop" class="shop">
+
   <h2>Featured Mobiles</h2>
 
   <input
     type="text"
     id="search"
-    placeholder="Search iPhone, Samsung..."
+    placeholder="Search mobiles..."
   >
 
+  <div class="filters">
+    <button class="filter active" onclick="setCategory('All',this)">All</button>
+    <button class="filter" onclick="setCategory('Apple',this)">Apple</button>
+    <button class="filter" onclick="setCategory('Samsung',this)">Samsung</button>
+    <button class="filter" onclick="setCategory('OnePlus',this)">OnePlus</button>
+  </div>
+
   <div id="products" class="grid"></div>
+
 </section>
 
 <section class="sell" id="sell">
