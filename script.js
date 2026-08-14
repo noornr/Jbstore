@@ -23,7 +23,14 @@ function renderProducts(){
 
     const keyword = search.value.toLowerCase();
 
-    const list = mobiles.filter(phone=>{
+    let list = mobiles.filter(phone=>{
+       if(sort.value==="low"){
+    list.sort((a,b)=>a.price-b.price);
+}
+
+if(sort.value==="high"){
+    list.sort((a,b)=>b.price-a.price);
+}
 
         const matchBrand =
             selectedBrand==="All" ||
