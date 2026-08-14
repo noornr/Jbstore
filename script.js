@@ -135,13 +135,42 @@ function openProduct(id){
         currentPhone.price.toLocaleString("en-IN");
 
     modalSpecs.innerHTML = `
-        <p><b>Brand:</b> ${currentPhone.brand}</p>
-        <p><b>Storage:</b> ${currentPhone.storage}</p>
-        <p><b>Battery:</b> ${currentPhone.battery}</p>
-        <p><b>Condition:</b> ${currentPhone.condition}</p>
-        <p><b>Color:</b> ${currentPhone.color}</p>
-        <p><b>Warranty:</b> ${currentPhone.warranty}</p>
-    `;
+<div class="spec-item">
+  📱 <b>Brand:</b> ${currentPhone.brand}
+</div>
+
+<div class="spec-item">
+  💾 <b>Storage:</b> ${currentPhone.storage}
+</div>
+
+<div class="spec-item">
+  🖥️ <b>Display:</b> ${currentPhone.display}
+</div>
+
+<div class="spec-item">
+  📷 <b>Camera:</b> ${currentPhone.camera}
+</div>
+
+<div class="spec-item">
+  ⚡ <b>Processor:</b> ${currentPhone.processor}
+</div>
+
+<div class="spec-item">
+  🔋 <b>Battery:</b> ${currentPhone.battery}
+</div>
+
+<div class="spec-item">
+  🎨 <b>Color:</b> ${currentPhone.color}
+</div>
+
+<div class="spec-item">
+  🛡️ <b>Warranty:</b> ${currentPhone.warranty}
+</div>
+
+<div class="spec-item">
+  ✅ <b>Condition:</b> ${currentPhone.condition}
+</div>
+`;
 
 }
 
