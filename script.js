@@ -347,17 +347,17 @@ function toggleWishlist(id){
 }
 
 function goHome(){
-    home.scrollIntoView({behavior:"smooth"});
+    document.getElementById("home").scrollIntoView({behavior:"smooth"});
 }
 
 function goProducts(){
-    products.scrollIntoView({behavior:"smooth"});
+    document.getElementById("products").scrollIntoView({behavior:"smooth"});
 }
 
 function goSell(){
-    sell.scrollIntoView({behavior:"smooth"});
+    document.getElementById("sell").scrollIntoView({behavior:"smooth"});
 }
 
 function goContact(){
-    contact.scrollIntoView({behavior:"smooth"});
+    document.getElementById("contact").scrollIntoView({behavior:"smooth"});
 }
