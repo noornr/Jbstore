@@ -47,7 +47,34 @@ function renderProducts(){
                     ${phone.badge}
                 </div>
 
-                <div class="wish">♡</div>
+                /* =========================
+   WISHLIST
+========================= */
+
+let wishlist = JSON.parse(
+    localStorage.getItem("jbWishlist")
+) || [];
+
+function toggleWishlist(id){
+
+    if(wishlist.includes(id)){
+
+        wishlist = wishlist.filter(x => x !== id);
+
+    }else{
+
+        wishlist.push(id);
+
+    }
+
+    localStorage.setItem(
+        "jbWishlist",
+        JSON.stringify(wishlist)
+    );
+
+    renderProducts();
+
+}
 
             </div>
 
