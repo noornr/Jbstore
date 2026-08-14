@@ -10,6 +10,10 @@ const filters = document.querySelectorAll(".filter");
 let selectedBrand = "All";
 let currentPhone = null;
 
+let wishlist = JSON.parse(
+    localStorage.getItem("jbWishlist")
+) || [];
+
 /* =========================
    RENDER PRODUCTS
 ========================= */
