@@ -288,9 +288,6 @@ function changeImage(src){
    WISHLIST
 ========================= */
 
-let wishlist = JSON.parse(
-    localStorage.getItem("jbWishlist")
-) || [];
 
 function toggleWishlist(id){
 
