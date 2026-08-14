@@ -800,3 +800,40 @@ body{
     font-size:15px;
 }
 
+/* =========================
+   BRANDS
+========================= */
+
+.brands{
+    padding:70px 6%;
+}
+
+.brand-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:16px;
+}
+
+.brand-box{
+    background:#121212;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:24px 10px;
+    text-align:center;
+    transition:.3s;
+}
+
+.brand-box:hover{
+    transform:translateY(-5px);
+    border-color:#D4AF37;
+}
+
+.brand-box h3{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.brand-box p{
+    color:#E5E5E5;
+    font-weight:600;
+}
