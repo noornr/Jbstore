@@ -1,1 +1,0 @@
-document.querySelectorAll('a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.style.color='#d4af37'});
