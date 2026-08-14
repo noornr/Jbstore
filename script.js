@@ -344,3 +344,19 @@ function toggleWishlist(id){
     renderProducts();
 
 }
+
+function goHome(){
+    home.scrollIntoView({behavior:"smooth"});
+}
+
+function goProducts(){
+    products.scrollIntoView({behavior:"smooth"});
+}
+
+function goSell(){
+    sell.scrollIntoView({behavior:"smooth"});
+}
+
+function goContact(){
+    contact.scrollIntoView({behavior:"smooth"});
+}
