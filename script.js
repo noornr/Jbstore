@@ -185,18 +185,3 @@ I'm interested in:
     );
 
 };
-
-/* =========================
-   INITIAL LOAD
-========================= */
-
-renderProducts();
-
-// Part 1 ends here
-filters.forEach(...);
-
-// ⬇️ Paste Part 2 below this
-const modal = document.getElementById("modal");
-...
-renderProducts();
-
