@@ -185,3 +185,74 @@ I'm interested in:
     );
 
 };
+
+/* =========================
+   SELL FORM
+========================= */
+
+const sellForm = document.getElementById("sellForm");
+
+sellForm.addEventListener("submit",e=>{
+
+    e.preventDefault();
+
+    const msg =
+`Hi JB Store,
+
+I want to sell my phone.
+
+Name: ${sellerName.value}
+
+Phone: ${sellerPhone.value}
+
+Model: ${phoneModel.value}
+
+Condition:
+${condition.value}`;
+
+    window.open(
+        "https://wa.me/919999999999?text="+
+        encodeURIComponent(msg),
+        "_blank"
+    );
+
+});
+
+/* =========================
+   HERO BUTTONS
+========================= */
+
+shopBtn.onclick=()=>{
+
+    document
+    .getElementById("products")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+};
+
+sellBtn.onclick=()=>{
+
+    document
+    .getElementById("sell")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+};
+
+contactBtn.onclick=()=>{
+
+    window.open(
+    "https://wa.me/919999999999",
+    "_blank"
+    );
+
+};
+
+/* =========================
+   INITIAL LOAD
+========================= */
+
+renderProducts();
