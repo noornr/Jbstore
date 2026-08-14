@@ -126,73 +126,40 @@ const buyNowBtn = document.getElementById("buyNow");
 
 function openProduct(id){
 
-    currentPhone =
-        mobiles.find(item => item.id === id);
+    currentPhone = mobiles.find(item => item.id === id);
 
     modal.style.display = "flex";
 
-    modalTitle.innerText =
-        currentPhone.name;
+    modalTitle.innerText = currentPhone.name;
 
     modalPrice.innerText =
-        "₹" +
-        currentPhone.price.toLocaleString("en-IN");
+        "₹" + currentPhone.price.toLocaleString("en-IN");
 
     modalSpecs.innerHTML = `
-
-    const main=document.getElementById("mainImage");
-const thumbs=document.getElementById("thumbs");
-
-main.src=currentPhone.images[0];
-
-thumbs.innerHTML="";
-
-currentPhone.images.forEach(img=>{
-    thumbs.innerHTML+=`
-    <img src="${img}"
-         onclick="changeImage('${img}')">
+    <div class="spec-item">📱 <b>Brand:</b> ${currentPhone.brand}</div>
+    <div class="spec-item">💾 <b>Storage:</b> ${currentPhone.storage}</div>
+    <div class="spec-item">🖥️ <b>Display:</b> ${currentPhone.display}</div>
+    <div class="spec-item">📷 <b>Camera:</b> ${currentPhone.camera}</div>
+    <div class="spec-item">⚡ <b>Processor:</b> ${currentPhone.processor}</div>
+    <div class="spec-item">🔋 <b>Battery:</b> ${currentPhone.battery}</div>
+    <div class="spec-item">🎨 <b>Color:</b> ${currentPhone.color}</div>
+    <div class="spec-item">🛡️ <b>Warranty:</b> ${currentPhone.warranty}</div>
+    <div class="spec-item">✅ <b>Condition:</b> ${currentPhone.condition}</div>
     `;
-});
 
-<div class="spec-item">
-  📱 <b>Brand:</b> ${currentPhone.brand}
-</div>
+    const main = document.getElementById("mainImage");
+    const thumbs = document.getElementById("thumbs");
 
-<div class="spec-item">
-  💾 <b>Storage:</b> ${currentPhone.storage}
-</div>
+    main.src = currentPhone.images[0];
+    thumbs.innerHTML = "";
 
-<div class="spec-item">
-  🖥️ <b>Display:</b> ${currentPhone.display}
-</div>
-
-<div class="spec-item">
-  📷 <b>Camera:</b> ${currentPhone.camera}
-</div>
-
-<div class="spec-item">
-  ⚡ <b>Processor:</b> ${currentPhone.processor}
-</div>
-
-<div class="spec-item">
-  🔋 <b>Battery:</b> ${currentPhone.battery}
-</div>
-
-<div class="spec-item">
-  🎨 <b>Color:</b> ${currentPhone.color}
-</div>
-
-<div class="spec-item">
-  🛡️ <b>Warranty:</b> ${currentPhone.warranty}
-</div>
-
-<div class="spec-item">
-  ✅ <b>Condition:</b> ${currentPhone.condition}
-</div>
-`;
+    currentPhone.images.forEach(img => {
+        thumbs.innerHTML += `
+        <img src="${img}" onclick="changeImage('${img}')">
+        `;
+    });
 
 }
-
 
 
 function closeProduct(){
