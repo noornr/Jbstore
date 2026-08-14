@@ -59,17 +59,22 @@ function renderProducts(){
 
             <div class="card-image">
 
-                <div class="badge">
-                    ${phone.badge}
-                </div>
+    <img src="${phone.images[0]}"
+         class="product-img"
+         alt="${phone.name}">
 
-                <div class="wish"
-     onclick="event.stopPropagation();toggleWishlist(${phone.id})">
+    <div class="badge">
+        ${phone.badge}
+    </div>
 
-    ${wishlist.includes(phone.id) ? "❤️" : "🤍"}
+    <div class="wish"
+         onclick="event.stopPropagation();toggleWishlist(${phone.id})">
+
+        ${wishlist.includes(phone.id) ? "❤️" : "🤍"}
+
+    </div>
 
 </div>
-            </div>
 
             <div class="card-body">
 
