@@ -905,3 +905,50 @@ body{
     margin-top:12px;
     line-height:1.6;
 }
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    background:#080808;
+    border-top:1px solid rgba(255,255,255,.08);
+    padding:55px 6% 25px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+}
+
+.footer h2{
+    color:#D4AF37;
+    margin-bottom:12px;
+}
+
+.footer h3{
+    color:#fff;
+    margin-bottom:12px;
+}
+
+.footer p,
+.footer a{
+    display:block;
+    color:#BDBDBD;
+    text-decoration:none;
+    margin-bottom:8px;
+    line-height:1.6;
+}
+
+.footer a:hover{
+    color:#D4AF37;
+}
+
+.copyright{
+    text-align:center;
+    color:#777;
+    margin-top:30px;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.06);
+}
