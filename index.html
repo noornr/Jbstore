@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1.0">
+
+  <title>JB Store | Premium Mobiles</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navigation -->
+
+<header class="header">
+
+  <div class="logo">
+    JB <span>STORE</span>
+  </div>
+
+  <nav id="nav">
+
+    <a href="#home">Home</a>
+
+    <a href="#products">Products</a>
+
+    <a href="#sell">Sell</a>
+
+    <a href="#contact">Contact</a>
+
+  </nav>
+
+</header>
+
+
+<!-- Hero -->
+
+<section id="home" class="hero">
+
+  <div class="hero-left">
+
+    <p class="tag">
+      PREMIUM MOBILE STORE
+    </p>
+
+    <h1>
+      Buy New & Used Smartphones
+    </h1>
+
+    <p class="sub">
+
+      Luxury smartphones with warranty,
+      exchange offers and premium support.
+
+    </p>
+
+    <div class="hero-buttons">
+
+      <button id="shopBtn"
+              class="gold-btn">
+
+        Shop Now
+
+      </button>
+
+      <button id="sellBtn"
+              class="dark-btn">
+
+        Sell Phone
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="hero-right">
+
+    <div class="phone back"></div>
+
+    <div class="phone center"></div>
+
+    <div class="phone front"></div>
+
+  </div>
+
+</section>
+
+
+<!-- Statistics -->
+
+<section class="stats">
+
+  <div class="stat">
+
+    <h2>1000+</h2>
+
+    <p>Mobiles Sold</p>
+
+  </div>
+
+  <div class="stat">
+
+    <h2>500+</h2>
+
+    <p>Happy Customers</p>
+
+  </div>
+
+  <div class="stat">
+
+    <h2>4.9★</h2>
+
+    <p>Store Rating</p>
+
+  </div>
+
+  <div class="stat">
+
+    <h2>1 Year</h2>
+
+    <p>Warranty</p>
+
+  </div>
+
+</section>
+
+
+<!-- Search -->
+
+<section id="products"
+         class="products-section">
+
+  <div class="section-title">
+
+    <h2>Featured Mobiles</h2>
+
+    <p>New & Second Hand Devices</p>
+
+  </div>
+
+  <div class="toolbar">
+
+    <input
+      type="text"
+      id="search"
+      placeholder="Search iPhone, Samsung..."
+    >
+
+    <select id="sort">
+
+      <option value="default">
+        Sort
+      </option>
+
+      <option value="low">
+        Price Low
+      </option>
+
+      <option value="high">
+        Price High
+      </option>
+
+    </select>
+
+  </div>
+
+
+  <div class="filters">
+
+    <button class="filter active"
+            data-brand="All">
+
+      All
+
+    </button>
+
+    <button class="filter"
+            data-brand="Apple">
+
+      Apple
+
+    </button>
+
+    <button class="filter"
+            data-brand="Samsung">
+
+      Samsung
+
+    </button>
+
+    <button class="filter"
+            data-brand="OnePlus">
+
+      OnePlus
+
+    </button>
+
+    <button class="filter"
+            data-brand="Google">
+
+      Google
+
+    </button>
+
+  </div>
+
+
+  <div id="productGrid"
+       class="product-grid">
+
+  </div>
+
+</section>
+
+
+<!-- Sell -->
+
+<section id="sell"
+         class="sell-section">
+
+  <div class="section-title">
+
+    <h2>Sell Your Phone</h2>
+
+    <p>Get the best resale value</p>
+
+  </div>
+
+  <form id="sellForm">
+
+    <input
+      id="sellerName"
+      placeholder="Your Name"
+      required
+    >
+
+    <input
+      id="sellerPhone"
+      placeholder="Mobile Number"
+      required
+    >
+
+    <input
+      id="phoneModel"
+      placeholder="Phone Model"
+      required
+    >
+
+    <textarea
+      id="condition"
+      placeholder="Condition"
+    ></textarea>
+
+    <button
+      class="gold-btn"
+      type="submit">
+
+      WhatsApp Enquiry
+
+    </button>
+
+  </form>
+
+</section>
+
+
+<!-- Contact -->
+
+<section id="contact"
+         class="contact-section">
+
+  <div class="section-title">
+
+    <h2>JB Store</h2>
+
+    <p>Atmakur, Andhra Pradesh</p>
+
+  </div>
+
+  <div class="contact-box">
+
+    <p>WhatsApp</p>
+
+    <h3>+91 99999 99999</h3>
+
+    <button id="contactBtn"
+            class="gold-btn">
+
+      Contact Store
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- Product Modal -->
+
+<div id="modal"
+     class="modal">
+
+  <div class="modal-content">
+
+    <button id="closeModal"
+            class="close">
+
+      ×
+
+    </button>
+
+    <div id="modalGallery"
+         class="gallery">
+
+    </div>
+
+    <h2 id="modalTitle"></h2>
+
+    <div id="modalPrice"
+         class="price"></div>
+
+    <div id="modalSpecs"
+         class="specs"></div>
+
+    <button id="buyNow"
+            class="gold-btn">
+
+      Buy on WhatsApp
+
+    </button>
+
+  </div>
+
+</div>
+
+<script src="mobiles.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
