@@ -44,6 +44,8 @@ if(sort.value==="high"){
 
     });
 
+   sort.addEventListener("change",renderProducts);
+
     productGrid.innerHTML="";
 
     list.forEach(phone=>{
