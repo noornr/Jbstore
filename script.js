@@ -24,25 +24,27 @@ function renderProducts(){
     const keyword = search.value.toLowerCase();
 
     let list = mobiles.filter(phone=>{
-       if(sort.value==="low"){
-    list.sort((a,b)=>a.price-b.price);
-}
-
-if(sort.value==="high"){
-    list.sort((a,b)=>b.price-a.price);
-}
 
         const matchBrand =
             selectedBrand==="All" ||
             phone.brand===selectedBrand;
 
         const matchSearch =
-            phone.name.toLowerCase()
-            .includes(keyword);
+            phone.name.toLowerCase().includes(keyword);
 
         return matchBrand && matchSearch;
 
     });
+
+    if(sort.value==="low"){
+        list.sort((a,b)=>a.price-b.price);
+    }
+
+    if(sort.value==="high"){
+        list.sort((a,b)=>b.price-a.price);
+    }
+
+    productGrid.innerHTML="";
 
    sort.addEventListener("change",renderProducts);
 
