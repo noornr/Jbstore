@@ -4,6 +4,7 @@
 
 const productGrid = document.getElementById("productGrid");
 const search = document.getElementById("search");
+const sort = document.getElementById("sort");
 
 const filters = document.querySelectorAll(".filter");
 
