@@ -10,6 +10,9 @@ battery:"100%",
 condition:"Brand New",
 color:"Black Titanium",
 warranty:"1 Year",
+display:"6.9-inch OLED",
+camera:"48MP Triple Camera",
+processor:"A18 Pro",
 badge:"NEW"
 },
 
@@ -23,6 +26,9 @@ battery:"96%",
 condition:"Used",
 color:"Natural Titanium",
 warranty:"6 Months",
+display:"6.1-inch OLED",
+camera:"48MP Triple Camera",
+processor:"A17 Pro",
 badge:"USED"
 },
 
@@ -36,6 +42,9 @@ battery:"100%",
 condition:"Brand New",
 color:"Titanium Gray",
 warranty:"1 Year",
+display:"6.9-inch AMOLED",
+camera:"200MP Quad Camera",
+processor:"Snapdragon 8 Elite",
 badge:"NEW"
 },
 
@@ -49,6 +58,9 @@ battery:"95%",
 condition:"Used",
 color:"Black",
 warranty:"6 Months",
+display:"6.8-inch AMOLED",
+camera:"200MP Camera",
+processor:"Snapdragon 8 Gen 3",
 badge:"USED"
 },
 
@@ -62,6 +74,9 @@ battery:"100%",
 condition:"Brand New",
 color:"Midnight",
 warranty:"1 Year",
+display:"6.82-inch AMOLED",
+camera:"50MP Triple Camera",
+processor:"Snapdragon 8 Elite",
 badge:"NEW"
 },
 
@@ -75,33 +90,10 @@ battery:"94%",
 condition:"Used",
 color:"Green",
 warranty:"6 Months",
+display:"6.82-inch AMOLED",
+camera:"50MP Camera",
+processor:"Snapdragon 8 Gen 3",
 badge:"USED"
-},
-
-{
-id:7,
-brand:"Google",
-name:"Pixel 9 Pro",
-price:79999,
-storage:"256GB",
-battery:"100%",
-condition:"Brand New",
-color:"Obsidian",
-warranty:"1 Year",
-badge:"NEW"
-},
-
-{
-id:8,
-brand:"Nothing",
-name:"Nothing Phone 3",
-price:42999,
-storage:"256GB",
-battery:"100%",
-condition:"Brand New",
-color:"White",
-warranty:"1 Year",
-badge:"NEW"
 }
 
 ];
