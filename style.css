@@ -581,3 +581,17 @@ footer{
     background:#D4AF37;
     border-radius:20px;
 }
+
+.spec-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    color:#E5E5E5;
+    font-size:14px;
+}
+
+.spec-item:last-child{
+    border-bottom:none;
+}
