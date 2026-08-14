@@ -86,7 +86,6 @@ nav a:hover{
     gap:40px;
     padding:80px 6%;
     min-height:88vh;
-
     background:
     radial-gradient(circle at right,
     rgba(212,175,55,.15),
@@ -94,36 +93,39 @@ nav a:hover{
     linear-gradient(135deg,#080808,#111);
 }
 
-.tag{
-    display:inline-block;
-    color:var(--gold);
-    border:1px solid rgba(212,175,55,.4);
-    padding:8px 16px;
-    border-radius:30px;
-    margin-bottom:20px;
-    font-size:13px;
-    letter-spacing:1px;
-}
-
-.hero h1{
-    font-size:58px;
-    line-height:1.05;
-    margin-bottom:18px;
-}
-
-.sub{
-    color:#B8B8B8;
-    line-height:1.7;
-    font-size:17px;
-    margin-bottom:30px;
-    max-width:520px;
-}
-
-.hero-buttons{
+.hero-right{
+    position:relative;
+    height:420px;
     display:flex;
-    gap:14px;
-    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
 }
+
+.phone{
+    position:absolute;
+    width:180px;
+    height:360px;
+    border-radius:34px;
+    background:linear-gradient(180deg,#9FD6FF,#202050 60%,#050505);
+    border:2px solid #555;
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+}
+
+.back{
+    transform:translateX(-90px) rotate(-12deg);
+    opacity:.75;
+}
+
+.front{
+    transform:translateX(90px) rotate(12deg);
+    opacity:.75;
+}
+
+.center{
+    border-color:#D4AF37;
+    z-index:5;
+}
+
 
 /* =========================
    BUTTONS
@@ -309,10 +311,6 @@ nav a:hover{
     text-align:center;
 }
 
-    .hero-image{
-        max-width:340px;
-        margin:auto;
-    }
    
 .hero h1{
     font-size:42px;
