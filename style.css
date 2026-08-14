@@ -837,3 +837,39 @@ body{
     color:#E5E5E5;
     font-weight:600;
 }
+
+/* =========================
+   OFFER BANNER
+========================= */
+
+.offer-banner{
+    padding:40px 6%;
+}
+
+.offer-content{
+    background:linear-gradient(135deg,#181818,#2A2110);
+    border:1px solid rgba(212,175,55,.35);
+    border-radius:24px;
+    padding:38px 28px;
+    text-align:center;
+}
+
+.offer-tag{
+    color:#D4AF37;
+    font-size:13px;
+    letter-spacing:2px;
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+.offer-content h2{
+    font-size:32px;
+    margin-bottom:12px;
+}
+
+.offer-content p{
+    color:#C8C8C8;
+    margin-bottom:22px;
+    line-height:1.6;
+}
+
