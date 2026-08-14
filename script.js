@@ -243,33 +243,21 @@ ${condition.value}`;
    HERO BUTTONS
 ========================= */
 
-shopBtn.onclick=()=>{
-
-    document
-    .getElementById("products")
-    .scrollIntoView({
-        behavior:"smooth"
-    });
-
+document.getElementById("shopBtn").onclick = () => {
+    document.getElementById("products")
+        .scrollIntoView({behavior:"smooth"});
 };
 
-sellBtn.onclick=()=>{
-
-    document
-    .getElementById("sell")
-    .scrollIntoView({
-        behavior:"smooth"
-    });
-
+document.getElementById("sellBtn").onclick = () => {
+    document.getElementById("sell")
+        .scrollIntoView({behavior:"smooth"});
 };
 
-contactBtn.onclick=()=>{
-
+document.getElementById("contactBtn").onclick = () => {
     window.open(
-    "https://wa.me/919999999999",
-    "_blank"
+        "https://wa.me/919999999999",
+        "_blank"
     );
-
 };
 
 /* =========================
