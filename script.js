@@ -178,21 +178,7 @@ function openProduct(id){
 
 }
 
-const main=document.getElementById("mainImage");
-const thumbs=document.getElementById("thumbs");
 
-main.src=currentPhone.images[0];
-
-thumbs.innerHTML="";
-
-currentPhone.images.forEach(img=>{
-
-    thumbs.innerHTML+=`
-    <img src="${img}"
-         onclick="changeImage('${img}')">
-    `;
-
-});
 
 function closeProduct(){
 
