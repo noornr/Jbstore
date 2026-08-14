@@ -101,11 +101,7 @@ function renderProducts(){
 
 }
 
-/* =========================
-   SEARCH
-========================= */
 
-search.addEventListener("input",renderProducts);
 
 /* =========================
    FILTER
