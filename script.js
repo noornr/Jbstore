@@ -47,35 +47,12 @@ function renderProducts(){
                     ${phone.badge}
                 </div>
 
-                /* =========================
-   WISHLIST
-========================= */
+                <div class="wish"
+     onclick="event.stopPropagation();toggleWishlist(${phone.id})">
 
-let wishlist = JSON.parse(
-    localStorage.getItem("jbWishlist")
-) || [];
+    ${wishlist.includes(phone.id) ? "❤️" : "🤍"}
 
-function toggleWishlist(id){
-
-    if(wishlist.includes(id)){
-
-        wishlist = wishlist.filter(x => x !== id);
-
-    }else{
-
-        wishlist.push(id);
-
-    }
-
-    localStorage.setItem(
-        "jbWishlist",
-        JSON.stringify(wishlist)
-    );
-
-    renderProducts();
-
-}
-
+</div>
             </div>
 
             <div class="card-body">
@@ -336,5 +313,34 @@ renderProducts();
 function changeImage(src){
 
     document.getElementById("mainImage").src = src;
+
+}
+
+/* =========================
+   WISHLIST
+========================= */
+
+let wishlist = JSON.parse(
+    localStorage.getItem("jbWishlist")
+) || [];
+
+function toggleWishlist(id){
+
+    if(wishlist.includes(id)){
+
+        wishlist = wishlist.filter(x => x !== id);
+
+    }else{
+
+        wishlist.push(id);
+
+    }
+
+    localStorage.setItem(
+        "jbWishlist",
+        JSON.stringify(wishlist)
+    );
+
+    renderProducts();
 
 }
