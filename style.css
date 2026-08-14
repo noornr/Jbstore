@@ -362,3 +362,222 @@ nav{
 }
 
 }
+
+/* =========================
+   PRODUCT CARD
+========================= */
+
+.card{
+    background:#121212;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:18px;
+    overflow:hidden;
+    transition:.25s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    border-color:#D4AF37;
+}
+
+.card-image{
+    height:210px;
+    background:linear-gradient(180deg,#9FD6FF,#202050 65%,#050505);
+    position:relative;
+}
+
+.badge{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:#D4AF37;
+    color:#111;
+    font-size:12px;
+    font-weight:700;
+    padding:6px 10px;
+    border-radius:20px;
+}
+
+.wish{
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:rgba(0,0,0,.45);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+}
+
+.card-body{
+    padding:16px;
+}
+
+.brand{
+    color:#D4AF37;
+    font-size:12px;
+    margin-bottom:8px;
+}
+
+.title{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.storage{
+    color:#A0A0A0;
+    font-size:14px;
+}
+
+.price{
+    color:#D4AF37;
+    font-size:22px;
+    font-weight:800;
+    margin:12px 0;
+}
+
+.buy-btn{
+    width:100%;
+    background:#D4AF37;
+    color:#111;
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+/* =========================
+   SELL FORM
+========================= */
+
+#sellForm{
+    display:grid;
+    gap:14px;
+    max-width:560px;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-box{
+    background:#121212;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:20px;
+    padding:26px;
+    text-align:center;
+}
+
+.contact-box p{
+    color:#999;
+    margin-bottom:8px;
+}
+
+.contact-box h3{
+    font-size:28px;
+    color:#D4AF37;
+    margin-bottom:18px;
+}
+
+/* =========================
+   PRODUCT MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.82);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:9999;
+}
+
+.modal-content{
+    width:100%;
+    max-width:420px;
+    background:#111;
+    border-radius:22px;
+    overflow:hidden;
+    animation:popup .25s ease;
+}
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.close{
+    position:absolute;
+    margin:12px;
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    background:#222;
+    color:#fff;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.gallery{
+    height:270px;
+    background:linear-gradient(180deg,#9FD6FF,#202050 65%,#050505);
+}
+
+.modal-content h2{
+    padding:18px 18px 4px;
+    font-size:24px;
+}
+
+.modal-content .price{
+    padding:0 18px;
+}
+
+.specs{
+    padding:0 18px 18px;
+    color:#BDBDBD;
+    line-height:1.7;
+}
+
+.modal-content .gold-btn{
+    width:calc(100% - 36px);
+    margin:0 18px 18px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:30px;
+    text-align:center;
+    color:#777;
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#D4AF37;
+    border-radius:20px;
+}
