@@ -657,17 +657,53 @@ body{
 }
 
 
-.product-img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    background:#111;
-    padding:12px;
-}
+/* =========================
+   PRODUCT IMAGES
+========================= */
 
 .card-image{
     position:relative;
     height:220px;
-    overflow:hidden;
     background:#111;
+    overflow:hidden;
+    border-radius:18px 18px 0 0;
+}
+
+.product-img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    padding:14px;
+    transition:.3s;
+}
+
+.card:hover .product-img{
+    transform:scale(1.05);
+}
+
+.badge{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:#D4AF37;
+    color:#111;
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:700;
+}
+
+.wish{
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:rgba(0,0,0,.55);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    font-size:18px;
 }
