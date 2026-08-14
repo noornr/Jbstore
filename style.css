@@ -873,3 +873,35 @@ body{
     line-height:1.6;
 }
 
+/* =========================
+   FAQ
+========================= */
+
+.faq{
+    padding:70px 6%;
+}
+
+.faq-box{
+    display:grid;
+    gap:14px;
+}
+
+.faq-box details{
+    background:#121212;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:14px;
+    padding:18px;
+}
+
+.faq-box summary{
+    cursor:pointer;
+    font-weight:700;
+    color:#fff;
+    list-style:none;
+}
+
+.faq-box p{
+    color:#BDBDBD;
+    margin-top:12px;
+    line-height:1.6;
+}
