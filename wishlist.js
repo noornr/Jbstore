@@ -1,1 +1,0 @@
-const fav=[];function toggle(name){const idx=fav.indexOf(name);if(idx>=0)fav.splice(idx,1);else fav.push(name);localStorage.setItem('jbFav',JSON.stringify(fav));}
