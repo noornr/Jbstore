@@ -1,0 +1,1 @@
+const PRODUCTS=[{name:'iPhone 16 Pro Max',brand:'Apple',price:'₹1,34,900'},{name:'Galaxy S25 Ultra',brand:'Samsung',price:'₹1,09,999'},{name:'OnePlus 13',brand:'OnePlus',price:'₹54,999'}];

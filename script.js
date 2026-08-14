@@ -1,0 +1,1 @@
+const theme={name:'JB Store Premium V3'};console.log(theme.name);
