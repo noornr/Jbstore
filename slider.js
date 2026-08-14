@@ -1,1 +1,0 @@
-const imgs=['images/phone1.svg','images/phone2.svg','images/phone3.svg','images/phone4.svg','images/phone5.svg'];let i=0;setInterval(()=>{i=(i+1)%imgs.length;const el=document.getElementById('heroImg');if(el)el.src=imgs[i];},1800);
