@@ -139,6 +139,21 @@ function openProduct(id){
         currentPhone.price.toLocaleString("en-IN");
 
     modalSpecs.innerHTML = `
+
+    const main=document.getElementById("mainImage");
+const thumbs=document.getElementById("thumbs");
+
+main.src=currentPhone.images[0];
+
+thumbs.innerHTML="";
+
+currentPhone.images.forEach(img=>{
+    thumbs.innerHTML+=`
+    <img src="${img}"
+         onclick="changeImage('${img}')">
+    `;
+});
+
 <div class="spec-item">
   📱 <b>Brand:</b> ${currentPhone.brand}
 </div>
