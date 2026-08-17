@@ -1,6 +1,5 @@
-const hero = document.querySelector(".hero");
+const hero=document.querySelector(".hero");
 
-window.addEventListener("scroll", () => {
-  hero.style.backgroundPositionY =
-    window.scrollY * 0.3 + "px";
+window.addEventListener("scroll",()=>{
+hero.style.backgroundPositionY=window.scrollY*0.25+"px";
 });
