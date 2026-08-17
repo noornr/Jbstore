@@ -277,6 +277,39 @@ color:#fff;
   font-weight:bold;
 }
 
+.offer{
+  margin:30px 18px 70px;
+  border-radius:24px;
+  overflow:hidden;
+  background:
+  linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.65)),
+  url("images/offer.jpg") center/cover;
+  min-height:260px;
+  display:flex;
+  align-items:center;
+}
+
+.offer-content{
+  padding:30px;
+  max-width:480px;
+}
+
+.offer span{
+  color:#D4AF37;
+  letter-spacing:3px;
+  font-size:13px;
+}
+
+.offer h2{
+  font-size:44px;
+  margin:10px 0;
+}
+
+.offer p{
+  color:#ddd;
+  margin-bottom:25px;
+}
+
 
 @media(max-width:768px){
 
@@ -307,4 +340,9 @@ text-align:center;
   .product-grid{
     grid-template-columns:repeat(4,1fr);
   }
+
+  .offer h2{
+font-size:34px;
+}
+
 }
