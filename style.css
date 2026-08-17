@@ -118,6 +118,51 @@ color:#D4AF37;
 transform:translateY(-2px);
 }
 
+.categories{
+padding:70px 18px;
+background:#080808;
+}
+
+.categories h2{
+text-align:center;
+font-size:32px;
+color:#D4AF37;
+margin-bottom:35px;
+}
+
+.category-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:18px;
+}
+
+.card{
+background:#111;
+border:1px solid rgba(212,175,55,.2);
+border-radius:18px;
+padding:18px;
+text-align:center;
+transition:.35s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:#D4AF37;
+box-shadow:0 0 25px rgba(212,175,55,.25);
+}
+
+.card img{
+width:100%;
+height:130px;
+object-fit:contain;
+margin-bottom:15px;
+}
+
+.card h3{
+font-size:16px;
+color:#fff;
+}
+
 @media(max-width:768px){
 
 .hero{
