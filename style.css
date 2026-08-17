@@ -1,3 +1,33 @@
+
+
+/* ===== WIDTH FIX ===== */
+html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+    background:#0A0A0A;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+.header,
+.menu,
+.hero,
+.categories,
+.deals,
+.banner-slider,
+.best-sellers,
+.brands,
+.footer{
+    width:100%;
+}
+
+
+
 /* ===== DESKTOP HEADER ===== */
 
 .header{
