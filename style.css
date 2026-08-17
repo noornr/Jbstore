@@ -368,6 +368,79 @@ background:#D4AF37;
   cursor:pointer;
 }
 
+/* ===== DESKTOP BRANDS ===== */
+
+.brands{
+padding:60px 5%;
+background:#090909;
+}
+
+.brand-grid{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:24px;
+align-items:center;
+}
+
+.brand-grid img{
+width:100%;
+height:55px;
+object-fit:contain;
+filter:grayscale(100%);
+opacity:.8;
+transition:.3s;
+}
+
+.brand-grid img:hover{
+filter:none;
+opacity:1;
+transform:scale(1.05);
+}
+
+/* ===== DESKTOP FOOTER ===== */
+
+.footer{
+background:#050505;
+padding:60px 5% 25px;
+border-top:1px solid rgba(212,175,55,.12);
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:2fr 1fr 1fr 1fr;
+gap:40px;
+}
+
+.footer h3{
+color:#D4AF37;
+font-size:30px;
+margin-bottom:12px;
+}
+
+.footer h4{
+margin-bottom:15px;
+}
+
+.footer p,
+.footer a{
+display:block;
+color:#B8B8B8;
+margin:8px 0;
+text-decoration:none;
+}
+
+.footer a:hover{
+color:#D4AF37;
+}
+
+.copyright{
+text-align:center;
+padding-top:30px;
+color:#777;
+font-size:14px;
+}
+
+
 
 
 
@@ -568,6 +641,39 @@ height:9px;
 .best-card button{
   height:38px;
   font-size:12px;
+}
+
+/* ===== MOBILE BRANDS & FOOTER ===== */
+
+
+.brands{
+padding:35px 18px;
+}
+
+.brand-grid{
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.brand-grid img{
+height:40px;
+}
+
+.footer{
+padding:40px 18px 20px;
+}
+
+.footer-grid{
+grid-template-columns:1fr;
+gap:25px;
+}
+
+.footer h3{
+font-size:26px;
+}
+
+.copyright{
+font-size:12px;
 }
 
 
