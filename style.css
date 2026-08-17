@@ -79,6 +79,45 @@ border:1px solid #D4AF37;
 color:#D4AF37;
 }
 
+.navbar{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+padding:18px 22px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:10;
+background:rgba(0,0,0,.18);
+backdrop-filter:blur(16px);
+border-bottom:1px solid rgba(212,175,55,.15);
+}
+
+.logo{
+color:#D4AF37;
+font-size:28px;
+font-weight:800;
+letter-spacing:2px;
+}
+
+.nav-icons{
+display:flex;
+gap:18px;
+}
+
+.nav-icons a{
+color:#fff;
+text-decoration:none;
+font-size:22px;
+transition:.3s;
+}
+
+.nav-icons a:hover{
+color:#D4AF37;
+transform:translateY(-2px);
+}
+
 @media(max-width:768px){
 
 .hero{
