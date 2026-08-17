@@ -346,7 +346,76 @@ color:#fff;
   font-size:14px;
 }
 
+.reviews,.map{
+padding:70px 18px;
+background:#050505;
+}
 
+.review-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+}
+
+.review-card{
+background:#111;
+border:1px solid rgba(212,175,55,.2);
+border-radius:18px;
+padding:22px;
+text-align:center;
+}
+
+.review-card img{
+width:70px;
+height:70px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:12px;
+}
+
+.review-card p{
+color:#D4AF37;
+margin:8px 0;
+}
+
+.map h2{
+text-align:center;
+margin-bottom:20px;
+color:#D4AF37;
+}
+
+.map img{
+width:100%;
+border-radius:18px;
+}
+
+.footer{
+background:#0b0b0b;
+padding:45px 20px;
+text-align:center;
+border-top:1px solid rgba(212,175,55,.2);
+}
+
+.footer h2{
+color:#D4AF37;
+margin-bottom:10px;
+}
+
+.footer p{
+color:#bbb;
+margin:5px 0;
+}
+
+.footer a{
+display:inline-block;
+margin-top:20px;
+padding:14px 26px;
+background:#D4AF37;
+color:#000;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+}
 
 @media(max-width:768px){
 
