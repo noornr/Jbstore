@@ -12,86 +12,34 @@ color:#fff;
 
 .hero{
 height:100vh;
-background:url("images/hero.jpg") center/cover no-repeat;
+background:url("images/hero.jpg") center center/cover no-repeat;
 position:relative;
 display:flex;
-align-items:center;
-padding:25px;
+flex-direction:column;
+overflow:hidden;
 }
 
 .overlay{
 position:absolute;
 inset:0;
 background:linear-gradient(
-90deg,
-rgba(0,0,0,.85) 0%,
-rgba(0,0,0,.45) 55%,
-rgba(0,0,0,.2) 100%
+180deg,
+rgba(0,0,0,.45) 0%,
+rgba(0,0,0,.65) 45%,
+rgba(0,0,0,.88) 100%
 );
 }
 
-.hero-content{
-position:relative;
-z-index:2;
-max-width:560px;
-}
-
-.tag{
-color:#D4AF37;
-letter-spacing:3px;
-font-size:14px;
-}
-
-h1{
-font-size:52px;
-line-height:1.1;
-margin:18px 0;
-}
-
-p{
-color:#ddd;
-font-size:18px;
-line-height:1.6;
-}
-
-.btns{
-display:flex;
-gap:15px;
-margin-top:30px;
-flex-wrap:wrap;
-}
-
-.gold-btn,
-.line-btn{
-padding:14px 28px;
-border-radius:40px;
-text-decoration:none;
-font-weight:bold;
-}
-
-.gold-btn{
-background:#D4AF37;
-color:#000;
-}
-
-.line-btn{
-border:1px solid #D4AF37;
-color:#D4AF37;
-}
-
 .navbar{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-padding:18px 22px;
+position:relative;
+z-index:10;
 display:flex;
 justify-content:space-between;
 align-items:center;
-z-index:10;
+padding:18px 22px;
 background:rgba(0,0,0,.18);
 backdrop-filter:blur(16px);
-border-bottom:1px solid rgba(212,175,55,.15);
+border-bottom:1px solid rgba(212,175,55,.18);
 }
 
 .logo{
@@ -109,15 +57,58 @@ gap:18px;
 .nav-icons a{
 color:#fff;
 text-decoration:none;
-font-size:22px;
-transition:.3s;
+font-size:20px;
 }
 
-.nav-icons a:hover{
+.hero-content{
+position:relative;
+z-index:5;
+margin:auto 22px 70px;
+max-width:360px;
+}
+
+.tag{
 color:#D4AF37;
-transform:translateY(-2px);
+letter-spacing:3px;
+font-size:12px;
 }
 
+.hero h1{
+font-size:42px;
+line-height:1.05;
+margin:16px 0;
+font-weight:800;
+}
+
+.hero p{
+color:#E5E5E5;
+font-size:16px;
+line-height:1.7;
+}
+
+.btns{
+display:flex;
+gap:12px;
+margin-top:26px;
+}
+
+.gold-btn,
+.line-btn{
+padding:14px 22px;
+border-radius:40px;
+text-decoration:none;
+font-weight:700;
+}
+
+.gold-btn{
+background:#D4AF37;
+color:#000;
+}
+
+.line-btn{
+border:1px solid #D4AF37;
+color:#D4AF37;
+}
 .categories{
 padding:70px 18px;
 background:#080808;
@@ -419,28 +410,8 @@ font-weight:bold;
 
 @media(max-width:768px){
 
-.hero{
-padding:18px;
-align-items:flex-end;
-padding-bottom:70px;
-}
-
-h1{
-font-size:38px;
-}
-
-p{
-font-size:16px;
-}
-
-.btns{
-width:100%;
-}
-
-.gold-btn,
-.line-btn{
-flex:1;
-text-align:center;
+.hero h1{font-size:38px;}
+.nav-icons a{font-size:18px;}
 }
 
   .product-grid{
