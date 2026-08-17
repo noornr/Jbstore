@@ -66,7 +66,79 @@ text-decoration:none;
 font-weight:500;
 }
 
+/* ===== DESKTOP HERO ===== */
 
+.hero{
+display:grid;
+grid-template-columns:1.1fr 1fr;
+align-items:center;
+padding:60px 5%;
+background:linear-gradient(135deg,#0A0A0A,#1A1A1A);
+overflow:hidden;
+}
+
+.hero-text{
+max-width:620px;
+}
+
+.tag{
+color:#D4AF37;
+letter-spacing:3px;
+font-size:13px;
+font-weight:700;
+}
+
+.hero h1{
+font-size:64px;
+line-height:1.05;
+margin:18px 0;
+}
+
+.hero p{
+font-size:18px;
+color:#CFCFCF;
+line-height:1.8;
+}
+
+.hero-btns{
+display:flex;
+gap:16px;
+margin-top:30px;
+}
+
+.btn-gold,
+.btn-dark{
+padding:15px 30px;
+border-radius:50px;
+text-decoration:none;
+font-weight:700;
+}
+
+.btn-gold{
+background:#D4AF37;
+color:#000;
+}
+
+.btn-dark{
+border:1px solid #D4AF37;
+color:#D4AF37;
+}
+
+.hero-image{
+display:flex;
+justify-content:flex-end;
+}
+
+.hero-image img{
+width:100%;
+max-width:560px;
+filter:drop-shadow(0 25px 40px rgba(212,175,55,.18));
+animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+50%{transform:translateY(-12px);}
+}
 
 
 
