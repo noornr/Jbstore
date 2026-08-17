@@ -191,3 +191,42 @@ font-size:13px;
 white-space:nowrap;
 }
 
+  /* ===== MOBILE HERO ===== */
+
+@media(max-width:768px){
+
+.hero{
+grid-template-columns:1fr;
+padding:30px 18px;
+row-gap:25px;
+}
+
+.hero-text{
+order:2;
+text-align:center;
+max-width:100%;
+}
+
+.hero h1{
+font-size:38px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.hero-btns{
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.hero-image{
+order:1;
+justify-content:center;
+}
+
+.hero-image img{
+max-width:320px;
+}
+
+
