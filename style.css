@@ -85,6 +85,11 @@ rgba(0,0,0,.88) 100%
     transform:translateY(-2px);
 }
 
+.nav-icons svg{
+width:22px;
+height:22px;
+}
+
 .logo{
 color:#D4AF37;
 font-size:28px;
