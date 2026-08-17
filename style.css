@@ -410,9 +410,30 @@ font-weight:bold;
 
 @media(max-width:768px){
 
+   .navbar{
+        height:64px;
+        padding:0 16px;
+    }
+
+    .logo{
+        font-size:24px;
+    }
+
+    .nav-icons{
+        gap:10px;
+    }
+
+    .nav-icons a{
+        width:38px;
+        height:38px;
+        font-size:18px;
+    }
+
+    .hero-content{
+        margin-top:64px;
+    }
+
 .hero h1{font-size:38px;}
-.nav-icons a{font-size:18px;}
-}
 
   .product-grid{
     grid-template-columns:repeat(4,1fr);
