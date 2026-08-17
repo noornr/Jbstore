@@ -310,6 +310,43 @@ color:#fff;
   margin-bottom:25px;
 }
 
+.why{
+  padding:70px 18px;
+  background:#090909;
+}
+
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+
+.why-card{
+  background:#121212;
+  border:1px solid rgba(212,175,55,.2);
+  border-radius:18px;
+  padding:24px 18px;
+  text-align:center;
+  transition:.3s;
+}
+
+.why-card:hover{
+  transform:translateY(-6px);
+  border-color:#D4AF37;
+  box-shadow:0 0 20px rgba(212,175,55,.2);
+}
+
+.why-card h3{
+  color:#D4AF37;
+  margin-bottom:8px;
+}
+
+.why-card p{
+  color:#bbb;
+  font-size:14px;
+}
+
+
 
 @media(max-width:768px){
 
@@ -345,4 +382,7 @@ text-align:center;
 font-size:34px;
 }
 
+    .why-grid{
+    grid-template-columns:repeat(4,1fr);
+    }
 }
