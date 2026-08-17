@@ -1,46 +1,108 @@
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#050505;color:#fff}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#050505;
+color:#fff;
+}
 
 .hero{
 height:100vh;
-background:linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.8)),url('images/hero.jpg') center/cover;
+background:url("images/hero.jpg") center/cover no-repeat;
 position:relative;
 display:flex;
-flex-direction:column;
+align-items:center;
+padding:25px;
 }
 
 .overlay{
 position:absolute;
 inset:0;
-background:radial-gradient(circle,#d4af3725,transparent 60%);
+background:linear-gradient(
+90deg,
+rgba(0,0,0,.85) 0%,
+rgba(0,0,0,.45) 55%,
+rgba(0,0,0,.2) 100%
+);
 }
 
-nav{
+.hero-content{
 position:relative;
 z-index:2;
+max-width:560px;
+}
+
+.tag{
+color:#D4AF37;
+letter-spacing:3px;
+font-size:14px;
+}
+
+h1{
+font-size:52px;
+line-height:1.1;
+margin:18px 0;
+}
+
+p{
+color:#ddd;
+font-size:18px;
+line-height:1.6;
+}
+
+.btns{
 display:flex;
-justify-content:space-between;
-padding:20px;
+gap:15px;
+margin-top:30px;
+flex-wrap:wrap;
 }
 
-nav h2{color:#D4AF37}
-nav a{color:#D4AF37;text-decoration:none;border:1px solid #D4AF37;padding:8px 18px;border-radius:30px}
-
-.content{
-position:relative;
-z-index:2;
-margin:auto 20px;
-max-width:600px;
+.gold-btn,
+.line-btn{
+padding:14px 28px;
+border-radius:40px;
+text-decoration:none;
+font-weight:bold;
 }
 
-.tag{color:#D4AF37;letter-spacing:2px;margin-bottom:10px}
-h1{font-size:48px;line-height:1.1;margin-bottom:15px}
+.gold-btn{
+background:#D4AF37;
+color:#000;
+}
 
-.buttons{display:flex;gap:15px;margin-top:25px;flex-wrap:wrap}
-.gold,.outline{text-decoration:none;padding:14px 24px;border-radius:30px;font-weight:bold}
-.gold{background:#D4AF37;color:#000}
-.outline{border:1px solid #D4AF37;color:#D4AF37}
+.line-btn{
+border:1px solid #D4AF37;
+color:#D4AF37;
+}
 
 @media(max-width:768px){
-h1{font-size:34px}
+
+.hero{
+padding:18px;
+align-items:flex-end;
+padding-bottom:70px;
+}
+
+h1{
+font-size:38px;
+}
+
+p{
+font-size:16px;
+}
+
+.btns{
+width:100%;
+}
+
+.gold-btn,
+.line-btn{
+flex:1;
+text-align:center;
+}
+
 }
