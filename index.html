@@ -278,6 +278,25 @@
 <script src="tv.js"></script>
 <script src="script.js"></script>
   
+  <script>
+function goToSearch(){
+
+  const input =
+    document.getElementById("searchInput");
+
+  const value =
+    input.value.trim();
+
+  if(value === ""){
+    return;
+  }
+
+  window.location.href =
+    "search.html?q=" +
+    encodeURIComponent(value);
+}
+  </script>
+  
 </body>
 </html>
   
