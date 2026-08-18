@@ -494,27 +494,45 @@ function loadSearchBrands(){
 
     button.onclick = () => {
 
-      document
-        .querySelectorAll(
-          ".search-brand-btn"
-        )
-        .forEach(btn => {
-          btn.classList.remove("active");
-        });
+  document
+    .querySelectorAll(
+      ".search-brand-btn"
+    )
+    .forEach(btn => {
+      btn.classList.remove("active");
+    });
 
 
-      button.classList.add("active");
+  button.classList.add("active");
 
 
-      const filtered =
-        products.filter(product =>
-          product.brand === brand
-        );
+  const filtered =
+    products.filter(product =>
+      product.brand === brand
+    );
 
 
-      displaySearchProducts(filtered);
+  displaySearchProducts(filtered);
 
-    };
+
+  // CLOSE FILTER CARD ON MOBILE
+
+  if(window.innerWidth <= 768){
+
+    const filterCard =
+      document.querySelector(
+        ".search-sidebar"
+      );
+
+    if(filterCard){
+
+      filterCard.style.display = "none";
+
+    }
+
+  }
+
+};
 
 
     searchBrands.appendChild(button);
