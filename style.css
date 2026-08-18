@@ -57,7 +57,7 @@ display:flex;
 background:#1A1A1A;
 border:1px solid #2E2E2E;
 border-radius:50px;
-overflow:hidden;
+overflow:visible;
 }
 
 .search input{
