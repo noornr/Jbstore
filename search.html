@@ -1073,6 +1073,70 @@ displaySearchProducts(
 
 loadSearchBrands();
 
+  // ==========================================
+// CLEAR ALL SEARCH FILTERS
+// ==========================================
+
+const clearSearchFilters =
+  document.getElementById(
+    "clearSearchFilters"
+  );
+
+
+if(clearSearchFilters){
+
+  clearSearchFilters.addEventListener(
+    "click",
+    () => {
+
+      // Remove brand + category filter
+
+      selectedSearchBrand = "";
+
+      selectedSearchCategory = "";
+
+
+      // Remove search text
+
+      searchTerm = "";
+
+
+      // Clear search box
+
+      searchInput.value = "";
+
+
+      // Change URL to normal search page
+
+      window.history.replaceState(
+        {},
+        "",
+        "search.html"
+      );
+
+
+      // Reset title
+
+      searchTitle.innerText =
+        "All Products";
+
+
+      // Show all products
+
+      displaySearchProducts(
+        allProducts
+      );
+
+
+      // Reload available brands
+
+      loadSearchBrands();
+
+    }
+  );
+
+}
+
 </script>
 
 </body>
