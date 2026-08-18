@@ -218,7 +218,37 @@ const searchBrands =
 // SET SEARCH BOX
 // ==========================================
 
-searchInput.value = searchTerm;
+if(
+  selectedSearchBrand &&
+  selectedSearchCategory
+){
+
+  const categoryName = {
+
+    mobiles: "Mobiles",
+
+    fridge: "Refrigerator",
+
+    washing: "Washing Machine",
+
+    ac: "AC",
+
+    tv: "TV"
+
+  }[selectedSearchCategory]
+    || selectedSearchCategory;
+
+
+  searchInput.value =
+    `${selectedSearchBrand} ${categoryName}`;
+
+}
+else{
+
+  searchInput.value =
+    searchTerm;
+
+}
 
 
 
