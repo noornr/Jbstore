@@ -469,7 +469,60 @@ padding-top:30px;
 color:#777;
 font-size:14px;
 }
+/* ===== CATEGORY FILTER ===== */
 
+.filters{
+    background:#0D0D0D;
+    padding:18px 5%;
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.filter-top{
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:12px;
+}
+
+#clearFilter{
+    color:#D4AF37;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.brand-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.chip{
+    background:#1A1A1A;
+    color:#EAEAEA;
+    border:1px solid #333;
+    border-radius:999px;
+    padding:10px 18px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.chip:hover{
+    border-color:#D4AF37;
+    color:#D4AF37;
+}
+
+.chip.on{
+    background:#D4AF37;
+    color:#000;
+    border-color:#D4AF37;
+}
+
+.cat.active{
+    color:#D4AF37;
+    border-bottom:2px solid #D4AF37;
+}
 
 
 
@@ -710,5 +763,17 @@ font-size:26px;
 font-size:12px;
 }
 
+.filters{
+    padding:14px 18px;
+}
+
+.brand-list{
+    gap:8px;
+}
+
+.chip{
+    padding:8px 14px;
+    font-size:12px;
+}
 
 
