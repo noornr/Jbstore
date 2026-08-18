@@ -1002,10 +1002,39 @@ document.addEventListener(
 // INITIAL LOAD
 // ==========================================
 
-searchTitle.innerText =
-  searchTerm
-    ? `"${searchTerm}"`
-    : "All Products";
+if(
+  selectedSearchBrand &&
+  selectedSearchCategory
+){
+
+  const categoryName = {
+
+    mobiles: "Mobiles",
+
+    fridge: "Refrigerators",
+
+    washing: "Washing Machines",
+
+    ac: "AC",
+
+    tv: "TV"
+
+  }[selectedSearchCategory]
+    || selectedSearchCategory;
+
+
+  searchTitle.innerText =
+    `${selectedSearchBrand} ${categoryName}`;
+
+}
+else{
+
+  searchTitle.innerText =
+    searchTerm
+      ? `"${searchTerm}"`
+      : "All Products";
+
+}
 
 
 displaySearchProducts(
