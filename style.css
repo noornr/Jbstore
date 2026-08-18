@@ -759,6 +759,17 @@ font-size:14px;
     border:none;
     color:#000;
 }
+/* ===== CLICKABLE CATEGORY CARDS ===== */
+
+.category-card{
+    cursor:pointer;
+}
+
+.category-card:active{
+    transform:scale(.97);
+}
+
+
 
 
 
