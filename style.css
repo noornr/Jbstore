@@ -524,6 +524,40 @@ font-size:14px;
     border-bottom:2px solid #D4AF37;
 }
 
+/* ===== DYNAMIC PRODUCT DATA ===== */
+
+.deal-card .brand{
+    color:#999;
+    font-size:12px;
+    margin:5px 0;
+}
+
+.rating{
+    color:#D4AF37;
+    font-size:13px;
+    margin:6px 0;
+}
+
+.rating span{
+    color:#777;
+}
+
+.old-price{
+    display:inline-block;
+    color:#777;
+    text-decoration:line-through;
+    font-size:13px;
+    margin-left:5px;
+}
+
+.no-products{
+    grid-column:1/-1;
+    text-align:center;
+    padding:60px 20px;
+    color:#aaa;
+}
+
+
 
 
 
