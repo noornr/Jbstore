@@ -1011,4 +1011,62 @@ font-size:12px;
     font-size:12px;
 }
 
+/* ==========================================
+   PRODUCT DETAILS — MOBILE
+========================================== */
+
+
+.product-header{
+    height:64px;
+    padding:0 15px;
+    gap:15px;
+}
+
+.product-logo{
+    font-size:22px;
+}
+
+.product-page{
+    width:100%;
+    margin:0;
+    display:block;
+}
+
+.product-image-box{
+    min-height:350px;
+    border-radius:0 0 22px 22px;
+}
+
+.product-image-box img{
+    height:320px;
+}
+
+.product-offer{
+    top:15px;
+    left:15px;
+}
+
+.product-info{
+    padding:25px 18px 40px;
+}
+
+.product-info h1{
+    font-size:28px;
+}
+
+.product-price strong{
+    font-size:28px;
+}
+
+.product-specs{
+    margin-top:20px;
+}
+
+.product-actions{
+    position:sticky;
+    bottom:0;
+    background:#0A0A0A;
+    padding:12px 0;
+}
+
 
