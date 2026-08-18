@@ -11,7 +11,11 @@ const mobileProducts = [
     discount: "9% OFF",
     rating: 4.8,
     reviews: 126,
-    image: "images/iphone.png",
+    images: [
+  "images/iphone.png",
+  "images/iphone.png",
+  "images/iphone.png"
+],
     storage: "256GB",
     ram: "8GB",
     warranty: "1 Year",
