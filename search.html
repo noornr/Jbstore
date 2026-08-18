@@ -381,10 +381,16 @@ function displaySearchProducts(
   products.forEach(product => {
 
     const card =
-      document.createElement("div");
+  document.createElement("div");
 
-    card.className =
-      "search-product-card";
+card.className =
+  "search-product-card";
+
+card.style.cursor = "pointer";
+
+card.addEventListener("click", () => {
+  openProduct(product.id);
+});
 
 
     card.innerHTML = `
