@@ -2044,7 +2044,22 @@ body{
 
   }
 
-    .hero-btns{
+    .hero{
+    height:auto !important;
+    min-height:0 !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  .hero-bg{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
+  .hero-btns{
+    margin:0 !important;
+    padding:10px 0 !important;
   position:relative;
   z-index:10;
 }
