@@ -18,17 +18,26 @@
   </div>
 
   <div class="search">
+
   <input
     type="text"
     id="searchInput"
     placeholder="Search products..."
+    autocomplete="off"
   >
 
   <button
     type="button"
-    onclick="goToSearch()">
+    id="searchButton"
+  >
     🔍
   </button>
+
+  <div
+    id="searchSuggestions"
+    class="search-suggestions"
+  ></div>
+
 </div>
 
   <div class="cart">
