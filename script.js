@@ -502,8 +502,9 @@ document
 
   });
 
+
 // ==========================================
-// 13. PRODUCT SEARCH
+// 13. SMART BRAND + CATEGORY SEARCH
 // ==========================================
 
 const searchInput =
@@ -512,170 +513,418 @@ const searchInput =
 const searchButton =
   document.getElementById("searchButton");
 
+const searchSuggestions =
+  document.getElementById("searchSuggestions");
 
-function searchProducts(){
 
-  const searchText =
+// ==========================================
+// CATEGORY NAMES
+// ==========================================
+
+const categoryNames = {
+
+  mobiles: "Mobiles",
+
+  fridge: "Refrigerators",
+
+  washing: "Washing Machines",
+
+  ac: "AC",
+
+  tv: "TV"
+
+};
+
+
+// ==========================================
+// CREATE SEARCH SUGGESTIONS
+// ==========================================
+
+function createSearchSuggestions(){
+
+  if(!searchInput || !searchSuggestions){
+    return;
+  }
+
+
+  const text =
     searchInput.value
       .trim()
       .toLowerCase();
 
 
-  // Empty search → normal category products
-
-  if(searchText === ""){
-
-    displayProducts();
-
-    return;
-
-  }
+  searchSuggestions.innerHTML = "";
 
 
-  // Search all products
+  if(text === ""){
 
-  let results =
-    allProducts.filter(product => {
-
-      return (
-
-        product.name
-          .toLowerCase()
-          .includes(searchText)
-
-        ||
-
-        product.brand
-          .toLowerCase()
-          .includes(searchText)
-
-        ||
-
-        product.id
-          .toLowerCase()
-          .includes(searchText)
-
-        ||
-
-        product.category
-          .toLowerCase()
-          .includes(searchText)
-
-        ||
-
-        (product.condition || "")
-          .toLowerCase()
-          .includes(searchText)
-
-      );
-
-    });
-
-
-  productGrid.innerHTML = "";
-
-
-  if(results.length === 0){
-
-    productGrid.innerHTML = `
-
-      <div class="no-products">
-
-        <h3>No products found</h3>
-
-        <p>
-          Try another product name or brand.
-        </p>
-
-      </div>
-
-    `;
+    searchSuggestions.classList.remove("show");
 
     return;
 
   }
 
 
-  results.forEach(product => {
+  // ==========================================
+  // FIND BRAND + CATEGORY
+  // FROM ACTUAL PRODUCTS ONLY
+  // ==========================================
 
-    const card =
-      document.createElement("div");
-
-    card.className = "deal-card";
-
-
-    card.innerHTML = `
-
-      <span class="offer">
-        ${product.discount}
-      </span>
-
-      <img
-        src="${product.image}"
-        alt="${product.name}"
-      >
-
-      <h3>
-        ${product.name}
-      </h3>
-
-      <p class="brand">
-        ${product.brand}
-        •
-        ${product.condition || "New"}
-      </p>
-
-      <div class="rating">
-        ⭐ ${product.rating}
-        <span>
-          (${product.reviews})
-        </span>
-      </div>
-
-      <p class="price">
-        ₹${product.price.toLocaleString("en-IN")}
-      </p>
-
-      <p class="old-price">
-        ₹${product.oldPrice.toLocaleString("en-IN")}
-      </p>
-
-      <button
-        type="button"
-        onclick="viewProduct('${product.id}')"
-      >
-        View Details
-      </button>
-
-    `;
+  const combinations = new Map();
 
 
-    productGrid.appendChild(card);
+  allProducts.forEach(product => {
+
+    const brand =
+      String(product.brand || "").trim();
+
+    const category =
+      String(product.category || "").trim();
+
+
+    if(!brand || !category){
+      return;
+    }
+
+
+    const brandLower =
+      brand.toLowerCase();
+
+    const categoryLower =
+      category.toLowerCase();
+
+
+    // Match typed letters against
+    // actual brand or category
+
+    if(
+      brandLower.includes(text) ||
+      categoryLower.includes(text)
+    ){
+
+      const key =
+        `${brandLower}|${categoryLower}`;
+
+
+      if(!combinations.has(key)){
+
+        combinations.set(key, {
+
+          brand: brand,
+
+          category: category,
+
+          image: product.image
+
+        });
+
+      }
+
+    }
 
   });
+
+
+  // ==========================================
+  // CONVERT TO ARRAY
+  // ==========================================
+
+  const suggestions =
+    Array.from(
+      combinations.values()
+    );
+
+
+  // ==========================================
+  // SORT
+  // ==========================================
+
+  suggestions.sort((a,b) => {
+
+    const aBrand =
+      a.brand.toLowerCase();
+
+    const bBrand =
+      b.brand.toLowerCase();
+
+
+    const aStarts =
+      aBrand.startsWith(text);
+
+    const bStarts =
+      bBrand.startsWith(text);
+
+
+    if(aStarts && !bStarts){
+      return -1;
+    }
+
+
+    if(!aStarts && bStarts){
+      return 1;
+    }
+
+
+    return aBrand.localeCompare(bBrand);
+
+  });
+
+
+  // ==========================================
+  // MAXIMUM 10
+  // ==========================================
+
+  const finalResults =
+    suggestions.slice(0,10);
+
+
+  // ==========================================
+  // NO RESULTS
+  // ==========================================
+
+  if(finalResults.length === 0){
+
+    searchSuggestions.innerHTML = `
+
+      <div class="search-no-result">
+
+        No products found
+
+      </div>
+
+    `;
+
+    searchSuggestions.classList.add("show");
+
+    return;
+
+  }
+
+
+  // ==========================================
+  // DISPLAY SUGGESTIONS
+  // ==========================================
+
+  finalResults.forEach(item => {
+
+    const row =
+      document.createElement("div");
+
+
+    row.className =
+      "search-suggestion";
+
+
+    const displayCategory =
+      categoryNames[
+        item.category
+      ] || item.category;
+
+
+    row.innerHTML = `
+
+      <img
+        src="${item.image}"
+        alt=""
+      >
+
+      <div class="suggestion-info">
+
+        <div class="suggestion-name">
+
+          ${highlightSearch(
+            item.brand,
+            text
+          )}
+
+          ${displayCategory}
+
+        </div>
+
+        <div class="suggestion-category">
+
+          View ${item.brand}
+          ${displayCategory}
+
+        </div>
+
+      </div>
+
+      <span class="suggestion-arrow">
+        ↗
+      </span>
+
+    `;
+
+
+    // ========================================
+    // CLICK SUGGESTION
+    // ========================================
+
+    row.addEventListener(
+      "click",
+      () => {
+
+        openSearchResults(
+
+          item.brand +
+          " " +
+          item.category
+
+        );
+
+      }
+    );
+
+
+    searchSuggestions.appendChild(row);
+
+  });
+
+
+  searchSuggestions.classList.add("show");
 
 }
 
 
-// Search while typing
+// ==========================================
+// HIGHLIGHT SEARCH TEXT
+// ==========================================
+
+function highlightSearch(
+  text,
+  search
+){
+
+  const escaped =
+    search.replace(
+      /[.*+?^${}()|[\]\\]/g,
+      "\\$&"
+    );
+
+
+  return text.replace(
+
+    new RegExp(
+      `(${escaped})`,
+      "ig"
+    ),
+
+    "<strong>$1</strong>"
+
+  );
+
+}
+
+
+// ==========================================
+// OPEN SEARCH RESULTS PAGE
+// ==========================================
+
+function openSearchResults(value){
+
+  if(!value){
+    return;
+  }
+
+
+  window.location.href =
+    "search.html?q=" +
+    encodeURIComponent(value);
+
+}
+
+
+// ==========================================
+// LIVE SEARCH
+// ==========================================
 
 if(searchInput){
 
   searchInput.addEventListener(
     "input",
-    searchProducts
+    createSearchSuggestions
   );
 
 }
 
 
-// Search button
+// ==========================================
+// SEARCH BUTTON
+// ==========================================
 
 if(searchButton){
 
   searchButton.addEventListener(
     "click",
-    searchProducts
+    () => {
+
+      const value =
+        searchInput.value.trim();
+
+
+      if(value){
+
+        openSearchResults(value);
+
+      }
+
+    }
   );
 
 }
+
+
+// ==========================================
+// ENTER KEY
+// ==========================================
+
+if(searchInput){
+
+  searchInput.addEventListener(
+    "keydown",
+    event => {
+
+      if(event.key === "Enter"){
+
+        const value =
+          searchInput.value.trim();
+
+
+        if(value){
+
+          openSearchResults(value);
+
+        }
+
+      }
+
+    }
+  );
+
+}
+
+
+// ==========================================
+// CLOSE SUGGESTIONS
+// ==========================================
+
+document.addEventListener(
+  "click",
+  event => {
+
+    if(
+      searchInput &&
+      searchSuggestions &&
+      !searchInput.contains(event.target) &&
+      !searchSuggestions.contains(event.target)
+    ){
+
+      searchSuggestions.classList.remove(
+        "show"
+      );
+
+    }
+
+  }
+);
