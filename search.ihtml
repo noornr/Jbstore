@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>Search | JB STORE</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+>
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+  <a href="index.html" class="logo">
+    JB <span>STORE</span>
+  </a>
+
+  <div class="search">
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search products..."
+    >
+
+    <button
+      type="button"
+      id="searchButton"
+    >
+      🔍
+    </button>
+
+  </div>
+
+  <div class="cart">
+    🛒
+  </div>
+
+</header>
+
+
+<!-- SEARCH PAGE -->
+
+<main class="search-page">
+
+
+  <!-- TOP BAR -->
+
+  <div class="search-heading">
+
+    <div>
+
+      <p class="search-small">
+        SEARCH RESULTS
+      </p>
+
+      <h1 id="searchTitle">
+        Products
+      </h1>
+
+    </div>
+
+    <span id="resultCount"></span>
+
+  </div>
+
+
+  <!-- FILTER + PRODUCTS -->
+
+  <div class="search-layout">
+
+
+    <!-- LEFT FILTER -->
+
+    <aside class="search-sidebar">
+
+      <h3>Filter Products</h3>
+
+      <div class="filter-section">
+
+        <h4>Brand</h4>
+
+        <div id="searchBrands"></div>
+
+      </div>
+
+
+      <button
+        id="clearSearchFilters"
+        class="clear-search"
+      >
+        Clear All
+      </button>
+
+    </aside>
+
+
+    <!-- PRODUCTS -->
+
+    <section class="search-results">
+
+      <div
+        id="searchProductGrid"
+        class="search-product-grid"
+      ></div>
+
+    </section>
+
+
+  </div>
+
+</main>
+
+
+<!-- PRODUCT DATA -->
+
+<script src="mobiles.js"></script>
+<script src="refrigerator.js"></script>
+<script src="washing.js"></script>
+<script src="ac.js"></script>
+<script src="tv.js"></script>
+
+
+<script>
+
+// ==========================================
+// ALL PRODUCTS
+// ==========================================
+
+const allProducts = [
+
+  ...mobileProducts,
+  ...refrigeratorProducts,
+  ...washingProducts,
+  ...acProducts,
+  ...tvProducts
+
+];
+
+
+// ==========================================
+// GET SEARCH TERM
+// ==========================================
+
+const params =
+  new URLSearchParams(window.location.search);
+
+
+let searchTerm =
+  params.get("q") || "";
+
+searchTerm =
+  searchTerm.trim();
+
+
+// ==========================================
+// ELEMENTS
+// ==========================================
+
+const searchInput =
+  document.getElementById("searchInput");
+
+const searchProductGrid =
+  document.getElementById(
+    "searchProductGrid"
+  );
+
+const searchTitle =
+  document.getElementById("searchTitle");
+
+const resultCount =
+  document.getElementById("resultCount");
+
+const searchBrands =
+  document.getElementById("searchBrands");
+
+
+// ==========================================
+// SET SEARCH BOX
+// ==========================================
+
+searchInput.value = searchTerm;
+
+
+// ==========================================
+// SEARCH PRODUCTS
+// ==========================================
+
+function getSearchProducts(){
+
+  const text =
+    searchTerm.toLowerCase();
+
+
+  return allProducts.filter(product => {
+
+    return (
+
+      product.name
+        .toLowerCase()
+        .includes(text)
+
+      ||
+
+      product.brand
+        .toLowerCase()
+        .includes(text)
+
+      ||
+
+      product.id
+        .toLowerCase()
+        .includes(text)
+
+      ||
+
+      product.category
+        .toLowerCase()
+        .includes(text)
+
+      ||
+
+      (product.condition || "")
+        .toLowerCase()
+        .includes(text)
+
+    );
+
+  });
+
+}
+
+
+// ==========================================
+// SHOW PRODUCTS
+// ==========================================
+
+function displaySearchProducts(
+  products
+){
+
+  searchProductGrid.innerHTML = "";
+
+
+  resultCount.innerText =
+    `${products.length} Products`;
+
+
+  if(products.length === 0){
+
+    searchProductGrid.innerHTML = `
+
+      <div class="search-empty">
+
+        <div>🔍</div>
+
+        <h2>No products found</h2>
+
+        <p>
+          Try another product or brand.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  products.forEach(product => {
+
+    const card =
+      document.createElement("div");
+
+    card.className =
+      "search-product-card";
+
+
+    card.innerHTML = `
+
+      <div class="search-product-image">
+
+        <span class="search-offer">
+          ${product.discount}
+        </span>
+
+        <img
+          src="${product.image}"
+          alt="${product.name}"
+        >
+
+      </div>
+
+
+      <div class="search-product-info">
+
+        <p class="search-brand">
+          ${product.brand}
+        </p>
+
+        <h3>
+          ${product.name}
+        </h3>
+
+        <div class="search-rating">
+          ⭐ ${product.rating}
+          <span>
+            (${product.reviews})
+          </span>
+        </div>
+
+        <p class="search-condition">
+          ${product.condition || "New"}
+        </p>
+
+        <div class="search-price">
+
+          <strong>
+            ₹${product.price.toLocaleString("en-IN")}
+          </strong>
+
+          <del>
+            ₹${product.oldPrice.toLocaleString("en-IN")}
+          </del>
+
+        </div>
+
+        <button
+          type="button"
+          onclick="openProduct('${product.id}')"
+        >
+          View Details
+        </button>
+
+      </div>
+
+    `;
+
+
+    searchProductGrid.appendChild(card);
+
+  });
+
+}
+
+
+// ==========================================
+// BRAND FILTER
+// ==========================================
+
+function loadSearchBrands(){
+
+  const products =
+    getSearchProducts();
+
+
+  const uniqueBrands =
+    [...new Set(
+      products.map(product => product.brand)
+    )];
+
+
+  searchBrands.innerHTML = "";
+
+
+  uniqueBrands.forEach(brand => {
+
+    const button =
+      document.createElement("button");
+
+    button.className =
+      "search-brand-btn";
+
+    button.innerText =
+      brand;
+
+
+    button.onclick = () => {
+
+      document
+        .querySelectorAll(
+          ".search-brand-btn"
+        )
+        .forEach(btn => {
+          btn.classList.remove("active");
+        });
+
+
+      button.classList.add("active");
+
+
+      const filtered =
+        products.filter(product =>
+          product.brand === brand
+        );
+
+
+      displaySearchProducts(filtered);
+
+    };
+
+
+    searchBrands.appendChild(button);
+
+  });
+
+}
+
+
+// ==========================================
+// OPEN PRODUCT
+// ==========================================
+
+function openProduct(id){
+
+  const product =
+    allProducts.find(
+      item => item.id === id
+    );
+
+
+  if(!product) return;
+
+
+  localStorage.setItem(
+    "selectedProduct",
+    JSON.stringify(product)
+  );
+
+
+  window.location.href =
+    "product.html";
+
+}
+
+
+// ==========================================
+// SEARCH AGAIN
+// ==========================================
+
+function performSearch(){
+
+  const value =
+    searchInput.value.trim();
+
+
+  if(!value){
+
+    window.location.href =
+      "index.html";
+
+    return;
+
+  }
+
+
+  window.location.href =
+    `search.html?q=${encodeURIComponent(value)}`;
+
+}
+
+
+document
+  .getElementById("searchButton")
+  .addEventListener(
+    "click",
+    performSearch
+  );
+
+
+searchInput.addEventListener(
+  "keydown",
+  event => {
+
+    if(event.key === "Enter"){
+
+      performSearch();
+
+    }
+
+  }
+);
+
+
+// ==========================================
+// INITIAL LOAD
+// ==========================================
+
+searchTitle.innerText =
+  searchTerm
+    ? `"${searchTerm}"`
+    : "All Products";
+
+
+displaySearchProducts(
+  getSearchProducts()
+);
+
+loadSearchBrands();
+
+</script>
+
+</body>
+</html>
