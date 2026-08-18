@@ -380,3 +380,50 @@ function viewProduct(id){
 loadBrands("mobiles");
 
 displayProducts();
+
+// ==========================================
+// SHOP BY CATEGORY CARDS
+// ==========================================
+
+document
+  .querySelectorAll(".category-card")
+  .forEach(card => {
+
+    card.addEventListener("click", () => {
+
+      const category =
+        card.dataset.category;
+
+
+      // Find matching top category button
+
+      const categoryButton =
+        document.querySelector(
+          `.cat[data-cat="${category}"]`
+        );
+
+
+      if(categoryButton){
+
+        categoryButton.click();
+
+      }
+
+
+      // Scroll to products
+
+      const products =
+        document.querySelector(".deals");
+
+      if(products){
+
+        products.scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
+
+      }
+
+    });
+
+  });
