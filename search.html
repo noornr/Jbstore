@@ -507,6 +507,443 @@ searchInput.addEventListener(
   }
 );
 
+  // ==========================================
+// SEARCH SUGGESTIONS
+// ==========================================
+
+const searchSuggestions =
+  document.getElementById("searchSuggestions");
+
+
+// ==========================================
+// CATEGORY NAMES
+// ==========================================
+
+const categoryNames = {
+
+  mobiles: "Mobiles",
+
+  fridge: "Refrigerator",
+
+  washing: "Washing Machine",
+
+  ac: "AC",
+
+  tv: "TV"
+
+};
+
+
+// ==========================================
+// CREATE SEARCH SUGGESTIONS
+// ==========================================
+
+function createSearchSuggestions(){
+
+  if(
+    !searchInput ||
+    !searchSuggestions
+  ){
+
+    return;
+
+  }
+
+
+  const text =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+
+  searchSuggestions.innerHTML = "";
+
+
+  // EMPTY SEARCH
+
+  if(text === ""){
+
+    searchSuggestions.classList.remove(
+      "show"
+    );
+
+    return;
+
+  }
+
+
+  // ==========================================
+  // FIND BRAND + CATEGORY
+  // FROM ACTUAL PRODUCTS ONLY
+  // ==========================================
+
+  const combinations =
+    new Map();
+
+
+  allProducts.forEach(product => {
+
+    const brand =
+      String(
+        product.brand || ""
+      ).trim();
+
+
+    const category =
+      String(
+        product.category || ""
+      ).trim();
+
+
+    if(
+      !brand ||
+      !category
+    ){
+
+      return;
+
+    }
+
+
+    const brandLower =
+      brand.toLowerCase();
+
+
+    const categoryLower =
+      category.toLowerCase();
+
+
+    // MATCH TYPED LETTERS
+
+    if(
+      brandLower.includes(text) ||
+      categoryLower.includes(text)
+    ){
+
+      const key =
+        `${brandLower}|${categoryLower}`;
+
+
+      if(
+        !combinations.has(key)
+      ){
+
+        combinations.set(
+          key,
+          {
+
+            brand: brand,
+
+            category: category,
+
+            image: product.image ||
+                   product.images?.[0] ||
+                   ""
+
+          }
+        );
+
+      }
+
+    }
+
+  });
+
+
+  // ==========================================
+  // CONVERT TO ARRAY
+  // ==========================================
+
+  const suggestions =
+    Array.from(
+      combinations.values()
+    );
+
+
+  // ==========================================
+  // SORT
+  // BRAND STARTS WITH SEARCH FIRST
+  // ==========================================
+
+  suggestions.sort((a,b) => {
+
+    const aBrand =
+      a.brand.toLowerCase();
+
+
+    const bBrand =
+      b.brand.toLowerCase();
+
+
+    const aStarts =
+      aBrand.startsWith(text);
+
+
+    const bStarts =
+      bBrand.startsWith(text);
+
+
+    if(
+      aStarts &&
+      !bStarts
+    ){
+
+      return -1;
+
+    }
+
+
+    if(
+      !aStarts &&
+      bStarts
+    ){
+
+      return 1;
+
+    }
+
+
+    return aBrand.localeCompare(
+      bBrand
+    );
+
+  });
+
+
+  // ==========================================
+  // MAXIMUM 10
+  // ==========================================
+
+  const finalResults =
+    suggestions.slice(0,10);
+
+
+  // ==========================================
+  // NO RESULTS
+  // ==========================================
+
+  if(
+    finalResults.length === 0
+  ){
+
+    searchSuggestions.innerHTML = `
+
+      <div class="search-no-result">
+
+        No products found
+
+      </div>
+
+    `;
+
+
+    searchSuggestions.classList.add(
+      "show"
+    );
+
+
+    return;
+
+  }
+
+
+  // ==========================================
+  // DISPLAY
+  // ==========================================
+
+  finalResults.forEach(item => {
+
+    const row =
+      document.createElement(
+        "div"
+      );
+
+
+    row.className =
+      "search-suggestion";
+
+
+    const displayCategory =
+      categoryNames[
+        item.category
+      ] ||
+      item.category;
+
+
+    row.innerHTML = `
+
+      <img
+        src="${item.image}"
+        alt=""
+      >
+
+      <div class="suggestion-info">
+
+        <div class="suggestion-name">
+
+          ${highlightSearch(
+            item.brand,
+            text
+          )}
+
+          ${displayCategory}
+
+        </div>
+
+
+        <div class="suggestion-category">
+
+          View ${item.brand}
+          ${displayCategory}
+
+        </div>
+
+      </div>
+
+
+      <span class="suggestion-arrow">
+
+        ↗
+
+      </span>
+
+    `;
+
+
+    // ========================================
+    // CLICK SUGGESTION
+    // ========================================
+
+    row.addEventListener(
+      "click",
+      () => {
+
+        openSearchResults(
+
+          item.brand +
+          " " +
+          item.category
+
+        );
+
+      }
+    );
+
+
+    searchSuggestions.appendChild(
+      row
+    );
+
+  });
+
+
+  searchSuggestions.classList.add(
+    "show"
+  );
+
+}
+
+
+// ==========================================
+// HIGHLIGHT SEARCH TEXT
+// ==========================================
+
+function highlightSearch(
+  text,
+  search
+){
+
+  const escaped =
+    search.replace(
+      /[.*+?^${}()|[\]\\]/g,
+      "\\$&"
+    );
+
+
+  return text.replace(
+
+    new RegExp(
+      `(${escaped})`,
+      "ig"
+    ),
+
+    "<strong>$1</strong>"
+
+  );
+
+}
+
+
+// ==========================================
+// OPEN SEARCH RESULTS
+// ==========================================
+
+function openSearchResults(
+  value
+){
+
+  if(!value){
+
+    return;
+
+  }
+
+
+  window.location.href =
+    "search.html?q=" +
+    encodeURIComponent(
+      value
+    );
+
+}
+
+
+// ==========================================
+// LIVE SEARCH
+// ==========================================
+
+if(searchInput){
+
+  searchInput.addEventListener(
+    "input",
+    createSearchSuggestions
+  );
+
+}
+
+
+// ==========================================
+// CLOSE SUGGESTIONS
+// ==========================================
+
+document.addEventListener(
+  "click",
+  event => {
+
+    if(
+
+      searchInput &&
+
+      searchSuggestions &&
+
+      !searchInput.contains(
+        event.target
+      ) &&
+
+      !searchSuggestions.contains(
+        event.target
+      )
+
+    ){
+
+      searchSuggestions.classList.remove(
+        "show"
+      );
+
+    }
+
+  }
+);
 
 // ==========================================
 // INITIAL LOAD
