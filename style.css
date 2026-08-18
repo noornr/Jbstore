@@ -1642,4 +1642,19 @@ body{
   }
 
 
+/* ==========================================
+   SEARCH SUGGESTIONS - FIX
+========================================== */
 
+.search{
+  position:relative;
+  overflow:visible !important;
+}
+
+.search-suggestions{
+  display:none;
+}
+
+.search-suggestions.show{
+  display:block;
+}
