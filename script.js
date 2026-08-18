@@ -60,7 +60,7 @@ const allProducts = [
 
 
 // ==========================================
-// 3. CATEGORY DATA
+// 3. BRAND DATA
 // ==========================================
 
 const brands = {
@@ -160,6 +160,8 @@ function loadBrands(category){
     const chip =
       document.createElement("button");
 
+    chip.type = "button";
+
     chip.className = "chip";
 
     chip.innerText = brand;
@@ -197,44 +199,92 @@ function displayProducts(){
 
   productGrid.innerHTML = "";
 
-  let products =
-    allProducts.filter(product=>{
 
-      if(currentCategory === "second"){
+  // Get products for selected category
+
+  let products;
+
+
+  // MOBILES = SEAL PACK ONLY
+
+  if(currentCategory === "mobiles"){
+
+    products =
+      allProducts.filter(product => {
+
+        return (
+          product.category === "mobiles" &&
+          product.condition === "Seal Pack"
+        );
+
+      });
+
+  }
+
+
+  // 2ND HAND = SECOND HAND ONLY
+
+  else if(currentCategory === "second"){
+
+    products =
+      allProducts.filter(product => {
 
         return (
           product.category === "mobiles" &&
           product.condition === "2nd Hand"
         );
 
-      }
-
-      return product.category === currentCategory;
-
-    });
-
-
-  // Brand filter
-
-  if(selectedBrand){
-
-    products =
-      products.filter(product =>
-        product.brand === selectedBrand
-      );
+      });
 
   }
 
 
-  // No products
+  // OTHER CATEGORIES
+
+  else{
+
+    products =
+      allProducts.filter(product => {
+
+        return product.category === currentCategory;
+
+      });
+
+  }
+
+
+  // ==========================================
+  // BRAND FILTER
+  // ==========================================
+
+  if(selectedBrand){
+
+    products =
+      products.filter(product => {
+
+        return product.brand === selectedBrand;
+
+      });
+
+  }
+
+
+  // ==========================================
+  // NO PRODUCTS
+  // ==========================================
 
   if(products.length === 0){
 
     productGrid.innerHTML = `
+
       <div class="no-products">
+
         <h3>No products found</h3>
+
         <p>Try another brand.</p>
+
       </div>
+
     `;
 
     return;
@@ -242,7 +292,9 @@ function displayProducts(){
   }
 
 
-  // Create cards
+  // ==========================================
+  // CREATE PRODUCT CARDS
+  // ==========================================
 
   products.forEach(product=>{
 
@@ -263,15 +315,21 @@ function displayProducts(){
         alt="${product.name}"
       >
 
-      <h3>${product.name}</h3>
+      <h3>
+        ${product.name}
+      </h3>
 
       <p class="brand">
-        ${product.brand} • ${product.condition || "New"}
+        ${product.brand}
+        •
+        ${product.condition || "New"}
       </p>
 
       <div class="rating">
         ⭐ ${product.rating}
-        <span>(${product.reviews})</span>
+        <span>
+          (${product.reviews})
+        </span>
       </div>
 
       <p class="price">
@@ -283,12 +341,14 @@ function displayProducts(){
       </p>
 
       <button
+        type="button"
         onclick="viewProduct('${product.id}')"
       >
         View Details
       </button>
 
     `;
+
 
     productGrid.appendChild(card);
 
@@ -301,29 +361,37 @@ function displayProducts(){
 // 8. CATEGORY BUTTONS
 // ==========================================
 
-document.querySelectorAll(".cat")
-.forEach(button=>{
+document
+  .querySelectorAll(".cat")
+  .forEach(button=>{
 
-  button.addEventListener("click",()=>{
+    button.addEventListener("click",()=>{
 
-    document
-      .querySelectorAll(".cat")
-      .forEach(btn=>{
-        btn.classList.remove("active");
-      });
+      document
+        .querySelectorAll(".cat")
+        .forEach(btn=>{
+          btn.classList.remove("active");
+        });
 
-    button.classList.add("active");
 
-    currentCategory =
-      button.dataset.cat;
+      button.classList.add("active");
 
-    loadBrands(currentCategory);
 
-    displayProducts();
+      currentCategory =
+        button.dataset.cat;
+
+
+      selectedBrand = null;
+
+
+      loadBrands(currentCategory);
+
+
+      displayProducts();
+
+    });
 
   });
-
-});
 
 
 // ==========================================
@@ -336,11 +404,13 @@ if(clearFilter){
 
     selectedBrand = null;
 
+
     document
       .querySelectorAll(".chip")
       .forEach(chip=>{
         chip.classList.remove("on");
       });
+
 
     displayProducts();
 
@@ -360,12 +430,15 @@ function viewProduct(id){
       item => item.id === id
     );
 
+
   if(!product) return;
+
 
   localStorage.setItem(
     "selectedProduct",
     JSON.stringify(product)
   );
+
 
   window.location.href =
     "product.html";
@@ -381,21 +454,20 @@ loadBrands("mobiles");
 
 displayProducts();
 
+
 // ==========================================
-// SHOP BY CATEGORY CARDS
+// 12. SHOP BY CATEGORY CARDS
 // ==========================================
 
 document
   .querySelectorAll(".category-card")
-  .forEach(card => {
+  .forEach(card=>{
 
-    card.addEventListener("click", () => {
+    card.addEventListener("click",()=>{
 
       const category =
         card.dataset.category;
 
-
-      // Find matching top category button
 
       const categoryButton =
         document.querySelector(
@@ -410,16 +482,18 @@ document
       }
 
 
-      // Scroll to products
-
       const products =
         document.querySelector(".deals");
+
 
       if(products){
 
         products.scrollIntoView({
+
           behavior:"smooth",
+
           block:"start"
+
         });
 
       }
