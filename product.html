@@ -112,118 +112,92 @@
 <script>
 
 const allProducts = [
-
   ...mobileProducts,
   ...refrigeratorProducts,
   ...washingProducts,
   ...acProducts,
   ...tvProducts
-
 ];
 
-
 const savedProduct =
-  JSON.parse(
-    localStorage.getItem("selectedProduct")
-  );
+  JSON.parse(localStorage.getItem("selectedProduct"));
 
+if (!savedProduct) {
 
-if(!savedProduct){
-
-  window.location.href="index.html";
+  window.location.href = "index.html";
 
 }
 
-
 const product =
-  allProducts.find(
-    item => item.id === savedProduct.id
-  );
+  allProducts.find(item => item.id === savedProduct.id);
 
 
-if(product){
+if (product) {
 
   document.title =
     product.name + " | JB STORE";
 
 
-  document.getElementById("productImage")
-    .src = product.image;
+  document.getElementById("productImage").src =
+    product.image;
 
+  document.getElementById("productName").innerText =
+    product.name;
 
-  document.getElementById("productName")
-    .innerText = product.name;
+  document.getElementById("productBrand").innerText =
+    product.brand;
 
+  document.getElementById("productRating").innerText =
+    product.rating;
 
-  document.getElementById("productBrand")
-    .innerText = product.brand;
-
-
-  document.getElementById("productRating")
-    .innerText = product.rating;
-
-
-  document.getElementById("productReviews")
-    .innerText =
+  document.getElementById("productReviews").innerText =
     `(${product.reviews} reviews)`;
 
-
-  document.getElementById("productPrice")
-    .innerText =
+  document.getElementById("productPrice").innerText =
     `₹${product.price.toLocaleString("en-IN")}`;
 
-
-  document.getElementById("productOldPrice")
-    .innerText =
+  document.getElementById("productOldPrice").innerText =
     `₹${product.oldPrice.toLocaleString("en-IN")}`;
 
-
-  document.getElementById("productCondition")
-    .innerText =
+  document.getElementById("productCondition").innerText =
     product.condition || "New";
 
-
-  document.getElementById("productWarranty")
-    .innerText =
+  document.getElementById("productWarranty").innerText =
     product.warranty;
 
-
-  document.getElementById("productDescription")
-    .innerText =
+  document.getElementById("productDescription").innerText =
     product.description;
 
-
-  document.getElementById("productOffer")
-    .innerText =
+  document.getElementById("productOffer").innerText =
     product.discount;
 
 
+  /* ===== SPECIFICATIONS ===== */
+
   const specs =
     document.getElementById("specList");
-
 
   specs.innerHTML = "";
 
 
   const specificationFields = [
 
-    ["Storage",product.storage],
-    ["RAM",product.ram],
-    ["Capacity",product.capacity],
-    ["Type",product.type],
-    ["Energy Rating",product.energyRating],
-    ["Size",product.size],
-    ["Resolution",product.resolution]
+    ["Storage", product.storage],
+    ["RAM", product.ram],
+    ["Capacity", product.capacity],
+    ["Type", product.type],
+    ["Energy Rating", product.energyRating],
+    ["Size", product.size],
+    ["Resolution", product.resolution]
 
   ];
 
 
-  specificationFields.forEach(([title,value])=>{
+  specificationFields.forEach(([title, value]) => {
 
-    if(value){
+    if (value) {
 
       specs.innerHTML += `
-
         <div class="spec-row">
 
           <span>${title}</span>
@@ -231,7 +205,6 @@ if(product){
           <strong>${value}</strong>
 
         </div>
-
       `;
 
     }
@@ -241,7 +214,9 @@ if(product){
 }
 
 
-function contactWhatsApp(){
+/* ===== WHATSAPP ===== */
+
+function contactWhatsApp() {
 
   const phone = "919999999999";
 
