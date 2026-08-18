@@ -501,3 +501,181 @@ document
     });
 
   });
+
+// ==========================================
+// 13. PRODUCT SEARCH
+// ==========================================
+
+const searchInput =
+  document.getElementById("searchInput");
+
+const searchButton =
+  document.getElementById("searchButton");
+
+
+function searchProducts(){
+
+  const searchText =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+
+  // Empty search → normal category products
+
+  if(searchText === ""){
+
+    displayProducts();
+
+    return;
+
+  }
+
+
+  // Search all products
+
+  let results =
+    allProducts.filter(product => {
+
+      return (
+
+        product.name
+          .toLowerCase()
+          .includes(searchText)
+
+        ||
+
+        product.brand
+          .toLowerCase()
+          .includes(searchText)
+
+        ||
+
+        product.id
+          .toLowerCase()
+          .includes(searchText)
+
+        ||
+
+        product.category
+          .toLowerCase()
+          .includes(searchText)
+
+        ||
+
+        (product.condition || "")
+          .toLowerCase()
+          .includes(searchText)
+
+      );
+
+    });
+
+
+  productGrid.innerHTML = "";
+
+
+  if(results.length === 0){
+
+    productGrid.innerHTML = `
+
+      <div class="no-products">
+
+        <h3>No products found</h3>
+
+        <p>
+          Try another product name or brand.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  results.forEach(product => {
+
+    const card =
+      document.createElement("div");
+
+    card.className = "deal-card";
+
+
+    card.innerHTML = `
+
+      <span class="offer">
+        ${product.discount}
+      </span>
+
+      <img
+        src="${product.image}"
+        alt="${product.name}"
+      >
+
+      <h3>
+        ${product.name}
+      </h3>
+
+      <p class="brand">
+        ${product.brand}
+        •
+        ${product.condition || "New"}
+      </p>
+
+      <div class="rating">
+        ⭐ ${product.rating}
+        <span>
+          (${product.reviews})
+        </span>
+      </div>
+
+      <p class="price">
+        ₹${product.price.toLocaleString("en-IN")}
+      </p>
+
+      <p class="old-price">
+        ₹${product.oldPrice.toLocaleString("en-IN")}
+      </p>
+
+      <button
+        type="button"
+        onclick="viewProduct('${product.id}')"
+      >
+        View Details
+      </button>
+
+    `;
+
+
+    productGrid.appendChild(card);
+
+  });
+
+}
+
+
+// Search while typing
+
+if(searchInput){
+
+  searchInput.addEventListener(
+    "input",
+    searchProducts
+  );
+
+}
+
+
+// Search button
+
+if(searchButton){
+
+  searchButton.addEventListener(
+    "click",
+    searchProducts
+  );
+
+}
