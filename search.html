@@ -221,54 +221,94 @@ const searchBrands =
 searchInput.value = searchTerm;
 
 
+
 // ==========================================
-// SEARCH PRODUCTS
+// GET SEARCH PRODUCTS
 // ==========================================
 
 function getSearchProducts(){
+
+  // ========================================
+  // BRAND + CATEGORY SEARCH
+  // ========================================
+
+  if(
+    selectedSearchBrand &&
+    selectedSearchCategory
+  ){
+
+    return allProducts.filter(
+      product => {
+
+        return (
+
+          product.brand
+            .toLowerCase() ===
+          selectedSearchBrand
+            .toLowerCase()
+
+          &&
+
+          product.category
+            .toLowerCase() ===
+          selectedSearchCategory
+            .toLowerCase()
+
+        );
+
+      }
+    );
+
+  }
+
+
+  // ========================================
+  // NORMAL TEXT SEARCH
+  // ========================================
 
   const text =
     searchTerm.toLowerCase();
 
 
-  return allProducts.filter(product => {
+  return allProducts.filter(
+    product => {
 
-    return (
+      return (
 
-      product.name
-        .toLowerCase()
-        .includes(text)
+        product.name
+          .toLowerCase()
+          .includes(text)
 
-      ||
+        ||
 
-      product.brand
-        .toLowerCase()
-        .includes(text)
+        product.brand
+          .toLowerCase()
+          .includes(text)
 
-      ||
+        ||
 
-      product.id
-        .toLowerCase()
-        .includes(text)
+        product.id
+          .toLowerCase()
+          .includes(text)
 
-      ||
+        ||
 
-      product.category
-        .toLowerCase()
-        .includes(text)
+        product.category
+          .toLowerCase()
+          .includes(text)
 
-      ||
+        ||
 
-      (product.condition || "")
-        .toLowerCase()
-        .includes(text)
+        (product.condition || "")
+          .toLowerCase()
+          .includes(text)
 
-    );
+      );
 
-  });
+    }
+  );
 
 }
-
 
 // ==========================================
 // SHOW PRODUCTS
