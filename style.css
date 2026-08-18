@@ -769,10 +769,237 @@ font-size:14px;
     transform:scale(.97);
 }
 
+/* ==========================================
+   SEARCH PAGE
+========================================== */
+
+.search-page{
+    width:92%;
+    max-width:1400px;
+    margin:40px auto;
+}
+
+.search-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:30px;
+}
+
+.search-small{
+    color:#D4AF37;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin:0;
+}
+
+.search-heading h1{
+    font-size:32px;
+    margin:5px 0 0;
+}
+
+#resultCount{
+    color:#888;
+    font-size:14px;
+}
+
+.search-layout{
+    display:grid;
+    grid-template-columns:230px 1fr;
+    gap:30px;
+}
+
+.search-sidebar{
+    background:#111;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:16px;
+    padding:22px;
+    height:max-content;
+    position:sticky;
+    top:20px;
+}
+
+.search-sidebar h3{
+    margin-top:0;
+}
+
+.filter-section{
+    border-top:1px solid #292929;
+    margin-top:20px;
+    padding-top:20px;
+}
+
+.filter-section h4{
+    color:#aaa;
+    margin-bottom:12px;
+}
+
+.search-brand-btn{
+    display:block;
+    width:100%;
+    text-align:left;
+    background:transparent;
+    color:#ddd;
+    border:0;
+    padding:10px 5px;
+    cursor:pointer;
+    font-family:inherit;
+    border-radius:6px;
+}
+
+.search-brand-btn:hover,
+.search-brand-btn.active{
+    color:#D4AF37;
+    background:rgba(212,175,55,.08);
+}
+
+.clear-search{
+    width:100%;
+    margin-top:20px;
+    padding:10px;
+    background:transparent;
+    color:#D4AF37;
+    border:1px solid #D4AF37;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.search-product-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+    gap:20px;
+}
+
+.search-product-card{
+    background:#111;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:16px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.search-product-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(212,175,55,.4);
+    box-shadow:0 12px 35px rgba(0,0,0,.35);
+}
+
+.search-product-image{
+    height:230px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#161616;
+}
+
+.search-product-image img{
+    width:90%;
+    height:90%;
+    object-fit:contain;
+    transition:.3s;
+}
+
+.search-product-card:hover
+.search-product-image img{
+    transform:scale(1.05);
+}
+
+.search-offer{
+    position:absolute;
+    top:10px;
+    left:10px;
+    background:#D4AF37;
+    color:#000;
+    padding:5px 9px;
+    border-radius:5px;
+    font-size:11px;
+    font-weight:800;
+    z-index:2;
+}
+
+.search-product-info{
+    padding:16px;
+}
+
+.search-brand{
+    color:#D4AF37;
+    font-size:12px;
+    font-weight:700;
+    margin:0 0 5px;
+}
+
+.search-product-info h3{
+    font-size:15px;
+    line-height:1.4;
+    margin:5px 0 10px;
+}
+
+.search-rating{
+    color:#D4AF37;
+    font-size:12px;
+}
+
+.search-rating span{
+    color:#777;
+}
+
+.search-condition{
+    color:#888;
+    font-size:12px;
+}
+
+.search-price{
+    margin:10px 0;
+}
+
+.search-price strong{
+    color:#fff;
+    font-size:19px;
+}
+
+.search-price del{
+    color:#777;
+    font-size:12px;
+    margin-left:6px;
+}
+
+.search-product-info button{
+    width:100%;
+    padding:10px;
+    border:0;
+    border-radius:8px;
+    background:#D4AF37;
+    color:#000;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.search-empty{
+    grid-column:1/-1;
+    text-align:center;
+    padding:100px 20px;
+    color:#888;
+}
+
+.search-empty div{
+    font-size:45px;
+    margin-bottom:15px;
+}
 
 
+/* MOBILE */
 
+@media(max-width:1000px){
 
+    .search-product-grid{
+        grid-template-columns:
+            repeat(3,minmax(0,1fr));
+    }
+
+}
 
 
 
@@ -1080,4 +1307,47 @@ font-size:12px;
     padding:12px 0;
 }
 
+.search-page{
+        width:94%;
+        margin:25px auto;
+    }
+
+    .search-heading{
+        align-items:start;
+    }
+
+    .search-heading h1{
+        font-size:24px;
+    }
+
+    .search-layout{
+        display:block;
+    }
+
+    .search-sidebar{
+        position:static;
+        margin-bottom:20px;
+    }
+
+    .search-product-grid{
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+        gap:12px;
+    }
+
+    .search-product-image{
+        height:180px;
+    }
+
+    .search-product-info{
+        padding:12px;
+    }
+
+    .search-product-info h3{
+        font-size:13px;
+    }
+
+    .search-price strong{
+        font-size:16px;
+    }
 
