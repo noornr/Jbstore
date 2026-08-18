@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Product Details | JB STORE</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ===== PRODUCT HEADER ===== -->
+
+<header class="product-header">
+
+  <a href="index.html" class="back-btn">
+    ← Back
+  </a>
+
+  <div class="product-logo">
+    JB <span>STORE</span>
+  </div>
+
+</header>
+
+
+<!-- ===== PRODUCT DETAILS ===== -->
+
+<main class="product-page">
+
+  <div class="product-image-box">
+
+    <span id="productOffer" class="product-offer"></span>
+
+    <img id="productImage" src="" alt="Product">
+
+  </div>
+
+
+  <div class="product-info">
+
+    <p id="productBrand" class="product-brand"></p>
+
+    <h1 id="productName"></h1>
+
+    <div class="product-rating">
+      ⭐ <span id="productRating"></span>
+      <span id="productReviews"></span>
+    </div>
+
+    <div class="product-price">
+
+      <strong id="productPrice"></strong>
+
+      <del id="productOldPrice"></del>
+
+    </div>
+
+
+    <div class="product-condition">
+      <span>Condition</span>
+      <strong id="productCondition"></strong>
+    </div>
+
+
+    <div class="product-specs">
+
+      <h2>Specifications</h2>
+
+      <div id="specList"></div>
+
+    </div>
+
+
+    <div class="warranty">
+      🛡️ Warranty:
+      <strong id="productWarranty"></strong>
+    </div>
+
+
+    <p id="productDescription" class="product-description"></p>
+
+
+    <div class="product-actions">
+
+      <button class="whatsapp-btn" onclick="contactWhatsApp()">
+        WhatsApp Enquiry
+      </button>
+
+      <button class="call-btn">
+        Call Store
+      </button>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<script src="mobiles.js"></script>
+<script src="refrigerator.js"></script>
+<script src="washing.js"></script>
+<script src="ac.js"></script>
+<script src="tv.js"></script>
+
+<script>
+
+const allProducts = [
+
+  ...mobileProducts,
+  ...refrigeratorProducts,
+  ...washingProducts,
+  ...acProducts,
+  ...tvProducts
+
+];
+
+
+const savedProduct =
+  JSON.parse(
+    localStorage.getItem("selectedProduct")
+  );
+
+
+if(!savedProduct){
+
+  window.location.href="index.html";
+
+}
+
+
+const product =
+  allProducts.find(
+    item => item.id === savedProduct.id
+  );
+
+
+if(product){
+
+  document.title =
+    product.name + " | JB STORE";
+
+
+  document.getElementById("productImage")
+    .src = product.image;
+
+
+  document.getElementById("productName")
+    .innerText = product.name;
+
+
+  document.getElementById("productBrand")
+    .innerText = product.brand;
+
+
+  document.getElementById("productRating")
+    .innerText = product.rating;
+
+
+  document.getElementById("productReviews")
+    .innerText =
+    `(${product.reviews} reviews)`;
+
+
+  document.getElementById("productPrice")
+    .innerText =
+    `₹${product.price.toLocaleString("en-IN")}`;
+
+
+  document.getElementById("productOldPrice")
+    .innerText =
+    `₹${product.oldPrice.toLocaleString("en-IN")}`;
+
+
+  document.getElementById("productCondition")
+    .innerText =
+    product.condition || "New";
+
+
+  document.getElementById("productWarranty")
+    .innerText =
+    product.warranty;
+
+
+  document.getElementById("productDescription")
+    .innerText =
+    product.description;
+
+
+  document.getElementById("productOffer")
+    .innerText =
+    product.discount;
+
+
+  const specs =
+    document.getElementById("specList");
+
+
+  specs.innerHTML = "";
+
+
+  const specificationFields = [
+
+    ["Storage",product.storage],
+    ["RAM",product.ram],
+    ["Capacity",product.capacity],
+    ["Type",product.type],
+    ["Energy Rating",product.energyRating],
+    ["Size",product.size],
+    ["Resolution",product.resolution]
+
+  ];
+
+
+  specificationFields.forEach(([title,value])=>{
+
+    if(value){
+
+      specs.innerHTML += `
+
+        <div class="spec-row">
+
+          <span>${title}</span>
+
+          <strong>${value}</strong>
+
+        </div>
+
+      `;
+
+    }
+
+  });
+
+}
+
+
+function contactWhatsApp(){
+
+  const phone = "919999999999";
+
+  const message =
+    `Hello JB STORE, I am interested in ${product.name}. Price: ₹${product.price.toLocaleString("en-IN")}. Product ID: ${product.id}`;
+
+  window.open(
+    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
+
+}
+
+</script>
+
+</body>
+</html>
