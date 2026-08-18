@@ -761,20 +761,22 @@ function createSearchSuggestions(){
     // CLICK SUGGESTION
     // ========================================
 
-    row.addEventListener(
-      "click",
-      () => {
+    // ========================================
+// CLICK SUGGESTION
+// ========================================
 
-        openSearchResults(
+row.addEventListener(
+  "click",
+  () => {
 
-          item.brand +
-          " " +
-          item.category
+    window.location.href =
+      "search.html?brand=" +
+      encodeURIComponent(item.brand) +
+      "&category=" +
+      encodeURIComponent(item.category);
 
-        );
-
-      }
-    );
+  }
+);
 
 
     searchSuggestions.appendChild(row);
