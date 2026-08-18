@@ -161,18 +161,35 @@ const allProducts = [
 
 
 // ==========================================
-// GET SEARCH TERM
+// GET SEARCH PARAMETERS
 // ==========================================
 
 const params =
-  new URLSearchParams(window.location.search);
+  new URLSearchParams(
+    window.location.search
+  );
 
 
 let searchTerm =
   params.get("q") || "";
 
+
+let selectedSearchBrand =
+  params.get("brand") || "";
+
+
+let selectedSearchCategory =
+  params.get("category") || "";
+
+
 searchTerm =
   searchTerm.trim();
+
+selectedSearchBrand =
+  selectedSearchBrand.trim();
+
+selectedSearchCategory =
+  selectedSearchCategory.trim();
 
 
 // ==========================================
