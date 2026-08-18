@@ -813,19 +813,17 @@ function createSearchSuggestions(){
     // ========================================
 
     row.addEventListener(
-      "click",
-      () => {
+  "click",
+  () => {
 
-        openSearchResults(
+    window.location.href =
+      "search.html?brand=" +
+      encodeURIComponent(item.brand) +
+      "&category=" +
+      encodeURIComponent(item.category);
 
-          item.brand +
-          " " +
-          item.category
-
-        );
-
-      }
-    );
+  }
+);
 
 
     searchSuggestions.appendChild(
