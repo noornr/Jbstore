@@ -1,61 +1,382 @@
-// ===== AUTO BANNER SLIDER =====
+// ==========================================
+// JB STORE - MAIN JAVASCRIPT
+// ==========================================
+
+
+// ==========================================
+// 1. BANNER SLIDER
+// ==========================================
+
 const slides = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".dot");
 
 let current = 0;
 
 function showSlide(index){
-  slides.forEach(s => s.classList.remove("active"));
-  dots.forEach(d => d.classList.remove("active"));
+
+  if(!slides.length) return;
+
+  slides.forEach(slide=>{
+    slide.classList.remove("active");
+  });
+
+  dots.forEach(dot=>{
+    dot.classList.remove("active");
+  });
 
   slides[index].classList.add("active");
-  dots[index].classList.add("active");
+
+  if(dots[index]){
+    dots[index].classList.add("active");
+  }
 }
 
-setInterval(()=>{
-  current = (current + 1) % slides.length;
-  showSlide(current);
-},3500);
+if(slides.length > 1){
+
+  setInterval(()=>{
+
+    current = (current + 1) % slides.length;
+
+    showSlide(current);
+
+  },3500);
+
+}
 
 
-// ===== DYNAMIC CATEGORY FILTER =====
+// ==========================================
+// 2. ALL PRODUCTS
+// ==========================================
+
+const allProducts = [
+
+  ...mobileProducts,
+  ...refrigeratorProducts,
+  ...washingProducts,
+  ...acProducts,
+  ...tvProducts
+
+];
+
+
+// ==========================================
+// 3. CATEGORY DATA
+// ==========================================
+
 const brands = {
-  mobiles:["iPhone","Samsung","OnePlus","Google Pixel","Vivo","OPPO"],
-  second:["iPhone","Samsung","OnePlus","Vivo"],
-  fridge:["LG","Samsung","Godrej","Haier","Whirlpool"],
-  washing:["LG","Samsung","IFB","Bosch","Haier"],
-  ac:["Daikin","LG","Voltas","Blue Star"],
-  tv:["Sony","Samsung","LG","TCL","Xiaomi"]
+
+  mobiles:[
+    "iPhone",
+    "OnePlus",
+    "Samsung",
+    "Google Pixel",
+    "Vivo",
+    "OPPO"
+  ],
+
+  second:[
+    "iPhone",
+    "Samsung",
+    "OnePlus",
+    "Vivo"
+  ],
+
+  fridge:[
+    "LG",
+    "Samsung",
+    "Godrej",
+    "Haier",
+    "Whirlpool"
+  ],
+
+  washing:[
+    "LG",
+    "Samsung",
+    "IFB",
+    "Bosch",
+    "Haier",
+    "Whirlpool"
+  ],
+
+  ac:[
+    "Daikin",
+    "LG",
+    "Voltas",
+    "Blue Star",
+    "Samsung"
+  ],
+
+  tv:[
+    "Sony",
+    "Samsung",
+    "LG",
+    "TCL",
+    "Xiaomi"
+  ]
+
 };
 
-const brandBox = document.getElementById("brandFilters");
+
+// ==========================================
+// 4. CURRENT FILTER
+// ==========================================
+
+let currentCategory = "mobiles";
+
+let selectedBrand = null;
+
+
+// ==========================================
+// 5. ELEMENTS
+// ==========================================
+
+const brandBox =
+  document.getElementById("brandFilters");
+
+const productGrid =
+  document.getElementById("productGrid");
+
+const productTitle =
+  document.getElementById("productTitle");
+
+const clearFilter =
+  document.getElementById("clearFilter");
+
+
+// ==========================================
+// 6. LOAD BRAND BUTTONS
+// ==========================================
 
 function loadBrands(category){
+
+  if(!brandBox) return;
+
   brandBox.innerHTML = "";
 
-  brands[category].forEach(name=>{
-    const chip = document.createElement("button");
-    chip.className = "chip";
-    chip.innerText = name;
+  selectedBrand = null;
 
-    chip.onclick = ()=>{
-      chip.classList.toggle("on");
-    };
+  brands[category].forEach(brand=>{
+
+    const chip =
+      document.createElement("button");
+
+    chip.className = "chip";
+
+    chip.innerText = brand;
+
+    chip.addEventListener("click",()=>{
+
+      document
+        .querySelectorAll(".chip")
+        .forEach(c=>{
+          c.classList.remove("on");
+        });
+
+      chip.classList.add("on");
+
+      selectedBrand = brand;
+
+      displayProducts();
+
+    });
 
     brandBox.appendChild(chip);
+
   });
+
 }
+
+
+// ==========================================
+// 7. DISPLAY PRODUCTS
+// ==========================================
+
+function displayProducts(){
+
+  if(!productGrid) return;
+
+  productGrid.innerHTML = "";
+
+  let products =
+    allProducts.filter(product=>{
+
+      if(currentCategory === "second"){
+
+        return (
+          product.category === "mobiles" &&
+          product.condition === "2nd Hand"
+        );
+
+      }
+
+      return product.category === currentCategory;
+
+    });
+
+
+  // Brand filter
+
+  if(selectedBrand){
+
+    products =
+      products.filter(product =>
+        product.brand === selectedBrand
+      );
+
+  }
+
+
+  // No products
+
+  if(products.length === 0){
+
+    productGrid.innerHTML = `
+      <div class="no-products">
+        <h3>No products found</h3>
+        <p>Try another brand.</p>
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  // Create cards
+
+  products.forEach(product=>{
+
+    const card =
+      document.createElement("div");
+
+    card.className = "deal-card";
+
+
+    card.innerHTML = `
+
+      <span class="offer">
+        ${product.discount}
+      </span>
+
+      <img
+        src="${product.image}"
+        alt="${product.name}"
+      >
+
+      <h3>${product.name}</h3>
+
+      <p class="brand">
+        ${product.brand} • ${product.condition || "New"}
+      </p>
+
+      <div class="rating">
+        ⭐ ${product.rating}
+        <span>(${product.reviews})</span>
+      </div>
+
+      <p class="price">
+        ₹${product.price.toLocaleString("en-IN")}
+      </p>
+
+      <p class="old-price">
+        ₹${product.oldPrice.toLocaleString("en-IN")}
+      </p>
+
+      <button
+        onclick="viewProduct('${product.id}')"
+      >
+        View Details
+      </button>
+
+    `;
+
+    productGrid.appendChild(card);
+
+  });
+
+}
+
+
+// ==========================================
+// 8. CATEGORY BUTTONS
+// ==========================================
+
+document.querySelectorAll(".cat")
+.forEach(button=>{
+
+  button.addEventListener("click",()=>{
+
+    document
+      .querySelectorAll(".cat")
+      .forEach(btn=>{
+        btn.classList.remove("active");
+      });
+
+    button.classList.add("active");
+
+    currentCategory =
+      button.dataset.cat;
+
+    loadBrands(currentCategory);
+
+    displayProducts();
+
+  });
+
+});
+
+
+// ==========================================
+// 9. CLEAR ALL
+// ==========================================
+
+if(clearFilter){
+
+  clearFilter.addEventListener("click",()=>{
+
+    selectedBrand = null;
+
+    document
+      .querySelectorAll(".chip")
+      .forEach(chip=>{
+        chip.classList.remove("on");
+      });
+
+    displayProducts();
+
+  });
+
+}
+
+
+// ==========================================
+// 10. VIEW PRODUCT
+// ==========================================
+
+function viewProduct(id){
+
+  const product =
+    allProducts.find(
+      item => item.id === id
+    );
+
+  if(!product) return;
+
+  localStorage.setItem(
+    "selectedProduct",
+    JSON.stringify(product)
+  );
+
+  window.location.href =
+    "product.html";
+
+}
+
+
+// ==========================================
+// 11. INITIAL LOAD
+// ==========================================
 
 loadBrands("mobiles");
 
-document.querySelectorAll(".cat").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    document.querySelectorAll(".cat").forEach(c=>c.classList.remove("active"));
-    btn.classList.add("active");
-    loadBrands(btn.dataset.cat);
-  });
-});
-
-document.getElementById("clearFilter").onclick = ()=>{
-  document.querySelectorAll(".chip").forEach(c=>c.classList.remove("on"));
-};
+displayProducts();
