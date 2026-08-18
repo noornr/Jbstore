@@ -28,14 +28,21 @@
 
 </header>
 
-<nav class="menu">
-  <a>Mobiles</a>
-  <a>2nd Hand</a>
-  <a>Refrigerator</a>
-  <a>Washing</a>
-  <a>AC</a>
-  <a>TV</a>
+<nav class="menu" id="categoryMenu">
+  <button class="cat active" data-cat="mobiles">Mobiles</button>
+  <button class="cat" data-cat="second">2nd Hand</button>
+  <button class="cat" data-cat="fridge">Refrigerator</button>
+  <button class="cat" data-cat="washing">Washing</button>
+  <button class="cat" data-cat="ac">AC</button>
+  <button class="cat" data-cat="tv">TV</button>
 </nav>
+
+<section class="filters">
+  <div class="filter-top">
+    <span id="clearFilter">Clear all</span>
+  </div>
+  <div id="brandFilters" class="brand-list"></div>
+</section>
 
   <section class="hero">
 
