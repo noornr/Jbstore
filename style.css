@@ -984,10 +984,6 @@ background:#D4AF37;
   letter-spacing: 0.5px;
 }
 
-.brands .section-head h2::before {
-  content: '✦ ';
-  color: #D4AF37;
-}
 
 .brand-count {
   color: #D4AF37;
