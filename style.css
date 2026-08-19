@@ -108,37 +108,89 @@ font-weight:500;
 
 /* ===== HERO DESKTOP ===== */
 
-.hero{
-    position:relative;
-    height:680px;
-    overflow:hidden;
-    width:100%;
+/* ==========================================
+   HERO SECTION - FIXED
+========================================== */
+
+.hero {
+  position:relative;
+  width:100%;
+  height:680px;
+  overflow:hidden;
+  background:#0A0A0A;
 }
 
-.hero-bg{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
+.hero-bg {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 
-
-
-.gold-btn,.line-btn{
-padding:16px 30px;
-border-radius:40px;
-text-decoration:none;
-font-weight:700;
+/* ===== OVERLAY ===== */
+.hero-overlay {
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    90deg,
+    rgba(0,0,0,0.7) 0%,
+    rgba(0,0,0,0.3) 50%,
+    transparent 100%
+  );
+  z-index:1;
 }
 
-.gold-btn{
-background:#D4AF37;
-color:#000;
+/* ===== BUTTONS CONTAINER ===== */
+.hero-btns {
+  position:absolute;
+  bottom:60px;
+  left:5%;
+  z-index:10;
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
 }
 
-.line-btn{
-border:2px solid #D4AF37;
-color:#D4AF37;
+/* ===== BUTTONS ===== */
+.gold-btn,
+.line-btn {
+  padding:16px 34px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:700;
+  font-size:15px;
+  letter-spacing:0.5px;
+  transition:all 0.3s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+  border:none;
+}
+
+.gold-btn {
+  background:linear-gradient(135deg, #D4AF37, #F3CF55);
+  color:#0A0A0A;
+  box-shadow:0 4px 20px rgba(212,175,55,0.3);
+}
+
+.gold-btn:hover {
+  transform:translateY(-3px);
+  box-shadow:0 8px 35px rgba(212,175,55,0.5);
+}
+
+.line-btn {
+  border:2px solid rgba(212,175,55,0.5);
+  color:#D4AF37;
+  background:rgba(255,255,255,0.03);
+  backdrop-filter:blur(5px);
+}
+
+.line-btn:hover {
+  transform:translateY(-3px);
+  border-color:#D4AF37;
+  background:rgba(212,175,55,0.08);
+  box-shadow:0 8px 35px rgba(212,175,55,0.15);
 }
 
 /* ===== DESKTOP CATEGORY ===== */
@@ -1224,19 +1276,47 @@ transform:scale(1.05);
     font-size:10px;
   }
 
-  /* ===== HERO ===== */
+  /* ===== MOBILE HERO ===== */
+
+  .hero {
+    height:auto !important;
+    min-height:300px;
+  }
+
+  .hero-bg {
+    height:auto;
+    min-height:300px;
+    object-fit:cover;
+  }
+
+  .hero-overlay {
+    background:linear-gradient(
+      180deg,
+      rgba(0,0,0,0.1) 0%,
+      rgba(0,0,0,0.8) 100%
+    );
+  }
+
   .hero-btns {
-    gap:6px;
-    padding:6px 8px;
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    width:90%;
+    gap:10px;
+    justify-content:center;
   }
 
   .gold-btn,
   .line-btn {
-    padding:6px 10px;
-    font-size:10px;
-    min-width:60px;
-    border-radius:20px;
+    flex:1;
+    padding:12px 18px;
+    font-size:13px;
+    justify-content:center;
+    min-width:120px;
   }
+
+
 
   /* ===== CATEGORIES ===== */
   .categories {
