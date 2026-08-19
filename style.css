@@ -1755,31 +1755,6 @@ transform:scale(1.05);
     height:22px;
   }
 
-  /* ===== FILTERS ===== */
-  .filters {
-    padding:8px 8px 10px;
-  }
-
-  .filter-top {
-    margin-bottom:4px;
-  }
-
-  #clearFilter {
-    font-size:9px;
-    padding:2px 6px;
-  }
-
-  .brand-list {
-    gap:4px;
-  }
-
-  .chip {
-    padding:3px 6px;
-    font-size:8px;
-    min-height:20px;
-    border-radius:10px;
-  }
-
   /* ===== FOOTER ===== */
   .footer {
     padding:15px 8px 10px;
