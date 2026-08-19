@@ -84,29 +84,267 @@ cursor:pointer;
 }
 
 
-.cart{
-font-size:24px;
+/* ==========================================
+   PREMIUM MENU - DESKTOP
+========================================== */
+
+.menu {
+  background: linear-gradient(180deg, #1A1A1A 0%, #0F0F0F 100%);
+  border-bottom: 2px solid rgba(212, 175, 55, 0.15);
+  padding: 12px 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  overflow-x: auto;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
-.menu{
-    height:58px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:34px;
-    background:#151515;
-    width:100%;
-    overflow-x:auto;
+/* Gold glow line at bottom */
+.menu::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
 }
 
-.menu a{
-color:#E5E5E5;
-text-decoration:none;
-font-weight:500;
+/* ===== CATEGORY BUTTONS ===== */
+.menu .cat {
+  position: relative;
+  background: transparent;
+  border: 0;
+  color: #B8B8B8;
+  padding: 12px 22px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
 }
 
+/* Category icons */
+.cat-icon {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
 
-/* ===== HERO DESKTOP ===== */
+/* Hover effect */
+.menu .cat:hover {
+  color: #D4AF37;
+  background: rgba(212, 175, 55, 0.06);
+  transform: translateY(-2px);
+}
+
+.menu .cat:hover .cat-icon {
+  transform: scale(1.2) rotate(-5deg);
+}
+
+/* ===== ACTIVE CATEGORY ===== */
+.menu .cat.active {
+  color: #D4AF37;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(212, 175, 55, 0.04));
+  box-shadow: inset 0 1px 0 rgba(212, 175, 55, 0.2);
+}
+
+/* Gold underline with glow */
+.menu .cat.active::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+  animation: underlinePulse 2s ease-in-out infinite;
+}
+
+@keyframes underlinePulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    width: 30px;
+  }
+  50% {
+    opacity: 1;
+    width: 40px;
+  }
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+.menu::-webkit-scrollbar {
+  height: 3px;
+}
+
+.menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.menu::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+}
+
+.menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.5);
+}
+
+/* ==========================================
+   PREMIUM FILTERS - DESKTOP
+========================================== */
+
+.filters {
+  background: linear-gradient(180deg, #141414 0%, #0A0A0A 100%);
+  padding: 20px 5% 25px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  position: relative;
+  z-index: 5;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== FILTER HEADER ===== */
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.filter-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #D4AF37;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.filter-icon {
+  font-size: 14px;
+  animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== CLEAR BUTTON ===== */
+.clear-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  color: #D4AF37;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.clear-btn:hover {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: #D4AF37;
+  transform: scale(1.03);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
+}
+
+.clear-btn span {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* ===== BRAND LIST ===== */
+.brand-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ===== BRAND CHIPS ===== */
+.chip {
+  appearance: none;
+  background: linear-gradient(145deg, #1E1E1E, #151515);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #D0D0D0;
+  padding: 10px 22px;
+  min-height: 42px;
+  border-radius: 25px;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Chip shimmer effect */
+.chip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+  transition: left 0.6s ease;
+}
+
+.chip:hover::before {
+  left: 100%;
+}
+
+/* Chip hover */
+.chip:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.4);
+  color: #D4AF37;
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.08);
+}
+
+/* ===== ACTIVE CHIP ===== */
+.chip.on {
+  background: linear-gradient(135deg, #D4AF37, #F3CF55);
+  color: #0A0A0A;
+  border-color: #F3CF55;
+  box-shadow: 0 4px 25px rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+}
+
+.chip.on:hover {
+  box-shadow: 0 6px 35px rgba(212, 175, 55, 0.4);
+  transform: translateY(-3px) scale(1.02);
+}
 
 /* ==========================================
    HERO SECTION - FIXED
@@ -1260,22 +1498,74 @@ transform:scale(1.05);
     font-size:10px;
   }
 
-  .cart {
-    font-size:14px;
+  /* ===== MOBILE MENU ===== */
+  .menu {
+    padding: 10px 12px;
+    gap: 4px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
 
-  /* ===== MENU ===== */
-  .menu {
-    height:32px;
-    padding:0 6px;
-    gap:4px;
+  .menu::-webkit-scrollbar {
+    display: none;
   }
 
   .menu .cat {
-    padding:4px 8px;
-    font-size:10px;
+    padding: 8px 14px;
+    font-size: 12px;
+    flex-shrink: 0;
   }
 
+  .cat-icon {
+    font-size: 13px;
+  }
+
+  .menu .cat.active::after {
+    width: 20px;
+    bottom: 2px;
+  }
+
+  /* ===== MOBILE FILTERS ===== */
+  .filters {
+    padding: 14px 12px 18px;
+  }
+
+  .filter-header {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+  }
+
+  .filter-title {
+    font-size: 11px;
+  }
+
+  .filter-icon {
+    font-size: 12px;
+  }
+
+  .clear-btn {
+    padding: 4px 12px;
+    font-size: 10px;
+  }
+
+  .brand-list {
+    gap: 6px;
+  }
+
+  .chip {
+    padding: 6px 14px;
+    font-size: 11px;
+    min-height: 32px;
+    border-radius: 18px;
+  }
+
+  .chip.on {
+    box-shadow: 0 3px 15px rgba(212, 175, 55, 0.25);
+  }
+
+
+  
   /* ===== MOBILE HERO ===== */
 
   .hero {
