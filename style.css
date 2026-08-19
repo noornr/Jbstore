@@ -2198,9 +2198,10 @@ background:#D4AF37;
 }
 
 .brand-card img {
-  max-width: 60px;
-  height: 40px;
-}
+    max-width: 60px;
+    height: 40px;
+    opacity: 0.7;
+  }
 
 .brand-name {
   font-size: 11px;
