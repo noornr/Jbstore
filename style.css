@@ -100,18 +100,18 @@ font-weight:500;
 /* ===== HERO DESKTOP ===== */
 
 .hero{
-position:relative;
-height:680px;
-overflow:hidden;
+    position:relative;
+    height:680px;
+    overflow:hidden;
+    width:100%;
 }
 
 .hero-bg{
-width:100%;
-height:100%;
-object-fit:cover;
-display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
-
 .hero-overlay{
 position:absolute;
 inset:0;
