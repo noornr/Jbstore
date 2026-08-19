@@ -1870,7 +1870,33 @@ background:#D4AF37;
     margin-bottom:15px;
 }
 
-
+/* ==========================================
+   GOLD SHINE ANIMATION
+========================================== */
+@keyframes goldShine {
+  0% {
+    background: linear-gradient(135deg, 
+      rgba(212, 175, 55, 0.3), 
+      rgba(212, 175, 55, 0.1), 
+      rgba(212, 175, 55, 0.3)
+    );
+  }
+  50% {
+    background: linear-gradient(135deg, 
+      rgba(212, 175, 55, 0.6), 
+      rgba(212, 175, 55, 0.2), 
+      rgba(212, 175, 55, 0.6)
+    );
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.4), 0 0 80px rgba(212, 175, 55, 0.15);
+  }
+  100% {
+    background: linear-gradient(135deg, 
+      rgba(212, 175, 55, 0.3), 
+      rgba(212, 175, 55, 0.1), 
+      rgba(212, 175, 55, 0.3)
+    );
+  }
+}
 
 /* ==========================================
    ALL MOBILE STYLES - SINGLE MEDIA QUERY
@@ -2604,5 +2630,29 @@ background:#D4AF37;
     width:28px;
     min-width:28px;
     font-size:14px;
+  }
+    
+@keyframes goldShine {
+  0% {
+    background: linear-gradient(135deg, 
+      rgba(212, 175, 55, 0.3), 
+      rgba(212, 175, 55, 0.1), 
+      rgba(212, 175, 55, 0.3)
+    );
+  }
+  50% {
+    background: linear-gradient(135deg, 
+      rgba(212, 175, 55, 0.6), 
+      rgba(212, 175, 55, 0.2), 
+      rgba(212, 175, 55, 0.6)
+    );
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.4), 0 0 80px rgba(212, 175, 55, 0.15);
+  }
+  100% {
+    background: linear-gradient(135deg, 
+      rgba(212, 175, 55, 0.3), 
+      rgba(212, 175, 55, 0.1), 
+      rgba(212, 175, 55, 0.3)
+    );
   }
 }
