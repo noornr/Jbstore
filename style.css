@@ -524,7 +524,7 @@ cursor:pointer;
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  transition: all 0.4s ease;
+  transition: all 0.5s ease;
 }
 
 /* Hover effect */
@@ -536,7 +536,13 @@ cursor:pointer;
 }
 
 .premium-cat-card:hover::before {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), rgba(212, 175, 55, 0.1));
+  background: linear-gradient(135deg, 
+    rgba(212, 175, 55, 0.6), 
+    rgba(212, 175, 55, 0.2), 
+    rgba(212, 175, 55, 0.6)
+  );
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), 0 0 60px rgba(212, 175, 55, 0.1);
+  animation: goldShine 1.5s ease-in-out infinite;
 }
 
 /* Category image - BIGGER */
@@ -679,7 +685,7 @@ cursor:pointer;
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  transition: all 0.4s ease;
+  transition: all 0.5s ease;
 }
 
 /* Hover effect */
@@ -691,7 +697,13 @@ cursor:pointer;
 }
 
 .deal-card:hover::before {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.08));
+  background: linear-gradient(135deg, 
+    rgba(212, 175, 55, 0.5), 
+    rgba(212, 175, 55, 0.15), 
+    rgba(212, 175, 55, 0.5)
+  );
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), 0 0 60px rgba(212, 175, 55, 0.1);
+  animation: goldShine 1.5s ease-in-out infinite;
 }
 
 /* ===== OFFER BADGE ===== */
