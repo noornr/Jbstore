@@ -1043,6 +1043,7 @@ background:#D4AF37;
 
 /* ===== BRAND CARD ===== */
 .brand-card {
+  position: relative;
   background: linear-gradient(145deg, #161616, #111111);
   border-radius: 20px;
   padding: 24px 16px 18px;
@@ -1050,7 +1051,6 @@ background:#D4AF37;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   border: 1px solid rgba(255, 255, 255, 0.04);
   cursor: pointer;
-  position: relative;
   overflow: hidden;
 }
 
@@ -1066,7 +1066,7 @@ background:#D4AF37;
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  transition: all 0.4s ease;
+  transition: all 0.5s ease;
 }
 
 /* Hover effect */
@@ -1078,9 +1078,14 @@ background:#D4AF37;
 }
 
 .brand-card:hover::before {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.08));
+  background: linear-gradient(135deg, 
+    rgba(212, 175, 55, 0.4), 
+    rgba(212, 175, 55, 0.1), 
+    rgba(212, 175, 55, 0.4)
+  );
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.2), 0 0 60px rgba(212, 175, 55, 0.08);
+  animation: goldShine 1.5s ease-in-out infinite;
 }
-
 /* ===== BRAND LOGO ===== */
 .brand-logo-wrapper {
   display: flex;
