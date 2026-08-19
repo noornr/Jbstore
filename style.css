@@ -1701,38 +1701,72 @@ transform:scale(1.05);
 
 
   /* ===== CATEGORIES ===== */
-  .categories {
-    padding:12px 8px;
-  }
+  /* ==========================================
+   PREMIUM CATEGORY CARDS - MOBILE
+   Add inside @media (max-width:768px)
+========================================== */
 
-  .section-head h2 {
-    font-size:14px;
-    color:#fff;
-  }
+.categories {
+  padding: 30px 12px;
+}
 
-  .section-head a {
-    font-size:9px;
-    color:#D4AF37;
-  }
+.section-head {
+  margin-bottom: 16px;
+}
 
-  .category-grid {
-    gap:6px;
-  }
+.section-head h2 {
+  font-size: 18px;
+}
 
-  .category-card {
-    padding:6px 4px;
-    border-radius:8px;
-  }
+.section-head h2::before {
+  width: 3px;
+  height: 20px;
+  margin-right: 8px;
+}
 
-  .category-card img {
-    height:35px;
-  }
+.view-all {
+  font-size: 11px;
+  padding: 4px 12px;
+}
 
-  .category-card p {
-    font-size:8px;
-    color:#fff;
-  }
+.category-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
 
+.premium-cat-card {
+  padding: 16px 10px 14px;
+  border-radius: 14px;
+  min-height: 130px;
+}
+
+.cat-card-icon {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.premium-cat-card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 6px;
+}
+
+.premium-cat-card p {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.cat-badge {
+  font-size: 7px;
+  padding: 1px 7px;
+  top: 6px;
+  right: 6px;
+  opacity: 0.7;
+}
+
+.premium-cat-card:hover {
+  transform: translateY(-4px) scale(1.02);
+}
   /* ===== DEALS ===== */
   .deals {
     padding:12px 8px;
