@@ -887,12 +887,14 @@ background:#D4AF37;
     width:100%;
 }
 
-.best-card{
-  background:#161616;
-  border-radius:20px;
-  padding:18px;
-  transition:.35s;
-  border:1px solid rgba(212,175,55,.08);
+.best-card {
+  position: relative;
+  background: #161616;
+  border-radius: 20px;
+  padding: 18px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid rgba(212, 175, 55, 0.08);
+  overflow: hidden;
 }
 
 .best-card:hover{
