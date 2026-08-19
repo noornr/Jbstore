@@ -77,6 +77,13 @@ border:none;
 cursor:pointer;
 }
 
+.search-no-result{
+  padding:20px;
+  color:#999;
+  text-align:center;
+}
+
+
 .cart{
 font-size:24px;
 }
