@@ -79,18 +79,44 @@
 
 </section>
 
-  <nav class="menu" id="categoryMenu">
-  <button class="cat active" data-cat="mobiles">Mobiles</button>
-  <button class="cat" data-cat="second">2nd Hand</button>
-  <button class="cat" data-cat="fridge">Refrigerator</button>
-  <button class="cat" data-cat="washing">Washing</button>
-  <button class="cat" data-cat="ac">AC</button>
-  <button class="cat" data-cat="tv">TV</button>
+  <!-- ===== PREMIUM MENU ===== -->
+<nav class="menu" id="categoryMenu">
+  <button class="cat active" data-cat="mobiles">
+    <span class="cat-icon">📱</span>
+    Mobiles
+  </button>
+  <button class="cat" data-cat="second">
+    <span class="cat-icon">🔄</span>
+    2nd Hand
+  </button>
+  <button class="cat" data-cat="fridge">
+    <span class="cat-icon">❄️</span>
+    Refrigerator
+  </button>
+  <button class="cat" data-cat="washing">
+    <span class="cat-icon">👕</span>
+    Washing
+  </button>
+  <button class="cat" data-cat="ac">
+    <span class="cat-icon">🌬️</span>
+    AC
+  </button>
+  <button class="cat" data-cat="tv">
+    <span class="cat-icon">📺</span>
+    TV
+  </button>
 </nav>
 
+<!-- ===== PREMIUM FILTERS ===== -->
 <section class="filters">
-  <div class="filter-top">
-    <span id="clearFilter">Clear all</span>
+  <div class="filter-header">
+    <div class="filter-title">
+      <span class="filter-icon">✦</span>
+      <span>Filter by Brand</span>
+    </div>
+    <button id="clearFilter" class="clear-btn">
+      <span>✕</span> Clear All
+    </button>
   </div>
   <div id="brandFilters" class="brand-list"></div>
 </section>
