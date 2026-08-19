@@ -629,11 +629,6 @@ cursor:pointer;
   letter-spacing: 0.5px;
 }
 
-.deals .section-head h2::before {
-  content: '🔥 ';
-  display: inline-block;
-}
-
 .deals .view-all {
   color: #D4AF37;
   text-decoration: none;
