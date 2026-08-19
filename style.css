@@ -31,18 +31,18 @@ html,body{
 /* ===== DESKTOP HEADER ===== */
 
 .header{
-height:82px;
-padding:0 5%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:24px;
-background:#111;
-position:sticky;
-top:0;
-z-index:1000;
+    height:82px;
+    padding:0 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    background:#111;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    width:100%;
 }
-
 .logo{
 font-size:34px;
 font-weight:800;
@@ -82,12 +82,14 @@ font-size:24px;
 }
 
 .menu{
-height:58px;
-display:flex;
-justify-content:center;
-align-items:center;
-gap:34px;
-background:#151515;
+    height:58px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:34px;
+    background:#151515;
+    width:100%;
+    overflow-x:auto;
 }
 
 .menu a{
@@ -185,9 +187,10 @@ margin-bottom:25px;
 }
 
 .category-grid{
-display:grid;
-grid-template-columns:repeat(6,1fr);
-gap:18px;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:18px;
+    width:100%;
 }
 
 .category-card{
@@ -218,11 +221,11 @@ background:#080808;
 }
 
 .deal-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    width:100%;
 }
-
 .deal-card{
 background:#171717;
 border-radius:18px;
@@ -334,9 +337,10 @@ background:#D4AF37;
 }
 
 .best-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:22px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+    width:100%;
 }
 
 .best-card{
@@ -406,12 +410,12 @@ background:#090909;
 }
 
 .brand-grid{
-display:grid;
-grid-template-columns:repeat(6,1fr);
-gap:24px;
-align-items:center;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:24px;
+    align-items:center;
+    width:100%;
 }
-
 .brand-grid img{
 width:100%;
 height:55px;
@@ -436,9 +440,10 @@ border-top:1px solid rgba(212,175,55,.12);
 }
 
 .footer-grid{
-display:grid;
-grid-template-columns:2fr 1fr 1fr 1fr;
-gap:40px;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+    width:100%;
 }
 
 .footer h3{
@@ -808,6 +813,7 @@ font-size:14px;
     display:grid;
     grid-template-columns:230px 1fr;
     gap:30px;
+    width:100%;
 }
 
 .search-sidebar{
@@ -867,9 +873,9 @@ font-size:14px;
 
 .search-product-grid{
     display:grid;
-    grid-template-columns:
-        repeat(4,minmax(0,1fr));
+    grid-template-columns:repeat(4,minmax(0,1fr));
     gap:20px;
+    width:100%;
 }
 
 .search-product-card{
