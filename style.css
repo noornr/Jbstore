@@ -121,14 +121,13 @@ background:linear-gradient(90deg,#000 20%,rgba(0,0,0,.45) 60%,transparent 100%);
 }
 
 .hero-content{
-position:absolute;
-left:5%;
-top:50%;
-transform:translateY(-50%);
-max-width:470px;
-z-index:2;
+    position:absolute;
+    left:5%;
+    top:50%;
+    transform:translateY(-50%);
+    max-width:470px;
+    z-index:2;
 }
-
 .hero-tag{
 color:#D4AF37;
 letter-spacing:3px;
@@ -174,11 +173,15 @@ color:#D4AF37;
 
 /* ===== DESKTOP CATEGORY ===== */
 
-.categories{
-padding:60px 5%;
-background:#0D0D0D;
+.categories,
+.deals,
+.banner-slider,
+.best-sellers,
+.brands,
+.footer{
+    width:100%;
+    max-width:100%;
 }
-
 .section-head{
 display:flex;
 justify-content:space-between;
