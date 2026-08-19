@@ -114,26 +114,7 @@ font-weight:500;
     object-fit:cover;
     display:block;
 }
-.hero-overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(90deg,#000 20%,rgba(0,0,0,.45) 60%,transparent 100%);
-}
 
-.hero-content{
-    position:absolute;
-    left:5%;
-    top:50%;
-    transform:translateY(-50%);
-    max-width:470px;
-    z-index:2;
-}
-.hero-tag{
-color:#D4AF37;
-letter-spacing:3px;
-font-size:14px;
-margin-bottom:16px;
-}
 
 .hero h1{
 font-size:64px;
@@ -149,10 +130,6 @@ line-height:1.7;
 margin-bottom:30px;
 }
 
-.hero-btns{
-display:flex;
-gap:16px;
-}
 
 .gold-btn,.line-btn{
 padding:16px 30px;
