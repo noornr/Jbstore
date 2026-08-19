@@ -433,7 +433,7 @@ cursor:pointer;
 
 
 /* ==========================================
-   PREMIUM CATEGORY CARDS - DESKTOP
+   PREMIUM CATEGORY CARDS - DESKTOP (NO ICONS)
 ========================================== */
 
 .categories {
@@ -442,12 +442,12 @@ cursor:pointer;
   position: relative;
 }
 
-/* Section heading premium */
+/* Section heading */
 .section-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .section-head h2 {
@@ -489,23 +489,23 @@ cursor:pointer;
 .category-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
+  gap: 24px;
   width: 100%;
   margin-top: 10px;
 }
 
-/* ===== PREMIUM CATEGORY CARD ===== */
+/* ===== PREMIUM CATEGORY CARD - BIGGER ===== */
 .premium-cat-card {
   position: relative;
   background: linear-gradient(145deg, #1A1A1A, #111111);
   border-radius: 20px;
-  padding: 24px 16px 20px;
+  padding: 30px 20px 24px;
   text-align: center;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.04);
   overflow: hidden;
-  min-height: 180px;
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -529,48 +529,35 @@ cursor:pointer;
 
 /* Hover effect */
 .premium-cat-card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-10px) scale(1.03);
   background: linear-gradient(145deg, #222222, #181818);
   border-color: rgba(212, 175, 55, 0.2);
-  box-shadow: 0 15px 45px rgba(212, 175, 55, 0.08);
+  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.08);
 }
 
 .premium-cat-card:hover::before {
   background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), rgba(212, 175, 55, 0.1));
 }
 
-/* Category icon */
-.cat-card-icon {
-  font-size: 24px;
-  margin-bottom: 8px;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-}
-
-.premium-cat-card:hover .cat-card-icon {
-  transform: scale(1.2);
-  opacity: 1;
-}
-
-/* Category image */
+/* Category image - BIGGER */
 .premium-cat-card img {
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   transition: all 0.4s ease;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
 }
 
 .premium-cat-card:hover img {
-  transform: scale(1.1);
-  filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.15));
+  transform: scale(1.15);
+  filter: drop-shadow(0 8px 30px rgba(212, 175, 55, 0.15));
 }
 
 /* Category name */
 .premium-cat-card p {
   color: #E8E8E8;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   margin: 0;
   letter-spacing: 0.3px;
@@ -584,14 +571,14 @@ cursor:pointer;
 /* Badge */
 .cat-badge {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 12px;
+  right: 12px;
   background: linear-gradient(135deg, #D4AF37, #F3CF55);
   color: #0A0A0A;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
-  padding: 2px 10px;
-  border-radius: 12px;
+  padding: 3px 12px;
+  border-radius: 14px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   opacity: 0;
@@ -603,6 +590,7 @@ cursor:pointer;
   opacity: 1;
   transform: translateY(0);
 }
+
 
 /* ===== DESKTOP TOP DEALS ===== */
 
