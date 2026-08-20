@@ -1878,27 +1878,7 @@ background:#D4AF37;
   display: none !important;
 }
 
-/* Bottom container - not needed on desktop */
-.bottom-container {
-  display: none;
-}
 
-/* Bottom items - not needed on desktop */
-.bottom-item {
-  display: none;
-}
-
-/* Dot animation - not needed on desktop */
-@keyframes dotPulse {
-  0%, 100% {
-    opacity: 1;
-    transform: translateX(-50%) scale(1);
-  }
-  50% {
-    opacity: 0.6;
-    transform: translateX(-50%) scale(0.8);
-  }
-}
 
 /* ==========================================
    GOLD SHINE ANIMATION
@@ -2662,7 +2642,8 @@ background:#D4AF37;
     font-size:14px;
   }
 
-    /* ==========================================
+
+/* ==========================================
    PREMIUM BOTTOM BAR - MOBILE
    Add inside @media (max-width:768px)
 ========================================== */
@@ -2679,7 +2660,7 @@ background:#D4AF37;
   box-shadow: 0 -4px 40px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  display: block;
+  display: block !important;
 }
 
 /* ===== BOTTOM CONTAINER ===== */
