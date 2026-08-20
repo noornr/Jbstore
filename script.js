@@ -930,3 +930,30 @@ document.addEventListener(
 
   }
 );
+
+// ===== SCRIPT.JS - END LO PASTE CHEY =====
+
+// ... your existing JavaScript ...
+
+// ===== BOTTOM BAR ACTIVE STATE =====
+const bottomItems = document.querySelectorAll('.bottom-item');
+
+bottomItems.forEach(item => {
+  item.addEventListener('click', function() {
+    bottomItems.forEach(i => i.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// ===== UPDATE CART BADGE =====
+function updateCartBadge(count) {
+  const badge = document.querySelector('.cart-badge');
+  if (badge) {
+    badge.textContent = count;
+    if (count === 0) {
+      badge.style.display = 'none';
+    } else {
+      badge.style.display = 'flex';
+    }
+  }
+}
