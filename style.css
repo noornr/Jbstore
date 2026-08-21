@@ -2462,7 +2462,7 @@ background:#D4AF37;
   .category-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 4px;
     width: 100%;
     margin-top: 6px;
     padding: 0 2px;
