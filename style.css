@@ -545,69 +545,11 @@ cursor:pointer;
 }
 
 
+
 /* ==========================================
-   PREMIUM CATEGORY CARDS - DESKTOP (NO ICONS)
+   PREMIUM CATEGORY CARDS - GOLD RING ALWAYS
 ========================================== */
 
-.categories {
-  padding: 60px 5%;
-  background: linear-gradient(180deg, #0D0D0D 0%, #080808 100%);
-  position: relative;
-}
-
-/* Section heading */
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-.section-head h2 {
-  font-size: 28px;
-  font-weight: 700;
-  color: #FFFFFF;
-  letter-spacing: 0.5px;
-}
-
-.section-head h2::before {
-  content: '';
-  display: inline-block;
-  width: 4px;
-  height: 28px;
-  background: #D4AF37;
-  border-radius: 4px;
-  margin-right: 12px;
-  vertical-align: middle;
-}
-
-.view-all {
-  color: #D4AF37;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 1px solid rgba(212, 175, 55, 0.2);
-}
-
-.view-all:hover {
-  background: rgba(212, 175, 55, 0.1);
-  border-color: #D4AF37;
-  transform: translateX(4px);
-}
-
-/* ===== CATEGORY GRID ===== */
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 24px;
-  width: 100%;
-  margin-top: 10px;
-}
-
-/* ===== PREMIUM CATEGORY CARD - BIGGER ===== */
 .premium-cat-card {
   position: relative;
   background: linear-gradient(145deg, #1A1A1A, #111111);
@@ -616,7 +558,6 @@ cursor:pointer;
   text-align: center;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.04);
   overflow: hidden;
   min-height: 220px;
   display: flex;
@@ -625,40 +566,144 @@ cursor:pointer;
   justify-content: center;
 }
 
-/* Gold ring border */
+/* ===== GOLD RING - ALWAYS VISIBLE ===== */
 .premium-cat-card::before {
   content: '';
   position: absolute;
-  inset: -1px;
-  border-radius: 20px;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent, rgba(212, 175, 55, 0.05));
+  inset: -2px;
+  border-radius: 22px;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    #D4AF37 0%,
+    #F3CF55 20%,
+    #D4AF37 40%,
+    #B8962E 60%,
+    #D4AF37 80%,
+    #F3CF55 100%
+  );
+  background-size: 300% 300%;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  transition: all 0.5s ease;
+  animation: goldRingSpin 4s ease-in-out infinite;
+  box-shadow: 
+    0 0 20px rgba(212, 175, 55, 0.3),
+    0 0 40px rgba(212, 175, 55, 0.15),
+    inset 0 0 20px rgba(212, 175, 55, 0.1);
 }
 
-/* Hover effect */
+/* ===== INNER GLOW ===== */
+.premium-cat-card::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #1A1A1A, #111111);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* All content above the glow */
+.premium-cat-card img,
+.premium-cat-card p,
+.premium-cat-card .cat-badge {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== GOLD RING ANIMATION ===== */
+@keyframes goldRingSpin {
+  0% {
+    background: linear-gradient(
+      135deg,
+      #D4AF37 0%,
+      #F3CF55 25%,
+      #B8962E 50%,
+      #F3CF55 75%,
+      #D4AF37 100%
+    );
+    background-size: 300% 300%;
+    box-shadow: 
+      0 0 20px rgba(212, 175, 55, 0.3),
+      0 0 40px rgba(212, 175, 55, 0.15);
+  }
+  25% {
+    background: linear-gradient(
+      135deg,
+      #F3CF55 0%,
+      #B8962E 25%,
+      #D4AF37 50%,
+      #F3CF55 75%,
+      #B8962E 100%
+    );
+    background-size: 300% 300%;
+    box-shadow: 
+      0 0 30px rgba(212, 175, 55, 0.5),
+      0 0 60px rgba(212, 175, 55, 0.25),
+      0 0 80px rgba(212, 175, 55, 0.1);
+  }
+  50% {
+    background: linear-gradient(
+      135deg,
+      #B8962E 0%,
+      #D4AF37 25%,
+      #F3CF55 50%,
+      #D4AF37 75%,
+      #F3CF55 100%
+    );
+    background-size: 300% 300%;
+    box-shadow: 
+      0 0 40px rgba(212, 175, 55, 0.6),
+      0 0 80px rgba(212, 175, 55, 0.3),
+      0 0 120px rgba(212, 175, 55, 0.15);
+  }
+  75% {
+    background: linear-gradient(
+      135deg,
+      #F3CF55 0%,
+      #D4AF37 25%,
+      #B8962E 50%,
+      #D4AF37 75%,
+      #F3CF55 100%
+    );
+    background-size: 300% 300%;
+    box-shadow: 
+      0 0 30px rgba(212, 175, 55, 0.5),
+      0 0 60px rgba(212, 175, 55, 0.25);
+  }
+  100% {
+    background: linear-gradient(
+      135deg,
+      #D4AF37 0%,
+      #F3CF55 25%,
+      #B8962E 50%,
+      #F3CF55 75%,
+      #D4AF37 100%
+    );
+    background-size: 300% 300%;
+    box-shadow: 
+      0 0 20px rgba(212, 175, 55, 0.3),
+      0 0 40px rgba(212, 175, 55, 0.15);
+  }
+}
+
+/* ===== HOVER EFFECT ===== */
 .premium-cat-card:hover {
   transform: translateY(-10px) scale(1.03);
   background: linear-gradient(145deg, #222222, #181818);
-  border-color: rgba(212, 175, 55, 0.2);
-  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.08);
 }
 
 .premium-cat-card:hover::before {
-  background: linear-gradient(135deg, 
-    rgba(212, 175, 55, 0.6), 
-    rgba(212, 175, 55, 0.2), 
-    rgba(212, 175, 55, 0.6)
-  );
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), 0 0 60px rgba(212, 175, 55, 0.1);
-  animation: goldShine 1.5s ease-in-out infinite;
+  animation: goldRingSpin 2s ease-in-out infinite;
+  box-shadow: 
+    0 0 40px rgba(212, 175, 55, 0.6),
+    0 0 80px rgba(212, 175, 55, 0.3),
+    0 0 120px rgba(212, 175, 55, 0.15);
 }
 
-/* Category image - BIGGER */
+/* ===== CATEGORY IMAGE ===== */
 .premium-cat-card img {
   width: 100px;
   height: 100px;
@@ -666,14 +711,16 @@ cursor:pointer;
   margin-bottom: 14px;
   transition: all 0.4s ease;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+  position: relative;
+  z-index: 1;
 }
 
 .premium-cat-card:hover img {
   transform: scale(1.15);
-  filter: drop-shadow(0 8px 30px rgba(212, 175, 55, 0.15));
+  filter: drop-shadow(0 8px 30px rgba(212, 175, 55, 0.3));
 }
 
-/* Category name */
+/* ===== CATEGORY NAME ===== */
 .premium-cat-card p {
   color: #E8E8E8;
   font-size: 15px;
@@ -681,13 +728,16 @@ cursor:pointer;
   margin: 0;
   letter-spacing: 0.3px;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .premium-cat-card:hover p {
   color: #D4AF37;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
-/* Badge */
+/* ===== BADGE ===== */
 .cat-badge {
   position: absolute;
   top: 12px;
@@ -703,11 +753,33 @@ cursor:pointer;
   opacity: 0;
   transform: translateY(-5px);
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .premium-cat-card:hover .cat-badge {
   opacity: 1;
   transform: translateY(0);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* ===== ALTERNATIVE - PULSING GOLD RING ===== */
+.premium-cat-card.gold-pulse::before {
+  animation: goldPulse 3s ease-in-out infinite;
+}
+
+@keyframes goldPulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 15px rgba(212, 175, 55, 0.2),
+      0 0 30px rgba(212, 175, 55, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(212, 175, 55, 0.5),
+      0 0 60px rgba(212, 175, 55, 0.25),
+      0 0 90px rgba(212, 175, 55, 0.1);
+  }
 }
 
 
