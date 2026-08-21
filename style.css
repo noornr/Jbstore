@@ -2242,66 +2242,109 @@ background:#D4AF37;
 
 
   /* ===== CATEGORIES ===== */
+
 /* ==========================================
-   PREMIUM CATEGORY CARDS - MOBILE (BIGGER)
+   MOBILE - GOLD RING ALWAYS VISIBLE
 ========================================== */
 
-.categories {
-  padding: 30px 12px;
-}
+  
+  .premium-cat-card {
+    min-height: 150px;
+    padding: 20px 12px 16px;
+    border-radius: 16px;
+  }
+  
+  /* Gold ring - always visible on mobile too */
+  .premium-cat-card::before {
+    border-radius: 18px;
+    inset: -2px;
+    padding: 2px;
+    animation: goldRingSpin 4s ease-in-out infinite;
+    box-shadow: 
+      0 0 15px rgba(212, 175, 55, 0.25),
+      0 0 30px rgba(212, 175, 55, 0.1);
+  }
+  
+  .premium-cat-card::after {
+    border-radius: 14px;
+    inset: 2px;
+  }
+  
+  .premium-cat-card img {
+    width: 65px;
+    height: 65px;
+    margin-bottom: 8px;
+  }
+  
+  .premium-cat-card p {
+    font-size: 12px;
+  }
+  
+  /* Badge always visible on mobile */
+  .cat-badge {
+    opacity: 1;
+    transform: none;
+    font-size: 8px;
+    padding: 2px 8px;
+    top: 8px;
+    right: 8px;
+  }
+  
+  /* Disable hover on mobile, use active instead */
+  .premium-cat-card:hover {
+    transform: none !important;
+    scale: none !important;
+  }
+  
+  .premium-cat-card:hover img {
+    transform: none !important;
+  }
+  
+  .premium-cat-card:hover p {
+    color: #E8E8E8 !important;
+    text-shadow: none !important;
+  }
+  
+  .premium-cat-card:active {
+    transform: scale(0.95) !important;
+  }
+  
+  .premium-cat-card:active::before {
+    box-shadow: 
+      0 0 30px rgba(212, 175, 55, 0.5),
+      0 0 60px rgba(212, 175, 55, 0.2);
+  }
+  
+  /* Last item (7th) - full width */
+  .category-grid .premium-cat-card:last-child {
+    flex-direction: row;
+    gap: 20px;
+    padding: 16px 20px;
+    justify-content: center;
+    align-items: center;
+    min-height: 120px;
+  }
+  
+  .category-grid .premium-cat-card:last-child img {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 0;
+  }
+  
+  .category-grid .premium-cat-card:last-child p {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+  }
+  
+  .category-grid .premium-cat-card:last-child .cat-badge {
+    position: relative;
+    top: auto;
+    right: auto;
+    opacity: 1;
+    transform: none;
+  }
 
-.section-head {
-  margin-bottom: 18px;
-}
-
-.section-head h2 {
-  font-size: 18px;
-}
-
-.section-head h2::before {
-  width: 3px;
-  height: 20px;
-  margin-right: 8px;
-}
-
-.view-all {
-  font-size: 11px;
-  padding: 4px 12px;
-}
-
-.category-grid {
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
-
-.premium-cat-card {
-  padding: 20px 12px 16px;
-  border-radius: 16px;
-  min-height: 150px;
-}
-
-.premium-cat-card img {
-  width: 65px;
-  height: 65px;
-  margin-bottom: 8px;
-}
-
-.premium-cat-card p {
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.cat-badge {
-  font-size: 8px;
-  padding: 2px 8px;
-  top: 8px;
-  right: 8px;
-  opacity: 0.7;
-}
-
-.premium-cat-card:hover {
-  transform: translateY(-5px) scale(1.02);
-}
   /* ===== DEALS ===== */
   ./* ==========================================
    PREMIUM DEALS CARDS - MOBILE
