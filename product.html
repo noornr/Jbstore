@@ -92,10 +92,17 @@
         WhatsApp Enquiry
       </button>
 
-      <button class="call-btn">
+      <button class="call-btn" onclick="callStore()">
         Call Store
       </button>
 
+    </div>
+
+    <!-- ===== ADD TO CART - PRODUCT PAGE ===== -->
+    <div class="product-cart-action">
+      <button class="add-to-cart-btn" onclick="addToCartFromProduct()" style="width:100%; height:52px; border:none; border-radius:12px; font-weight:700; font-size:16px; background:linear-gradient(135deg, #25D366, #1DA851); color:#FFFFFF; cursor:pointer;">
+        🛒 Add to Cart
+      </button>
     </div>
 
   </div>
@@ -103,6 +110,13 @@
 </main>
 
 
+<script src="config.js"></script>
+<script src="mobiles.js"></script>
+<script src="refrigerator.js"></script>
+<script src="washing.js"></script>
+<script src="ac.js"></script>
+<script src="tv.js"></script>
+<script src="script.js"></script>
 
 <script>
 
@@ -118,9 +132,7 @@ const savedProduct =
   JSON.parse(localStorage.getItem("selectedProduct"));
 
 if (!savedProduct) {
-
   window.location.href = "index.html";
-
 }
 
 const product =
@@ -212,26 +224,49 @@ if (product) {
 /* ===== WHATSAPP ===== */
 
 function contactWhatsApp() {
-
-  const phone = "919999999999";
-
   const message =
     `Hello JB STORE, I am interested in ${product.name}. Price: ₹${product.price.toLocaleString("en-IN")}. Product ID: ${product.id}`;
 
   window.open(
-    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+    `https://wa.me/${STORE_PHONE}?text=${encodeURIComponent(message)}`,
     "_blank"
   );
-
 }
 
-  <script src="config.js"></script>
-<script src="mobiles.js"></script>
-<script src="refrigerator.js"></script>
-<script src="washing.js"></script>
-<script src="ac.js"></script>
-<script src="tv.js"></script>
-<script src="script.js"></script>
+/* ===== CALL STORE ===== */
+function callStore() {
+  window.location.href = `tel:${STORE_PHONE}`;
+}
+
+/* ===== ADD TO CART FROM PRODUCT PAGE ===== */
+function addToCartFromProduct() {
+  if (!product) {
+    showToast('Product not found!');
+    return;
+  }
+  
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  const existingItem = cart.find(item => item.id === product.id);
+  
+  if (existingItem) {
+    existingItem.quantity += 1;
+    showToast(`${product.name} quantity updated! 🛒`);
+  } else {
+    cart.push({
+      id: product.id,
+      name: product.name,
+      brand: product.brand,
+      price: product.price,
+      image: product.image,
+      quantity: 1
+    });
+    showToast(`${product.name} added to cart! 🛒`);
+  }
+  
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartBadge();
+}
 
 </script>
 
