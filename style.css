@@ -2496,12 +2496,12 @@ background:#D4AF37;
     position: relative;
     background: linear-gradient(145deg, #1A1A1A, #111111);
     border-radius: 16px;
-    padding: 16px 6px 12px;
+    padding: 10px 4px 8px;
     text-align: center;
     transition: all 0.3s ease;
     cursor: pointer;
     overflow: hidden;
-    min-height: 110px;
+    min-height: 88px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -2576,12 +2576,11 @@ background:#D4AF37;
   
   /* ===== IMAGE - MOBILE ===== */
   .premium-cat-card img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    margin-bottom: 4px;
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+  width: 63px;     /* 55px nunchi 63px ki (15% penchindi) */
+  height: 63px;    /* 55px nunchi 63px ki (15% penchindi) */
+  object-fit: contain;
+  margin-bottom: 3px;  /* 4px nunchi 3px ki thaggindi */
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
   }
   
   /* ===== NAME - MOBILE ===== */
