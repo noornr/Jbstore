@@ -2457,7 +2457,7 @@ background:#D4AF37;
     align-items: center;
     justify-content: center;
     border: none;
-    min-height: auto;
+    min-height: unset;
     aspect-ratio: 1 / 1.1;
   }
 
