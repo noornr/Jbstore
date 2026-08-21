@@ -686,8 +686,8 @@ cursor:pointer;
     align-items: center;
     justify-content: center;
     border: none;
-    min-height: auto;
-    aspect-ratio: 1 / 1.1;
+    min-height: unset;
+    aspect-ratio: 1 / 1.05;
   }
 
   /* ===== GOLD RING ===== */
