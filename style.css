@@ -2604,6 +2604,73 @@ background:#D4AF37;
 .view-details-btn:active {
   transform: scale(0.97);
 }
+/* ==========================================
+   TOAST NOTIFICATION
+   ========================================== */
+
+.toast-notification {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #1A1A1A, #0A0A0A);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 14px;
+  padding: 14px 22px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 99999;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  animation: toastSlideUp 0.4s ease;
+  backdrop-filter: blur(10px);
+  max-width: 90%;
+}
+
+.toast-notification button {
+  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.toast-notification button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+.toast-notification.fade-out {
+  animation: toastFadeOut 0.3s ease forwards;
+}
+
+@keyframes toastSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+@keyframes toastFadeOut {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px) scale(0.95);
+  }
+}
 
 
 /* ==========================================
@@ -4040,3 +4107,13 @@ body {
     font-size: 11px;
     border-radius: 10px;
   }
+
+      .toast-notification {
+    bottom: 80px;
+    font-size: 12px;
+    padding: 12px 16px;
+    width: 90%;
+    justify-content: center;
+    border-radius: 12px;
+  }
+
