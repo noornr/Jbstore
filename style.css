@@ -649,7 +649,7 @@ cursor:pointer;
 .category-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 8px;
   width: 100%;
   margin-top: 10px;
   justify-content: center;
@@ -660,7 +660,7 @@ cursor:pointer;
 .category-grid .premium-cat-card:nth-child(2),
 .category-grid .premium-cat-card:nth-child(3),
 .category-grid .premium-cat-card:nth-child(4) {
-  flex: 0 0 calc(25% - 28px);
+  flex: 0 0 calc(25% - 12px);
   max-width: calc(25% - 28px);
   min-width: 190px;
 }
@@ -669,7 +669,7 @@ cursor:pointer;
 .category-grid .premium-cat-card:nth-child(5),
 .category-grid .premium-cat-card:nth-child(6),
 .category-grid .premium-cat-card:nth-child(7) {
-  flex: 0 0 calc(33.333% - 28px);
+  flex: 0 0 calc(33.333% - 12px);
   max-width: calc(33.333% - 28px);
   min-width: 190px;
 }
@@ -681,7 +681,7 @@ cursor:pointer;
 .premium-cat-card {
   position: relative;
   background: linear-gradient(145deg, #1A1A1A, #111111);
-  border-radius: 20px;
+  border-radius: 18px;
   padding: 12px 10px 10px;
   text-align: center;
   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -700,7 +700,7 @@ cursor:pointer;
   content: '';
   position: absolute;
   inset: -2px;
-  border-radius: 23px;
+  border-radius: 20px;
   padding: 2px;
   background: linear-gradient(
     135deg,
@@ -733,7 +733,7 @@ cursor:pointer;
   content: '';
   position: absolute;
   inset: 3px;
-  border-radius: 18px;
+  border-radius: 16px;
   background: linear-gradient(145deg, #1A1A1A, #111111);
   z-index: 0;
   pointer-events: none;
