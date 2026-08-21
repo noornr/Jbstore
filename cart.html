@@ -23,59 +23,60 @@
 <main class="cart-page">
 
   <!-- Cart Header -->
-  <div class="cart-header">
-    <div>
-      <h1>🛒 Your Cart</h1>
-      <p class="cart-subtitle">Review your items before checkout</p>
-    </div>
-    <span class="cart-count" id="cartCount">0 items</span>
+  <!-- CART HEADER -->
+<div class="cart-header">
+  <div>
+    <h1>🛒 Your Cart</h1>
+    <p class="cart-subtitle">Review your items before checkout</p>
+  </div>
+  <span class="cart-count" id="cartCount">0 items</span>
+</div>
+
+<!-- CART ITEMS -->
+<div id="cartItemsContainer">
+  <div id="cartItems" class="cart-items">
+    <!-- Items rendered by JS -->
   </div>
 
-  <!-- Cart Items -->
-  <div id="cartItemsContainer">
-    <div id="cartItems" class="cart-items">
-      <!-- Items rendered by JS -->
+  <!-- CART SUMMARY -->
+  <div id="cartSummary" class="cart-summary">
+    <div class="summary-row">
+      <span>Subtotal</span>
+      <strong id="cartSubtotal">₹0</strong>
     </div>
-
-    <!-- Cart Summary -->
-    <div id="cartSummary" class="cart-summary">
-      <div class="summary-row">
-        <span>Subtotal</span>
-        <strong id="cartSubtotal">₹0</strong>
-      </div>
-      <div class="summary-row">
-        <span>Delivery</span>
-        <strong style="color:#4ECDC4;">Free</strong>
-      </div>
-      <div class="summary-divider"></div>
-      <div class="summary-row total">
-        <span>Total</span>
-        <strong id="cartTotalPrice">₹0</strong>
-      </div>
-      <div class="cart-actions">
-        <button class="checkout-btn" onclick="checkout()">
-          <span>Proceed to Checkout</span>
-          <span>→</span>
-        </button>
-        <button class="clear-cart-btn" onclick="clearCart()">🗑️ Clear Cart</button>
-      </div>
+    <div class="summary-row">
+      <span>Delivery</span>
+      <strong style="color:#4ECDC4;">Free</strong>
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-row total">
+      <span>Total</span>
+      <strong id="cartTotalPrice">₹0</strong>
+    </div>
+    <div class="cart-actions">
+      <button class="checkout-btn" onclick="checkout()">
+        <span>Proceed to Checkout</span>
+        <span>→</span>
+      </button>
+      <button class="clear-cart-btn" onclick="clearCart()">🗑️ Clear Cart</button>
     </div>
   </div>
+</div>
 
-  <!-- Empty Cart -->
-  <div id="emptyCart" class="empty-cart" style="display:none;">
-    <div class="empty-icon">🛒</div>
-    <h2>Your cart is empty</h2>
-    <p>Browse our collection and add items you love</p>
-    <a href="index.html" class="shop-now-btn">Start Shopping →</a>
-  </div>
+<!-- EMPTY CART -->
+<div id="emptyCart" class="empty-cart" style="display:none;">
+  <div class="empty-icon">🛒</div>
+  <h2>Your cart is empty</h2>
+  <p>Browse our collection and add items you love</p>
+  <a href="index.html" class="shop-now-btn">Start Shopping →</a>
+</div>
 
 </main>
 
 <!-- ===== BOTTOM BAR ===== -->
 <div class="bottom-bar">
   <div class="bottom-container">
-    <a href="index.html" class="bottom-item">
+    <a href="index.html" class="bottom-item active">
       <span class="bottom-icon">🏠</span>
       <span class="bottom-label">Home</span>
     </a>
@@ -87,7 +88,7 @@
       <span class="bottom-icon">📞</span>
       <span class="bottom-label">Call</span>
     </a>
-    <a href="cart.html" class="bottom-item active cart-item">
+    <a href="cart.html" class="bottom-item cart-item">
       <span class="bottom-icon">🛒</span>
       <span class="cart-badge" id="cartBadge">0</span>
       <span class="bottom-label">Cart</span>
