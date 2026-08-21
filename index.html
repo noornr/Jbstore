@@ -148,9 +148,17 @@
     <span class="cat-icon">📱</span>
     Mobiles
   </button>
+  <button class="cat" data-cat="sealpack">
+    <span class="cat-icon">📦</span>
+    Seal Pack
+  </button>
+  <button class="cat" data-cat="sealcut">
+    <span class="cat-icon">✂️</span>
+    Seal Cut
+  </button>
   <button class="cat" data-cat="second">
-    <span class="cat-icon">📲</span>
-    Used Mobiles
+    <span class="cat-icon">🔄</span>
+    2nd Hand
   </button>
   <button class="cat" data-cat="fridge">
     <span class="cat-icon">❄️</span>
@@ -225,7 +233,7 @@
 <section class="best-sellers">
   <div class="section-head">
     <h2>Best Sellers</h2>
-    <a href="#" class="view-all">View All →</a>  <!-- ✅ class added -->
+    <a href="#" class="view-all">View All →</a>
   </div>
 
   <div class="best-grid">
@@ -424,7 +432,7 @@
   </div>
 </div>
 
-  <!-- At the bottom, before other scripts -->
+<!-- ===== SCRIPTS ===== -->
 <script src="config.js"></script>
 <script src="mobiles.js"></script>
 <script src="refrigerator.js"></script>
@@ -432,26 +440,6 @@
 <script src="ac.js"></script>
 <script src="tv.js"></script>
 <script src="script.js"></script>
-  
-  <script>
-function goToSearch(){
 
-  const input =
-    document.getElementById("searchInput");
-
-  const value =
-    input.value.trim();
-
-  if(value === ""){
-    return;
-  }
-
-  window.location.href =
-    "search.html?q=" +
-    encodeURIComponent(value);
-}
-  </script>
-  
 </body>
 </html>
-  
