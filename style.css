@@ -649,7 +649,7 @@ cursor:pointer;
 .category-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 28px;
+  gap: 12px;
   width: 100%;
   margin-top: 10px;
   justify-content: center;
@@ -662,7 +662,7 @@ cursor:pointer;
 .category-grid .premium-cat-card:nth-child(4) {
   flex: 0 0 calc(25% - 28px);
   max-width: calc(25% - 28px);
-  min-width: 200px;
+  min-width: 190px;
 }
 
 /* ===== NEXT 3 ITEMS - 1/3rd WIDTH ===== */
@@ -671,7 +671,7 @@ cursor:pointer;
 .category-grid .premium-cat-card:nth-child(7) {
   flex: 0 0 calc(33.333% - 28px);
   max-width: calc(33.333% - 28px);
-  min-width: 200px;
+  min-width: 190px;
 }
 
 /* ==========================================
@@ -681,13 +681,13 @@ cursor:pointer;
 .premium-cat-card {
   position: relative;
   background: linear-gradient(145deg, #1A1A1A, #111111);
-  border-radius: 24px;
-  padding: 18px 16px 16px;
+  border-radius: 20px;
+  padding: 12px 10px 10px;
   text-align: center;
   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
   overflow: hidden;
-  min-height: 190px;
+  min-height: 170px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -699,9 +699,9 @@ cursor:pointer;
 .premium-cat-card::before {
   content: '';
   position: absolute;
-  inset: -3px;
-  border-radius: 27px;
-  padding: 3px;
+  inset: -2px;
+  border-radius: 23px;
+  padding: 2px;
   background: linear-gradient(
     135deg,
     #D4AF37 0%,
@@ -732,8 +732,8 @@ cursor:pointer;
 .premium-cat-card::after {
   content: '';
   position: absolute;
-  inset: 4px;
-  border-radius: 21px;
+  inset: 3px;
+  border-radius: 18px;
   background: linear-gradient(145deg, #1A1A1A, #111111);
   z-index: 0;
   pointer-events: none;
@@ -831,10 +831,10 @@ cursor:pointer;
 }
 
 .premium-cat-card img {
-  width: 135px;     /* 120px nunchi 135px ki (15% penchindi) */
-  height: 135px;    /* 120px nunchi 135px ki (15% penchindi) */
+  width: 148px;     /* 120px nunchi 135px ki (15% penchindi) */
+  height: 148px;    /* 120px nunchi 135px ki (15% penchindi) */
   object-fit: contain;
-  margin-bottom: 6px;  /* 10px nunchi 6px ki thaggindi (gap taggindi) */
+  margin-bottom: 4px;  /* 10px nunchi 6px ki thaggindi (gap taggindi) */
   transition: all 0.4s ease;
   filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3));
 }
@@ -852,7 +852,7 @@ cursor:pointer;
 /* ===== CATEGORY NAME ===== */
 .premium-cat-card p {
   color: #E8E8E8;
-  font-size: 16px;
+  font-size: 17.5px;
   font-weight: 600;
   margin: 0;
   letter-spacing: 0.5px;
@@ -885,9 +885,9 @@ cursor:pointer;
   right: 14px;
   background: linear-gradient(135deg, #D4AF37, #F3CF55);
   color: #0A0A0A;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  padding: 4px 14px;
+  padding: 4px 15px;
   border-radius: 16px;
   text-transform: uppercase;
   letter-spacing: 0.8px;
