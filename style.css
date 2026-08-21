@@ -81,6 +81,119 @@ cursor:pointer;
   text-align:center;
 }
 
+/* ==========================================
+   SEARCH SUGGESTIONS STYLES
+========================================== */
+
+.search {
+  position: relative;
+}
+
+.search-suggestions {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, #1A1A1A 0%, #0F0F0F 100%);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 16px;
+  max-height: 350px;
+  overflow-y: auto;
+  display: none;
+  z-index: 9999;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  padding: 8px 0;
+}
+
+.search-suggestions.show {
+  display: block;
+  animation: slideDown 0.25s ease;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.search-suggestion {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.search-suggestion:last-child {
+  border-bottom: none;
+}
+
+.search-suggestion:hover {
+  background: rgba(212, 175, 55, 0.06);
+}
+
+.search-suggestion img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #111;
+  flex-shrink: 0;
+  padding: 4px;
+}
+
+.search-suggestion .suggestion-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-suggestion .suggestion-name {
+  color: #E8E8E8;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.search-suggestion .suggestion-name strong {
+  color: #D4AF37;
+  font-weight: 700;
+}
+
+.search-suggestion .suggestion-category {
+  color: #999;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.search-suggestion .suggestion-arrow {
+  color: #D4AF37;
+  font-size: 16px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.search-suggestion:hover .suggestion-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.search-no-result {
+  padding: 30px 20px;
+  color: #999;
+  text-align: center;
+  font-size: 14px;
+}
 
 /* ==========================================
    PREMIUM MENU - DESKTOP
@@ -2587,27 +2700,30 @@ background:#D4AF37;
   }
 
   /* ===== SUGGESTIONS ===== */
+  /* Mobile suggestions */
+
   .search-suggestions {
-    top:30px;
-    max-height:150px;
+    top: calc(100% + 4px);
+    max-height: 250px;
+    border-radius: 12px;
   }
-
+  
   .search-suggestion {
-    padding:4px 6px;
+    padding: 10px 14px;
+    gap: 10px;
   }
-
+  
   .search-suggestion img {
-    width:20px;
-    height:20px;
-    min-width:20px;
+    width: 32px;
+    height: 32px;
   }
-
-  .suggestion-name {
-    font-size:9px;
+  
+  .search-suggestion .suggestion-name {
+    font-size: 12px;
   }
-
-  .suggestion-category {
-    font-size:7px;
+  
+  .search-suggestion .suggestion-category {
+    font-size: 10px;
   }
 
   /* ===== GLOBAL ===== */
