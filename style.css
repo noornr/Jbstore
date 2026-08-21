@@ -2553,6 +2553,57 @@ background:#D4AF37;
     transform: translateY(-3px);
     box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
   }
+/* ==========================================
+   DEAL CARD - ACTIONS
+   ========================================== */
+
+.deal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  width: 100%;
+}
+
+.deal-actions button {
+  flex: 1;
+  height: 44px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+/* ===== VIEW DETAILS BUTTON ===== */
+.view-details-btn {
+  background: linear-gradient(135deg, #D4AF37, #C9A030);
+  color: #0A0A0A;
+}
+
+.view-details-btn:hover {
+  background: linear-gradient(135deg, #E8C84A, #D4AF37);
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+/* ===== ADD TO CART BUTTON ===== */
+.add-to-cart-btn {
+  background: linear-gradient(135deg, #25D366, #1DA851);
+  color: #FFFFFF;
+}
+
+.add-to-cart-btn:hover {
+  background: linear-gradient(135deg, #34D96E, #25D366);
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+}
+
+.add-to-cart-btn:active,
+.view-details-btn:active {
+  transform: scale(0.97);
+}
 
 
 /* ==========================================
@@ -3979,3 +4030,13 @@ body {
     transform: scale(0.97);
   }
 
+    .deal-actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .deal-actions button {
+    height: 38px;
+    font-size: 11px;
+    border-radius: 10px;
+  }
