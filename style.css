@@ -661,7 +661,7 @@ cursor:pointer;
 .category-grid .premium-cat-card:nth-child(3),
 .category-grid .premium-cat-card:nth-child(4) {
   flex: 0 0 calc(25% - 12px);
-  max-width: calc(25% - 28px);
+  max-width: calc(25% - 12px);
   min-width: 190px;
 }
 
@@ -670,7 +670,7 @@ cursor:pointer;
 .category-grid .premium-cat-card:nth-child(6),
 .category-grid .premium-cat-card:nth-child(7) {
   flex: 0 0 calc(33.333% - 12px);
-  max-width: calc(33.333% - 28px);
+  max-width: calc(33.333% - 12px);
   min-width: 190px;
 }
 
@@ -2470,12 +2470,12 @@ background:#D4AF37;
   }
   
   /* ===== FIRST 4 ITEMS - 1/4th WIDTH ===== */
-  .category-grid .premium-cat-card:nth-child(1),
+   .category-grid .premium-cat-card:nth-child(1),
   .category-grid .premium-cat-card:nth-child(2),
   .category-grid .premium-cat-card:nth-child(3),
   .category-grid .premium-cat-card:nth-child(4) {
-    flex: 0 0 calc(25% - 10px);
-    max-width: calc(25% - 10px);
+    flex: 0 0 calc(25% - 6px);  /* 10px nunchi 6px ki */
+    max-width: calc(25% - 6px);
     min-width: 68px;
   }
   
@@ -2483,8 +2483,8 @@ background:#D4AF37;
   .category-grid .premium-cat-card:nth-child(5),
   .category-grid .premium-cat-card:nth-child(6),
   .category-grid .premium-cat-card:nth-child(7) {
-    flex: 0 0 calc(33.333% - 10px);
-    max-width: calc(33.333% - 10px);
+    flex: 0 0 calc(33.333% - 6px);  /* 10px nunchi 6px ki */
+    max-width: calc(33.333% - 6px);
     min-width: 78px;
   }
   
@@ -2495,7 +2495,7 @@ background:#D4AF37;
   .premium-cat-card {
     position: relative;
     background: linear-gradient(145deg, #1A1A1A, #111111);
-    border-radius: 14px;
+    border-radius: 12px;
     padding: 6px 3px 5px;
     text-align: center;
     transition: all 0.3s ease;
@@ -2514,7 +2514,7 @@ background:#D4AF37;
     content: '';
     position: absolute;
     inset: -1.5px;
-    border-radius: 16px;
+    border-radius: 14px;
     padding: 1.5px;
     background: linear-gradient(
       135deg,
@@ -2544,7 +2544,7 @@ background:#D4AF37;
     content: '';
     position: absolute;
     inset: 2.5px;
-    border-radius: 12px;
+    border-radius: 10px;
     background: linear-gradient(145deg, #1A1A1A, #111111);
     z-index: 0;
     pointer-events: none;
