@@ -355,6 +355,109 @@ function viewProduct(id){
 
 }
 
+// ==========================================
+// 10. VIEW PRODUCT
+// ==========================================
+
+function viewProduct(id){
+
+  const product =
+    allProducts.find(
+      item => item.id === id
+    );
+
+
+  if(!product) return;
+
+
+  localStorage.setItem(
+    "selectedProduct",
+    JSON.stringify(product)
+  );
+
+
+  window.location.href =
+    "product.html";
+
+}
+
+
+// ==========================================
+// 10.5. CART FUNCTIONALITY
+// ==========================================
+
+// ===== ADD TO CART =====
+function addToCart(productId) {
+  const product = allProducts.find(item => item.id === productId);
+  
+  if (!product) {
+    showToast('Product not found!');
+    return;
+  }
+  
+  // Get existing cart
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  // Check if product already in cart
+  const existingItem = cart.find(item => item.id === productId);
+  
+  if (existingItem) {
+    existingItem.quantity += 1;
+    showToast(`${product.name} quantity updated! 🛒`);
+  } else {
+    cart.push({
+      id: product.id,
+      name: product.name,
+      brand: product.brand,
+      price: product.price,
+      image: product.image,
+      quantity: 1
+    });
+    showToast(`${product.name} added to cart! 🛒`);
+  }
+  
+  // Save to localStorage
+  localStorage.setItem('cart', JSON.stringify(cart));
+  
+  // Update cart badge
+  updateCartBadge();
+}
+
+// ===== UPDATE CART BADGE =====
+function updateCartBadge() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  
+  document.querySelectorAll('.cart-badge').forEach(badge => {
+    badge.textContent = totalItems;
+    badge.style.display = totalItems > 0 ? 'flex' : 'none';
+  });
+}
+
+// ===== TOAST NOTIFICATION =====
+function showToast(message) {
+  // Remove existing toast
+  const existingToast = document.querySelector('.toast-notification');
+  if (existingToast) {
+    existingToast.remove();
+  }
+  
+  const toast = document.createElement('div');
+  toast.className = 'toast-notification';
+  toast.innerHTML = `
+    <span>${message}</span>
+    <button onclick="this.parentElement.remove()">✕</button>
+  `;
+  document.body.appendChild(toast);
+  
+  // Auto remove after 3 seconds
+  setTimeout(() => {
+    if (toast) {
+      toast.classList.add('fade-out');
+      setTimeout(() => toast.remove(), 300);
+    }
+  }, 3000);
+}
 
 // ==========================================
 // 11. INITIAL LOAD
@@ -855,15 +958,11 @@ bottomItems.forEach(item => {
   });
 });
 
-// ===== UPDATE CART BADGE =====
-function updateCartBadge(count) {
-  const badge = document.querySelector('.cart-badge');
-  if (badge) {
-    badge.textContent = count;
-    if (count === 0) {
-      badge.style.display = 'none';
-    } else {
-      badge.style.display = 'flex';
-    }
-  }
-}
+// ===== UPDATE CART BADGE (REMOVED - Already added above) =====
+// Cart badge is now updated by the function above
+// This is just to initialize on page load
+
+// ===== INITIALIZE CART BADGE ON LOAD =====
+document.addEventListener('DOMContentLoaded', function() {
+  updateCartBadge();
+});
