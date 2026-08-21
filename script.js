@@ -65,7 +65,7 @@ const allProducts = [
 
 const brands = {
 
-  mobiles:[
+  sealpack:[
     "iPhone",
     "OnePlus",
     "Samsung",
@@ -74,11 +74,26 @@ const brands = {
     "OPPO"
   ],
 
+  sealcut:[
+    "iPhone",
+    "Samsung",
+    "OnePlus"
+  ],
+
   second:[
     "iPhone",
     "Samsung",
     "OnePlus",
     "Vivo"
+  ],
+
+  mobiles:[
+    "iPhone",
+    "OnePlus",
+    "Samsung",
+    "Google Pixel",
+    "Vivo",
+    "OPPO"
   ],
 
   fridge:[
@@ -155,6 +170,8 @@ function loadBrands(category){
 
   selectedBrand = null;
 
+  if(!brands[category]) return;
+
   brands[category].forEach(brand=>{
 
     const chip =
@@ -193,40 +210,67 @@ function loadBrands(category){
 // 7. DISPLAY PRODUCTS
 // ==========================================
 
-function displayProducts() {
-  if (!productGrid) return;
+function displayProducts(){
+
+  if(!productGrid) return;
+
   productGrid.innerHTML = "";
 
   let products;
 
-  // ===== YOUR EXISTING FILTER LOGIC =====
-  if (currentCategory === "mobiles") {
+  // ===== SEAL PACK =====
+  if(currentCategory === "sealpack"){
     products = allProducts.filter(product => {
-      return product.category === "mobiles" && product.condition === "Seal Pack";
+      return (
+        product.category === "mobiles" &&
+        product.condition === "Seal Pack"
+      );
     });
-  } else if (currentCategory === "second") {
+  }
+
+  // ===== SEAL CUT =====
+  else if(currentCategory === "sealcut"){
     products = allProducts.filter(product => {
-      return product.category === "mobiles" && product.condition === "2nd Hand";
+      return (
+        product.category === "mobiles" &&
+        product.condition === "Seal Cut"
+      );
     });
-  } else if (currentCategory === "sealcut") {
+  }
+
+  // ===== 2ND HAND =====
+  else if(currentCategory === "second"){
     products = allProducts.filter(product => {
-      return product.category === "mobiles" && product.condition === "Seal Cut";
+      return (
+        product.category === "mobiles" &&
+        product.condition === "2nd Hand"
+      );
     });
-  } else {
+  }
+
+  // ===== ALL MOBILES =====
+  else if(currentCategory === "mobiles"){
+    products = allProducts.filter(product => {
+      return product.category === "mobiles";
+    });
+  }
+
+  // ===== OTHER CATEGORIES =====
+  else{
     products = allProducts.filter(product => {
       return product.category === currentCategory;
     });
   }
 
-  // Brand filter
-  if (selectedBrand) {
+  // ===== BRAND FILTER =====
+  if(selectedBrand){
     products = products.filter(product => {
       return product.brand === selectedBrand;
     });
   }
 
   // ===== NO PRODUCTS =====
-  if (products.length === 0) {
+  if(products.length === 0){
     productGrid.innerHTML = `
       <div class="no-products">
         <h3>No products found</h3>
@@ -237,7 +281,8 @@ function displayProducts() {
   }
 
   // ===== CREATE PRODUCT CARDS =====
-  products.forEach(product => {
+  products.forEach(product=>{
+
     const card = document.createElement("div");
     card.className = "deal-card";
 
@@ -250,7 +295,6 @@ function displayProducts() {
       <p class="price">₹${product.price.toLocaleString("en-IN")}</p>
       <p class="old-price">₹${product.oldPrice.toLocaleString("en-IN")}</p>
       
-      <!-- ===== TWO BUTTONS: View Details + Add to Cart ===== -->
       <div class="deal-actions">
         <button type="button" class="view-details-btn" onclick="viewProduct('${product.id}')">
           View Details
@@ -262,10 +306,11 @@ function displayProducts() {
     `;
 
     productGrid.appendChild(card);
+
   });
+
 }
 
-        
 
 // ==========================================
 // 8. CATEGORY BUTTONS
@@ -355,32 +400,6 @@ function viewProduct(id){
 
 }
 
-// ==========================================
-// 10. VIEW PRODUCT
-// ==========================================
-
-function viewProduct(id){
-
-  const product =
-    allProducts.find(
-      item => item.id === id
-    );
-
-
-  if(!product) return;
-
-
-  localStorage.setItem(
-    "selectedProduct",
-    JSON.stringify(product)
-  );
-
-
-  window.location.href =
-    "product.html";
-
-}
-
 
 // ==========================================
 // 10.5. CART FUNCTIONALITY
@@ -395,10 +414,8 @@ function addToCart(productId) {
     return;
   }
   
-  // Get existing cart
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   
-  // Check if product already in cart
   const existingItem = cart.find(item => item.id === productId);
   
   if (existingItem) {
@@ -416,10 +433,7 @@ function addToCart(productId) {
     showToast(`${product.name} added to cart! 🛒`);
   }
   
-  // Save to localStorage
   localStorage.setItem('cart', JSON.stringify(cart));
-  
-  // Update cart badge
   updateCartBadge();
 }
 
@@ -436,7 +450,6 @@ function updateCartBadge() {
 
 // ===== TOAST NOTIFICATION =====
 function showToast(message) {
-  // Remove existing toast
   const existingToast = document.querySelector('.toast-notification');
   if (existingToast) {
     existingToast.remove();
@@ -450,7 +463,6 @@ function showToast(message) {
   `;
   document.body.appendChild(toast);
   
-  // Auto remove after 3 seconds
   setTimeout(() => {
     if (toast) {
       toast.classList.add('fade-out');
@@ -458,6 +470,7 @@ function showToast(message) {
     }
   }, 3000);
 }
+
 
 // ==========================================
 // 11. INITIAL LOAD
@@ -538,6 +551,12 @@ const categoryNames = {
 
   mobiles: "Mobiles",
 
+  sealpack: "Seal Pack Mobiles",
+
+  sealcut: "Seal Cut Mobiles",
+
+  second: "2nd Hand Mobiles",
+
   fridge: "Refrigerators",
 
   washing: "Washing Machines",
@@ -578,11 +597,6 @@ function createSearchSuggestions(){
   }
 
 
-  // ==========================================
-  // FIND BRAND + CATEGORY
-  // FROM ACTUAL PRODUCTS ONLY
-  // ==========================================
-
   const combinations = new Map();
 
 
@@ -606,9 +620,6 @@ function createSearchSuggestions(){
     const categoryLower =
       category.toLowerCase();
 
-
-    // Match typed letters against
-    // actual brand or category
 
     if(
       brandLower.includes(text) ||
@@ -638,19 +649,11 @@ function createSearchSuggestions(){
   });
 
 
-  // ==========================================
-  // CONVERT TO ARRAY
-  // ==========================================
-
   const suggestions =
     Array.from(
       combinations.values()
     );
 
-
-  // ==========================================
-  // SORT
-  // ==========================================
 
   suggestions.sort((a,b) => {
 
@@ -683,17 +686,9 @@ function createSearchSuggestions(){
   });
 
 
-  // ==========================================
-  // MAXIMUM 10
-  // ==========================================
-
   const finalResults =
     suggestions.slice(0,10);
 
-
-  // ==========================================
-  // NO RESULTS
-  // ==========================================
 
   if(finalResults.length === 0){
 
@@ -713,10 +708,6 @@ function createSearchSuggestions(){
 
   }
 
-
-  // ==========================================
-  // DISPLAY SUGGESTIONS
-  // ==========================================
 
   finalResults.forEach(item => {
 
@@ -770,26 +761,18 @@ function createSearchSuggestions(){
     `;
 
 
-    // ========================================
-    // CLICK SUGGESTION
-    // ========================================
+    row.addEventListener(
+      "click",
+      () => {
 
-    // ========================================
-// CLICK SUGGESTION
-// ========================================
+        window.location.href =
+          "search.html?brand=" +
+          encodeURIComponent(item.brand) +
+          "&category=" +
+          encodeURIComponent(item.category);
 
-row.addEventListener(
-  "click",
-  () => {
-
-    window.location.href =
-      "search.html?brand=" +
-      encodeURIComponent(item.brand) +
-      "&category=" +
-      encodeURIComponent(item.category);
-
-  }
-);
+      }
+    );
 
 
     searchSuggestions.appendChild(row);
@@ -944,11 +927,11 @@ document.addEventListener(
   }
 );
 
-// ===== SCRIPT.JS - END LO PASTE CHEY =====
 
-// ... your existing JavaScript ...
+// ==========================================
+// BOTTOM BAR ACTIVE STATE
+// ==========================================
 
-// ===== BOTTOM BAR ACTIVE STATE =====
 const bottomItems = document.querySelectorAll('.bottom-item');
 
 bottomItems.forEach(item => {
@@ -958,11 +941,11 @@ bottomItems.forEach(item => {
   });
 });
 
-// ===== UPDATE CART BADGE (REMOVED - Already added above) =====
-// Cart badge is now updated by the function above
-// This is just to initialize on page load
 
-// ===== INITIALIZE CART BADGE ON LOAD =====
+// ==========================================
+// INITIALIZE CART BADGE ON LOAD
+// ==========================================
+
 document.addEventListener('DOMContentLoaded', function() {
   updateCartBadge();
 });
