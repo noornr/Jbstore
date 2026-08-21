@@ -2367,100 +2367,101 @@ background:#D4AF37;
    MOBILE - PREMIUM PROFESSIONAL LAYOUT
    max-width: 768px
    ========================================== */
-  /* ===== CATEGORY SECTION ===== */
-  .categories {
-    padding: 30px 8px;
-  }
   
+  /* ==========================================
+   MOBILE - PREMIUM PROFESSIONAL CARDS
+   PERFECT FIT - NO EXTRA GAPS
+   ========================================== */
+
+@media (max-width: 768px) {
+
+  .categories {
+    padding: 30px 6px;
+  }
+
   /* ===== SECTION HEADING ===== */
   .section-head {
-    margin-bottom: 24px;
-    padding-bottom: 14px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
   }
-  
+
   .section-head h2 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.3px;
   }
-  
+
   .section-head h2::before {
     width: 3px;
-    height: 20px;
-    margin-right: 10px;
-    box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+    height: 18px;
+    margin-right: 8px;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
   }
-  
+
   .section-head h2::after {
-    font-size: 10px;
-    margin-left: 8px;
+    font-size: 9px;
+    margin-left: 6px;
     opacity: 0.4;
   }
-  
+
   .view-all {
-    font-size: 11px;
-    padding: 6px 14px;
-    border-radius: 20px;
+    font-size: 10px;
+    padding: 5px 12px;
+    border-radius: 18px;
     border-width: 1px;
     letter-spacing: 0.3px;
   }
-  
-  .view-all:hover {
-    transform: translateX(2px);
-  }
-  
-  /* ===== CATEGORY GRID - 4+3 LAYOUT ===== */
+
+  /* ===== CATEGORY GRID - TIGHT FIT ===== */
   .category-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 5px;
     width: 100%;
     margin-top: 4px;
-    padding: 0 2px;
+    padding: 0;
     justify-content: center;
   }
-  
+
   /* ===== FIRST 4 ITEMS - 1/4th WIDTH ===== */
-   .category-grid .premium-cat-card:nth-child(1),
+  .category-grid .premium-cat-card:nth-child(1),
   .category-grid .premium-cat-card:nth-child(2),
   .category-grid .premium-cat-card:nth-child(3),
   .category-grid .premium-cat-card:nth-child(4) {
-    flex: 0 0 calc(25% - 6px);  /* 10px nunchi 6px ki */
-    max-width: calc(25% - 6px);
-    min-width: 68px;
+    flex: 0 0 calc(25% - 5px);
+    max-width: calc(25% - 5px);
   }
-  
+
   /* ===== NEXT 3 ITEMS - 1/3rd WIDTH ===== */
   .category-grid .premium-cat-card:nth-child(5),
   .category-grid .premium-cat-card:nth-child(6),
   .category-grid .premium-cat-card:nth-child(7) {
-    flex: 0 0 calc(33.333% - 6px);  /* 10px nunchi 6px ki */
-    max-width: calc(33.333% - 6px);
-    min-width: 78px;
+    flex: 0 0 calc(33.333% - 5px);
+    max-width: calc(33.333% - 5px);
   }
-  
+
   /* ==========================================
-     PREMIUM CATEGORY CARD - MOBILE
+     PREMIUM CATEGORY CARD - PERFECT FIT
      ========================================== */
-  
+
   .premium-cat-card {
     position: relative;
     background: linear-gradient(145deg, #1A1A1A, #111111);
     border-radius: 12px;
-    padding: 6px 3px 5px;
+    padding: 12px 4px 10px;
     text-align: center;
-    transition: all 0.3s ease;
     cursor: pointer;
     overflow: hidden;
-    min-height: 75px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border: none;
+    min-height: auto;
+    aspect-ratio: 1 / 1.1;
   }
-  
-  /* ===== PREMIUM GOLD RING - MOBILE ===== */
+
+  /* ===== GOLD RING ===== */
   .premium-cat-card::before {
     content: '';
     position: absolute;
@@ -2484,13 +2485,12 @@ background:#D4AF37;
     pointer-events: none;
     animation: goldRingPulseMobile 4s ease-in-out infinite;
     box-shadow: 
-      0 0 12px rgba(212, 175, 55, 0.2),
-      0 0 24px rgba(212, 175, 55, 0.1),
-      inset 0 0 12px rgba(212, 175, 55, 0.06);
+      0 0 8px rgba(212, 175, 55, 0.12),
+      0 0 16px rgba(212, 175, 55, 0.06),
+      inset 0 0 8px rgba(212, 175, 55, 0.04);
     z-index: 1;
   }
-  
-  /* ===== INNER GLOW OVERLAY - MOBILE ===== */
+
   .premium-cat-card::after {
     content: '';
     position: absolute;
@@ -2500,120 +2500,112 @@ background:#D4AF37;
     z-index: 0;
     pointer-events: none;
   }
-  
-  /* ===== ALL CONTENT ABOVE - MOBILE ===== */
+
+  /* ===== CONTENT ABOVE ===== */
   .premium-cat-card img,
   .premium-cat-card p,
   .premium-cat-card .cat-badge {
     position: relative;
     z-index: 2;
   }
-  
-  /* ===== GOLD RING ANIMATION - MOBILE ===== */
-  @keyframes goldRingPulseMobile {
-    0% {
-      background-position: 0% 50%;
-      box-shadow: 0 0 12px rgba(212, 175, 55, 0.2), 0 0 24px rgba(212, 175, 55, 0.1);
-    }
-    50% {
-      background-position: 100% 50%;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.35), 0 0 40px rgba(212, 175, 55, 0.15);
-    }
-    100% {
-      background-position: 0% 50%;
-      box-shadow: 0 0 12px rgba(212, 175, 55, 0.2), 0 0 24px rgba(212, 175, 55, 0.1);
-    }
-  }
-  
-  /* ===== IMAGE - MOBILE ===== */
+
+  /* ===== IMAGE - PERFECT SIZE ===== */
   .premium-cat-card img {
-  width: 70px;     /* 55px nunchi 63px ki (15% penchindi) */
-  height: 70px;    /* 55px nunchi 63px ki (15% penchindi) */
-  object-fit: contain;
-  margin-bottom: 2px;  /* 4px nunchi 3px ki thaggindi */
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    margin-bottom: 4px;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
   }
-  
-  /* ===== NAME - MOBILE ===== */
+
+  /* ===== TEXT ===== */
   .premium-cat-card p {
     color: #E8E8E8;
-    font-size: 9.5px;
+    font-size: 9px;
     font-weight: 600;
     margin: 0;
     letter-spacing: 0.2px;
     line-height: 1.2;
-    transition: all 0.3s ease;
   }
-  
-  /* ===== BADGE - MOBILE (Always Visible) ===== */
+
+  /* ===== BADGE - ALWAYS VISIBLE ===== */
   .cat-badge {
     position: absolute;
     top: 4px;
     right: 4px;
     background: linear-gradient(135deg, #D4AF37, #F3CF55);
     color: #0A0A0A;
-    font-size: 6.5px;
+    font-size: 5.5px;
     font-weight: 700;
-    padding: 1px 6px;
-    border-radius: 8px;
+    padding: 1px 5px;
+    border-radius: 7px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
     opacity: 1;
-    transform: none;
-    transition: all 0.3s ease;
     z-index: 3;
-    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
   }
-  
-  /* ===== DISABLE HOVER - MOBILE ===== */
+
+  /* ===== ANIMATION ===== */
+  @keyframes goldRingPulseMobile {
+    0% {
+      background-position: 0% 50%;
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.12), 0 0 16px rgba(212, 175, 55, 0.06);
+    }
+    50% {
+      background-position: 100% 50%;
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.25), 0 0 28px rgba(212, 175, 55, 0.1);
+    }
+    100% {
+      background-position: 0% 50%;
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.12), 0 0 16px rgba(212, 175, 55, 0.06);
+    }
+  }
+
+  /* ===== DISABLE HOVER ===== */
   .premium-cat-card:hover {
     transform: none !important;
     scale: none !important;
   }
-  
+
   .premium-cat-card:hover img {
     transform: none !important;
   }
-  
+
   .premium-cat-card:hover p {
     color: #E8E8E8 !important;
     text-shadow: none !important;
   }
-  
+
   .premium-cat-card:hover::before {
     animation: goldRingPulseMobile 4s ease-in-out infinite !important;
   }
-  
-  .premium-cat-card:hover .cat-badge {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-  
-  /* ===== TAP / ACTIVE STATE - MOBILE ===== */
+
+  /* ===== TAP EFFECT ===== */
   .premium-cat-card:active {
     transform: scale(0.95) !important;
   }
-  
+
   .premium-cat-card:active::before {
     box-shadow: 
-      0 0 20px rgba(212, 175, 55, 0.4),
-      0 0 40px rgba(212, 175, 55, 0.2);
+      0 0 16px rgba(212, 175, 55, 0.35),
+      0 0 32px rgba(212, 175, 55, 0.15);
   }
-  
-  /* ===== CORNER DECORATION - HIDE ON MOBILE ===== */
+
+  /* ===== HIDE DECORATIONS ===== */
   .premium-cat-card .corner-deco {
     display: none;
   }
-  
-  /* ===== SUBTITLE - HIDE ON MOBILE ===== */
+
   .premium-cat-card .card-sub {
     display: none;
   }
-  
-  /* ===== CARD SHINE - HIDE ON MOBILE ===== */
+
   .premium-cat-card .card-shine {
     display: none;
   }
+ 
+  
 
     
 
