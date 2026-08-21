@@ -193,169 +193,79 @@ function loadBrands(category){
 // 7. DISPLAY PRODUCTS
 // ==========================================
 
-function displayProducts(){
-
-  if(!productGrid) return;
-
+function displayProducts() {
+  if (!productGrid) return;
   productGrid.innerHTML = "";
-
-
-  // Get products for selected category
 
   let products;
 
-
-  // MOBILES = SEAL PACK ONLY
-
-  if(currentCategory === "mobiles"){
-
-    products =
-      allProducts.filter(product => {
-
-        return (
-          product.category === "mobiles" &&
-          product.condition === "Seal Pack"
-        );
-
-      });
-
+  // ===== YOUR EXISTING FILTER LOGIC =====
+  if (currentCategory === "mobiles") {
+    products = allProducts.filter(product => {
+      return product.category === "mobiles" && product.condition === "Seal Pack";
+    });
+  } else if (currentCategory === "second") {
+    products = allProducts.filter(product => {
+      return product.category === "mobiles" && product.condition === "2nd Hand";
+    });
+  } else if (currentCategory === "sealcut") {
+    products = allProducts.filter(product => {
+      return product.category === "mobiles" && product.condition === "Seal Cut";
+    });
+  } else {
+    products = allProducts.filter(product => {
+      return product.category === currentCategory;
+    });
   }
 
-
-  // 2ND HAND = SECOND HAND ONLY
-
-  else if(currentCategory === "second"){
-
-    products =
-      allProducts.filter(product => {
-
-        return (
-          product.category === "mobiles" &&
-          product.condition === "2nd Hand"
-        );
-
-      });
-
+  // Brand filter
+  if (selectedBrand) {
+    products = products.filter(product => {
+      return product.brand === selectedBrand;
+    });
   }
 
-
-  // OTHER CATEGORIES
-
-  else{
-
-    products =
-      allProducts.filter(product => {
-
-        return product.category === currentCategory;
-
-      });
-
-  }
-
-
-  // ==========================================
-  // BRAND FILTER
-  // ==========================================
-
-  if(selectedBrand){
-
-    products =
-      products.filter(product => {
-
-        return product.brand === selectedBrand;
-
-      });
-
-  }
-
-
-  // ==========================================
-  // NO PRODUCTS
-  // ==========================================
-
-  if(products.length === 0){
-
+  // ===== NO PRODUCTS =====
+  if (products.length === 0) {
     productGrid.innerHTML = `
-
       <div class="no-products">
-
         <h3>No products found</h3>
-
         <p>Try another brand.</p>
-
       </div>
-
     `;
-
     return;
-
   }
 
-
-  // ==========================================
-  // CREATE PRODUCT CARDS
-  // ==========================================
-
-  products.forEach(product=>{
-
-    const card =
-      document.createElement("div");
-
+  // ===== CREATE PRODUCT CARDS =====
+  products.forEach(product => {
+    const card = document.createElement("div");
     card.className = "deal-card";
 
-
     card.innerHTML = `
-
-      <span class="offer">
-        ${product.discount}
-      </span>
-
-      <img
-        src="${product.image}"
-        alt="${product.name}"
-      >
-
-      <h3>
-        ${product.name}
-      </h3>
-
-      <p class="brand">
-        ${product.brand}
-        •
-        ${product.condition || "New"}
-      </p>
-
-      <div class="rating">
-        ⭐ ${product.rating}
-        <span>
-          (${product.reviews})
-        </span>
+      <span class="offer">${product.discount}</span>
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p class="brand">${product.brand} • ${product.condition || "New"}</p>
+      <div class="rating">⭐ ${product.rating} <span>(${product.reviews})</span></div>
+      <p class="price">₹${product.price.toLocaleString("en-IN")}</p>
+      <p class="old-price">₹${product.oldPrice.toLocaleString("en-IN")}</p>
+      
+      <!-- ===== TWO BUTTONS: View Details + Add to Cart ===== -->
+      <div class="deal-actions">
+        <button type="button" class="view-details-btn" onclick="viewProduct('${product.id}')">
+          View Details
+        </button>
+        <button type="button" class="add-to-cart-btn" onclick="addToCart('${product.id}')">
+          🛒 Add to Cart
+        </button>
       </div>
-
-      <p class="price">
-        ₹${product.price.toLocaleString("en-IN")}
-      </p>
-
-      <p class="old-price">
-        ₹${product.oldPrice.toLocaleString("en-IN")}
-      </p>
-
-      <button
-        type="button"
-        onclick="viewProduct('${product.id}')"
-      >
-        View Details
-      </button>
-
     `;
 
-
     productGrid.appendChild(card);
-
   });
-
 }
 
+        
 
 // ==========================================
 // 8. CATEGORY BUTTONS
