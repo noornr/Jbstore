@@ -995,8 +995,8 @@ background:#0A0A0A;
 
 .slides{
 position:relative;
-height:380px;
-border-radius:22px;
+height:80px;
+border-radius:8px;
 overflow:hidden;
 }
 
