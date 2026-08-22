@@ -269,6 +269,10 @@ function viewProduct(id) {
   window.location.href = `product.html?id=${product.id}`;
 }
 
+function openProduct(id) {
+  viewProduct(id);
+}
+
 // ==========================================
 // 10.5. CART FUNCTIONALITY
 // ==========================================
