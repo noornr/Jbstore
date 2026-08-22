@@ -113,7 +113,18 @@ function loadBrands(category) {
 }
 
 // ==========================================
-// 7. DISPLAY PRODUCTS
+// 7. GET FIRST VARIANT
+// ==========================================
+
+function getFirstVariant(product) {
+  if (product.variants && product.variants.length > 0) {
+    return product.variants[0].label;
+  }
+  return null;
+}
+
+// ==========================================
+// 8. DISPLAY PRODUCTS - WITH VARIANTS
 // ==========================================
 
 function displayProducts() {
@@ -185,16 +196,26 @@ function displayProducts() {
     return;
   }
 
-  // ===== CREATE PRODUCT CARDS - NO ADD TO CART BUTTON =====
+  // ===== CREATE PRODUCT CARDS - WITH VARIANT =====
   products.forEach(product => {
     const card = document.createElement("div");
     card.className = "deal-card";
+
+    // Get first variant
+    const firstVariant = getFirstVariant(product);
+    
+    // Show variant on card
+    let variantHTML = '';
+    if (firstVariant) {
+      variantHTML = `<div style="display:inline-block;background:rgba(212,175,55,0.12);color:#D4AF37;font-size:11px;font-weight:600;padding:2px 10px;border-radius:12px;margin:4px 0;border:1px solid rgba(212,175,55,0.15);">📱 ${firstVariant}</div>`;
+    }
 
     card.innerHTML = `
       <span class="offer">${product.discount || ''}</span>
       <img src="${product.image || product.images?.[0] || ''}" alt="${product.name}">
       <h3>${product.name}</h3>
       <p class="brand">${product.brand} • ${product.condition || "New"}</p>
+      ${variantHTML}
       <div class="rating">⭐ ${product.rating || '4.5'} <span>(${product.reviews || 0})</span></div>
       <p class="price">₹${(product.price || 0).toLocaleString("en-IN")}</p>
       <p class="old-price">₹${(product.oldPrice || 0).toLocaleString("en-IN")}</p>
@@ -211,7 +232,7 @@ function displayProducts() {
 }
 
 // ==========================================
-// 8. CATEGORY BUTTONS
+// 9. CATEGORY BUTTONS
 // ==========================================
 
 document.querySelectorAll(".cat").forEach(button => {
@@ -229,7 +250,7 @@ document.querySelectorAll(".cat").forEach(button => {
 });
 
 // ==========================================
-// 9. CLEAR ALL
+// 10. CLEAR ALL
 // ==========================================
 
 if (clearFilter) {
@@ -243,7 +264,7 @@ if (clearFilter) {
 }
 
 // ==========================================
-// 10. VIEW PRODUCT - FIXED
+// 11. VIEW PRODUCT
 // ==========================================
 
 function viewProduct(id) {
@@ -259,10 +280,8 @@ function viewProduct(id) {
   
   console.log('Product found:', product.name);
   
-  // Store product ID in localStorage
   localStorage.setItem('selectedProduct', JSON.stringify({ id: product.id }));
   
-  // Navigate to product page with ID in URL
   window.location.href = `product.html?id=${product.id}`;
 }
 
@@ -271,7 +290,7 @@ function openProduct(id) {
 }
 
 // ==========================================
-// 10.5. CART FUNCTIONALITY
+// 12. CART FUNCTIONALITY
 // ==========================================
 
 // ===== ADD TO CART - WITH VARIANT SUPPORT =====
@@ -285,7 +304,6 @@ function addToCart(productId, variantLabel) {
   
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   
-  // If variant is provided, find the variant price
   let price = product.price;
   let variantName = '';
   
@@ -297,7 +315,6 @@ function addToCart(productId, variantLabel) {
     }
   }
   
-  // Create unique ID with variant
   const uniqueId = variantName ? `${product.id}_${variantName}` : product.id;
   
   const existingItem = cart.find(item => item.id === uniqueId);
@@ -306,7 +323,7 @@ function addToCart(productId, variantLabel) {
   
   if (existingItem) {
     existingItem.quantity += 1;
-    showToast(`${displayName} quantity updated! 🛒`);
+    showToast(`📦 ${displayName} quantity updated!`);
   } else {
     cart.push({
       id: uniqueId,
@@ -317,7 +334,7 @@ function addToCart(productId, variantLabel) {
       quantity: 1,
       variant: variantName || 'Default'
     });
-    showToast(`${displayName} added to cart! 🛒`);
+    showToast(`✅ ${displayName} added to cart!`);
   }
   
   localStorage.setItem('cart', JSON.stringify(cart));
@@ -359,14 +376,14 @@ function showToast(message) {
 }
 
 // ==========================================
-// 11. INITIAL LOAD
+// 13. INITIAL LOAD
 // ==========================================
 
 loadBrands("mobiles");
 displayProducts();
 
 // ==========================================
-// 12. SHOP BY CATEGORY CARDS
+// 14. SHOP BY CATEGORY CARDS
 // ==========================================
 
 document.querySelectorAll(".category-card").forEach(card => {
@@ -389,16 +406,12 @@ document.querySelectorAll(".category-card").forEach(card => {
 });
 
 // ==========================================
-// 13. SMART BRAND + CATEGORY SEARCH
+// 15. SMART BRAND + CATEGORY SEARCH
 // ==========================================
 
 const searchInput = document.getElementById("searchInput");
 const searchButton = document.getElementById("searchButton");
 const searchSuggestions = document.getElementById("searchSuggestions");
-
-// ==========================================
-// CATEGORY NAMES
-// ==========================================
 
 const categoryNames = {
   mobiles: "Mobiles",
@@ -410,10 +423,6 @@ const categoryNames = {
   ac: "AC",
   tv: "TV"
 };
-
-// ==========================================
-// CREATE SEARCH SUGGESTIONS
-// ==========================================
 
 function createSearchSuggestions() {
   if (!searchInput || !searchSuggestions) {
@@ -441,14 +450,16 @@ function createSearchSuggestions() {
     const brandLower = brand.toLowerCase();
     const categoryLower = category.toLowerCase();
 
-    if (brandLower.includes(text) || categoryLower.includes(text)) {
+    if (brandLower.includes(text) || categoryLower.includes(text) || product.name.toLowerCase().includes(text)) {
       const key = `${brandLower}|${categoryLower}`;
 
       if (!combinations.has(key)) {
         combinations.set(key, {
           brand: brand,
           category: category,
-          image: product.image || product.images?.[0] || ''
+          image: product.image || product.images?.[0] || '',
+          productName: product.name,
+          productId: product.id
         });
       }
     }
@@ -494,7 +505,7 @@ function createSearchSuggestions() {
           ${displayCategory}
         </div>
         <div class="suggestion-category">
-          View ${item.brand} ${displayCategory}
+          ${item.productName || item.brand + ' ' + displayCategory}
         </div>
       </div>
       <span class="suggestion-arrow">
@@ -516,10 +527,6 @@ function createSearchSuggestions() {
   searchSuggestions.classList.add("show");
 }
 
-// ==========================================
-// HIGHLIGHT SEARCH TEXT
-// ==========================================
-
 function highlightSearch(text, search) {
   const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   return text.replace(
@@ -528,26 +535,14 @@ function highlightSearch(text, search) {
   );
 }
 
-// ==========================================
-// OPEN SEARCH RESULTS PAGE
-// ==========================================
-
 function openSearchResults(value) {
   if (!value) return;
   window.location.href = "search.html?q=" + encodeURIComponent(value);
 }
 
-// ==========================================
-// LIVE SEARCH
-// ==========================================
-
 if (searchInput) {
   searchInput.addEventListener("input", createSearchSuggestions);
 }
-
-// ==========================================
-// SEARCH BUTTON
-// ==========================================
 
 if (searchButton) {
   searchButton.addEventListener("click", () => {
@@ -557,10 +552,6 @@ if (searchButton) {
     }
   });
 }
-
-// ==========================================
-// ENTER KEY
-// ==========================================
 
 if (searchInput) {
   searchInput.addEventListener("keydown", event => {
@@ -572,10 +563,6 @@ if (searchInput) {
     }
   });
 }
-
-// ==========================================
-// CLOSE SUGGESTIONS
-// ==========================================
 
 document.addEventListener("click", event => {
   if (
@@ -589,7 +576,7 @@ document.addEventListener("click", event => {
 });
 
 // ==========================================
-// BOTTOM BAR ACTIVE STATE
+// 16. BOTTOM BAR ACTIVE STATE
 // ==========================================
 
 const bottomItems = document.querySelectorAll('.bottom-item');
@@ -602,7 +589,7 @@ bottomItems.forEach(item => {
 });
 
 // ==========================================
-// INITIALIZE CART BADGE ON LOAD
+// 17. INITIALIZE CART BADGE ON LOAD
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', function() {
