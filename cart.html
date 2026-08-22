@@ -103,7 +103,7 @@
 
 <script>
 // ==========================================
-// CART PAGE - COMPLETE (NO script.js)
+// CART PAGE - WITH VARIANT DISPLAY
 // ==========================================
 
 // ===== ALL PRODUCTS =====
@@ -150,6 +150,11 @@ function loadCart() {
     subtotal += itemTotal;
     totalItems += item.quantity;
     
+    // Show variant in cart item
+    const displayName = item.variant && item.variant !== 'Default' 
+      ? `${item.name} (${item.variant})` 
+      : item.name;
+    
     const cartItem = document.createElement('div');
     cartItem.className = 'cart-item';
     cartItem.innerHTML = `
@@ -157,8 +162,8 @@ function loadCart() {
         <img src="${item.image || 'images/placeholder.png'}" alt="${item.name}">
       </div>
       <div class="cart-item-info">
-        <h3>${item.name}</h3>
-        <p class="cart-item-brand">${item.brand}</p>
+        <h3>${displayName}</h3>
+        <p class="cart-item-brand">${item.brand} ${item.variant && item.variant !== 'Default' ? '• ' + item.variant : ''}</p>
         <p class="cart-item-price">₹${item.price.toLocaleString("en-IN")}</p>
       </div>
       <div class="cart-item-qty">
@@ -201,11 +206,13 @@ function updateQuantity(index, change) {
 function removeItem(index) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   const itemName = cart[index]?.name || 'Item';
+  const variant = cart[index]?.variant || '';
+  const displayName = variant && variant !== 'Default' ? `${itemName} (${variant})` : itemName;
   cart.splice(index, 1);
   localStorage.setItem('cart', JSON.stringify(cart));
   loadCart();
   updateCartBadge();
-  showToast(`${itemName} removed from cart`);
+  showToast(`${displayName} removed from cart`);
 }
 
 // ===== CLEAR CART =====
@@ -231,7 +238,10 @@ function checkout() {
   
   cart.forEach(item => {
     const itemTotal = item.price * item.quantity;
-    message += `📱 ${item.name}%0A   × ${item.quantity} = ₹${itemTotal.toLocaleString("en-IN")}%0A`;
+    const displayName = item.variant && item.variant !== 'Default' 
+      ? `${item.name} (${item.variant})` 
+      : item.name;
+    message += `📱 ${displayName}%0A   × ${item.quantity} = ₹${itemTotal.toLocaleString("en-IN")}%0A`;
     total += itemTotal;
   });
   
