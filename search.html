@@ -19,7 +19,6 @@
   rel="stylesheet"
 >
 
-
 <style>
 /* SEARCH RESULTS - NO LEFT FILTER SIDEBAR */
 .search-layout{
@@ -215,13 +214,22 @@
 <script src="tv.js"></script>
 
 <script>
-/* ==========================================
-   SEARCH PAGE FILTER
-   NOTE:
-   script.js already provides allProducts,
-   searchInput, searchSuggestions, openProduct,
-   addToCart, etc. Do NOT redeclare them here.
-========================================== */
+// ==========================================
+// ALL PRODUCTS
+// ==========================================
+const allProducts = [
+  ...mobileProducts,
+  ...refrigeratorProducts,
+  ...washingProducts,
+  ...acProducts,
+  ...tvProducts
+];
+
+console.log('Total products loaded:', allProducts.length);
+
+// ==========================================
+// SEARCH PAGE LOGIC
+// ==========================================
 
 const searchPageParams = new URLSearchParams(window.location.search);
 
@@ -246,9 +254,6 @@ const searchPageTitle =
 const searchPageCount =
   document.getElementById("resultCount");
 
-const searchPageBrands =
-  document.getElementById("searchBrands");
-
 const searchPageCategoryNames = {
   mobiles: "Mobiles",
   fridge: "Refrigerators",
@@ -257,9 +262,9 @@ const searchPageCategoryNames = {
   tv: "TV"
 };
 
-/* ==========================================
-   SET SEARCH BOX + TITLE
-========================================== */
+// ==========================================
+// SET SEARCH BOX + TITLE
+// ==========================================
 
 if (searchPageBrand && searchPageCategory) {
   const categoryName =
@@ -288,13 +293,13 @@ if (searchPageBrand && searchPageCategory) {
     "All Products";
 }
 
-/* ==========================================
-   GET SEARCH RESULTS
-========================================== */
+// ==========================================
+// GET SEARCH RESULTS
+// ==========================================
 
 function getSearchPageProducts() {
 
-  /* BRAND + CATEGORY */
+  // BRAND + CATEGORY
   if (searchPageBrand && searchPageCategory) {
 
     return allProducts.filter(product => {
@@ -317,7 +322,7 @@ function getSearchPageProducts() {
     });
   }
 
-  /* NORMAL TEXT SEARCH */
+  // NORMAL TEXT SEARCH
   const text =
     searchPageTerm.toLowerCase();
 
@@ -360,9 +365,9 @@ function getSearchPageProducts() {
   });
 }
 
-/* ==========================================
-   DISPLAY PRODUCTS - ONLY VIEW DETAILS
-========================================== */
+// ==========================================
+// DISPLAY PRODUCTS - ONLY VIEW DETAILS
+// ==========================================
 
 function displaySearchPageProducts(products) {
 
@@ -467,108 +472,10 @@ function displaySearchPageProducts(products) {
   });
 }
 
-/* ==========================================
-   BRAND FILTER
-========================================== */
+// ==========================================
+// VIEW PRODUCT FUNCTION
+// ==========================================
 
-function loadSearchPageBrands() {
-
-  const products =
-    getSearchPageProducts();
-
-  const uniqueBrands =
-    [...new Set(
-      products.map(product => product.brand)
-    )];
-
-  searchPageBrands.innerHTML = "";
-
-  uniqueBrands.forEach(brand => {
-
-    const button =
-      document.createElement("button");
-
-    button.className =
-      "search-brand-btn";
-
-    button.innerText =
-      brand;
-
-    button.addEventListener("click", () => {
-
-      document
-        .querySelectorAll(".search-brand-btn")
-        .forEach(btn =>
-          btn.classList.remove("active")
-        );
-
-      button.classList.add("active");
-
-      displaySearchPageProducts(
-        products.filter(product =>
-          product.brand === brand
-        )
-      );
-
-    });
-
-    searchPageBrands.appendChild(button);
-
-  });
-}
-
-/* ==========================================
-   CLEAR FILTERS
-========================================== */
-
-const clearSearchPageFilters =
-  document.getElementById(
-    "clearSearchFilters"
-  );
-
-if (clearSearchPageFilters) {
-
-  clearSearchPageFilters.addEventListener(
-    "click",
-    () => {
-
-      searchPageBrand = "";
-      searchPageCategory = "";
-      searchPageTerm = "";
-
-      searchPageInput.value = "";
-
-      searchPageTitle.innerText =
-        "All Products";
-
-      window.history.replaceState(
-        {},
-        "",
-        "search.html"
-      );
-
-      displaySearchPageProducts(
-        allProducts
-      );
-
-      loadSearchPageBrands();
-
-    }
-  );
-
-}
-
-/* ==========================================
-   INITIAL LOAD
-========================================== */
-
-displaySearchPageProducts(
-  getSearchPageProducts()
-);
-
-loadSearchPageBrands();
-
-// ===== VIEW PRODUCT FUNCTION =====
 function viewProduct(id) {
   console.log('Viewing product with ID:', id);
   
@@ -589,7 +496,10 @@ function viewProduct(id) {
   window.location.href = `product.html?id=${product.id}`;
 }
 
-// ===== TOAST =====
+// ==========================================
+// TOAST
+// ==========================================
+
 function showToast(message) {
   const existingToast = document.querySelector('.toast-notification');
   if (existingToast) {
@@ -611,6 +521,182 @@ function showToast(message) {
     }
   }, 3000);
 }
+
+// ==========================================
+// SEARCH SUGGESTIONS
+// ==========================================
+
+const searchInput = document.getElementById('searchInput');
+const searchSuggestions = document.getElementById('searchSuggestions');
+
+function createSearchSuggestions() {
+  if (!searchInput || !searchSuggestions) {
+    return;
+  }
+
+  const text = searchInput.value.trim().toLowerCase();
+  searchSuggestions.innerHTML = "";
+
+  if (text === "") {
+    searchSuggestions.classList.remove("show");
+    return;
+  }
+
+  const combinations = new Map();
+
+  allProducts.forEach(product => {
+    const brand = String(product.brand || "").trim();
+    const category = String(product.category || "").trim();
+
+    if (!brand || !category) {
+      return;
+    }
+
+    const brandLower = brand.toLowerCase();
+    const categoryLower = category.toLowerCase();
+
+    if (brandLower.includes(text) || categoryLower.includes(text) || product.name.toLowerCase().includes(text)) {
+      const key = `${brandLower}|${categoryLower}`;
+
+      if (!combinations.has(key)) {
+        combinations.set(key, {
+          brand: brand,
+          category: category,
+          image: product.image || product.images?.[0] || '',
+          productName: product.name,
+          productId: product.id
+        });
+      }
+    }
+  });
+
+  const suggestions = Array.from(combinations.values());
+
+  suggestions.sort((a, b) => {
+    const aBrand = a.brand.toLowerCase();
+    const bBrand = b.brand.toLowerCase();
+
+    const aStarts = aBrand.startsWith(text);
+    const bStarts = bBrand.startsWith(text);
+
+    if (aStarts && !bStarts) return -1;
+    if (!aStarts && bStarts) return 1;
+    return aBrand.localeCompare(bBrand);
+  });
+
+  const finalResults = suggestions.slice(0, 10);
+
+  if (finalResults.length === 0) {
+    searchSuggestions.innerHTML = `
+      <div class="search-no-result">
+        No products found
+      </div>
+    `;
+    searchSuggestions.classList.add("show");
+    return;
+  }
+
+  finalResults.forEach(item => {
+    const row = document.createElement("div");
+    row.className = "search-suggestion";
+
+    const displayCategory = searchPageCategoryNames[item.category] || item.category;
+
+    row.innerHTML = `
+      <img src="${item.image}" alt="">
+      <div class="suggestion-info">
+        <div class="suggestion-name">
+          ${highlightSearch(item.brand, text)}
+          ${displayCategory}
+        </div>
+        <div class="suggestion-category">
+          ${item.productName || item.brand + ' ' + displayCategory}
+        </div>
+      </div>
+      <span class="suggestion-arrow">
+        ↗
+      </span>
+    `;
+
+    row.addEventListener("click", () => {
+      // Navigate to search with brand and category
+      window.location.href =
+        "search.html?brand=" +
+        encodeURIComponent(item.brand) +
+        "&category=" +
+        encodeURIComponent(item.category);
+    });
+
+    searchSuggestions.appendChild(row);
+  });
+
+  searchSuggestions.classList.add("show");
+}
+
+// ==========================================
+// HIGHLIGHT SEARCH TEXT
+// ==========================================
+
+function highlightSearch(text, search) {
+  const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return text.replace(
+    new RegExp(`(${escaped})`, "ig"),
+    "<strong>$1</strong>"
+  );
+}
+
+// ==========================================
+// SEARCH INPUT EVENTS
+// ==========================================
+
+if (searchInput) {
+  searchInput.addEventListener("input", createSearchSuggestions);
+  
+  searchInput.addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+      const value = searchInput.value.trim();
+      if (value) {
+        window.location.href = "search.html?q=" + encodeURIComponent(value);
+      }
+    }
+  });
+}
+
+// ==========================================
+// SEARCH BUTTON
+// ==========================================
+
+document.getElementById("searchButton")?.addEventListener("click", () => {
+  const value = searchInput.value.trim();
+  if (value) {
+    window.location.href = "search.html?q=" + encodeURIComponent(value);
+  }
+});
+
+// ==========================================
+// CLOSE SUGGESTIONS
+// ==========================================
+
+document.addEventListener("click", event => {
+  if (
+    searchInput &&
+    searchSuggestions &&
+    !searchInput.contains(event.target) &&
+    !searchSuggestions.contains(event.target)
+  ) {
+    searchSuggestions.classList.remove("show");
+  }
+});
+
+// ==========================================
+// INITIAL LOAD
+// ==========================================
+
+displaySearchPageProducts(
+  getSearchPageProducts()
+);
+
+console.log('Search page loaded with products:', allProducts.length);
 </script>
 
 </body>
