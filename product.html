@@ -220,7 +220,7 @@
     }
 
     .variant-options .opt {
-      padding: 10px 20px;
+      padding: 10px 18px;
       background: transparent;
       border: 1.5px solid rgba(255, 255, 255, 0.08);
       border-radius: 12px;
@@ -920,7 +920,7 @@
   </header>
 
   <!-- ===== PRODUCT PAGE ===== -->
-  <main class="product-page">
+  <main class="product-page" id="productPage">
 
     <!-- ===== LEFT: IMAGES + VARIANTS ===== -->
     <div class="product-image-section">
@@ -1016,16 +1016,8 @@
     // ==========================================
     // ALL PRODUCTS (from your data files)
     // ==========================================
-    const allProducts = [
-      ...(window.mobileProducts || []),
-      ...(window.refrigeratorProducts || []),
-      ...(window.washingProducts || []),
-      ...(window.acProducts || []),
-      ...(window.tvProducts || [])
-    ];
-
-    let currentProduct = null;
-    let selectedVariant = null;
+    // This will be populated from your data files
+    let allProducts = [];
 
     // ==========================================
     // TOAST
@@ -1049,56 +1041,109 @@
     }
 
     // ==========================================
+    // GET URL PARAMETERS
+    // ==========================================
+    function getProductIdFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('id') || params.get('product') || params.get('p');
+    }
+
+    // ==========================================
     // LOAD PRODUCT
     // ==========================================
     function loadProduct() {
-      const saved = JSON.parse(localStorage.getItem('selectedProduct'));
-      if (!saved) {
-        window.location.href = 'index.html';
+      // First try to get from URL parameter
+      const productId = getProductIdFromURL();
+      
+      // If no URL param, try localStorage
+      let productData = null;
+      
+      if (productId) {
+        // Find product by ID from allProducts
+        productData = allProducts.find(p => p.id === productId);
+        if (productData) {
+          // Store in localStorage for backup
+          localStorage.setItem('selectedProduct', JSON.stringify({ id: productData.id }));
+        }
+      }
+      
+      // If not found by URL, try localStorage
+      if (!productData) {
+        const saved = JSON.parse(localStorage.getItem('selectedProduct'));
+        if (saved) {
+          productData = allProducts.find(p => p.id === saved.id);
+        }
+      }
+      
+      // If still not found, show error
+      if (!productData) {
+        document.getElementById('productPage').innerHTML = `
+          <div style="text-align:center;padding:80px 20px;grid-column:1/-1;background:linear-gradient(145deg,#1A1A1A,#111111);border:1px solid #FFD700;border-radius:20px;">
+            <div style="font-size:60px;margin-bottom:20px;">🔍</div>
+            <h2 style="color:#D4AF37;font-size:28px;">Product Not Found</h2>
+            <p style="color:#888;margin:12px 0 24px;">The product you're looking for doesn't exist or has been removed.</p>
+            <a href="index.html" style="display:inline-block;padding:14px 40px;background:linear-gradient(135deg,#D4AF37,#F3CF55);color:#0A0A0A;border-radius:12px;text-decoration:none;font-weight:700;">Return to Store</a>
+          </div>
+        `;
         return;
       }
 
-      currentProduct = allProducts.find(p => p.id === saved.id);
-      if (!currentProduct) {
-        showToast('Product not found!');
-        return;
-      }
+      // Set the product
+      window.currentProduct = productData;
+      renderProduct(productData);
+    }
 
+    // ==========================================
+    // RENDER PRODUCT
+    // ==========================================
+    function renderProduct(product) {
       // Set data
-      document.title = currentProduct.name + ' | JB STORE';
-      document.getElementById('productImage').src = currentProduct.image || currentProduct.images?.[0] || '';
-      document.getElementById('productName').innerText = currentProduct.name || '';
-      document.getElementById('productBrand').innerText = currentProduct.brand || '';
-      document.getElementById('productRating').innerHTML = `⭐ ${currentProduct.rating || '4.5'}`;
-      document.getElementById('productReviews').innerText = `(${currentProduct.reviews || '0'} reviews)`;
+      document.title = product.name + ' | JB STORE';
+      document.getElementById('productImage').src = product.image || product.images?.[0] || '';
+      document.getElementById('productName').innerText = product.name || '';
+      document.getElementById('productBrand').innerText = product.brand || '';
+      document.getElementById('productRating').innerHTML = `⭐ ${product.rating || '4.5'}`;
+      document.getElementById('productReviews').innerText = `(${product.reviews || '0'} reviews)`;
 
       // Set initial price
-      updateProductPrice(currentProduct);
+      const price = product.price || 0;
+      const oldPrice = product.oldPrice || price * 1.3;
+      document.getElementById('productPrice').innerText = `₹${price.toLocaleString('en-IN')}`;
+      document.getElementById('productOldPrice').innerText = `₹${oldPrice.toLocaleString('en-IN')}`;
+      
+      const discount = Math.round(((oldPrice - price) / oldPrice) * 100);
+      document.getElementById('productDiscount').innerText = discount > 0 ? `${discount}% off` : '';
 
-      document.getElementById('productCondition').innerText = currentProduct.condition || 'New';
-      document.getElementById('productWarranty').innerText = currentProduct.warranty || '1 Year';
-      document.getElementById('productDescription').innerText = currentProduct.description || '';
-      document.getElementById('productOffer').innerText = currentProduct.discount || '';
+      document.getElementById('productCondition').innerText = product.condition || 'New';
+      document.getElementById('productWarranty').innerText = product.warranty || '1 Year';
+      document.getElementById('productDescription').innerText = product.description || '';
+      document.getElementById('productOffer').innerText = product.discount || '';
+
+      // Sticky price
+      document.getElementById('stickyPrice').innerHTML =
+        `₹${price.toLocaleString('en-IN')} <small>₹${oldPrice.toLocaleString('en-IN')}</small>`;
 
       // Specifications
       const specList = document.getElementById('specList');
       specList.innerHTML = '';
       const specMap = {
-        'Storage': currentProduct.storage,
-        'RAM': currentProduct.ram,
-        'Capacity': currentProduct.capacity,
-        'Type': currentProduct.type,
-        'Energy Rating': currentProduct.energyRating,
-        'Size': currentProduct.size,
-        'Resolution': currentProduct.resolution,
-        'Color': currentProduct.color,
-        'Model': currentProduct.model,
-        'Weight': currentProduct.weight,
-        'Dimensions': currentProduct.dimensions
+        'Storage': product.storage,
+        'RAM': product.ram,
+        'Capacity': product.capacity,
+        'Type': product.type,
+        'Energy Rating': product.energyRating,
+        'Size': product.size,
+        'Resolution': product.resolution,
+        'Color': product.color,
+        'Model': product.model,
+        'Weight': product.weight,
+        'Dimensions': product.dimensions
       };
 
+      let hasSpecs = false;
       for (const [key, val] of Object.entries(specMap)) {
         if (val) {
+          hasSpecs = true;
           specList.innerHTML += `
             <div class="spec-row">
               <span>${key}</span>
@@ -1107,11 +1152,17 @@
           `;
         }
       }
+      
+      if (!hasSpecs) {
+        specList.innerHTML = `
+          <div style="color:#888;text-align:center;padding:10px 0;">No specifications available</div>
+        `;
+      }
 
       // Thumbnails
       const thumbStrip = document.getElementById('thumbnailStrip');
       thumbStrip.innerHTML = '';
-      const images = currentProduct.images || [currentProduct.image];
+      const images = product.images || [product.image];
       images.forEach((img, idx) => {
         if (!img) return;
         const el = document.createElement('img');
@@ -1126,18 +1177,16 @@
       });
 
       // Load Variants
-      loadVariants();
+      loadVariants(product);
 
       // Similar products
-      loadSimilarProducts();
+      loadSimilarProducts(product);
     }
 
     // ==========================================
     // UPDATE PRODUCT PRICE
     // ==========================================
-    function updateProductPrice(product) {
-      const price = product.price || 0;
-      const oldPrice = product.oldPrice || price * 1.3;
+    function updateProductPrice(price, oldPrice) {
       document.getElementById('productPrice').innerText = `₹${price.toLocaleString('en-IN')}`;
       document.getElementById('productOldPrice').innerText = `₹${oldPrice.toLocaleString('en-IN')}`;
       
@@ -1151,32 +1200,25 @@
     // ==========================================
     // LOAD VARIANTS
     // ==========================================
-    function loadVariants() {
+    function loadVariants(product) {
       const container = document.getElementById('variantOptions');
       container.innerHTML = '';
 
       // Get variants from product or create default
-      const variants = currentProduct.variants || [
+      const variants = product.variants || [
         { 
           label: '6GB + 128GB', 
-          price: currentProduct.price,
-          oldPrice: currentProduct.oldPrice,
+          price: product.price,
+          oldPrice: product.oldPrice || product.price * 1.3,
           storage: '128GB',
           ram: '6GB'
         },
         { 
           label: '8GB + 256GB', 
-          price: currentProduct.price + 5000,
-          oldPrice: currentProduct.oldPrice + 8000,
+          price: product.price + 5000,
+          oldPrice: (product.oldPrice || product.price * 1.3) + 8000,
           storage: '256GB',
           ram: '8GB'
-        },
-        { 
-          label: '12GB + 512GB', 
-          price: currentProduct.price + 12000,
-          oldPrice: currentProduct.oldPrice + 15000,
-          storage: '512GB',
-          ram: '12GB'
         }
       ];
 
@@ -1190,6 +1232,8 @@
         el.dataset.index = index;
         el.dataset.price = variant.price;
         el.dataset.oldPrice = variant.oldPrice || variant.price * 1.3;
+        el.dataset.storage = variant.storage || '';
+        el.dataset.ram = variant.ram || '';
         
         el.addEventListener('click', function() {
           document.querySelectorAll('.variant-options .opt').forEach(o => o.classList.remove('active'));
@@ -1197,34 +1241,27 @@
           
           const price = parseInt(this.dataset.price);
           const oldPrice = parseInt(this.dataset.oldPrice);
+          const storage = this.dataset.storage;
+          const ram = this.dataset.ram;
           
           // Update displayed price
-          document.getElementById('productPrice').innerText = `₹${price.toLocaleString('en-IN')}`;
-          document.getElementById('productOldPrice').innerText = `₹${oldPrice.toLocaleString('en-IN')}`;
-          
-          const discount = Math.round(((oldPrice - price) / oldPrice) * 100);
-          document.getElementById('productDiscount').innerText = discount > 0 ? `${discount}% off` : '';
-          
-          document.getElementById('stickyPrice').innerHTML =
-            `₹${price.toLocaleString('en-IN')} <small>₹${oldPrice.toLocaleString('en-IN')}</small>`;
+          updateProductPrice(price, oldPrice);
           
           // Update RAM/Storage in specs if available
-          const variantData = variants[index];
-          if (variantData.storage || variantData.ram) {
+          if (storage || ram) {
             const specList = document.getElementById('specList');
             const rows = specList.querySelectorAll('.spec-row');
             rows.forEach(row => {
               const label = row.querySelector('span')?.innerText;
-              if (label === 'Storage' && variantData.storage) {
-                row.querySelector('strong').innerText = variantData.storage;
+              if (label === 'Storage' && storage) {
+                row.querySelector('strong').innerText = storage;
               }
-              if (label === 'RAM' && variantData.ram) {
-                row.querySelector('strong').innerText = variantData.ram;
+              if (label === 'RAM' && ram) {
+                row.querySelector('strong').innerText = ram;
               }
             });
           }
           
-          selectedVariant = variantData;
           showToast(`Selected: ${variant.label}`);
         });
         
@@ -1235,9 +1272,9 @@
     // ==========================================
     // SIMILAR PRODUCTS
     // ==========================================
-    function loadSimilarProducts() {
+    function loadSimilarProducts(product) {
       const similar = allProducts
-        .filter(p => p.id !== currentProduct.id && p.category === currentProduct.category)
+        .filter(p => p.id !== product.id && p.category === product.category)
         .slice(0, 8);
 
       const container = document.getElementById('similarScroll');
@@ -1252,8 +1289,7 @@
         const div = document.createElement('div');
         div.className = 'similar-item';
         div.onclick = () => {
-          localStorage.setItem('selectedProduct', JSON.stringify({ id: p.id }));
-          window.location.reload();
+          window.location.href = `product.html?id=${p.id}`;
         };
         div.innerHTML = `
           <img src="${p.image || p.images?.[0] || ''}" alt="${p.name}">
@@ -1268,10 +1304,11 @@
     // ACTIONS
     // ==========================================
     function contactWhatsApp() {
-      if (!currentProduct) return;
+      const product = window.currentProduct;
+      if (!product) return;
       const price = document.getElementById('productPrice').innerText;
       const msg =
-        `Hello JB STORE, I am interested in ${currentProduct.name}. Price: ${price}. Product ID: ${currentProduct.id}`;
+        `Hello JB STORE, I am interested in ${product.name}. Price: ${price}. Product ID: ${product.id}`;
       window.open(`https://wa.me/${STORE_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
@@ -1280,33 +1317,35 @@
     }
 
     function addToCartFromProduct() {
-      if (!currentProduct) {
+      const product = window.currentProduct;
+      if (!product) {
         showToast('Product not found!');
         return;
       }
 
       const priceText = document.getElementById('productPrice').innerText;
       const price = parseInt(priceText.replace(/[₹,]/g, ''));
-      const variantLabel = document.querySelector('.variant-options .opt.active')?.querySelector('span')?.innerText || 'Default';
+      const activeVariant = document.querySelector('.variant-options .opt.active');
+      const variantLabel = activeVariant?.querySelector('span')?.innerText || 'Default';
 
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const cartId = currentProduct.id + '_' + variantLabel;
+      const cartId = product.id + '_' + variantLabel;
       const existing = cart.find(item => item.id === cartId);
 
       if (existing) {
         existing.quantity += 1;
-        showToast(`📦 ${currentProduct.name} (${variantLabel}) quantity updated!`);
+        showToast(`📦 ${product.name} (${variantLabel}) quantity updated!`);
       } else {
         cart.push({
           id: cartId,
-          name: currentProduct.name,
-          brand: currentProduct.brand,
+          name: product.name,
+          brand: product.brand,
           price: price,
-          image: currentProduct.image || currentProduct.images?.[0] || '',
+          image: product.image || product.images?.[0] || '',
           quantity: 1,
           variant: variantLabel
         });
-        showToast(`✅ ${currentProduct.name} (${variantLabel}) added to cart!`);
+        showToast(`✅ ${product.name} (${variantLabel}) added to cart!`);
       }
 
       localStorage.setItem('cart', JSON.stringify(cart));
@@ -1330,12 +1369,33 @@
     }
 
     // ==========================================
-    // INIT
+    // MERGE ALL PRODUCTS AND INIT
     // ==========================================
-    document.addEventListener('DOMContentLoaded', function() {
+    function init() {
+      // Merge all products from your data files
+      allProducts = [
+        ...(window.mobileProducts || []),
+        ...(window.refrigeratorProducts || []),
+        ...(window.washingProducts || []),
+        ...(window.acProducts || []),
+        ...(window.tvProducts || [])
+      ];
+      
+      console.log('All Products loaded:', allProducts.length);
+      
       loadProduct();
       updateCartBadge();
-    });
+    }
+
+    // ==========================================
+    // INIT ON DOM READY
+    // ==========================================
+    document.addEventListener('DOMContentLoaded', init);
+    
+    // Also init if scripts load after DOM
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      init();
+    }
   </script>
 
   <!-- ===== YOUR DATA FILES ===== -->
