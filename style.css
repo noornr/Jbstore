@@ -1874,7 +1874,7 @@ background:#D4AF37;
     border-radius:16px;
     overflow:hidden;
     transition:all 0.3s ease;
-    border: 1.5px solid #FFD700 !important;
+    border: 1px solid #FFD700 !important;
     box-shadow: 0 0 3px rgba(255, 215, 0, 0.04) !important;
 }
 
