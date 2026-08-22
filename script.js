@@ -279,14 +279,17 @@ function viewProduct(id) {
   }
   
   console.log('Product found:', product.name);
+  console.log('Product data:', product);
   
-  localStorage.setItem('selectedProduct', JSON.stringify({ id: product.id }));
+  // Store complete product data in localStorage
+  localStorage.setItem('selectedProduct', JSON.stringify({ 
+    id: product.id,
+    name: product.name,
+    brand: product.brand
+  }));
   
+  // Navigate to product page with ID in URL
   window.location.href = `product.html?id=${product.id}`;
-}
-
-function openProduct(id) {
-  viewProduct(id);
 }
 
 // ==========================================
