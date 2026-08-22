@@ -2766,12 +2766,9 @@ cursor:pointer;
     
 
   /* ===== DEALS ===== */
-
 /* =========================================================
-   📱 MOBILE VERSION - DEALS CARDS PREMIUM
-   Max-width: 768px
+   📱 MOBILE VERSION (max-width: 768px)
    ========================================================= */
-
 
   .deals {
     padding: 30px 12px;
@@ -2865,28 +2862,80 @@ cursor:pointer;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(255, 215, 0, 0.05);
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid #FFD700 !important;
+    box-shadow: 0 0 4px rgba(255, 215, 0, 0.04) !important;
   }
 
-  /* Thin gold ring on tap */
-  .deal-card::after {
+  /* ===== GOLD SHINING RING - MOBILE ===== */
+  .deal-card::before {
     content: '';
     position: absolute;
-    inset: 0;
-    border-radius: 14px;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0), rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0));
+    inset: -2px;
+    border-radius: 16px;
+    padding: 2px;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0%,
+      rgba(212, 175, 55, 0) 20%,
+      rgba(212, 175, 55, 0.5) 40%,
+      #D4AF37 50%,
+      rgba(212, 175, 55, 0.5) 60%,
+      rgba(212, 175, 55, 0) 80%,
+      transparent 100%
+    );
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     opacity: 0;
     transition: opacity 0.3s ease;
+    animation: goldShineMobile 3s linear infinite;
     pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes goldShineMobile {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Show gold ring on tap */
+  .deal-card:active::before {
+    opacity: 1;
+  }
+
+  /* ===== GLOW LAYER ===== */
+  .deal-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.04), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
   }
 
   .deal-card:active::after {
     opacity: 1;
+  }
+
+    
+  .deal-card .offer,
+  .deal-card img,
+  .deal-card h3,
+  .deal-card .brand,
+  .deal-card .variant-tag,
+  .deal-card .rating,
+  .deal-card .price,
+  .deal-card .old-price,
+  .deal-card .deal-actions {
+    position: relative;
+    z-index: 2;
   }
 
   .deal-card:active {
@@ -2993,7 +3042,7 @@ cursor:pointer;
 
   .deal-card .old-price {
     display: inline-block;
-    color: #666;
+    color: #777;
     text-decoration: line-through;
     font-size: 11px;
     margin-left: 5px;
@@ -3033,6 +3082,8 @@ cursor:pointer;
     transform: scale(0.95);
     box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
   }
+
+  
 
   
   /* ===== BEST SELLERS ===== */
