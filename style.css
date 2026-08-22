@@ -160,7 +160,7 @@ cursor:pointer;
   font-weight: 600;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 1px;
   align-items: center;
 }
 
