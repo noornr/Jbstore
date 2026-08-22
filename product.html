@@ -9,195 +9,310 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== RESET & BASE ===== */
+    /* ==========================================
+       RESET & BASE - MATCHING JB STORE THEME
+    ========================================== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    html,
     body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      background: #0A0A0A;
       font-family: 'Poppins', sans-serif;
-      background: #f1f3f6;
-      color: #212121;
+      color: #E8E8E8;
       padding-bottom: 80px;
     }
 
-    /* ===== HEADER ===== */
+    /* ==========================================
+       HEADER - MATCHING JB STORE
+    ========================================== */
     .product-header {
+      height: 82px;
+      padding: 0 5%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 16px;
-      background: #2874f0;
-      color: #fff;
+      gap: 24px;
+      background: #111;
       position: sticky;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      width: 100%;
+      border-bottom: 2px solid rgba(212, 175, 55, 0.15);
     }
 
     .back-btn {
-      color: #fff;
-      font-size: 18px;
-      font-weight: 600;
+      color: #D4AF37;
       text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      color: #F3CF55;
+      transform: translateX(-4px);
     }
 
     .product-logo {
-      font-size: 20px;
+      font-size: 34px;
       font-weight: 800;
-      letter-spacing: -0.5px;
+      color: #D4AF37;
     }
 
     .product-logo span {
-      font-weight: 300;
+      color: #fff;
     }
 
-    /* ===== IMAGE CAROUSEL ===== */
+    /* ==========================================
+       PRODUCT PAGE CONTAINER
+    ========================================== */
+    .product-page {
+      width: 90%;
+      max-width: 1300px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    /* ==========================================
+       IMAGE SECTION - GOLD RING
+    ========================================== */
+    .product-image-section {
+      position: relative;
+    }
+
     .product-image-box {
-      background: #fff;
-      padding: 20px;
+      background: linear-gradient(145deg, #1A1A1A, #111111);
+      border: 1px solid #FFD700 !important;
+      border-radius: 20px;
+      padding: 30px;
       text-align: center;
       position: relative;
+      min-height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.04) !important;
+      transition: all 0.4s ease;
+    }
+
+    .product-image-box:hover {
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.08) !important;
+      border-color: #FFD700 !important;
     }
 
     .product-image-box img {
       max-width: 100%;
-      height: auto;
-      max-height: 350px;
+      max-height: 400px;
       object-fit: contain;
+      transition: all 0.5s ease;
+    }
+
+    .product-image-box:hover img {
+      transform: scale(1.04);
     }
 
     .product-offer {
       position: absolute;
       top: 16px;
       left: 16px;
-      background: #ff6161;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 4px;
+      background: linear-gradient(135deg, #D4AF37, #F3CF55);
+      color: #0A0A0A;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 800;
+      z-index: 2;
       letter-spacing: 0.5px;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
     }
 
-    /* Thumbnails */
+    /* ===== THUMBNAILS ===== */
     .thumbnail-strip {
       display: flex;
-      gap: 10px;
-      justify-content: center;
-      padding: 12px 0 4px;
-      background: #fff;
+      gap: 12px;
+      margin-top: 16px;
       overflow-x: auto;
+      padding: 8px 4px 12px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .thumbnail-strip::-webkit-scrollbar {
+      height: 3px;
+    }
+
+    .thumbnail-strip::-webkit-scrollbar-thumb {
+      background: rgba(212, 175, 55, 0.3);
+      border-radius: 10px;
     }
 
     .thumbnail-strip img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
       border: 2px solid transparent;
-      border-radius: 6px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: border 0.2s;
+      transition: all 0.3s ease;
+      background: #0A0A0A;
+      padding: 8px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+    }
+
+    .thumbnail-strip img:hover {
+      border-color: rgba(212, 175, 55, 0.3);
+      transform: translateY(-2px);
     }
 
     .thumbnail-strip img.active {
-      border-color: #2874f0;
+      border-color: #FFD700 !important;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
     }
 
-    /* ===== PRODUCT INFO ===== */
+    /* ==========================================
+       PRODUCT INFO - GOLD RING CARDS
+    ========================================== */
     .product-info {
-      background: #fff;
-      padding: 16px 16px 20px;
-      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
+    .info-card {
+      background: linear-gradient(145deg, #1A1A1A, #111111);
+      border: 1px solid #FFD700 !important;
+      border-radius: 16px;
+      padding: 20px 24px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.03) !important;
+    }
+
+    .info-card:hover {
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.06) !important;
+    }
+
+    /* ===== BRAND ===== */
     .product-brand {
-      color: #878787;
+      color: #D4AF37;
+      font-weight: 600;
       font-size: 14px;
-      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
       margin-bottom: 4px;
     }
 
-    .product-info h1 {
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 1.3;
-      margin-bottom: 6px;
+    .product-name {
+      font-size: 28px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.2;
     }
 
+    /* ===== RATING ===== */
     .product-rating {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: #878787;
-      margin-bottom: 10px;
+      gap: 10px;
+      margin-top: 6px;
     }
 
     .product-rating .stars {
       background: #388e3c;
       color: #fff;
-      padding: 2px 10px;
-      border-radius: 4px;
+      padding: 2px 12px;
+      border-radius: 6px;
       font-weight: 600;
-      font-size: 13px;
+      font-size: 14px;
       display: inline-flex;
       align-items: center;
       gap: 4px;
     }
 
+    .product-rating .review-count {
+      color: #888;
+      font-size: 14px;
+    }
+
+    /* ===== PRICE ===== */
     .product-price {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 12px;
+      gap: 16px;
       flex-wrap: wrap;
+      margin: 6px 0 2px;
     }
 
-    .product-price strong {
-      font-size: 28px;
+    .product-price .current {
+      font-size: 32px;
       font-weight: 700;
-      color: #212121;
+      color: #D4AF37;
     }
 
-    .product-price del {
+    .product-price .old {
       font-size: 18px;
-      color: #878787;
+      color: #777;
+      text-decoration: line-through;
     }
 
     .product-price .discount-badge {
-      color: #388e3c;
+      color: #4ECDC4;
       font-weight: 600;
       font-size: 16px;
     }
 
-    /* ===== OFFERS ===== */
-    .offers-section {
-      background: #fff;
-      padding: 12px 16px;
-      margin-top: 4px;
-      border-top: 1px solid #f0f0f0;
+    /* ===== CONDITION ===== */
+    .condition-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      margin-top: 8px;
     }
 
+    .condition-row span {
+      color: #888;
+      font-size: 14px;
+    }
+
+    .condition-row strong {
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* ==========================================
+       OFFERS SECTION
+    ========================================== */
     .offers-section h3 {
       font-size: 14px;
-      color: #878787;
-      font-weight: 500;
-      margin-bottom: 8px;
+      color: #D4AF37;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
     }
 
     .offer-item {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      padding: 6px 0;
       font-size: 14px;
-      color: #212121;
-      padding: 4px 0;
+      color: #D0D0D0;
     }
 
     .offer-item .offer-icon {
@@ -205,21 +320,16 @@
     }
 
     .offer-item .offer-tag {
-      color: #2874f0;
-      font-weight: 500;
+      color: #D4AF37;
+      font-weight: 600;
     }
 
-    /* ===== VARIANT ===== */
-    .variant-section {
-      background: #fff;
-      padding: 12px 16px;
-      margin-top: 4px;
-      border-top: 1px solid #f0f0f0;
-    }
-
+    /* ==========================================
+       VARIANTS
+    ========================================== */
     .variant-section label {
       font-size: 14px;
-      color: #878787;
+      color: #888;
       font-weight: 500;
       display: block;
       margin-bottom: 8px;
@@ -232,42 +342,45 @@
     }
 
     .variant-options .opt {
-      padding: 6px 18px;
-      border: 1.5px solid #d4d4d4;
-      border-radius: 20px;
+      padding: 8px 22px;
+      background: transparent;
+      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      border-radius: 25px;
       font-size: 13px;
       font-weight: 500;
+      color: #B8B8B8;
       cursor: pointer;
-      transition: all 0.2s;
-      background: #fff;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
     }
 
-    .variant-options .opt:hover,
+    .variant-options .opt:hover {
+      border-color: rgba(212, 175, 55, 0.4);
+      color: #D4AF37;
+    }
+
     .variant-options .opt.active {
-      border-color: #2874f0;
-      background: #e8f0fe;
-      color: #2874f0;
+      border-color: #FFD700 !important;
+      background: rgba(212, 175, 55, 0.08);
+      color: #D4AF37;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.06);
     }
 
-    /* ===== SPECIFICATIONS ===== */
-    .product-specs {
-      background: #fff;
-      padding: 16px 16px 8px;
-      margin-top: 8px;
-    }
-
-    .product-specs h2 {
+    /* ==========================================
+       SPECIFICATIONS
+    ========================================== */
+    .specs-section h2 {
       font-size: 18px;
       font-weight: 600;
+      color: #FFFFFF;
       margin-bottom: 12px;
-      color: #212121;
     }
 
     .spec-row {
       display: flex;
       justify-content: space-between;
       padding: 10px 0;
-      border-bottom: 1px solid #f0f0f0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
       font-size: 14px;
     }
 
@@ -276,57 +389,56 @@
     }
 
     .spec-row span {
-      color: #878787;
+      color: #888;
     }
 
     .spec-row strong {
-      color: #212121;
+      color: #E8E8E8;
       font-weight: 500;
       text-align: right;
       max-width: 60%;
     }
 
-    /* ===== WARRANTY & DESCRIPTION ===== */
+    /* ==========================================
+       WARRANTY & DESCRIPTION
+    ========================================== */
     .warranty {
-      background: #fff;
-      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 14px;
-      border-top: 1px solid #f0f0f0;
-      margin-top: 4px;
+      color: #D0D0D0;
     }
 
     .warranty strong {
-      color: #212121;
+      color: #D4AF37;
+      font-weight: 600;
     }
 
     .product-description {
-      background: #fff;
-      padding: 12px 16px 16px;
       font-size: 14px;
       line-height: 1.7;
-      color: #424242;
-      border-top: 1px solid #f0f0f0;
-      margin-top: 4px;
+      color: #B8B8B8;
     }
 
-    /* ===== ACTION BUTTONS ===== */
+    /* ==========================================
+       ACTION BUTTONS
+    ========================================== */
     .product-actions {
       display: flex;
       gap: 12px;
-      padding: 16px 0 4px;
-      flex-wrap: wrap;
     }
 
     .product-actions button {
       flex: 1;
-      min-width: 120px;
-      padding: 12px 0;
+      padding: 14px 0;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       font-weight: 600;
       font-size: 14px;
       cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
     }
 
     .product-actions button:active {
@@ -339,44 +451,50 @@
     }
 
     .whatsapp-btn:hover {
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
+      transform: translateY(-2px);
     }
 
     .call-btn {
-      background: #2874f0;
-      color: #fff;
+      background: #D4AF37;
+      color: #0A0A0A;
     }
 
     .call-btn:hover {
-      box-shadow: 0 4px 12px rgba(40, 116, 240, 0.35);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.35);
+      transform: translateY(-2px);
+      background: #F3CF55;
     }
 
-    /* ===== STICKY BOTTOM CART ===== */
+    /* ==========================================
+       STICKY BOTTOM CART BAR
+    ========================================== */
     .sticky-cart-bar {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: #fff;
-      padding: 10px 16px;
-      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(180deg, #111111 0%, #0A0A0A 100%);
+      border-top: 2px solid rgba(212, 175, 55, 0.15);
+      padding: 12px 5%;
       display: flex;
       align-items: center;
-      gap: 12px;
-      z-index: 200;
+      gap: 16px;
+      z-index: 999;
+      box-shadow: 0 -4px 40px rgba(0, 0, 0, 0.5);
     }
 
     .sticky-cart-bar .price-tag {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 700;
-      color: #212121;
+      color: #D4AF37;
       white-space: nowrap;
     }
 
     .sticky-cart-bar .price-tag small {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 400;
-      color: #878787;
+      color: #777;
       text-decoration: line-through;
       margin-left: 8px;
     }
@@ -385,183 +503,373 @@
       flex: 1;
       padding: 14px 0;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       font-weight: 700;
       font-size: 16px;
       cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
-      background: linear-gradient(135deg, #fb641b, #ff8f2e);
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #25D366, #1DA851);
       color: #fff;
     }
 
-    .sticky-cart-bar .cart-btn:active {
-      transform: scale(0.97);
+    .sticky-cart-bar .cart-btn:hover {
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
+      transform: translateY(-2px);
     }
 
     .sticky-cart-bar .buy-btn {
       flex: 1;
       padding: 14px 0;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       font-weight: 700;
       font-size: 16px;
       cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
-      background: linear-gradient(135deg, #2874f0, #4a8af4);
-      color: #fff;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #D4AF37, #F3CF55);
+      color: #0A0A0A;
     }
 
+    .sticky-cart-bar .buy-btn:hover {
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .sticky-cart-bar .cart-btn:active,
     .sticky-cart-bar .buy-btn:active {
       transform: scale(0.97);
     }
 
-    /* ===== TOAST ===== */
-    #toast {
-      position: fixed;
-      bottom: 90px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #323232;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      z-index: 999;
-      opacity: 0;
-      transition: opacity 0.3s, transform 0.3s;
-      pointer-events: none;
-      max-width: 90%;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    #toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (min-width: 768px) {
-      body {
-        padding: 0 40px 90px;
-        background: #f1f3f6;
-      }
-
-      .product-page {
-        max-width: 820px;
-        margin: 0 auto;
-      }
-
-      .product-image-box img {
-        max-height: 420px;
-      }
-
-      .product-info h1 {
-        font-size: 24px;
-      }
-
-      .product-price strong {
-        font-size: 32px;
-      }
-
-      .sticky-cart-bar {
-        max-width: 820px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-radius: 12px 12px 0 0;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .product-actions button {
-        font-size: 13px;
-        padding: 10px 0;
-      }
-
-      .sticky-cart-bar .price-tag {
-        font-size: 18px;
-      }
-
-      .sticky-cart-bar .cart-btn,
-      .sticky-cart-bar .buy-btn {
-        font-size: 14px;
-        padding: 12px 0;
-      }
-    }
-
-    /* Similar Products */
+    /* ==========================================
+       SIMILAR PRODUCTS
+    ========================================== */
     .similar-products {
-      background: #fff;
-      padding: 16px 16px 8px;
       margin-top: 8px;
     }
 
     .similar-products h3 {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 600;
-      margin-bottom: 12px;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+    }
+
+    .similar-products h3 span {
+      color: #D4AF37;
     }
 
     .similar-scroll {
       display: flex;
-      gap: 14px;
+      gap: 16px;
       overflow-x: auto;
-      padding-bottom: 12px;
+      padding: 8px 0 16px;
       scroll-snap-type: x mandatory;
     }
 
     .similar-scroll::-webkit-scrollbar {
-      height: 4px;
+      height: 3px;
     }
 
     .similar-scroll::-webkit-scrollbar-thumb {
-      background: #c2c2c2;
-      border-radius: 4px;
+      background: rgba(212, 175, 55, 0.3);
+      border-radius: 10px;
     }
 
     .similar-item {
-      min-width: 140px;
-      scroll-snap-align: start;
+      min-width: 160px;
+      background: linear-gradient(145deg, #1A1A1A, #111111);
+      border: 1px solid #FFD700 !important;
+      border-radius: 14px;
+      padding: 14px;
       text-align: center;
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: all 0.3s ease;
+      scroll-snap-align: start;
+      box-shadow: 0 0 8px rgba(255, 215, 0, 0.03) !important;
+      flex-shrink: 0;
     }
 
     .similar-item:hover {
-      transform: scale(1.02);
+      transform: translateY(-6px);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.08) !important;
+      border-color: #FFD700 !important;
     }
 
     .similar-item img {
       width: 100%;
       height: 120px;
       object-fit: contain;
+      background: #0A0A0A;
       border-radius: 8px;
-      background: #fafafa;
+      padding: 10px;
     }
 
     .similar-item .s-name {
       font-size: 13px;
       font-weight: 500;
-      margin-top: 6px;
+      color: #E8E8E8;
+      margin-top: 8px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      min-height: 38px;
     }
 
     .similar-item .s-price {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
-      color: #212121;
+      color: #D4AF37;
+      margin-top: 4px;
+    }
+
+    /* ==========================================
+       TOAST NOTIFICATION
+    ========================================== */
+    .toast-notification {
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #1A1A1A, #0A0A0A);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 14px;
+      padding: 14px 22px;
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 99999;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      animation: toastSlideUp 0.4s ease;
+      backdrop-filter: blur(10px);
+      max-width: 90%;
+    }
+
+    .toast-notification button {
+      background: rgba(255, 255, 255, 0.06);
+      border: none;
+      color: #999;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .toast-notification button:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #FFFFFF;
+    }
+
+    .toast-notification.fade-out {
+      animation: toastFadeOut 0.3s ease forwards;
+    }
+
+    @keyframes toastSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(30px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+      }
+    }
+
+    @keyframes toastFadeOut {
+      0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px) scale(0.95);
+      }
+    }
+
+    /* ==========================================
+       RESPONSIVE
+    ========================================== */
+    @media (max-width: 1024px) {
+      .product-page {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        width: 95%;
+      }
+
+      .product-image-box {
+        min-height: 320px;
+      }
+
+      .product-image-box img {
+        max-height: 300px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .product-header {
+        height: 48px;
+        padding: 0 12px;
+        gap: 8px;
+      }
+
+      .product-logo {
+        font-size: 16px;
+      }
+
+      .back-btn {
+        font-size: 12px;
+      }
+
+      .product-page {
+        width: 100%;
+        padding: 0 10px;
+        margin: 16px auto;
+        gap: 16px;
+      }
+
+      .product-image-box {
+        padding: 16px;
+        min-height: 220px;
+        border-radius: 14px;
+      }
+
+      .product-image-box img {
+        max-height: 200px;
+      }
+
+      .product-offer {
+        font-size: 10px;
+        padding: 4px 12px;
+        top: 10px;
+        left: 10px;
+      }
+
+      .thumbnail-strip img {
+        width: 56px;
+        height: 56px;
+        padding: 4px;
+      }
+
+      .info-card {
+        padding: 14px 16px;
+        border-radius: 12px;
+      }
+
+      .product-name {
+        font-size: 20px;
+      }
+
+      .product-price .current {
+        font-size: 24px;
+      }
+
+      .product-price .old {
+        font-size: 14px;
+      }
+
+      .product-actions {
+        flex-direction: column;
+      }
+
+      .product-actions button {
+        padding: 12px 0;
+        font-size: 13px;
+      }
+
+      .sticky-cart-bar {
+        padding: 10px 12px;
+        gap: 10px;
+      }
+
+      .sticky-cart-bar .price-tag {
+        font-size: 18px;
+      }
+
+      .sticky-cart-bar .price-tag small {
+        font-size: 12px;
+      }
+
+      .sticky-cart-bar .cart-btn,
+      .sticky-cart-bar .buy-btn {
+        font-size: 13px;
+        padding: 12px 0;
+      }
+
+      .similar-item {
+        min-width: 120px;
+        padding: 10px;
+      }
+
+      .similar-item img {
+        height: 80px;
+        padding: 6px;
+      }
+
+      .similar-item .s-name {
+        font-size: 11px;
+        min-height: 30px;
+      }
+
+      .similar-item .s-price {
+        font-size: 13px;
+      }
+
+      .toast-notification {
+        bottom: 80px;
+        font-size: 12px;
+        padding: 10px 16px;
+        width: 90%;
+      }
+
+      body {
+        padding-bottom: 70px;
+      }
+
+      .variant-options .opt {
+        padding: 6px 16px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-image-box {
+        min-height: 180px;
+        padding: 12px;
+      }
+
+      .product-image-box img {
+        max-height: 160px;
+      }
+
+      .product-name {
+        font-size: 17px;
+      }
+
+      .product-price .current {
+        font-size: 20px;
+      }
+
+      .spec-row {
+        font-size: 12px;
+        padding: 8px 0;
+      }
+
+      .sticky-cart-bar .cart-btn,
+      .sticky-cart-bar .buy-btn {
+        font-size: 12px;
+        padding: 10px 0;
+      }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- ===== TOAST ===== -->
-  <div id="toast"></div>
 
   <!-- ===== HEADER ===== -->
   <header class="product-header">
@@ -572,136 +880,159 @@
   <!-- ===== PRODUCT PAGE ===== -->
   <main class="product-page">
 
-    <!-- IMAGE -->
-    <div class="product-image-box">
-      <span id="productOffer" class="product-offer"></span>
-      <img id="productImage" src="" alt="Product">
+    <!-- ===== LEFT: IMAGES ===== -->
+    <div class="product-image-section">
+      <div class="product-image-box">
+        <span id="productOffer" class="product-offer"></span>
+        <img id="productImage" src="" alt="Product">
+      </div>
+      <div class="thumbnail-strip" id="thumbnailStrip"></div>
     </div>
 
-    <!-- THUMBNAILS -->
-    <div class="thumbnail-strip" id="thumbnailStrip">
-      <!-- Generated by JS -->
-    </div>
-
-    <!-- INFO -->
+    <!-- ===== RIGHT: INFO ===== -->
     <div class="product-info">
-      <p id="productBrand" class="product-brand"></p>
-      <h1 id="productName"></h1>
 
-      <div class="product-rating">
-        <span class="stars" id="productRating">⭐ 4.5</span>
-        <span id="productReviews">(1,234 reviews)</span>
+      <!-- Brand + Name -->
+      <div class="info-card">
+        <p id="productBrand" class="product-brand"></p>
+        <h1 id="productName" class="product-name"></h1>
+
+        <div class="product-rating">
+          <span class="stars" id="productRating">⭐ 4.5</span>
+          <span class="review-count" id="productReviews">(0 reviews)</span>
+        </div>
+
+        <div class="product-price">
+          <span class="current" id="productPrice">₹0</span>
+          <span class="old" id="productOldPrice">₹0</span>
+          <span class="discount-badge" id="productDiscount"></span>
+        </div>
+
+        <div class="condition-row">
+          <span>Condition</span>
+          <strong id="productCondition">New</strong>
+        </div>
       </div>
 
-      <div class="product-price">
-        <strong id="productPrice">₹1,299</strong>
-        <del id="productOldPrice">₹1,999</del>
-        <span class="discount-badge" id="productDiscount">35% off</span>
+      <!-- Offers -->
+      <div class="info-card offers-section">
+        <h3>💸 Available Offers</h3>
+        <div class="offer-item">
+          <span class="offer-icon">🏦</span>
+          <span><span class="offer-tag">Bank Offer</span> 10% off on SBI Credit Cards</span>
+        </div>
+        <div class="offer-item">
+          <span class="offer-icon">🔄</span>
+          <span><span class="offer-tag">Exchange</span> Up to ₹5,000 off on exchange</span>
+        </div>
+        <div class="offer-item">
+          <span class="offer-icon">🎁</span>
+          <span><span class="offer-tag">Combo</span> Extra 5% off on 2+ items</span>
+        </div>
       </div>
 
-      <div class="product-condition">
-        <span style="color:#878787;font-size:14px;">Condition</span>
-        <strong id="productCondition" style="margin-left:8px;">New</strong>
+      <!-- Variants -->
+      <div class="info-card variant-section">
+        <label>📏 Select Variant</label>
+        <div class="variant-options" id="variantOptions">
+          <span class="opt active">Default</span>
+          <span class="opt">Premium</span>
+          <span class="opt">Pro</span>
+        </div>
       </div>
-    </div>
 
-    <!-- OFFERS -->
-    <div class="offers-section" id="offersSection">
-      <h3>💸 Available Offers</h3>
-      <div class="offer-item">
-        <span class="offer-icon">🏦</span>
-        <span><span class="offer-tag">Bank Offer</span> 10% off on SBI Credit Cards</span>
+      <!-- Specifications -->
+      <div class="info-card specs-section">
+        <h2>📋 Specifications</h2>
+        <div id="specList"></div>
       </div>
-      <div class="offer-item">
-        <span class="offer-icon">🔄</span>
-        <span><span class="offer-tag">Exchange</span> Up to ₹5,000 off on exchange</span>
+
+      <!-- Warranty -->
+      <div class="info-card warranty">
+        🛡️ Warranty: <strong id="productWarranty">1 Year</strong>
       </div>
-      <div class="offer-item">
-        <span class="offer-icon">🎁</span>
-        <span><span class="offer-tag">Combo</span> Extra 5% off on 2+ items</span>
+
+      <!-- Description -->
+      <div class="info-card">
+        <p id="productDescription" class="product-description"></p>
       </div>
-    </div>
 
-    <!-- VARIANTS -->
-    <div class="variant-section" id="variantSection">
-      <label>📏 Select Variant</label>
-      <div class="variant-options" id="variantOptions">
-        <span class="opt active">Default</span>
-        <span class="opt">Premium</span>
-        <span class="opt">Pro</span>
+      <!-- Actions -->
+      <div class="info-card" style="border-color:rgba(212,175,55,0.2);">
+        <div class="product-actions">
+          <button class="whatsapp-btn" onclick="contactWhatsApp()">💬 WhatsApp Enquiry</button>
+          <button class="call-btn" onclick="callStore()">📞 Call Store</button>
+        </div>
       </div>
-    </div>
 
-    <!-- SPECIFICATIONS -->
-    <div class="product-specs">
-      <h2>📋 Specifications</h2>
-      <div id="specList"></div>
-    </div>
-
-    <!-- WARRANTY -->
-    <div class="warranty">
-      🛡️ Warranty: <strong id="productWarranty">1 Year</strong>
-    </div>
-
-    <!-- DESCRIPTION -->
-    <p id="productDescription" class="product-description"></p>
-
-    <!-- ACTION BUTTONS -->
-    <div class="product-info" style="margin-top:4px;border-top:1px solid #f0f0f0;">
-      <div class="product-actions">
-        <button class="whatsapp-btn" onclick="contactWhatsApp()">💬 WhatsApp Enquiry</button>
-        <button class="call-btn" onclick="callStore()">📞 Call Store</button>
+      <!-- Similar Products -->
+      <div class="similar-products">
+        <h3>🔄 Similar <span>Products</span></h3>
+        <div class="similar-scroll" id="similarScroll"></div>
       </div>
-    </div>
 
-    <!-- SIMILAR PRODUCTS -->
-    <div class="similar-products" id="similarProducts">
-      <h3>🔄 Similar Products</h3>
-      <div class="similar-scroll" id="similarScroll"></div>
     </div>
 
   </main>
 
   <!-- ===== STICKY BOTTOM BAR ===== -->
   <div class="sticky-cart-bar">
-    <span class="price-tag" id="stickyPrice">₹1,299 <small>₹1,999</small></span>
+    <span class="price-tag" id="stickyPrice">₹0 <small>₹0</small></span>
     <button class="cart-btn" onclick="addToCartFromProduct()">🛒 Add to Cart</button>
     <button class="buy-btn" onclick="buyNow()">⚡ Buy Now</button>
   </div>
 
   <script>
-    // ===== CONFIG =====
+    // ==========================================
+    // CONFIG
+    // ==========================================
     const STORE_PHONE = "919999999999";
+
+    // ==========================================
+    // ALL PRODUCTS (from your data files)
+    // ==========================================
+    const allProducts = [
+      ...(window.mobileProducts || []),
+      ...(window.refrigeratorProducts || []),
+      ...(window.washingProducts || []),
+      ...(window.acProducts || []),
+      ...(window.tvProducts || [])
+    ];
+
     let currentProduct = null;
 
-    // ===== TOAST =====
+    // ==========================================
+    // TOAST
+    // ==========================================
     function showToast(msg) {
-      const t = document.getElementById('toast');
-      t.innerText = msg;
-      t.classList.add('show');
-      clearTimeout(t._timer);
-      t._timer = setTimeout(() => t.classList.remove('show'), 3000);
+      const existing = document.querySelector('.toast-notification');
+      if (existing) existing.remove();
+
+      const toast = document.createElement('div');
+      toast.className = 'toast-notification';
+      toast.innerHTML = `
+        <span>${msg}</span>
+        <button onclick="this.parentElement.remove()">✕</button>
+      `;
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.add('fade-out');
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
     }
 
-    // ===== LOAD PRODUCT =====
+    // ==========================================
+    // LOAD PRODUCT
+    // ==========================================
     function loadProduct() {
       const saved = JSON.parse(localStorage.getItem('selectedProduct'));
       if (!saved) {
-        window.location.href = "index.html";
+        window.location.href = 'index.html';
         return;
       }
 
-      // Merge all product arrays (define these in your separate files)
-      const allProducts = [
-        ...(window.mobileProducts || []),
-        ...(window.refrigeratorProducts || []),
-        ...(window.washingProducts || []),
-        ...(window.acProducts || []),
-        ...(window.tvProducts || [])
-      ];
-
       currentProduct = allProducts.find(p => p.id === saved.id);
-
       if (!currentProduct) {
         showToast('Product not found!');
         return;
@@ -709,7 +1040,7 @@
 
       // Set data
       document.title = currentProduct.name + ' | JB STORE';
-      document.getElementById('productImage').src = currentProduct.image || '';
+      document.getElementById('productImage').src = currentProduct.image || currentProduct.images?.[0] || '';
       document.getElementById('productName').innerText = currentProduct.name || '';
       document.getElementById('productBrand').innerText = currentProduct.brand || '';
       document.getElementById('productRating').innerHTML = `⭐ ${currentProduct.rating || '4.5'}`;
@@ -765,6 +1096,7 @@
       thumbStrip.innerHTML = '';
       const images = currentProduct.images || [currentProduct.image];
       images.forEach((img, idx) => {
+        if (!img) return;
         const el = document.createElement('img');
         el.src = img;
         el.className = idx === 0 ? 'active' : '';
@@ -776,29 +1108,23 @@
         thumbStrip.appendChild(el);
       });
 
-      // Similar Products
+      // Similar products
       loadSimilarProducts();
     }
 
-    // ===== SIMILAR PRODUCTS =====
+    // ==========================================
+    // SIMILAR PRODUCTS
+    // ==========================================
     function loadSimilarProducts() {
-      const allProducts = [
-        ...(window.mobileProducts || []),
-        ...(window.refrigeratorProducts || []),
-        ...(window.washingProducts || []),
-        ...(window.acProducts || []),
-        ...(window.tvProducts || [])
-      ];
-
       const similar = allProducts
         .filter(p => p.id !== currentProduct.id && p.category === currentProduct.category)
-        .slice(0, 6);
+        .slice(0, 8);
 
       const container = document.getElementById('similarScroll');
       container.innerHTML = '';
 
       if (similar.length === 0) {
-        container.innerHTML = '<p style="color:#878787;font-size:14px;">No similar products found.</p>';
+        container.innerHTML = '<p style="color:#888;font-size:14px;padding:10px 0;">No similar products found.</p>';
         return;
       }
 
@@ -810,7 +1136,7 @@
           window.location.reload();
         };
         div.innerHTML = `
-          <img src="${p.image || ''}" alt="${p.name}">
+          <img src="${p.image || p.images?.[0] || ''}" alt="${p.name}">
           <div class="s-name">${p.name}</div>
           <div class="s-price">₹${(p.price || 0).toLocaleString('en-IN')}</div>
         `;
@@ -818,7 +1144,9 @@
       });
     }
 
-    // ===== ACTIONS =====
+    // ==========================================
+    // ACTIONS
+    // ==========================================
     function contactWhatsApp() {
       if (!currentProduct) return;
       const msg =
@@ -848,7 +1176,7 @@
           name: currentProduct.name,
           brand: currentProduct.brand,
           price: currentProduct.price,
-          image: currentProduct.image,
+          image: currentProduct.image || currentProduct.images?.[0] || '',
           quantity: 1
         });
         showToast(`✅ ${currentProduct.name} added to cart!`);
@@ -867,21 +1195,20 @@
 
     function updateCartBadge() {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-      // Update badge if exists in header
-      const badge = document.getElementById('cartBadge');
-      if (badge) {
-        badge.innerText = count > 0 ? count : '';
-        badge.style.display = count > 0 ? 'inline' : 'none';
-      }
+      const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.querySelectorAll('.cart-badge').forEach(b => {
+        b.textContent = total;
+        b.style.display = total > 0 ? 'flex' : 'none';
+      });
     }
 
-    // ===== VARIANT SELECTION =====
+    // ==========================================
+    // VARIANT SELECTION
+    // ==========================================
     document.addEventListener('DOMContentLoaded', function() {
       loadProduct();
       updateCartBadge();
 
-      // Variant clicks
       document.querySelectorAll('.variant-options .opt').forEach(el => {
         el.addEventListener('click', function() {
           document.querySelectorAll('.variant-options .opt').forEach(o => o.classList.remove('active'));
@@ -892,7 +1219,7 @@
     });
   </script>
 
-  <!-- Include your data files -->
+  <!-- ===== YOUR DATA FILES ===== -->
   <script src="config.js"></script>
   <script src="mobiles.js"></script>
   <script src="refrigerator.js"></script>
