@@ -1271,13 +1271,12 @@
 
       // Merge all products from global variables
       allProducts = [
-        ...(window.mobileProducts || []),
-        ...(window.refrigeratorProducts || []),
-        ...(window.washingProducts || []),
-        ...(window.acProducts || []),
-        ...(window.tvProducts || [])
-      ];
-
+  ...(typeof mobileProducts !== "undefined" ? mobileProducts : []),
+  ...(typeof refrigeratorProducts !== "undefined" ? refrigeratorProducts : []),
+  ...(typeof washingProducts !== "undefined" ? washingProducts : []),
+  ...(typeof acProducts !== "undefined" ? acProducts : []),
+  ...(typeof tvProducts !== "undefined" ? tvProducts : [])
+];
       console.log('Total products loaded:', allProducts.length);
 
       if (allProducts.length === 0) {
