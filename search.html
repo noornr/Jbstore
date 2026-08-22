@@ -248,7 +248,7 @@ else{
 
 
 // ==========================================
-// GET SEARCH PRODUCTS
+// GET SEARCH PRODUCTS - FIXED
 // ==========================================
 
 function getSearchProducts(){
@@ -658,7 +658,7 @@ const categoryNames = {
 
 
 // ==========================================
-// CREATE SEARCH SUGGESTIONS
+// CREATE SEARCH SUGGESTIONS - FIXED
 // ==========================================
 
 function createSearchSuggestions(){
@@ -934,27 +934,20 @@ function createSearchSuggestions(){
 
 
     // ========================================
-    // CLICK SUGGESTION
+    // CLICK SUGGESTION - FIXED
+    // Goes to search with brand + category filter
     // ========================================
 
-    row.addEventListener("click", () => {
-  // Find first product of that brand + category
-  const product = allProducts.find(p => 
-    p.brand === item.brand && 
-    p.category === item.category
-  );
-  
-  if (product) {
-    localStorage.setItem("selectedProduct", JSON.stringify(product));
-    window.location.href = "product.html";
-  } else {
-    window.location.href =
-      "search.html?brand=" +
-      encodeURIComponent(item.brand) +
-      "&category=" +
-      encodeURIComponent(item.category);
-  }
-});
+    row.addEventListener("click", function(e) {
+      e.preventDefault();
+      
+      // Go to search with brand + category filter
+      window.location.href =
+        "search.html?brand=" +
+        encodeURIComponent(item.brand) +
+        "&category=" +
+        encodeURIComponent(item.category);
+    });
 
 
     searchSuggestions.appendChild(
