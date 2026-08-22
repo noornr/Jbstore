@@ -937,18 +937,24 @@ function createSearchSuggestions(){
     // CLICK SUGGESTION
     // ========================================
 
-    row.addEventListener(
-  "click",
-  () => {
-
+    row.addEventListener("click", () => {
+  // Find first product of that brand + category
+  const product = allProducts.find(p => 
+    p.brand === item.brand && 
+    p.category === item.category
+  );
+  
+  if (product) {
+    localStorage.setItem("selectedProduct", JSON.stringify(product));
+    window.location.href = "product.html";
+  } else {
     window.location.href =
       "search.html?brand=" +
       encodeURIComponent(item.brand) +
       "&category=" +
       encodeURIComponent(item.category);
-
   }
-);
+});
 
 
     searchSuggestions.appendChild(
