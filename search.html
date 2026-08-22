@@ -935,30 +935,18 @@ function createSearchSuggestions(){
 
     // ========================================
     // CLICK SUGGESTION - FIXED
-    // Direct Product Page
+    // Redirect to Search Page with Brand & Category
     // ========================================
 
     row.addEventListener("click", function(e) {
       e.preventDefault();
       
-      // Find the product for this brand + category
-      const product = allProducts.find(p => 
-        p.brand === item.brand && 
-        p.category === item.category
-      );
-      
-      if (product) {
-        // Direct open product page
-        localStorage.setItem("selectedProduct", JSON.stringify(product));
-        window.location.href = "product.html";
-      } else {
-        // If no product found, go to search
-        window.location.href =
-          "search.html?brand=" +
-          encodeURIComponent(item.brand) +
-          "&category=" +
-          encodeURIComponent(item.category);
-      }
+      // Redirect to search page with brand and category parameters
+      window.location.href =
+        "search.html?brand=" +
+        encodeURIComponent(item.brand) +
+        "&category=" +
+        encodeURIComponent(item.category);
     });
 
 
@@ -1081,45 +1069,25 @@ document.addEventListener(
 // INITIAL LOAD
 // ==========================================
 
-if(
-  selectedSearchBrand &&
-  selectedSearchCategory
-){
-
+// Set title based on search parameters
+if (selectedSearchBrand && selectedSearchCategory) {
   const categoryName = {
-
     mobiles: "Mobiles",
-
     fridge: "Refrigerators",
-
     washing: "Washing Machines",
-
     ac: "AC",
-
     tv: "TV"
-
-  }[selectedSearchCategory]
-    || selectedSearchCategory;
-
-
-  searchTitle.innerText =
-    `${selectedSearchBrand} ${categoryName}`;
-
-}
-else{
-
-  searchTitle.innerText =
-    searchTerm
-      ? `"${searchTerm}"`
-      : "All Products";
-
+  }[selectedSearchCategory] || selectedSearchCategory;
+  
+  searchTitle.innerText = `${selectedSearchBrand} ${categoryName}`;
+} else if (searchTerm) {
+  searchTitle.innerText = `"${searchTerm}"`;
+} else {
+  searchTitle.innerText = "All Products";
 }
 
-
-displaySearchProducts(
-  getSearchProducts()
-);
-
+// Display products and brands
+displaySearchProducts(getSearchProducts());
 loadSearchBrands();
 
   // ==========================================
