@@ -38,6 +38,40 @@
     gap:20px !important;
 }
 
+/* ===== SEARCH PRODUCT CARD - ONLY VIEW DETAILS ===== */
+.search-product-card .deal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  width: 100%;
+}
+
+.search-product-card .deal-actions button {
+  flex: 1;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+  font-family: "Poppins", sans-serif;
+}
+
+.search-product-card .view-details-btn {
+  background: linear-gradient(135deg, #D4AF37, #C9A030);
+  color: #0A0A0A;
+  box-shadow: 0 2px 15px rgba(212, 175, 55, 0.2);
+  width: 100%;
+}
+
+.search-product-card .view-details-btn:hover {
+  background: linear-gradient(135deg, #E8C84A, #D4AF37);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+}
+
 /* Mobile: 2 proper product cards instead of 4 tiny columns */
 @media (max-width:768px){
     .search-product-grid{
@@ -82,9 +116,9 @@
         font-size:10px !important;
     }
 
-    .search-product-info button{
-        font-size:10px !important;
-        padding:7px !important;
+    .search-product-card .deal-actions button {
+        height: 34px;
+        font-size: 10px;
     }
 }
 </style>
@@ -179,7 +213,6 @@
 <script src="washing.js"></script>
 <script src="ac.js"></script>
 <script src="tv.js"></script>
-<script src="script.js"></script>
 
 <script>
 /* ==========================================
@@ -328,7 +361,7 @@ function getSearchPageProducts() {
 }
 
 /* ==========================================
-   DISPLAY PRODUCTS
+   DISPLAY PRODUCTS - ONLY VIEW DETAILS
 ========================================== */
 
 function displaySearchPageProducts(products) {
@@ -415,24 +448,15 @@ function displaySearchPageProducts(products) {
           </del>
         </div>
 
+        <!-- ONLY VIEW DETAILS BUTTON - NO ADD TO CART -->
         <div class="deal-actions">
-
           <button
             type="button"
             class="view-details-btn"
             onclick="event.stopPropagation(); viewProduct('${product.id}')"
           >
-            View Details
+            🔍 View Details
           </button>
-
-          <button
-            type="button"
-            class="add-to-cart-btn"
-            onclick="event.stopPropagation(); addToCart('${product.id}')"
-          >
-            🛒 Add to Cart
-          </button>
-
         </div>
 
       </div>
@@ -543,8 +567,51 @@ displaySearchPageProducts(
 );
 
 loadSearchPageBrands();
+
+// ===== VIEW PRODUCT FUNCTION =====
+function viewProduct(id) {
+  console.log('Viewing product with ID:', id);
+  
+  const product = allProducts.find(item => item.id === id);
+  
+  if (!product) {
+    console.error('Product not found with ID:', id);
+    showToast('Product not found!');
+    return;
+  }
+  
+  console.log('Product found:', product.name);
+  
+  // Store product ID in localStorage
+  localStorage.setItem('selectedProduct', JSON.stringify({ id: product.id }));
+  
+  // Navigate to product page with ID in URL
+  window.location.href = `product.html?id=${product.id}`;
+}
+
+// ===== TOAST =====
+function showToast(message) {
+  const existingToast = document.querySelector('.toast-notification');
+  if (existingToast) {
+    existingToast.remove();
+  }
+  
+  const toast = document.createElement('div');
+  toast.className = 'toast-notification';
+  toast.innerHTML = `
+    <span>${message}</span>
+    <button onclick="this.parentElement.remove()">✕</button>
+  `;
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+    if (toast) {
+      toast.classList.add('fade-out');
+      setTimeout(() => toast.remove(), 300);
+    }
+  }, 3000);
+}
 </script>
 
 </body>
 </html>
-
