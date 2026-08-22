@@ -185,7 +185,7 @@ function displayProducts() {
     return;
   }
 
-  // ===== CREATE PRODUCT CARDS =====
+  // ===== CREATE PRODUCT CARDS - NO ADD TO CART BUTTON =====
   products.forEach(product => {
     const card = document.createElement("div");
     card.className = "deal-card";
@@ -201,10 +201,7 @@ function displayProducts() {
       
       <div class="deal-actions">
         <button type="button" class="view-details-btn" onclick="viewProduct('${product.id}')">
-          View Details
-        </button>
-        <button type="button" class="add-to-cart-btn" onclick="addToCart('${product.id}')">
-          🛒 Add to Cart
+          🔍 View Details
         </button>
       </div>
     `;
@@ -277,8 +274,8 @@ function openProduct(id) {
 // 10.5. CART FUNCTIONALITY
 // ==========================================
 
-// ===== ADD TO CART =====
-function addToCart(productId) {
+// ===== ADD TO CART - WITH VARIANT SUPPORT =====
+function addToCart(productId, variantLabel) {
   const product = allProducts.find(item => item.id === productId);
   
   if (!product) {
@@ -288,21 +285,39 @@ function addToCart(productId) {
   
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   
-  const existingItem = cart.find(item => item.id === productId);
+  // If variant is provided, find the variant price
+  let price = product.price;
+  let variantName = '';
+  
+  if (variantLabel && product.variants) {
+    const variant = product.variants.find(v => v.label === variantLabel);
+    if (variant) {
+      price = variant.price;
+      variantName = variantLabel;
+    }
+  }
+  
+  // Create unique ID with variant
+  const uniqueId = variantName ? `${product.id}_${variantName}` : product.id;
+  
+  const existingItem = cart.find(item => item.id === uniqueId);
+  
+  const displayName = variantName ? `${product.name} (${variantName})` : product.name;
   
   if (existingItem) {
     existingItem.quantity += 1;
-    showToast(`${product.name} quantity updated! 🛒`);
+    showToast(`${displayName} quantity updated! 🛒`);
   } else {
     cart.push({
-      id: product.id,
+      id: uniqueId,
       name: product.name,
       brand: product.brand,
-      price: product.price,
+      price: price,
       image: product.image || product.images?.[0] || '',
-      quantity: 1
+      quantity: 1,
+      variant: variantName || 'Default'
     });
-    showToast(`${product.name} added to cart! 🛒`);
+    showToast(`${displayName} added to cart! 🛒`);
   }
   
   localStorage.setItem('cart', JSON.stringify(cart));
