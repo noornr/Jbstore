@@ -383,7 +383,9 @@ card.className =
 
 card.style.cursor = "pointer";
 
-card.addEventListener("click", () => {
+card.addEventListener("click", function(e) {
+  // Prevent any interference
+  e.stopPropagation();
   openProduct(product.id);
 });
 
