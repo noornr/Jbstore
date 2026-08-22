@@ -101,7 +101,7 @@
       padding: 30px;
       text-align: center;
       position: relative;
-      min-height: 450px;
+      min-height: 400px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -116,7 +116,7 @@
 
     .product-image-box img {
       max-width: 100%;
-      max-height: 400px;
+      max-height: 350px;
       object-fit: contain;
       transition: all 0.5s ease;
     }
@@ -181,6 +181,91 @@
     .thumbnail-strip img.active {
       border-color: #FFD700 !important;
       box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+    }
+
+    /* ==========================================
+       VARIANTS - BELOW IMAGES
+    ========================================== */
+    .variant-section {
+      margin-top: 16px;
+      background: linear-gradient(145deg, #1A1A1A, #111111);
+      border: 1px solid #FFD700 !important;
+      border-radius: 16px;
+      padding: 18px 20px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.03) !important;
+      transition: all 0.3s ease;
+    }
+
+    .variant-section:hover {
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.06) !important;
+    }
+
+    .variant-section label {
+      font-size: 14px;
+      color: #888;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .variant-section label span {
+      color: #D4AF37;
+    }
+
+    .variant-options {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .variant-options .opt {
+      padding: 10px 20px;
+      background: transparent;
+      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #B8B8B8;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 100px;
+      flex: 1;
+    }
+
+    .variant-options .opt .variant-spec {
+      font-size: 12px;
+      color: #888;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    .variant-options .opt .variant-price {
+      font-size: 16px;
+      font-weight: 700;
+      color: #D4AF37;
+      margin-top: 4px;
+    }
+
+    .variant-options .opt:hover {
+      border-color: rgba(212, 175, 55, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .variant-options .opt.active {
+      border-color: #FFD700 !important;
+      background: rgba(212, 175, 55, 0.08);
+      color: #D4AF37;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .variant-options .opt.active .variant-price {
+      color: #F3CF55;
     }
 
     /* ==========================================
@@ -293,77 +378,6 @@
       color: #FFFFFF;
       font-size: 14px;
       font-weight: 600;
-    }
-
-    /* ==========================================
-       OFFERS SECTION
-    ========================================== */
-    .offers-section h3 {
-      font-size: 14px;
-      color: #D4AF37;
-      font-weight: 600;
-      margin-bottom: 10px;
-      letter-spacing: 0.5px;
-    }
-
-    .offer-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 6px 0;
-      font-size: 14px;
-      color: #D0D0D0;
-    }
-
-    .offer-item .offer-icon {
-      font-size: 18px;
-    }
-
-    .offer-item .offer-tag {
-      color: #D4AF37;
-      font-weight: 600;
-    }
-
-    /* ==========================================
-       VARIANTS
-    ========================================== */
-    .variant-section label {
-      font-size: 14px;
-      color: #888;
-      font-weight: 500;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .variant-options {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .variant-options .opt {
-      padding: 8px 22px;
-      background: transparent;
-      border: 1.5px solid rgba(255, 255, 255, 0.08);
-      border-radius: 25px;
-      font-size: 13px;
-      font-weight: 500;
-      color: #B8B8B8;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .variant-options .opt:hover {
-      border-color: rgba(212, 175, 55, 0.4);
-      color: #D4AF37;
-    }
-
-    .variant-options .opt.active {
-      border-color: #FFD700 !important;
-      background: rgba(212, 175, 55, 0.08);
-      color: #D4AF37;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.06);
     }
 
     /* ==========================================
@@ -703,11 +717,11 @@
       }
 
       .product-image-box {
-        min-height: 320px;
+        min-height: 280px;
       }
 
       .product-image-box img {
-        max-height: 300px;
+        max-height: 280px;
       }
     }
 
@@ -735,12 +749,12 @@
 
       .product-image-box {
         padding: 16px;
-        min-height: 220px;
+        min-height: 200px;
         border-radius: 14px;
       }
 
       .product-image-box img {
-        max-height: 200px;
+        max-height: 180px;
       }
 
       .product-offer {
@@ -754,6 +768,24 @@
         width: 56px;
         height: 56px;
         padding: 4px;
+      }
+
+      .variant-section {
+        padding: 14px 16px;
+      }
+
+      .variant-options .opt {
+        padding: 8px 14px;
+        font-size: 12px;
+        min-width: 80px;
+      }
+
+      .variant-options .opt .variant-price {
+        font-size: 14px;
+      }
+
+      .variant-options .opt .variant-spec {
+        font-size: 11px;
       }
 
       .info-card {
@@ -830,21 +862,16 @@
       body {
         padding-bottom: 70px;
       }
-
-      .variant-options .opt {
-        padding: 6px 16px;
-        font-size: 12px;
-      }
     }
 
     @media (max-width: 480px) {
       .product-image-box {
-        min-height: 180px;
+        min-height: 160px;
         padding: 12px;
       }
 
       .product-image-box img {
-        max-height: 160px;
+        max-height: 140px;
       }
 
       .product-name {
@@ -853,6 +880,21 @@
 
       .product-price .current {
         font-size: 20px;
+      }
+
+      .variant-options .opt {
+        padding: 6px 10px;
+        font-size: 11px;
+        min-width: 60px;
+        flex: 1;
+      }
+
+      .variant-options .opt .variant-price {
+        font-size: 12px;
+      }
+
+      .variant-options .opt .variant-spec {
+        font-size: 10px;
       }
 
       .spec-row {
@@ -880,13 +922,23 @@
   <!-- ===== PRODUCT PAGE ===== -->
   <main class="product-page">
 
-    <!-- ===== LEFT: IMAGES ===== -->
+    <!-- ===== LEFT: IMAGES + VARIANTS ===== -->
     <div class="product-image-section">
       <div class="product-image-box">
         <span id="productOffer" class="product-offer"></span>
         <img id="productImage" src="" alt="Product">
       </div>
+
+      <!-- Thumbnails -->
       <div class="thumbnail-strip" id="thumbnailStrip"></div>
+
+      <!-- Variants - Below Images -->
+      <div class="variant-section">
+        <label>📱 Select <span>Variant</span></label>
+        <div class="variant-options" id="variantOptions">
+          <!-- Dynamically generated -->
+        </div>
+      </div>
     </div>
 
     <!-- ===== RIGHT: INFO ===== -->
@@ -911,33 +963,6 @@
         <div class="condition-row">
           <span>Condition</span>
           <strong id="productCondition">New</strong>
-        </div>
-      </div>
-
-      <!-- Offers -->
-      <div class="info-card offers-section">
-        <h3>💸 Available Offers</h3>
-        <div class="offer-item">
-          <span class="offer-icon">🏦</span>
-          <span><span class="offer-tag">Bank Offer</span> 10% off on SBI Credit Cards</span>
-        </div>
-        <div class="offer-item">
-          <span class="offer-icon">🔄</span>
-          <span><span class="offer-tag">Exchange</span> Up to ₹5,000 off on exchange</span>
-        </div>
-        <div class="offer-item">
-          <span class="offer-icon">🎁</span>
-          <span><span class="offer-tag">Combo</span> Extra 5% off on 2+ items</span>
-        </div>
-      </div>
-
-      <!-- Variants -->
-      <div class="info-card variant-section">
-        <label>📏 Select Variant</label>
-        <div class="variant-options" id="variantOptions">
-          <span class="opt active">Default</span>
-          <span class="opt">Premium</span>
-          <span class="opt">Pro</span>
         </div>
       </div>
 
@@ -1000,6 +1025,7 @@
     ];
 
     let currentProduct = null;
+    let selectedVariant = null;
 
     // ==========================================
     // TOAST
@@ -1046,22 +1072,13 @@
       document.getElementById('productRating').innerHTML = `⭐ ${currentProduct.rating || '4.5'}`;
       document.getElementById('productReviews').innerText = `(${currentProduct.reviews || '0'} reviews)`;
 
-      const price = currentProduct.price || 0;
-      const oldPrice = currentProduct.oldPrice || price * 1.3;
-      document.getElementById('productPrice').innerText = `₹${price.toLocaleString('en-IN')}`;
-      document.getElementById('productOldPrice').innerText = `₹${oldPrice.toLocaleString('en-IN')}`;
-
-      const discount = Math.round(((oldPrice - price) / oldPrice) * 100);
-      document.getElementById('productDiscount').innerText = discount > 0 ? `${discount}% off` : '';
+      // Set initial price
+      updateProductPrice(currentProduct);
 
       document.getElementById('productCondition').innerText = currentProduct.condition || 'New';
       document.getElementById('productWarranty').innerText = currentProduct.warranty || '1 Year';
       document.getElementById('productDescription').innerText = currentProduct.description || '';
       document.getElementById('productOffer').innerText = currentProduct.discount || '';
-
-      // Sticky price
-      document.getElementById('stickyPrice').innerHTML =
-        `₹${price.toLocaleString('en-IN')} <small>₹${oldPrice.toLocaleString('en-IN')}</small>`;
 
       // Specifications
       const specList = document.getElementById('specList');
@@ -1108,8 +1125,111 @@
         thumbStrip.appendChild(el);
       });
 
+      // Load Variants
+      loadVariants();
+
       // Similar products
       loadSimilarProducts();
+    }
+
+    // ==========================================
+    // UPDATE PRODUCT PRICE
+    // ==========================================
+    function updateProductPrice(product) {
+      const price = product.price || 0;
+      const oldPrice = product.oldPrice || price * 1.3;
+      document.getElementById('productPrice').innerText = `₹${price.toLocaleString('en-IN')}`;
+      document.getElementById('productOldPrice').innerText = `₹${oldPrice.toLocaleString('en-IN')}`;
+      
+      const discount = Math.round(((oldPrice - price) / oldPrice) * 100);
+      document.getElementById('productDiscount').innerText = discount > 0 ? `${discount}% off` : '';
+      
+      document.getElementById('stickyPrice').innerHTML =
+        `₹${price.toLocaleString('en-IN')} <small>₹${oldPrice.toLocaleString('en-IN')}</small>`;
+    }
+
+    // ==========================================
+    // LOAD VARIANTS
+    // ==========================================
+    function loadVariants() {
+      const container = document.getElementById('variantOptions');
+      container.innerHTML = '';
+
+      // Get variants from product or create default
+      const variants = currentProduct.variants || [
+        { 
+          label: '6GB + 128GB', 
+          price: currentProduct.price,
+          oldPrice: currentProduct.oldPrice,
+          storage: '128GB',
+          ram: '6GB'
+        },
+        { 
+          label: '8GB + 256GB', 
+          price: currentProduct.price + 5000,
+          oldPrice: currentProduct.oldPrice + 8000,
+          storage: '256GB',
+          ram: '8GB'
+        },
+        { 
+          label: '12GB + 512GB', 
+          price: currentProduct.price + 12000,
+          oldPrice: currentProduct.oldPrice + 15000,
+          storage: '512GB',
+          ram: '12GB'
+        }
+      ];
+
+      variants.forEach((variant, index) => {
+        const el = document.createElement('button');
+        el.className = 'opt' + (index === 0 ? ' active' : '');
+        el.innerHTML = `
+          <span>${variant.label}</span>
+          <span class="variant-price">₹${variant.price.toLocaleString('en-IN')}</span>
+        `;
+        el.dataset.index = index;
+        el.dataset.price = variant.price;
+        el.dataset.oldPrice = variant.oldPrice || variant.price * 1.3;
+        
+        el.addEventListener('click', function() {
+          document.querySelectorAll('.variant-options .opt').forEach(o => o.classList.remove('active'));
+          this.classList.add('active');
+          
+          const price = parseInt(this.dataset.price);
+          const oldPrice = parseInt(this.dataset.oldPrice);
+          
+          // Update displayed price
+          document.getElementById('productPrice').innerText = `₹${price.toLocaleString('en-IN')}`;
+          document.getElementById('productOldPrice').innerText = `₹${oldPrice.toLocaleString('en-IN')}`;
+          
+          const discount = Math.round(((oldPrice - price) / oldPrice) * 100);
+          document.getElementById('productDiscount').innerText = discount > 0 ? `${discount}% off` : '';
+          
+          document.getElementById('stickyPrice').innerHTML =
+            `₹${price.toLocaleString('en-IN')} <small>₹${oldPrice.toLocaleString('en-IN')}</small>`;
+          
+          // Update RAM/Storage in specs if available
+          const variantData = variants[index];
+          if (variantData.storage || variantData.ram) {
+            const specList = document.getElementById('specList');
+            const rows = specList.querySelectorAll('.spec-row');
+            rows.forEach(row => {
+              const label = row.querySelector('span')?.innerText;
+              if (label === 'Storage' && variantData.storage) {
+                row.querySelector('strong').innerText = variantData.storage;
+              }
+              if (label === 'RAM' && variantData.ram) {
+                row.querySelector('strong').innerText = variantData.ram;
+              }
+            });
+          }
+          
+          selectedVariant = variantData;
+          showToast(`Selected: ${variant.label}`);
+        });
+        
+        container.appendChild(el);
+      });
     }
 
     // ==========================================
@@ -1149,8 +1269,9 @@
     // ==========================================
     function contactWhatsApp() {
       if (!currentProduct) return;
+      const price = document.getElementById('productPrice').innerText;
       const msg =
-        `Hello JB STORE, I am interested in ${currentProduct.name}. Price: ₹${currentProduct.price.toLocaleString('en-IN')}. Product ID: ${currentProduct.id}`;
+        `Hello JB STORE, I am interested in ${currentProduct.name}. Price: ${price}. Product ID: ${currentProduct.id}`;
       window.open(`https://wa.me/${STORE_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
@@ -1164,22 +1285,28 @@
         return;
       }
 
+      const priceText = document.getElementById('productPrice').innerText;
+      const price = parseInt(priceText.replace(/[₹,]/g, ''));
+      const variantLabel = document.querySelector('.variant-options .opt.active')?.querySelector('span')?.innerText || 'Default';
+
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const existing = cart.find(item => item.id === currentProduct.id);
+      const cartId = currentProduct.id + '_' + variantLabel;
+      const existing = cart.find(item => item.id === cartId);
 
       if (existing) {
         existing.quantity += 1;
-        showToast(`📦 ${currentProduct.name} quantity updated!`);
+        showToast(`📦 ${currentProduct.name} (${variantLabel}) quantity updated!`);
       } else {
         cart.push({
-          id: currentProduct.id,
+          id: cartId,
           name: currentProduct.name,
           brand: currentProduct.brand,
-          price: currentProduct.price,
+          price: price,
           image: currentProduct.image || currentProduct.images?.[0] || '',
-          quantity: 1
+          quantity: 1,
+          variant: variantLabel
         });
-        showToast(`✅ ${currentProduct.name} added to cart!`);
+        showToast(`✅ ${currentProduct.name} (${variantLabel}) added to cart!`);
       }
 
       localStorage.setItem('cart', JSON.stringify(cart));
@@ -1203,19 +1330,11 @@
     }
 
     // ==========================================
-    // VARIANT SELECTION
+    // INIT
     // ==========================================
     document.addEventListener('DOMContentLoaded', function() {
       loadProduct();
       updateCartBadge();
-
-      document.querySelectorAll('.variant-options .opt').forEach(el => {
-        el.addEventListener('click', function() {
-          document.querySelectorAll('.variant-options .opt').forEach(o => o.classList.remove('active'));
-          this.classList.add('active');
-          showToast(`Selected: ${this.innerText} variant`);
-        });
-      });
     });
   </script>
 
