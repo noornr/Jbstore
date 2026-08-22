@@ -3586,7 +3586,7 @@ body {
     border-radius: 14px;
     padding: 12px 14px;
     transition: all 0.3s ease;
-    border: 1.2px solid #FFD700 !important;
+    border: 0.6px solid #FFD700 !important;
     box-shadow: 0 0 3px rgba(255, 215, 0, 0.03) !important;
   }
 
