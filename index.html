@@ -237,53 +237,54 @@
   </div>
 
   <div class="best-grid">
-
-    <div class="best-card">
-      <img src="images/iphone.png" alt="">
+    <!-- iPhone 16 Pro -->
+    <div class="best-card" onclick="viewProduct('MOB001')" style="cursor:pointer;">
+      <img src="images/iphone.png" alt="iPhone 16 Pro">
       <h3>iPhone 16 Pro</h3>
       <p class="brand">Apple</p>
       <div class="price-row">
-        <span class="new">₹84,999</span>
-        <span class="old">₹99,999</span>
+        <span class="new">₹99,999</span>
+        <span class="old">₹109,999</span>
       </div>
-      <button>View Details</button>
+      <button onclick="event.stopPropagation(); viewProduct('MOB001')">View Details</button>
     </div>
 
-    <div class="best-card">
-      <img src="images/samsung.png" alt="">
+    <!-- Galaxy S24 Ultra -->
+    <div class="best-card" onclick="viewProduct('MOB003')" style="cursor:pointer;">
+      <img src="images/samsung.png" alt="Galaxy S24 Ultra">
       <h3>Galaxy S24 Ultra</h3>
       <p class="brand">Samsung</p>
       <div class="price-row">
         <span class="new">₹72,999</span>
         <span class="old">₹89,999</span>
       </div>
-      <button>View Details</button>
+      <button onclick="event.stopPropagation(); viewProduct('MOB003')">View Details</button>
     </div>
 
-    <div class="best-card">
-      <img src="images/ac.png" alt="">
+    <!-- Daikin AC -->
+    <div class="best-card" onclick="viewProduct('AC001')" style="cursor:pointer;">
+      <img src="images/ac.png" alt="Daikin 1.5 Ton AC">
       <h3>Daikin 1.5 Ton AC</h3>
       <p class="brand">Daikin</p>
       <div class="price-row">
         <span class="new">₹34,990</span>
         <span class="old">₹42,990</span>
       </div>
-      <button>View Details</button>
+      <button onclick="event.stopPropagation(); viewProduct('AC001')">View Details</button>
     </div>
 
-    <div class="best-card">
-      <img src="images/tv.png" alt="">
+    <!-- Smart TV -->
+    <div class="best-card" onclick="viewProduct('TV001')" style="cursor:pointer;">
+      <img src="images/tv.png" alt="55 Smart TV">
       <h3>55" Smart TV</h3>
-      <p class="brand">Android TV</p>
+      <p class="brand">Sony</p>
       <div class="price-row">
-        <span class="new">₹39,990</span>
-        <span class="old">₹49,990</span>
+        <span class="new">₹54,990</span>
+        <span class="old">₹69,990</span>
       </div>
-      <button>View Details</button>
+      <button onclick="event.stopPropagation(); viewProduct('TV001')">View Details</button>
     </div>
-
   </div>
-
 </section>
 
   <section class="brands">
