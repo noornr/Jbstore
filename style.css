@@ -784,208 +784,321 @@ cursor:pointer;
    🔥 PREMIUM DEALS CARDS - THIN GOLD RING
 ========================================== */
 
-.deals {
-  padding: 60px 5%;
-  background: linear-gradient(180deg, #080808 0%, #050505 100%);
-  position: relative;
-}
+  .deals {
+    padding: 30px 12px;
+    background: linear-gradient(180deg, #080808 0%, #050505 100%);
+    position: relative;
+  }
 
-.deals::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
-}
+  .deals::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+  }
 
-/* Section heading */
-.deals .section-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
+  /* ===== SECTION HEADING ===== */
+  .deals .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
 
-.deals .section-head h2 {
-  font-size: 28px;
-  font-weight: 700;
-  color: #FFFFFF;
-  letter-spacing: 0.5px;
-}
+  .deals .section-head h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.3px;
+    position: relative;
+  }
 
-.deals .view-all {
-  color: #D4AF37;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 1px solid rgba(212, 175, 55, 0.2);
-}
+  .deals .section-head h2::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 18px;
+    background: linear-gradient(180deg, #D4AF37, #F3CF55);
+    border-radius: 4px;
+    margin-right: 8px;
+    vertical-align: middle;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+  }
 
-.deals .view-all:hover {
-  background: rgba(212, 175, 55, 0.1);
-  border-color: #D4AF37;
-  transform: translateX(4px);
-}
+  .deals .section-head h2::after {
+    content: '✦';
+    color: #D4AF37;
+    font-size: 9px;
+    margin-left: 6px;
+    opacity: 0.4;
+  }
 
-/* ===== DEAL GRID ===== */
-.deal-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  width: 100%;
-}
+  .deals .view-all {
+    color: #D4AF37;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: rgba(212, 175, 55, 0.03);
+    letter-spacing: 0.3px;
+  }
 
-/* ===== PREMIUM DEAL CARD ===== */
-.deal-card {
-  position: relative;
-  background: linear-gradient(145deg, #1A1A1A, #111111);
-  border-radius: 20px;
-  padding: 20px 16px 18px;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #FFD700 !important;
-  box-shadow: 0 0 4px rgba(255, 215, 0, 0.05) !important;
-}
+  .deals .view-all:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: #D4AF37;
+    transform: translateX(4px);
+  }
 
-/* Remove old pseudo elements */
-.deal-card::before,
-.deal-card::after {
-  display: none !important;
-}
+  /* ===== DEAL GRID ===== */
+  .deal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    width: 100%;
+  }
 
-/* Hover effect */
-.deal-card:hover {
-  transform: translateY(-10px);
-  background: linear-gradient(145deg, #222222, #181818);
-  border-color: #FFD700 !important;
-  box-shadow: 0 0 8px rgba(255, 215, 0, 0.1) !important;
-}
+  /* ==========================================
+     🔥 PREMIUM DEAL CARD - MOBILE
+     ========================================== */
 
-/* ===== OFFER BADGE ===== */
-.deal-card .offer {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: linear-gradient(135deg, #1DB954, #1ed760);
-  color: #FFFFFF;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  z-index: 2;
-  box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3);
-}
+  .deal-card {
+    position: relative;
+    background: linear-gradient(145deg, #1A1A1A, #111111);
+    border-radius: 14px;
+    padding: 14px 12px 14px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #FFD700 !important;
+    box-shadow: 0 0 4px rgba(255, 215, 0, 0.04) !important;
+  }
 
-/* ===== PRODUCT IMAGE ===== */
-.deal-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: contain;
-  margin: 10px 0 12px;
-  transition: all 0.4s ease;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
-}
+  /* ===== GOLD SHINING RING - MOBILE ===== */
+  .deal-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 16px;
+    padding: 2px;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0%,
+      rgba(212, 175, 55, 0) 20%,
+      rgba(212, 175, 55, 0.5) 40%,
+      #D4AF37 50%,
+      rgba(212, 175, 55, 0.5) 60%,
+      rgba(212, 175, 55, 0) 80%,
+      transparent 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: goldShineMobile 3s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
 
-.deal-card:hover img {
-  transform: scale(1.08);
-  filter: drop-shadow(0 8px 30px rgba(212, 175, 55, 0.1));
-}
+  @keyframes goldShineMobile {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
-/* ===== PRODUCT NAME ===== */
-.deal-card h3 {
-  font-size: 15px;
-  font-weight: 600;
-  color: #FFFFFF;
-  margin: 8px 0 4px;
-  line-height: 1.3;
-  min-height: 40px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
+  /* Show gold ring on tap */
+  .deal-card:active::before {
+    opacity: 1;
+  }
 
-/* ===== BRAND & CONDITION ===== */
-.deal-card .brand {
-  color: #999;
-  font-size: 12px;
-  margin: 4px 0;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+  /* ===== GLOW LAYER ===== */
+  .deal-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.04), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-.deal-card .brand::before {
-  content: '✦';
-  color: #D4AF37;
-  font-size: 10px;
-}
+  .deal-card:active::after {
+    opacity: 1;
+  }
 
-/* ===== RATING ===== */
-.deal-card .rating {
-  color: #D4AF37;
-  font-size: 13px;
-  margin: 4px 0 8px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
+  /* Content above ring */
+  .deal-card .offer,
+  .deal-card img,
+  .deal-card h3,
+  .deal-card .brand,
+  .deal-card .variant-tag,
+  .deal-card .rating,
+  .deal-card .price,
+  .deal-card .old-price,
+  .deal-card .deal-actions {
+    position: relative;
+    z-index: 2;
+  }
 
-.deal-card .rating span {
-  color: #777;
-  font-size: 12px;
-}
+  .deal-card:active {
+    transform: scale(0.97);
+    background: linear-gradient(145deg, #222222, #181818);
+  }
 
-/* ===== PRICE ===== */
-.deal-card .price {
-  color: #D4AF37;
-  font-size: 22px;
-  font-weight: 700;
-  margin: 4px 0;
-}
+  /* ===== OFFER BADGE ===== */
+  .deal-card .offer {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: linear-gradient(135deg, #1DB954, #1ed760);
+    color: #FFFFFF;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    z-index: 2;
+    box-shadow: 0 3px 12px rgba(29, 185, 84, 0.25);
+  }
 
-.deal-card .old-price {
-  display: inline-block;
-  color: #777;
-  text-decoration: line-through;
-  font-size: 14px;
-  margin-left: 8px;
-}
+  /* ===== PRODUCT IMAGE ===== */
+  .deal-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    margin: 6px 0 8px;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.3));
+  }
 
-/* ===== VIEW DETAILS BUTTON ===== */
-.deal-card button {
-  width: 100%;
-  height: 44px;
-  background: linear-gradient(135deg, #D4AF37, #C9A030);
-  border: none;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 13px;
-  color: #0A0A0A;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: auto;
-  letter-spacing: 0.5px;
-}
+  .deal-card:active img {
+    transform: scale(1.03);
+  }
 
-.deal-card button:hover {
-  background: linear-gradient(135deg, #E8C84A, #D4AF37);
-  transform: scale(1.02);
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-}
+  /* ===== PRODUCT NAME ===== */
+  .deal-card h3 {
+    font-size: 12px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin: 4px 0 2px;
+    line-height: 1.3;
+    min-height: 30px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 
-.deal-card button:active {
-  transform: scale(0.97);
-}
+  /* ===== BRAND & CONDITION ===== */
+  .deal-card .brand {
+    color: #999;
+    font-size: 10px;
+    margin: 2px 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
 
+  .deal-card .brand::before {
+    content: '✦';
+    color: #D4AF37;
+    font-size: 7px;
+  }
+
+  /* ===== VARIANT TAG ===== */
+  .deal-card .variant-tag {
+    display: inline-block;
+    background: rgba(212, 175, 55, 0.08);
+    color: #D4AF37;
+    font-size: 9px;
+    font-weight: 600;
+    padding: 1px 8px;
+    border-radius: 8px;
+    margin: 2px 0 3px;
+    border: 1px solid rgba(212, 175, 55, 0.08);
+    align-self: flex-start;
+  }
+
+  /* ===== RATING ===== */
+  .deal-card .rating {
+    color: #D4AF37;
+    font-size: 11px;
+    margin: 3px 0 4px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .deal-card .rating span {
+    color: #777;
+    font-size: 10px;
+  }
+
+  /* ===== PRICE ===== */
+  .deal-card .price {
+    color: #D4AF37;
+    font-size: 17px;
+    font-weight: 700;
+    margin: 3px 0 2px;
+  }
+
+  .deal-card .old-price {
+    display: inline-block;
+    color: #777;
+    text-decoration: line-through;
+    font-size: 11px;
+    margin-left: 5px;
+  }
+
+  /* ===== DEAL ACTIONS ===== */
+  .deal-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .deal-actions button {
+    flex: 1;
+    height: 36px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+    font-family: "Poppins", sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ===== VIEW DETAILS BUTTON ===== */
+  .deal-actions .view-details-btn {
+    background: linear-gradient(135deg, #D4AF37, #C9A030);
+    color: #0A0A0A;
+    box-shadow: 0 2px 12px rgba(212, 175, 55, 0.15);
+    width: 100%;
+  }
+
+  .deal-actions .view-details-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+  }
+
+
+  
 /* ===== DESKTOP BANNER ===== */
 
 /* ===== DESKTOP BANNER ===== */
