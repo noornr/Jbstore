@@ -6,19 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product Details | JB STORE</title>
 
-  <!-- ===== MAIN STYLE.CSS ===== -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- ===== GOOGLE FONTS ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* =========================================================
-       JB STORE — PRODUCT PAGE
-       PREMIUM RESPONSIVE CSS
-       ========================================================= */
-
-    /* 1. RESET & BASE */
     * {
       box-sizing: border-box;
     }
@@ -34,17 +26,12 @@
       padding: 0 0 82px;
       width: 100%;
       min-height: 100vh;
-
-      background:
-        radial-gradient(circle at 15% 10%, rgba(212, 175, 55, 0.035), transparent 30%),
-        #0a0a0a;
-
+      background: radial-gradient(circle at 15% 10%, rgba(212, 175, 55, 0.035), transparent 30%), #0a0a0a;
       color: #fff;
       font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
     }
 
-    /* 2. PRODUCT HEADER */
     .product-header {
       width: 100%;
       height: 70px;
@@ -96,7 +83,6 @@
       font-weight: 300;
     }
 
-    /* 3. MAIN PRODUCT LAYOUT */
     .product-page {
       width: min(94%, 1380px);
       margin: 30px auto 40px;
@@ -118,7 +104,6 @@
       }
     }
 
-    /* 4. PRODUCT IMAGE */
     .product-image-section {
       min-width: 0;
       position: relative;
@@ -175,7 +160,6 @@
       box-shadow: 0 6px 22px rgba(212, 175, 55, 0.2);
     }
 
-    /* 5. THUMBNAILS */
     .thumbnail-strip {
       width: 100%;
       display: flex;
@@ -223,7 +207,6 @@
       box-shadow: 0 0 0 1px rgba(255, 215, 0, 0.15), 0 0 22px rgba(255, 215, 0, 0.12);
     }
 
-    /* 6. VARIANTS */
     .variant-section {
       margin-top: 14px;
       padding: 17px 18px;
@@ -290,7 +273,6 @@
       font-weight: 700;
     }
 
-    /* 7. PRODUCT INFORMATION */
     .product-info {
       min-width: 0;
       display: flex;
@@ -563,7 +545,6 @@
       font-weight: 600;
     }
 
-    /* STICKY BOTTOM BAR */
     .sticky-cart-bar {
       position: fixed;
       left: 0;
@@ -614,7 +595,6 @@
       background: linear-gradient(135deg, #d4af37, #f3cf55);
     }
 
-    /* TABLET */
     @media (max-width: 900px) {
       .product-page {
         width: min(94%, 900px);
@@ -629,7 +609,6 @@
       }
     }
 
-    /* MOBILE */
     @media (max-width: 768px) {
       body {
         padding-bottom: 74px;
@@ -717,7 +696,6 @@
       }
     }
 
-    /* SMALL MOBILE */
     @media (max-width: 420px) {
       .product-header {
         height: 50px;
@@ -773,7 +751,6 @@
       }
     }
 
-    /* VERY SMALL */
     @media (max-width: 350px) {
       .product-logo {
         font-size: 15px;
@@ -806,16 +783,13 @@
 
 <body>
 
-  <!-- ===== HEADER ===== -->
   <header class="product-header">
     <a href="index.html" class="back-btn">← Back</a>
     <div class="product-logo">JB <span>STORE</span></div>
   </header>
 
-  <!-- ===== PRODUCT PAGE ===== -->
   <main class="product-page" id="productPage">
 
-    <!-- ===== LEFT: IMAGES + VARIANTS ===== -->
     <div class="product-image-section">
       <div class="product-image-box">
         <span id="productOffer" class="product-offer"></span>
@@ -830,7 +804,6 @@
       </div>
     </div>
 
-    <!-- ===== RIGHT: INFO ===== -->
     <div class="product-info">
 
       <div class="info-card">
@@ -880,14 +853,13 @@
 
   </main>
 
-  <!-- ===== STICKY BOTTOM BAR ===== -->
   <div class="sticky-cart-bar">
     <span class="price-tag" id="stickyPrice">₹0 <small>₹0</small></span>
     <button class="cart-btn" onclick="addToCartFromProduct()">🛒 Add to Cart</button>
     <button class="buy-btn" onclick="buyNow()">⚡ Buy Now</button>
   </div>
 
-  <!-- ===== SCRIPTS ===== -->
+  <!-- ===== SCRIPTS - ORDER IS IMPORTANT ===== -->
   <script src="config.js"></script>
   <script src="mobiles.js"></script>
   <script src="refrigerator.js"></script>
@@ -939,25 +911,35 @@
     // LOAD PRODUCT
     // ==========================================
     function loadProduct() {
+      console.log('Loading product...');
+      console.log('All products count:', allProducts.length);
+
       let productId = getProductIdFromURL();
+      console.log('Product ID from URL:', productId);
+
       let productData = null;
 
       if (productId) {
         productData = allProducts.find(p => p.id === productId);
+        console.log('Product found by ID:', productData);
       }
 
       if (!productData) {
         const saved = JSON.parse(localStorage.getItem('selectedProduct'));
+        console.log('Saved product from localStorage:', saved);
         if (saved) {
           productData = allProducts.find(p => p.id === saved.id);
+          console.log('Product found by saved ID:', productData);
         }
       }
 
       if (!productData && allProducts.length > 0) {
         productData = allProducts[0];
+        console.log('Using first product as fallback:', productData);
       }
 
       if (!productData) {
+        console.error('No product found!');
         document.getElementById('productPage').innerHTML = `
           <div style="text-align:center;padding:60px 20px;grid-column:1/-1;background:linear-gradient(145deg,#1A1A1A,#111111);border:1px solid rgba(255,215,0,0.08);border-radius:16px;">
             <div style="font-size:50px;margin-bottom:16px;">🔍</div>
@@ -977,20 +959,29 @@
     // RENDER PRODUCT
     // ==========================================
     function renderProduct(product) {
+      console.log('Rendering product:', product);
       document.title = product.name + ' | JB STORE';
 
+      // Image
       const img = document.getElementById('productImage');
       if (img) {
-        img.src = product.image || product.images?.[0] || '';
+        const imageSrc = product.image || product.images?.[0] || 'images/placeholder.png';
+        img.src = imageSrc;
         img.alt = product.name || '';
+        console.log('Image set to:', imageSrc);
       }
 
+      // Name
       document.getElementById('productName').innerText = product.name || '';
+      
+      // Brand
       document.getElementById('productBrand').innerText = product.brand || '';
 
+      // Rating
       document.getElementById('productRating').innerHTML = `⭐ ${product.rating || '4.5'}`;
       document.getElementById('productReviews').innerText = `(${product.reviews || '0'} reviews)`;
 
+      // Price
       const price = product.price || 0;
       const oldPrice = product.oldPrice || price * 1.3;
       document.getElementById('productPrice').innerText = `₹${price.toLocaleString('en-IN')}`;
@@ -999,11 +990,19 @@
       const discount = Math.round(((oldPrice - price) / oldPrice) * 100);
       document.getElementById('productDiscount').innerText = discount > 0 ? `${discount}% off` : '';
 
+      // Condition
       document.getElementById('productCondition').innerText = product.condition || 'New';
+      
+      // Warranty
       document.getElementById('productWarranty').innerText = product.warranty || '1 Year';
+      
+      // Description
       document.getElementById('productDescription').innerText = product.description || '';
+      
+      // Offer
       document.getElementById('productOffer').innerText = product.discount || '';
 
+      // Sticky Price
       document.getElementById('stickyPrice').innerHTML =
         `₹${price.toLocaleString('en-IN')} <small>₹${oldPrice.toLocaleString('en-IN')}</small>`;
 
@@ -1061,6 +1060,8 @@
 
       loadVariants(product);
       loadSimilarProducts(product);
+      
+      console.log('Product rendered successfully!');
     }
 
     // ==========================================
@@ -1171,9 +1172,6 @@
       window.location.href = `tel:${STORE_PHONE}`;
     }
 
-    // ==========================================
-    // ADD TO CART WITH VARIANT
-    // ==========================================
     function addToCartFromProduct() {
       const product = window.currentProduct;
       if (!product) {
@@ -1228,9 +1226,12 @@
     }
 
     // ==========================================
-    // INIT
+    // INIT - LOAD ALL PRODUCTS FIRST
     // ==========================================
     function init() {
+      console.log('Initializing product page...');
+      
+      // Load all products from data files
       allProducts = [
         ...(typeof mobileProducts !== "undefined" ? mobileProducts : []),
         ...(typeof refrigeratorProducts !== "undefined" ? refrigeratorProducts : []),
@@ -1239,7 +1240,10 @@
         ...(typeof tvProducts !== "undefined" ? tvProducts : [])
       ];
 
+      console.log('All products loaded:', allProducts.length);
+
       if (allProducts.length === 0) {
+        console.error('No products loaded!');
         document.getElementById('productPage').innerHTML = `
           <div style="text-align:center;padding:60px 20px;grid-column:1/-1;background:linear-gradient(145deg,#1A1A1A,#111111);border:1px solid rgba(255,215,0,0.08);border-radius:16px;">
             <div style="font-size:50px;margin-bottom:16px;">⚠️</div>
@@ -1255,17 +1259,22 @@
       updateCartBadge();
     }
 
+    // ==========================================
+    // START
+    // ==========================================
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      setTimeout(init, 200);
+      setTimeout(init, 100);
     } else {
       document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(init, 200);
+        setTimeout(init, 100);
       });
     }
 
+    // Fallback: If scripts load late, try again
     window.addEventListener('load', function() {
       if (allProducts.length === 0) {
-        setTimeout(init, 300);
+        console.log('Retrying init on load...');
+        setTimeout(init, 200);
       }
     });
   </script>
