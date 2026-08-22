@@ -19,6 +19,76 @@
   rel="stylesheet"
 >
 
+
+<style>
+/* SEARCH RESULTS - NO LEFT FILTER SIDEBAR */
+.search-layout{
+    display:block !important;
+    width:100% !important;
+}
+
+.search-results{
+    width:100% !important;
+}
+
+.search-product-grid{
+    width:100% !important;
+    display:grid !important;
+    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+    gap:20px !important;
+}
+
+/* Mobile: 2 proper product cards instead of 4 tiny columns */
+@media (max-width:768px){
+    .search-product-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        gap:10px !important;
+    }
+
+    .search-product-card{
+        min-width:0 !important;
+    }
+
+    .search-product-image{
+        height:170px !important;
+    }
+
+    .search-product-info{
+        padding:10px !important;
+    }
+
+    .search-product-info h3{
+        font-size:13px !important;
+        line-height:1.35 !important;
+    }
+
+    .search-brand{
+        font-size:11px !important;
+    }
+
+    .search-rating{
+        font-size:10px !important;
+    }
+
+    .search-condition{
+        font-size:10px !important;
+    }
+
+    .search-price strong{
+        font-size:14px !important;
+    }
+
+    .search-price del{
+        font-size:10px !important;
+    }
+
+    .search-product-info button{
+        font-size:10px !important;
+        padding:7px !important;
+    }
+}
+</style>
+
 </head>
 
 <body>
@@ -86,34 +156,7 @@
   <!-- FILTER + PRODUCTS -->
 
   <div class="search-layout">
-
-
-    <!-- LEFT FILTER -->
-
-    <aside class="search-sidebar">
-
-      <h3>Filter Products</h3>
-
-      <div class="filter-section">
-
-        <h4>Brand</h4>
-
-        <div id="searchBrands"></div>
-
-      </div>
-
-
-      <button
-        id="clearSearchFilters"
-        class="clear-search"
-      >
-        Clear All
-      </button>
-
-    </aside>
-
-
-    <!-- PRODUCTS -->
+<!-- PRODUCTS -->
 
     <section class="search-results">
 
