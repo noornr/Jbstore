@@ -668,9 +668,9 @@ cursor:pointer;
     max-width: calc(33.333% - 10px);
   }
 
-  /* ==========================================
-     PREMIUM CATEGORY CARD - PERFECT FIT
-     ========================================== */
+/* ==========================================
+   🔥 PREMIUM CATEGORY CARD - FULL GOLD RING
+   ========================================== */
 
   .premium-cat-card {
     position: relative;
@@ -685,51 +685,19 @@ cursor:pointer;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: none;
+    border: 3px solid #FFD700 !important;
     min-height: unset;
     aspect-ratio: 1 / 1.05;
-  }
-
-  /* ===== GOLD RING ===== */
-  .premium-cat-card::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: 18px;
-    padding: 2px;
-    background: linear-gradient(
-      135deg,
-      #D4AF37 0%,
-      #F3CF55 12%,
-      #FFF4A3 25%,
-      #D4AF37 38%,
-      #B8962E 50%,
-      #D4AF37 62%,
-      #F3CF55 75%,
-      #FFF4A3 88%,
-      #D4AF37 100%
-    );
-    background-size: 300% 300%;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-    animation: goldRingPulse 4s ease-in-out infinite;
     box-shadow: 
-      0 0 20px rgba(212, 175, 55, 0.2),
-      0 0 40px rgba(212, 175, 55, 0.1),
-      inset 0 0 20px rgba(212, 175, 55, 0.06);
-    z-index: 1;
+      0 0 20px rgba(255, 215, 0, 0.25),
+      0 0 50px rgba(255, 215, 0, 0.08),
+      inset 0 0 20px rgba(255, 215, 0, 0.05) !important;
   }
 
+  /* Remove old pseudo elements */
+  .premium-cat-card::before,
   .premium-cat-card::after {
-    content: '';
-    position: absolute;
-    inset: 3px;
-    border-radius: 14px;
-    background: linear-gradient(145deg, #1A1A1A, #111111);
-    z-index: 0;
-    pointer-events: none;
+    display: none !important;
   }
 
   /* ===== CONTENT ABOVE ===== */
@@ -771,7 +739,7 @@ cursor:pointer;
     text-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
   }
 
-  /* ===== BADGE - ALWAYS VISIBLE ===== */
+  /* ===== BADGE ===== */
   .cat-badge {
     position: absolute;
     top: 10px;
@@ -800,115 +768,26 @@ cursor:pointer;
   .premium-cat-card:hover {
     transform: translateY(-8px) scale(1.02);
     background: linear-gradient(145deg, #222222, #181818);
-  }
-
-  .premium-cat-card:hover::before {
-    animation: goldRingPulse 1.2s ease-in-out infinite;
+    border-color: #FFD700 !important;
     box-shadow: 
-      0 0 35px rgba(212, 175, 55, 0.4),
-      0 0 70px rgba(212, 175, 55, 0.2),
-      inset 0 0 30px rgba(212, 175, 55, 0.1);
+      0 0 35px rgba(255, 215, 0, 0.5),
+      0 0 80px rgba(255, 215, 0, 0.15),
+      inset 0 0 30px rgba(255, 215, 0, 0.1) !important;
   }
 
-  .premium-cat-card:hover::after {
-    background: linear-gradient(145deg, #222222, #181818);
-  }
-
-  /* ===== ANIMATION ===== */
-  @keyframes goldRingPulse {
-    0% {
-      background-position: 0% 50%;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2), 0 0 40px rgba(212, 175, 55, 0.1);
-    }
-    25% {
-      background-position: 50% 50%;
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.35), 0 0 60px rgba(212, 175, 55, 0.15);
-    }
-    50% {
-      background-position: 100% 50%;
-      box-shadow: 0 0 40px rgba(212, 175, 55, 0.45), 0 0 80px rgba(212, 175, 55, 0.2);
-    }
-    75% {
-      background-position: 50% 50%;
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.35), 0 0 60px rgba(212, 175, 55, 0.15);
-    }
-    100% {
-      background-position: 0% 50%;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2), 0 0 40px rgba(212, 175, 55, 0.1);
-    }
-  }
-
-  /* ===== DECORATIONS - SUBTLE ===== */
+  /* ===== DECORATIONS - HIDE ===== */
   .premium-cat-card .corner-deco {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    border: 1px solid rgba(212, 175, 55, 0.05);
-    pointer-events: none;
-    transition: all 0.5s ease;
-    z-index: 1;
-  }
-
-  .premium-cat-card .corner-deco.tl {
-    top: 10px;
-    left: 10px;
-    border-right: none;
-    border-bottom: none;
-    border-radius: 6px 0 0 0;
-  }
-
-  .premium-cat-card .corner-deco.tr {
-    top: 10px;
-    right: 10px;
-    border-left: none;
-    border-bottom: none;
-    border-radius: 0 6px 0 0;
-  }
-
-  .premium-cat-card .corner-deco.bl {
-    bottom: 10px;
-    left: 10px;
-    border-right: none;
-    border-top: none;
-    border-radius: 0 0 0 6px;
-  }
-
-  .premium-cat-card .corner-deco.br {
-    bottom: 10px;
-    right: 10px;
-    border-left: none;
-    border-top: none;
-    border-radius: 0 0 6px 0;
-  }
-
-  .premium-cat-card:hover .corner-deco {
-    border-color: rgba(212, 175, 55, 0.15);
+    display: none;
   }
 
   .premium-cat-card .card-shine {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(ellipse at 50% 30%, rgba(212, 175, 55, 0.03), transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0;
-    transition: opacity 0.6s ease;
+    display: none;
   }
-
-  .premium-cat-card:hover .card-shine {
-    opacity: 1;
-  }
-
-
 
 /* ===== DESKTOP TOP DEALS ===== */
 
-./* ==========================================
-   PREMIUM DEALS CARDS - DESKTOP
+/* ==========================================
+   🔥 PREMIUM DEALS CARDS - FULL GOLD RING
 ========================================== */
 
 .deals {
@@ -974,43 +853,29 @@ cursor:pointer;
   border-radius: 20px;
   padding: 20px 16px 18px;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border: 1px solid rgba(255, 255, 255, 0.04);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  border: 3px solid #FFD700 !important;
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.25),
+    0 0 50px rgba(255, 215, 0, 0.06) !important;
 }
 
-/* Gold ring border */
-.deal-card::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 20px;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), transparent, rgba(212, 175, 55, 0.04));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  transition: all 0.5s ease;
+/* Remove old pseudo elements */
+.deal-card::before,
+.deal-card::after {
+  display: none !important;
 }
 
 /* Hover effect */
 .deal-card:hover {
   transform: translateY(-10px);
   background: linear-gradient(145deg, #222222, #181818);
-  border-color: rgba(212, 175, 55, 0.15);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.04);
-}
-
-.deal-card:hover::before {
-  background: linear-gradient(135deg, 
-    rgba(212, 175, 55, 0.5), 
-    rgba(212, 175, 55, 0.15), 
-    rgba(212, 175, 55, 0.5)
-  );
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), 0 0 60px rgba(212, 175, 55, 0.1);
-  animation: goldShine 1.5s ease-in-out infinite;
+  border-color: #FFD700 !important;
+  box-shadow: 
+    0 0 35px rgba(255, 215, 0, 0.4),
+    0 0 70px rgba(255, 215, 0, 0.12) !important;
 }
 
 /* ===== OFFER BADGE ===== */
@@ -1180,7 +1045,9 @@ background:#555;
 background:#D4AF37;
 }
 
-/* ===== DESKTOP BEST SELLERS ===== */
+/* ==========================================
+   🔥 DESKTOP BEST SELLERS - FULL GOLD RING
+========================================== */
 
 .best-sellers{
   padding:60px 5%;
@@ -1200,37 +1067,25 @@ background:#D4AF37;
   border-radius: 20px;
   padding: 18px;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border: 1px solid rgba(212, 175, 55, 0.08);
   overflow: hidden;
+  border: 3px solid #FFD700 !important;
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.25),
+    0 0 50px rgba(255, 215, 0, 0.06) !important;
 }
 
-.best-card::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 20px;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), transparent, rgba(212, 175, 55, 0.04));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  transition: all 0.5s ease;
+/* Remove old pseudo elements */
+.best-card::before,
+.best-card::after {
+  display: none !important;
 }
 
 .best-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 18px 40px rgba(212, 175, 55, 0.16);
-  border-color: rgba(212, 175, 55, 0.2);
-}
-.best-card:hover::before {
-  background: linear-gradient(135deg, 
-    rgba(212, 175, 55, 0.5), 
-    rgba(212, 175, 55, 0.15), 
-    rgba(212, 175, 55, 0.5)
-  );
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), 0 0 60px rgba(212, 175, 55, 0.1);
-  animation: goldShine 1.5s ease-in-out infinite;
+  border-color: #FFD700 !important;
+  box-shadow: 
+    0 0 35px rgba(255, 215, 0, 0.4),
+    0 0 70px rgba(255, 215, 0, 0.12) !important;
 }
 
 .best-card img{
@@ -1302,7 +1157,7 @@ background:#D4AF37;
 
 
 /* ==========================================
-   PREMIUM TOP BRANDS - DESKTOP
+   🔥 PREMIUM TOP BRANDS - FULL GOLD RING
 ========================================== */
 
 .brands {
@@ -1356,43 +1211,30 @@ background:#D4AF37;
   padding: 24px 16px 18px;
   text-align: center;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border: 1px solid rgba(255, 255, 255, 0.04);
   cursor: pointer;
   overflow: hidden;
+  border: 3px solid #FFD700 !important;
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.2),
+    0 0 50px rgba(255, 215, 0, 0.05) !important;
 }
 
-/* Gold ring border */
-.brand-card::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 20px;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), transparent, rgba(212, 175, 55, 0.04));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  transition: all 0.5s ease;
+/* Remove old pseudo elements */
+.brand-card::before,
+.brand-card::after {
+  display: none !important;
 }
 
 /* Hover effect */
 .brand-card:hover {
   transform: translateY(-8px) scale(1.03);
   background: linear-gradient(145deg, #222222, #181818);
-  border-color: rgba(212, 175, 55, 0.15);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 175, 55, 0.04);
+  border-color: #FFD700 !important;
+  box-shadow: 
+    0 0 35px rgba(255, 215, 0, 0.4),
+    0 0 70px rgba(255, 215, 0, 0.12) !important;
 }
 
-.brand-card:hover::before {
-  background: linear-gradient(135deg, 
-    rgba(212, 175, 55, 0.4), 
-    rgba(212, 175, 55, 0.1), 
-    rgba(212, 175, 55, 0.4)
-  );
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.2), 0 0 60px rgba(212, 175, 55, 0.08);
-  animation: goldShine 1.5s ease-in-out infinite;
-}
 /* ===== BRAND LOGO ===== */
 .brand-logo-wrapper {
   display: flex;
@@ -1431,24 +1273,6 @@ background:#D4AF37;
 
 .brand-card:hover .brand-name {
   color: #D4AF37;
-  opacity: 1;
-}
-
-/* ===== GLOW EFFECT ON HOVER ===== */
-.brand-card::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.03), transparent 70%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-.brand-card:hover::after {
   opacity: 1;
 }
 
@@ -2059,18 +1883,27 @@ background:#D4AF37;
     width:100%;
 }
 
+/* ==========================================
+   🔥 SEARCH PRODUCT CARDS - FULL GOLD RING
+========================================== */
+
 .search-product-card{
     background:#111;
-    border:1px solid rgba(255,255,255,.07);
     border-radius:16px;
     overflow:hidden;
-    transition:.3s;
+    transition:all 0.3s ease;
+    border: 2.5px solid #FFD700 !important;
+    box-shadow: 
+        0 0 15px rgba(255, 215, 0, 0.2),
+        0 0 40px rgba(255, 215, 0, 0.05) !important;
 }
 
 .search-product-card:hover{
     transform:translateY(-5px);
-    border-color:rgba(212,175,55,.4);
-    box-shadow:0 12px 35px rgba(0,0,0,.35);
+    border-color: #FFD700 !important;
+    box-shadow: 
+        0 0 30px rgba(255, 215, 0, 0.35),
+        0 0 60px rgba(255, 215, 0, 0.1) !important;
 }
 
 .search-product-image{
@@ -2188,34 +2021,6 @@ background:#D4AF37;
 
 
 /* ==========================================
-   GOLD SHINE ANIMATION
-========================================== */
-@keyframes goldShine {
-  0% {
-    background: linear-gradient(135deg, 
-      rgba(212, 175, 55, 0.3), 
-      rgba(212, 175, 55, 0.1), 
-      rgba(212, 175, 55, 0.3)
-    );
-  }
-  50% {
-    background: linear-gradient(135deg, 
-      rgba(212, 175, 55, 0.6), 
-      rgba(212, 175, 55, 0.2), 
-      rgba(212, 175, 55, 0.6)
-    );
-    box-shadow: 0 0 40px rgba(212, 175, 55, 0.4), 0 0 80px rgba(212, 175, 55, 0.15);
-  }
-  100% {
-    background: linear-gradient(135deg, 
-      rgba(212, 175, 55, 0.3), 
-      rgba(212, 175, 55, 0.1), 
-      rgba(212, 175, 55, 0.3)
-    );
-  }
-}
-
-/* ==========================================
    DESKTOP - CART PAGE (min-width: 769px)
    ========================================== */
   
@@ -2282,21 +2087,30 @@ background:#D4AF37;
     margin-bottom: 32px;
   }
 
+/* ==========================================
+   🔥 CART ITEMS - FULL GOLD RING
+========================================== */
+
   .cart-item {
     display: flex;
     align-items: center;
     gap: 20px;
     background: linear-gradient(145deg, #1A1A1A, #111111);
-    border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: 16px;
     padding: 18px 24px;
     transition: all 0.3s ease;
+    border: 2.5px solid #FFD700 !important;
+    box-shadow: 
+        0 0 15px rgba(255, 215, 0, 0.15),
+        0 0 40px rgba(255, 215, 0, 0.04) !important;
   }
 
   .cart-item:hover {
-    border-color: rgba(212, 175, 55, 0.15);
+    border-color: #FFD700 !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 
+        0 0 30px rgba(255, 215, 0, 0.3),
+        0 0 60px rgba(255, 215, 0, 0.08) !important;
   }
 
   .cart-item-image {
@@ -2927,9 +2741,9 @@ background:#D4AF37;
     max-width: calc(33.333% - 5px);
   }
 
-  /* ==========================================
-     PREMIUM CATEGORY CARD - PERFECT FIT
-     ========================================== */
+/* ==========================================
+   🔥 MOBILE CATEGORY CARD - FULL GOLD RING
+   ========================================== */
 
   .premium-cat-card {
     position: relative;
@@ -2943,49 +2757,18 @@ background:#D4AF37;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: none;
+    border: 2.5px solid #FFD700 !important;
     min-height: unset;
     aspect-ratio: 1 / 1.1;
-  }
-
-  /* ===== GOLD RING ===== */
-  .premium-cat-card::before {
-    content: '';
-    position: absolute;
-    inset: -1.5px;
-    border-radius: 14px;
-    padding: 1.5px;
-    background: linear-gradient(
-      135deg,
-      #D4AF37 0%,
-      #F3CF55 20%,
-      #FFF4A3 40%,
-      #D4AF37 55%,
-      #B8962E 70%,
-      #D4AF37 85%,
-      #F3CF55 100%
-    );
-    background-size: 300% 300%;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-    animation: goldRingPulseMobile 4s ease-in-out infinite;
     box-shadow: 
-      0 0 8px rgba(212, 175, 55, 0.12),
-      0 0 16px rgba(212, 175, 55, 0.06),
-      inset 0 0 8px rgba(212, 175, 55, 0.04);
-    z-index: 1;
+      0 0 12px rgba(255, 215, 0, 0.2),
+      0 0 30px rgba(255, 215, 0, 0.06) !important;
   }
 
+  /* Remove old pseudo elements */
+  .premium-cat-card::before,
   .premium-cat-card::after {
-    content: '';
-    position: absolute;
-    inset: 2.5px;
-    border-radius: 10px;
-    background: linear-gradient(145deg, #1A1A1A, #111111);
-    z-index: 0;
-    pointer-events: none;
+    display: none !important;
   }
 
   /* ===== CONTENT ABOVE ===== */
@@ -3033,22 +2816,6 @@ background:#D4AF37;
     box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
   }
 
-  /* ===== ANIMATION ===== */
-  @keyframes goldRingPulseMobile {
-    0% {
-      background-position: 0% 50%;
-      box-shadow: 0 0 8px rgba(212, 175, 55, 0.12), 0 0 16px rgba(212, 175, 55, 0.06);
-    }
-    50% {
-      background-position: 100% 50%;
-      box-shadow: 0 0 14px rgba(212, 175, 55, 0.25), 0 0 28px rgba(212, 175, 55, 0.1);
-    }
-    100% {
-      background-position: 0% 50%;
-      box-shadow: 0 0 8px rgba(212, 175, 55, 0.12), 0 0 16px rgba(212, 175, 55, 0.06);
-    }
-  }
-
   /* ===== DISABLE HOVER ===== */
   .premium-cat-card:hover {
     transform: none !important;
@@ -3064,19 +2831,15 @@ background:#D4AF37;
     text-shadow: none !important;
   }
 
-  .premium-cat-card:hover::before {
-    animation: goldRingPulseMobile 4s ease-in-out infinite !important;
-  }
-
   /* ===== TAP EFFECT ===== */
   .premium-cat-card:active {
     transform: scale(0.95) !important;
   }
 
-  .premium-cat-card:active::before {
+  .premium-cat-card:active {
     box-shadow: 
-      0 0 16px rgba(212, 175, 55, 0.35),
-      0 0 32px rgba(212, 175, 55, 0.15);
+      0 0 16px rgba(255, 215, 0, 0.35),
+      0 0 32px rgba(255, 215, 0, 0.15) !important;
   }
 
   /* ===== HIDE DECORATIONS ===== */
@@ -3097,8 +2860,8 @@ background:#D4AF37;
     
 
   /* ===== DEALS ===== */
-  ./* ==========================================
-   PREMIUM DEALS CARDS - MOBILE
+  /* ==========================================
+   🔥 MOBILE DEALS CARDS - FULL GOLD RING
 ========================================== */
 
 .deals {
@@ -3126,6 +2889,10 @@ background:#D4AF37;
 .deal-card {
   padding: 14px 12px 14px;
   border-radius: 16px;
+  border: 2.5px solid #FFD700 !important;
+  box-shadow: 
+    0 0 12px rgba(255, 215, 0, 0.2),
+    0 0 30px rgba(255, 215, 0, 0.06) !important;
 }
 
 .deal-card .offer {
@@ -3192,6 +2959,10 @@ background:#D4AF37;
   }
 
   /* ===== BEST SELLERS ===== */
+  /* ==========================================
+   🔥 MOBILE BEST SELLERS - FULL GOLD RING
+========================================== */
+
   .best-sellers {
     padding:12px 8px;
   }
@@ -3203,6 +2974,10 @@ background:#D4AF37;
   .best-card {
     padding:6px;
     border-radius:8px;
+    border: 2.5px solid #FFD700 !important;
+    box-shadow: 
+      0 0 12px rgba(255, 215, 0, 0.2),
+      0 0 30px rgba(255, 215, 0, 0.06) !important;
   }
 
   .best-card img {
@@ -3240,7 +3015,7 @@ background:#D4AF37;
     }
   /* ===== BRANDS ===== */
   /* ==========================================
-   PREMIUM TOP BRANDS - MOBILE
+   🔥 MOBILE TOP BRANDS - FULL GOLD RING
 ========================================== */
 
 .brands {
@@ -3268,6 +3043,10 @@ background:#D4AF37;
 .brand-card {
   padding: 16px 10px 14px;
   border-radius: 14px;
+  border: 2.5px solid #FFD700 !important;
+  box-shadow: 
+    0 0 12px rgba(255, 215, 0, 0.15),
+    0 0 30px rgba(255, 215, 0, 0.04) !important;
 }
 
 .brand-logo-wrapper {
@@ -3782,34 +3561,9 @@ background:#D4AF37;
 body {
   padding-bottom: 70px;
 }
-    
-@keyframes goldShine {
-  0% {
-    background: linear-gradient(135deg, 
-      rgba(212, 175, 55, 0.3), 
-      rgba(212, 175, 55, 0.1), 
-      rgba(212, 175, 55, 0.3)
-    );
-  }
-  50% {
-    background: linear-gradient(135deg, 
-      rgba(212, 175, 55, 0.6), 
-      rgba(212, 175, 55, 0.2), 
-      rgba(212, 175, 55, 0.6)
-    );
-    box-shadow: 0 0 40px rgba(212, 175, 55, 0.4), 0 0 80px rgba(212, 175, 55, 0.15);
-  }
-  100% {
-    background: linear-gradient(135deg, 
-      rgba(212, 175, 55, 0.3), 
-      rgba(212, 175, 55, 0.1), 
-      rgba(212, 175, 55, 0.3)
-    );
-  }
-}
 
     /* ==========================================
-   MOBILE - CART PAGE (max-width: 768px)
+   🔥 MOBILE - CART ITEMS (max-width: 768px)
    ========================================== */
   
   .cart-page {
@@ -3865,10 +3619,13 @@ body {
     align-items: center;
     gap: 10px;
     background: linear-gradient(145deg, #1A1A1A, #111111);
-    border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: 14px;
     padding: 12px 14px;
     transition: all 0.3s ease;
+    border: 2px solid #FFD700 !important;
+    box-shadow: 
+      0 0 10px rgba(255, 215, 0, 0.15),
+      0 0 25px rgba(255, 215, 0, 0.04) !important;
   }
 
   .cart-item-image {
@@ -4152,4 +3909,4 @@ body {
     justify-content: center;
     border-radius: 12px;
   }
-
+    }
