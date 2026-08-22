@@ -248,7 +248,7 @@ else{
 
 
 // ==========================================
-// GET SEARCH PRODUCTS - FIXED
+// GET SEARCH PRODUCTS
 // ==========================================
 
 function getSearchProducts(){
@@ -336,7 +336,7 @@ function getSearchProducts(){
 }
 
 // ==========================================
-// SHOW PRODUCTS - FIXED
+// SHOW PRODUCTS
 // ==========================================
 
 function displaySearchProducts(products) {
@@ -359,7 +359,7 @@ function displaySearchProducts(products) {
     card.className = "search-product-card";
     card.style.cursor = "pointer";
 
-    // ✅ CARD CLICK - Opens product (ignores button clicks)
+    // CARD CLICK - Opens product (ignores button clicks)
     card.addEventListener("click", function(e) {
       if (e.target.closest('button')) return;
       openProduct(product.id);
@@ -480,7 +480,7 @@ function loadSearchBrands(){
 
 
 // ==========================================
-// OPEN PRODUCT - FIXED
+// OPEN PRODUCT
 // ==========================================
 
 function openProduct(id){
@@ -510,7 +510,7 @@ function openProduct(id){
 
 
 // ==========================================
-// ADD TO CART - SEARCH PAGE
+// ADD TO CART
 // ==========================================
 
 function addToCart(productId) {
@@ -658,7 +658,7 @@ const categoryNames = {
 
 
 // ==========================================
-// CREATE SEARCH SUGGESTIONS - FIXED
+// CREATE SEARCH SUGGESTIONS
 // ==========================================
 
 function createSearchSuggestions(){
@@ -935,18 +935,30 @@ function createSearchSuggestions(){
 
     // ========================================
     // CLICK SUGGESTION - FIXED
-    // Goes to search with brand + category filter
+    // Direct Product Page
     // ========================================
 
     row.addEventListener("click", function(e) {
       e.preventDefault();
       
-      // Go to search with brand + category filter
-      window.location.href =
-        "search.html?brand=" +
-        encodeURIComponent(item.brand) +
-        "&category=" +
-        encodeURIComponent(item.category);
+      // Find the product for this brand + category
+      const product = allProducts.find(p => 
+        p.brand === item.brand && 
+        p.category === item.category
+      );
+      
+      if (product) {
+        // Direct open product page
+        localStorage.setItem("selectedProduct", JSON.stringify(product));
+        window.location.href = "product.html";
+      } else {
+        // If no product found, go to search
+        window.location.href =
+          "search.html?brand=" +
+          encodeURIComponent(item.brand) +
+          "&category=" +
+          encodeURIComponent(item.category);
+      }
     });
 
 
