@@ -1860,8 +1860,8 @@ background:#D4AF37;
 
 .search-product-grid{
     display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:20px;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:25px;
     width:100%;
 }
 
