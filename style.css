@@ -850,7 +850,7 @@ cursor:pointer;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border: 1.5px solid #FFD700 !important;
+  border: 1px solid #FFD700 !important;
   box-shadow: 0 0 4px rgba(255, 215, 0, 0.05) !important;
 }
 
