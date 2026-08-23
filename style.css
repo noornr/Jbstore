@@ -399,6 +399,11 @@ cursor:pointer;
 /* ===== BRAND LIST ===== */
 /* ===== BRAND LIST - LOGO CARDS ===== */
 
+/* ==========================================
+   PREMIUM BRAND FILTER
+   JB STORE - BLACK & GOLD THEME
+   ========================================== */
+
 .brand-list {
   display: flex;
   flex-wrap: nowrap;
@@ -420,14 +425,16 @@ cursor:pointer;
 }
 
 
-/* ===== BRAND LOGO CARD ===== */
+/* ==========================================
+   BRAND CARD - DESKTOP
+   ========================================== */
 
 .brand-list .chip {
   appearance: none;
 
-  flex: 0 0 145px;
-  width: 145px;
-  height: 110px;
+  flex: 0 0 132px;
+  width: 132px;
+  height: 100px;
 
   display: flex;
   flex-direction: column;
@@ -436,15 +443,21 @@ cursor:pointer;
 
   padding: 10px;
 
-  background: #FFFFFF;
+  background:
+    linear-gradient(
+      145deg,
+      #181818 0%,
+      #101010 100%
+    );
 
-  border: 1px solid #E5E5E5;
-  border-radius: 16px;
+  border: 1px solid rgba(212, 175, 55, 0.28);
 
-  color: #222222;
+  border-radius: 15px;
+
+  color: #F2F2F2;
 
   font-family: "Poppins", sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
 
   cursor: pointer;
@@ -453,9 +466,8 @@ cursor:pointer;
   overflow: hidden;
 
   box-shadow:
-    0 3px 12px rgba(0,0,0,0.08);
-
-  letter-spacing: 0;
+    inset 0 1px 0 rgba(255,255,255,0.025),
+    0 4px 15px rgba(0,0,0,0.35);
 
   transition:
     transform 0.25s ease,
@@ -464,18 +476,22 @@ cursor:pointer;
 }
 
 
-/* ===== REMOVE OLD SHIMMER ===== */
+/* ==========================================
+   REMOVE OLD SHIMMER
+   ========================================== */
 
 .brand-list .chip::before {
   display: none;
 }
 
 
-/* ===== BRAND LOGO ===== */
+/* ==========================================
+   LOGO
+   ========================================== */
 
 .brand-list .chip img {
-  width: 68px;
-  height: 52px;
+  width: 62px;
+  height: 48px;
 
   object-fit: contain;
 
@@ -483,66 +499,81 @@ cursor:pointer;
 
   background: transparent;
 
-  transition: transform 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
 }
 
 
-/* ===== BRAND NAME ===== */
+/* ==========================================
+   BRAND NAME
+   ========================================== */
 
 .brand-list .chip span {
-  color: #222222;
+  color: #E8E8E8;
 
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
 
   line-height: 1.2;
+
   text-align: center;
+
+  white-space: nowrap;
 }
 
 
-/* ===== HOVER ===== */
+/* ==========================================
+   HOVER
+   ========================================== */
 
 .brand-list .chip:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
 
-  background: #FFFFFF;
-
-  border-color: #D4AF37;
-
-  color: #222222;
+  border-color: rgba(212, 175, 55, 0.75);
 
   box-shadow:
-    0 8px 25px rgba(212,175,55,0.18);
+    0 8px 25px rgba(212, 175, 55, 0.12),
+    inset 0 0 15px rgba(212, 175, 55, 0.025);
 }
 
 .brand-list .chip:hover img {
-  transform: scale(1.08);
+  transform: scale(1.07);
 }
 
 
-/* ===== ACTIVE BRAND ===== */
+/* ==========================================
+   ACTIVE BRAND
+   ========================================== */
 
 .brand-list .chip.on {
-  background: #FFFFFF;
+  background:
+    linear-gradient(
+      145deg,
+      #211B0A,
+      #12100A
+    );
 
-  color: #222222;
+  border: 1px solid #D4AF37;
 
-  border: 2px solid #D4AF37;
+  color: #FFFFFF;
 
   box-shadow:
-    0 8px 25px rgba(212,175,55,0.25);
+    0 0 0 1px rgba(212,175,55,0.08),
+    0 8px 28px rgba(212,175,55,0.18),
+    inset 0 0 18px rgba(212,175,55,0.05);
 
   transform: translateY(-3px);
 }
 
+
 .brand-list .chip.on span {
-  color: #111111;
+  color: #F3CF55;
 }
 
-.brand-list .chip.on:hover {
-  color: #111111;
 
-  transform: translateY(-5px);
+.brand-list .chip.on:hover {
+  transform: translateY(-4px);
 }
 
 /* ==========================================
