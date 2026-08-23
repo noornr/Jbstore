@@ -2713,12 +2713,12 @@ cursor:pointer;
     right: 4px;
     background: linear-gradient(135deg, #D4AF37, #F3CF55);
     color: #0A0A0A;
-    font-size: 5.5px;
+    font-size: 6.05px; /* Increased by 10% from 5.5px */
     font-weight: 700;
-    padding: 1px 5px;
-    border-radius: 7px;
+    padding: 1.1px 5.5px; /* Increased by 10% from 1px 5px */
+    border-radius: 7.7px; /* Increased by 10% from 7px */
     text-transform: uppercase;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.33px; /* Increased by 10% from 0.3px */
     opacity: 1;
     z-index: 3;
     box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
