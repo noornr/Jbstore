@@ -195,7 +195,7 @@ cursor:pointer;
 ========================================== */
 
 .menu {
-  background: #0A0A0A;  /* Very dark, almost black */
+  background: #000000;  /* Very dark, almost black */
   border-bottom: 2px solid rgba(212, 175, 55, 0.15);
   padding: 12px 5%;
   display: flex;
