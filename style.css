@@ -2640,7 +2640,7 @@ cursor:pointer;
   .category-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
     width: 100%;
     margin-top: 4px;
     padding: 0;
