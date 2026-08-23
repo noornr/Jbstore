@@ -85,92 +85,122 @@ const clearFilter = document.getElementById("clearFilter");
 // 6. LOAD BRAND BUTTONS
 // ==========================================
 
+// ==========================================
+// LOAD BRAND BUTTONS
+// ==========================================
+
 function loadBrands(category) {
+
   if (!brandBox) return;
 
+  // Clear old brands
   brandBox.innerHTML = "";
+
+  // Reset selected brand
   selectedBrand = null;
 
-  if (!brands[category]) return;
+  // Get brands for current category
+  const categoryBrands = brands[category] || [];
 
-  brands[category].forEach(brand => {
+  // Remove duplicate brand names
+  const uniqueBrands = [...new Set(categoryBrands)];
+
+  // Create ONE button for each brand
+  uniqueBrands.forEach(brand => {
+
     const chip = document.createElement("button");
+
     chip.type = "button";
     chip.className = "chip";
-    brands[category].forEach(brand => {
 
-  const chip = document.createElement("button");
+    // ==============================
+    // BRAND LOGOS
+    // ==============================
 
-  chip.type = "button";
+    const logoMap = {
 
-  chip.className = "chip";
+      "iPhone": "images/apple.png",
+      "OnePlus": "images/oneplus.png",
+      "Samsung": "images/samsung-logo.png",
+      "Google Pixel": "images/google.png",
+      "Vivo": "images/vivo.png",
+      "OPPO": "images/oppo.png",
 
-  const logoMap = {
-    "iPhone": "images/apple.png",
-    "OnePlus": "images/oneplus.png",
-    "Samsung": "images/samsung-logo.png",
-    "Google Pixel": "images/google.png",
-    "Vivo": "images/vivo.png",
-    "OPPO": "images/oppo.png",
+      "LG": "images/lg.png",
+      "Godrej": "images/godrej.png",
+      "Haier": "images/haier.png",
+      "Whirlpool": "images/whirlpool.png",
+      "IFB": "images/ifb.png",
+      "Bosch": "images/bosch.png",
 
-    "LG": "images/lg.png",
-    "Godrej": "images/godrej.png",
-    "Haier": "images/haier.png",
-    "Whirlpool": "images/whirlpool.png",
-    "IFB": "images/ifb.png",
-    "Bosch": "images/bosch.png",
+      "Daikin": "images/daikin.png",
+      "Voltas": "images/voltas.png",
+      "Blue Star": "images/bluestar.png",
 
-    "Daikin": "images/daikin.png",
-    "Voltas": "images/voltas.png",
-    "Blue Star": "images/bluestar.png",
+      "Sony": "images/sony.png",
+      "TCL": "images/tcl.png",
+      "Xiaomi": "images/xiaomi.png",
 
-    "Sony": "images/sony.png",
-    "TCL": "images/tcl.png",
-    "Xiaomi": "images/xiaomi.png"
-  };
+      "Realme": "images/realme.png"
+    };
 
-  const logo = document.createElement("img");
-  logo.src = logoMap[brand] || "";
-  logo.alt = brand;
 
-  const name = document.createElement("span");
-  name.textContent = brand;
+    // ==============================
+    // LOGO
+    // ==============================
 
-  chip.appendChild(logo);
-  chip.appendChild(name);
+    const logo = document.createElement("img");
 
-  chip.addEventListener("click", () => {
+    logo.src = logoMap[brand] || "";
+    logo.alt = brand;
 
-    document
-      .querySelectorAll(".chip")
-      .forEach(c => {
-        c.classList.remove("on");
-      });
+    // ==============================
+    // BRAND NAME
+    // ==============================
 
-    chip.classList.add("on");
+    const name = document.createElement("span");
 
-    selectedBrand = brand;
+    name.textContent = brand;
 
-    displayProducts();
 
-  });
+    // ==============================
+    // ADD TO BUTTON
+    // ==============================
 
-  brandBox.appendChild(chip);
+    chip.appendChild(logo);
+    chip.appendChild(name);
 
-});
+
+    // ==============================
+    // BRAND CLICK
+    // ==============================
+
     chip.addEventListener("click", () => {
-      document.querySelectorAll(".chip").forEach(c => {
-        c.classList.remove("on");
-      });
+
+      document
+        .querySelectorAll(".chip")
+        .forEach(c => {
+          c.classList.remove("on");
+        });
+
       chip.classList.add("on");
+
       selectedBrand = brand;
+
       displayProducts();
+
     });
 
-    brandBox.appendChild(chip);
-  });
-}
 
+    // ==============================
+    // ADD BUTTON
+    // ==============================
+
+    brandBox.appendChild(chip);
+
+  });
+
+}
 // ==========================================
 // 7. GET FIRST VARIANT
 // ==========================================
