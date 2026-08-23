@@ -200,7 +200,7 @@ cursor:pointer;
 ========================================== */
 
 .menu {
-  background: linear-gradient(180deg, #1A1A1A 0%, #0F0F0F 100%);
+  background: #0A0A0A;  /* Very dark, almost black */
   border-bottom: 2px solid rgba(212, 175, 55, 0.15);
   padding: 12px 5%;
   display: flex;
