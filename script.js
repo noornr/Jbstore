@@ -97,8 +97,67 @@ function loadBrands(category) {
     const chip = document.createElement("button");
     chip.type = "button";
     chip.className = "chip";
-    chip.innerText = brand;
+    brands[category].forEach(brand => {
 
+  const chip = document.createElement("button");
+
+  chip.type = "button";
+
+  chip.className = "chip";
+
+  const logoMap = {
+    "iPhone": "images/apple.png",
+    "OnePlus": "images/oneplus.png",
+    "Samsung": "images/samsung-logo.png",
+    "Google Pixel": "images/google.png",
+    "Vivo": "images/vivo.png",
+    "OPPO": "images/oppo.png",
+
+    "LG": "images/lg.png",
+    "Godrej": "images/godrej.png",
+    "Haier": "images/haier.png",
+    "Whirlpool": "images/whirlpool.png",
+    "IFB": "images/ifb.png",
+    "Bosch": "images/bosch.png",
+
+    "Daikin": "images/daikin.png",
+    "Voltas": "images/voltas.png",
+    "Blue Star": "images/bluestar.png",
+
+    "Sony": "images/sony.png",
+    "TCL": "images/tcl.png",
+    "Xiaomi": "images/xiaomi.png"
+  };
+
+  const logo = document.createElement("img");
+  logo.src = logoMap[brand] || "";
+  logo.alt = brand;
+
+  const name = document.createElement("span");
+  name.textContent = brand;
+
+  chip.appendChild(logo);
+  chip.appendChild(name);
+
+  chip.addEventListener("click", () => {
+
+    document
+      .querySelectorAll(".chip")
+      .forEach(c => {
+        c.classList.remove("on");
+      });
+
+    chip.classList.add("on");
+
+    selectedBrand = brand;
+
+    displayProducts();
+
+  });
+
+  brandBox.appendChild(chip);
+
+});
     chip.addEventListener("click", () => {
       document.querySelectorAll(".chip").forEach(c => {
         c.classList.remove("on");
