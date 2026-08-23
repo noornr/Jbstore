@@ -314,7 +314,7 @@ cursor:pointer;
 ========================================== */
 
 .filters {
-  background: #0A0A0A;  /* Very dark, almost black */
+  background: #000000;  
   padding: 20px 5% 25px;
   border-bottom: 1px solid rgba(212, 175, 55, 0.1);
   position: relative;
