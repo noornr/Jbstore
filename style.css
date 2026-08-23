@@ -319,7 +319,7 @@ cursor:pointer;
 ========================================== */
 
 .filters {
-  background: linear-gradient(180deg, #141414 0%, #0A0A0A 100%);
+  background: #0A0A0A;  /* Very dark, almost black */
   padding: 20px 5% 25px;
   border-bottom: 1px solid rgba(212, 175, 55, 0.1);
   position: relative;
