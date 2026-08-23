@@ -2581,26 +2581,19 @@ cursor:pointer;
   }
 
   .gold-btn {
-    color: #FFFFFF;
+    color: color: #000000;
   }
 
   .gold-btn:hover {
-    color: #FFFFFF;
+    color: #000000;
   }
 
 
-
-  /* ==========================================
-   MOBILE - PREMIUM PROFESSIONAL LAYOUT
-   max-width: 768px
-   ========================================== */
   
   /* ==========================================
    MOBILE - PREMIUM PROFESSIONAL CARDS
    PERFECT FIT - NO EXTRA GAPS
    ========================================== */
-
-@media (max-width: 768px) {
 
   .categories {
     padding: 30px 6px;
