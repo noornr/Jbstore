@@ -1,4 +1,4 @@
-const oppoProducts = [
+const mobileProducts = [
 
   {
     id: "MOB008",
