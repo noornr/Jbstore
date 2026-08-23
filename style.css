@@ -28,18 +28,18 @@ html,body{
 
 /* ===== DESKTOP HEADER ===== */
 
-.header {
-  height: 82px;
-  padding: 0 5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  background: #000000;  /* Pure black - #111 nunchi change chesa */
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  width: 100%;
+.header{
+    height:82px;
+    padding:0 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    background:#111;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    width:100%;
 }
 
 .logo span{color:#fff;}
