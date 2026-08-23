@@ -1,446 +1,469 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JB STORE</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JB STORE</title>
 
-  <link rel="stylesheet" href="style.css">
+    <!-- ===== FONTS ===== -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  
-<header class="header">
+    <!-- ==========================================
+    HEADER — with Hamburger on left side
+    ========================================== -->
+    <header class="header">
 
-  <div class="logo">
-    JB <span>STORE</span>
-  </div>
+        <!-- HAMBURGER BUTTON (left side) -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
 
-  <div class="search">
+        <!-- LOGO -->
+        <div class="logo">
+            JB <span>STORE</span>
+        </div>
 
-  <input
-    type="text"
-    id="searchInput"
-    placeholder="Search products..."
-    autocomplete="off"
-  >
+        <!-- SEARCH -->
+        <div class="search">
+            <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off" />
+            <button type="button" id="searchButton">🔍</button>
+            <div id="searchSuggestions" class="search-suggestions"></div>
+        </div>
 
-  <button
-    type="button"
-    id="searchButton">
-    🔍
-  </button>
+    </header>
 
-  <div
-    id="searchSuggestions"
-    class="search-suggestions">
-  </div>
+    <!-- ==========================================
+    SIDEBAR NAVIGATION (slides from left)
+    ========================================== -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-</div>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-brand">
+                <span class="sidebar-brand-icon">✦</span>
+                JB <span>STORE</span>
+            </div>
+            <button class="sidebar-close" id="sidebarClose">✕</button>
+        </div>
 
-</header>
+        <ul class="sidebar-menu">
+            <li><a href="index.html" class="sidebar-link active">🏠 Home</a></li>
+            <li><a href="#products" class="sidebar-link">📦 Products</a></li>
+            <li><a href="#" class="sidebar-link">📞 Call</a></li>
+            <li><a href="cart.html" class="sidebar-link">🛒 Cart</a></li>
+            <li class="sidebar-divider"></li>
+            <li><a href="#" class="sidebar-link">📱 Mobiles</a></li>
+            <li><a href="#" class="sidebar-link">🧊 Fridges</a></li>
+            <li><a href="#" class="sidebar-link">👕 Washing Machines</a></li>
+            <li><a href="#" class="sidebar-link">❄️ AC</a></li>
+            <li><a href="#" class="sidebar-link">🖥 Smart TVs</a></li>
+            <li><a href="#" class="sidebar-link">🔌 Accessories</a></li>
+        </ul>
 
+        <div class="sidebar-footer">
+            <div class="sidebar-social">
+                <a href="#" class="sidebar-social-link">📱</a>
+                <a href="#" class="sidebar-social-link">📸</a>
+                <a href="#" class="sidebar-social-link">▶️</a>
+            </div>
+            <p class="sidebar-copy">© 2026 JB STORE</p>
+        </div>
+    </nav>
 
-  <section class="hero">
+    <!-- ==========================================
+    HERO
+    ========================================== -->
+    <section class="hero">
+        <img src="images/hero.png" class="hero-bg" alt="JB STORE Premium Electronics" />
+        <div class="hero-overlay"></div>
+        <div class="hero-btns">
+            <a href="#products" class="gold-btn">🛒 Shop Now</a>
+            <a href="https://wa.me/919999999999" target="_blank" class="line-btn">WhatsApp</a>
+        </div>
+    </section>
 
-  <img
-    src="images/hero.png"
-    class="hero-bg"
-    alt="JB STORE Premium Electronics"
-  >
+    <!-- ==========================================
+    SHOP BY CATEGORY
+    ========================================== -->
+    <section class="categories">
+        <div class="section-head">
+            <h2>🛍️ Shop by Category</h2>
+            <a href="#" class="view-all">View All →</a>
+        </div>
 
-  <div class="hero-overlay"></div>
+        <div class="category-grid premium-category-grid">
 
-  <div class="hero-btns">
+            <!-- Seal Pack Mobiles -->
+            <div class="category-card premium-cat-card" data-category="sealpack">
+                <img src="images/iphone.png" alt="Seal Pack" />
+                <p>📦 Seal Pack Mobiles</p>
+            </div>
 
-    <!-- SHOP NOW -->
-    <a
-      href="#products"
-      class="gold-btn"
-    >
-      🛒 Shop Now
-    </a>
+            <!-- Seal Cut Mobiles -->
+            <div class="category-card premium-cat-card" data-category="sealcut">
+                <img src="images/iphone.png" alt="Seal Cut" />
+                <p>✂️ Seal Cut Mobiles</p>
+            </div>
 
-    <!-- WHATSAPP -->
-    <a
-      href="https://wa.me/919999999999"
-      target="_blank"
-      class="line-btn"
-    >
-      WhatsApp
-    </a>
+            <!-- 2nd Hand Mobiles -->
+            <div class="category-card premium-cat-card" data-category="second">
+                <img src="images/samsung.png" alt="2nd Hand" />
+                <p>🔄 2nd Hand Mobiles</p>
+            </div>
 
-  </div>
+            <!-- Fridges -->
+            <div class="category-card premium-cat-card" data-category="fridge">
+                <img src="images/fridge.png" alt="Refrigerators" />
+                <p>🧊 Fridges</p>
+            </div>
 
-</section>
+            <!-- Washing Machines -->
+            <div class="category-card premium-cat-card" data-category="washing">
+                <img src="images/washing.png" alt="Washing Machines" />
+                <p>👕 Washing Machines</p>
+            </div>
 
-<!-- ===== SHOP BY CATEGORY ===== -->
-<section class="categories">
-  <div class="section-head">
-    <h2>🛍️ Shop by Category</h2>
-    <a href="#" class="view-all">View All →</a>
-  </div>
+            <!-- AC -->
+            <div class="category-card premium-cat-card" data-category="ac">
+                <img src="images/ac.png" alt="AC" />
+                <p>❄️ AC</p>
+            </div>
 
-  <div class="category-grid premium-category-grid">
-    
-    <!-- ===== ROW 1: MOBILES (3) ===== -->
-    
-    <!-- 1. Seal Pack Mobiles -->
-    <div class="category-card premium-cat-card" data-category="sealpack">
-      <img src="images/iphone.png" alt="Seal Pack">
-      <p>📦 Seal Pack Mobiles</p>
-  
+            <!-- Smart TVs -->
+            <div class="category-card premium-cat-card" data-category="tv">
+                <img src="images/tv.png" alt="TV" />
+                <p>🖥 Smart TVs</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+    PREMIUM MENU
+    ========================================== -->
+    <nav class="menu" id="categoryMenu">
+        <button class="cat active" data-cat="mobiles">
+            <span class="cat-icon">📱</span> Mobiles
+        </button>
+        <button class="cat" data-cat="sealpack">
+            <span class="cat-icon">📦</span> Seal Pack
+        </button>
+        <button class="cat" data-cat="sealcut">
+            <span class="cat-icon">✂️</span> Seal Cut
+        </button>
+        <button class="cat" data-cat="second">
+            <span class="cat-icon">🔄</span> 2nd Hand
+        </button>
+        <button class="cat" data-cat="fridge">
+            <span class="cat-icon">❄️</span> Refrigerator
+        </button>
+        <button class="cat" data-cat="washing">
+            <span class="cat-icon">👕</span> Washing
+        </button>
+        <button class="cat" data-cat="ac">
+            <span class="cat-icon">🌬️</span> AC
+        </button>
+        <button class="cat" data-cat="tv">
+            <span class="cat-icon">🖥</span> TV
+        </button>
+    </nav>
+
+    <!-- ==========================================
+    FILTERS
+    ========================================== -->
+    <section class="filters">
+        <div class="filter-header">
+            <div class="filter-title">
+                <span class="filter-icon">✦</span>
+                <span>Filter by Brand</span>
+            </div>
+            <button id="clearFilter" class="clear-btn">
+                <span>✕</span> Clear All
+            </button>
+        </div>
+        <div id="brandFilters" class="brand-list"></div>
+    </section>
+
+    <!-- ==========================================
+    TOP DEALS
+    ========================================== -->
+    <section class="deals" id="products">
+        <div class="section-head">
+            <h2 id="productTitle">Top Deals <span class="fire-icon">🔥</span></h2>
+            <a href="#" class="view-all">View All →</a>
+        </div>
+        <div id="productGrid" class="deal-grid"></div>
+    </section>
+
+    <!-- ==========================================
+    BANNER SLIDER
+    ========================================== -->
+    <section class="banner-slider">
+        <div class="slides">
+            <div class="slide active">
+                <img src="images/banner1.jpg" alt="" />
+            </div>
+            <div class="slide">
+                <img src="images/banner2.jpg" alt="" />
+            </div>
+            <div class="slide">
+                <img src="images/banner3.jpg" alt="" />
+            </div>
+        </div>
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    BEST SELLERS
+    ========================================== -->
+    <section class="best-sellers">
+        <div class="section-head">
+            <h2>Best Sellers</h2>
+            <a href="#" class="view-all">View All →</a>
+        </div>
+
+        <div class="best-grid">
+            <!-- iPhone 16 Pro -->
+            <div class="best-card" onclick="viewProduct('MOB001')" style="cursor:pointer;">
+                <img src="images/iphone.png" alt="iPhone 16 Pro" />
+                <h3>iPhone 16 Pro</h3>
+                <p class="brand">Apple</p>
+                <div class="price-row">
+                    <span class="new">₹99,999</span>
+                    <span class="old">₹109,999</span>
+                </div>
+                <button onclick="event.stopPropagation(); viewProduct('MOB001')">View Details</button>
+            </div>
+
+            <!-- Galaxy S24 Ultra -->
+            <div class="best-card" onclick="viewProduct('MOB003')" style="cursor:pointer;">
+                <img src="images/samsung.png" alt="Galaxy S24 Ultra" />
+                <h3>Galaxy S24 Ultra</h3>
+                <p class="brand">Samsung</p>
+                <div class="price-row">
+                    <span class="new">₹72,999</span>
+                    <span class="old">₹89,999</span>
+                </div>
+                <button onclick="event.stopPropagation(); viewProduct('MOB003')">View Details</button>
+            </div>
+
+            <!-- Daikin AC -->
+            <div class="best-card" onclick="viewProduct('AC001')" style="cursor:pointer;">
+                <img src="images/ac.png" alt="Daikin 1.5 Ton AC" />
+                <h3>Daikin 1.5 Ton AC</h3>
+                <p class="brand">Daikin</p>
+                <div class="price-row">
+                    <span class="new">₹34,990</span>
+                    <span class="old">₹42,990</span>
+                </div>
+                <button onclick="event.stopPropagation(); viewProduct('AC001')">View Details</button>
+            </div>
+
+            <!-- Smart TV -->
+            <div class="best-card" onclick="viewProduct('TV001')" style="cursor:pointer;">
+                <img src="images/tv.png" alt="55 Smart TV" />
+                <h3>55" Smart TV</h3>
+                <p class="brand">Sony</p>
+                <div class="price-row">
+                    <span class="new">₹54,990</span>
+                    <span class="old">₹69,990</span>
+                </div>
+                <button onclick="event.stopPropagation(); viewProduct('TV001')">View Details</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    TOP BRANDS
+    ========================================== -->
+    <section class="brands">
+        <div class="section-head">
+            <h2>✨ Top Brands</h2>
+            <span class="brand-count">6+ Brands</span>
+        </div>
+
+        <div class="brand-grid premium-brand-grid">
+            <div class="brand-card">
+                <div class="brand-logo-wrapper">
+                    <img src="images/apple.png" alt="Apple" />
+                </div>
+                <span class="brand-name">Apple</span>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo-wrapper">
+                    <img src="images/samsung-logo.png" alt="Samsung" />
+                </div>
+                <span class="brand-name">Samsung</span>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo-wrapper">
+                    <img src="images/lg.png" alt="LG" />
+                </div>
+                <span class="brand-name">LG</span>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo-wrapper">
+                    <img src="images/daikin.png" alt="Daikin" />
+                </div>
+                <span class="brand-name">Daikin</span>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo-wrapper">
+                    <img src="images/sony.png" alt="Sony" />
+                </div>
+                <span class="brand-name">Sony</span>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo-wrapper">
+                    <img src="images/haier.png" alt="Haier" />
+                </div>
+                <span class="brand-name">Haier</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    FOOTER
+    ========================================== -->
+    <footer class="footer">
+        <div class="footer-glow"></div>
+
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="brand-icon">✦</div>
+                <h3>JB <span>STORE</span></h3>
+                <p class="brand-tagline">Premium Electronics Store</p>
+                <p class="brand-desc">Seal Pack &amp; 2nd Hand Mobiles</p>
+                <div class="social-icons">
+                    <a href="#" class="social-link">📱</a>
+                    <a href="#" class="social-link">📸</a>
+                    <a href="#" class="social-link">▶️</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Mobiles</a></li>
+                    <li><a href="#">Refrigerators</a></li>
+                    <li><a href="#">Washing Machines</a></li>
+                    <li><a href="#">Air Conditioners</a></li>
+                    <li><a href="#">Smart TVs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#" class="whatsapp-link">💬 WhatsApp</a></li>
+                    <li><a href="#">📞 Call Us</a></li>
+                    <li><a href="#">📍 Location</a></li>
+                    <li><a href="#">📧 Email</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#">📸 Instagram</a></li>
+                    <li><a href="#">📘 Facebook</a></li>
+                    <li><a href="#">▶️ YouTube</a></li>
+                    <li><a href="#">🐦 Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-divider">
+            <span>✦</span>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 JB STORE • All Rights Reserved</p>
+            <p class="footer-made">Made with ❤️ in India</p>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+    BOTTOM BAR (mobile)
+    ========================================== -->
+    <div class="bottom-bar">
+        <div class="bottom-container">
+            <a href="index.html" class="bottom-item active">
+                <span class="bottom-icon">🏠</span>
+                <span class="bottom-label">Home</span>
+            </a>
+            <a href="index.html" class="bottom-item">
+                <span class="bottom-icon">📦</span>
+                <span class="bottom-label">Products</span>
+            </a>
+            <a href="#" class="bottom-item call-item">
+                <span class="bottom-icon">📞</span>
+                <span class="bottom-label">Call</span>
+            </a>
+            <a href="cart.html" class="bottom-item cart-item">
+                <span class="bottom-icon">🛒</span>
+                <span class="cart-badge" id="cartBadge">0</span>
+                <span class="bottom-label">Cart</span>
+            </a>
+        </div>
     </div>
 
-    <!-- 2. Seal Cut Mobiles - NEW -->
-    <div class="category-card premium-cat-card" data-category="sealcut">
-      <img src="images/iphone.png" alt="Seal Cut">
-      <p>✂️ Seal Cut Mobiles</p>
-      
-    </div>
+    <!-- ==========================================
+    SCRIPTS
+    ========================================== -->
+    <script src="config.js"></script>
+    <script src="mobiles.js"></script>
+    <script src="refrigerator.js"></script>
+    <script src="washing.js"></script>
+    <script src="ac.js"></script>
+    <script src="tv.js"></script>
+    <script src="script.js"></script>
 
-    <!-- 3. Used Mobiles -->
-    <div class="category-card premium-cat-card" data-category="second">
-      <img src="images/samsung.png" alt="2nd Hand">
-      <p>🔄 2nd Hand Mobiles</p>
-      
-    </div>
+    <!-- ==========================================
+    SIDEBAR TOGGLE SCRIPT
+    ========================================== -->
+    <script>
+        (function() {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const closeBtn = document.getElementById('sidebarClose');
 
-    <!-- ===== ROW 2: OTHER ELECTRONICS (4) ===== -->
-    
-    <!-- 4. Refrigerators -->
-    <div class="category-card premium-cat-card" data-category="fridge">
-      <img src="images/fridge.png" alt="Refrigerators">
-      <p>🧊 Fridges</p>
-      
-    </div>
+            function openSidebar() {
+                sidebar.classList.add('open');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
 
-    <!-- 5. Washing Machines -->
-    <div class="category-card premium-cat-card" data-category="washing">
-      <img src="images/washing.png" alt="Washing Machines">
-      <p>👕 Washing Machines</p>
-      
-    </div>
+            function closeSidebar() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
 
-    <!-- 6. Air Conditioners -->
-    <div class="category-card premium-cat-card" data-category="ac">
-      <img src="images/ac.png" alt="AC">
-      <p>❄️ AC</p>
-      
-    </div>
+            hamburger.addEventListener('click', openSidebar);
+            closeBtn.addEventListener('click', closeSidebar);
+            overlay.addEventListener('click', closeSidebar);
 
-    <!-- 7. Smart TVs -->
-    <div class="category-card premium-cat-card" data-category="tv">
-      <img src="images/tv.png" alt="TV">
-      <p>🖥 Smart TVs</p>
-      
-    </div>
-
-  </div>
-</section>
-  
-
-  <!-- ===== PREMIUM MENU ===== -->
-<nav class="menu" id="categoryMenu">
-  <button class="cat active" data-cat="mobiles">
-    <span class="cat-icon">📱</span>
-    Mobiles
-  </button>
-  <button class="cat" data-cat="sealpack">
-    <span class="cat-icon">📦</span>
-    Seal Pack
-  </button>
-  <button class="cat" data-cat="sealcut">
-    <span class="cat-icon">✂️</span>
-    Seal Cut
-  </button>
-  <button class="cat" data-cat="second">
-    <span class="cat-icon">🔄</span>
-    2nd Hand
-  </button>
-  <button class="cat" data-cat="fridge">
-    <span class="cat-icon">❄️</span>
-    Refrigerator
-  </button>
-  <button class="cat" data-cat="washing">
-    <span class="cat-icon">👕</span>
-    Washing
-  </button>
-  <button class="cat" data-cat="ac">
-    <span class="cat-icon">🌬️</span>
-    AC
-  </button>
-  <button class="cat" data-cat="tv">
-    <span class="cat-icon">🖥</span>
-    TV
-  </button>
-</nav>
-
-<!-- ===== PREMIUM FILTERS ===== -->
-<section class="filters">
-  <div class="filter-header">
-    <div class="filter-title">
-      <span class="filter-icon">✦</span>
-      <span>Filter by Brand</span>
-    </div>
-    <button id="clearFilter" class="clear-btn">
-      <span>✕</span> Clear All
-    </button>
-  </div>
-  <div id="brandFilters" class="brand-list"></div>
-</section>
-
-
-
-  
-
-  <section class="deals" id="products">
-  <div class="section-head">
-    <h2 id="productTitle">Top Deals <span class="fire-icon">🔥</span></h2>
-    <a href="#" class="view-all">View All →</a>
-  </div>
-  <div id="productGrid" class="deal-grid"></div>
-</section>
-  
-
-  <section class="banner-slider">
-
-  <div class="slides">
-
-    <div class="slide active">
-      <img src="images/banner1.jpg" alt="">
-    </div>
-
-    <div class="slide">
-      <img src="images/banner2.jpg" alt="">
-    </div>
-
-    <div class="slide">
-      <img src="images/banner3.jpg" alt="">
-    </div>
-
-  </div>
-
-  <div class="dots">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-  </div>
-
-  </section>
-<section class="best-sellers">
-  <div class="section-head">
-    <h2>Best Sellers</h2>
-    <a href="#" class="view-all">View All →</a>
-  </div>
-
-  <div class="best-grid">
-    <!-- iPhone 16 Pro -->
-    <div class="best-card" onclick="viewProduct('MOB001')" style="cursor:pointer;">
-      <img src="images/iphone.png" alt="iPhone 16 Pro">
-      <h3>iPhone 16 Pro</h3>
-      <p class="brand">Apple</p>
-      <div class="price-row">
-        <span class="new">₹99,999</span>
-        <span class="old">₹109,999</span>
-      </div>
-      <button onclick="event.stopPropagation(); viewProduct('MOB001')">View Details</button>
-    </div>
-
-    <!-- Galaxy S24 Ultra -->
-    <div class="best-card" onclick="viewProduct('MOB003')" style="cursor:pointer;">
-      <img src="images/samsung.png" alt="Galaxy S24 Ultra">
-      <h3>Galaxy S24 Ultra</h3>
-      <p class="brand">Samsung</p>
-      <div class="price-row">
-        <span class="new">₹72,999</span>
-        <span class="old">₹89,999</span>
-      </div>
-      <button onclick="event.stopPropagation(); viewProduct('MOB003')">View Details</button>
-    </div>
-
-    <!-- Daikin AC -->
-    <div class="best-card" onclick="viewProduct('AC001')" style="cursor:pointer;">
-      <img src="images/ac.png" alt="Daikin 1.5 Ton AC">
-      <h3>Daikin 1.5 Ton AC</h3>
-      <p class="brand">Daikin</p>
-      <div class="price-row">
-        <span class="new">₹34,990</span>
-        <span class="old">₹42,990</span>
-      </div>
-      <button onclick="event.stopPropagation(); viewProduct('AC001')">View Details</button>
-    </div>
-
-    <!-- Smart TV -->
-    <div class="best-card" onclick="viewProduct('TV001')" style="cursor:pointer;">
-      <img src="images/tv.png" alt="55 Smart TV">
-      <h3>55" Smart TV</h3>
-      <p class="brand">Sony</p>
-      <div class="price-row">
-        <span class="new">₹54,990</span>
-        <span class="old">₹69,990</span>
-      </div>
-      <button onclick="event.stopPropagation(); viewProduct('TV001')">View Details</button>
-    </div>
-  </div>
-</section>
-
-  <section class="brands">
-  <div class="section-head">
-    <h2>✨ Top Brands</h2>
-    <span class="brand-count">6+ Brands</span>
-  </div>
-
-  <div class="brand-grid premium-brand-grid">
-    
-    <div class="brand-card">
-      <div class="brand-logo-wrapper">
-        <img src="images/apple.png" alt="Apple">
-      </div>
-      <span class="brand-name">Apple</span>
-    </div>
-
-    <div class="brand-card">
-      <div class="brand-logo-wrapper">
-        <img src="images/samsung-logo.png" alt="Samsung">
-      </div>
-      <span class="brand-name">Samsung</span>
-    </div>
-
-    <div class="brand-card">
-      <div class="brand-logo-wrapper">
-        <img src="images/lg.png" alt="LG">
-      </div>
-      <span class="brand-name">LG</span>
-    </div>
-
-    <div class="brand-card">
-      <div class="brand-logo-wrapper">
-        <img src="images/daikin.png" alt="Daikin">
-      </div>
-      <span class="brand-name">Daikin</span>
-    </div>
-
-    <div class="brand-card">
-      <div class="brand-logo-wrapper">
-        <img src="images/sony.png" alt="Sony">
-      </div>
-      <span class="brand-name">Sony</span>
-    </div>
-
-    <div class="brand-card">
-      <div class="brand-logo-wrapper">
-        <img src="images/haier.png" alt="Haier">
-      </div>
-      <span class="brand-name">Haier</span>
-    </div>
-
-  </div>
-</section>
-
-<footer class="footer">
-
-  <div class="footer-glow"></div>
-
-  <div class="footer-container">
-
-    <!-- Brand Section -->
-    <div class="footer-brand">
-      <div class="brand-icon">✦</div>
-      <h3>JB <span>STORE</span></h3>
-      <p class="brand-tagline">Premium Electronics Store</p>
-      <p class="brand-desc">Seal Pack &amp; 2nd Hand Mobiles</p>
-      
-      <div class="social-icons">
-        <a href="#" class="social-link">📱</a>
-        <a href="#" class="social-link">📸</a>
-        <a href="#" class="social-link">▶️</a>
-      </div>
-    </div>
-
-    <!-- Categories -->
-    <div class="footer-col">
-      <h4>Categories</h4>
-      <ul>
-        <li><a href="#">Mobiles</a></li>
-        <li><a href="#">Refrigerators</a></li>
-        <li><a href="#">Washing Machines</a></li>
-        <li><a href="#">Air Conditioners</a></li>
-        <li><a href="#">Smart TVs</a></li>
-      </ul>
-    </div>
-
-    <!-- Support -->
-    <div class="footer-col">
-      <h4>Support</h4>
-      <ul>
-        <li><a href="#" class="whatsapp-link">💬 WhatsApp</a></li>
-        <li><a href="#">📞 Call Us</a></li>
-        <li><a href="#">📍 Location</a></li>
-        <li><a href="#">📧 Email</a></li>
-      </ul>
-    </div>
-
-    <!-- Follow -->
-    <div class="footer-col">
-      <h4>Follow Us</h4>
-      <ul>
-        <li><a href="#">📸 Instagram</a></li>
-        <li><a href="#">📘 Facebook</a></li>
-        <li><a href="#">▶️ YouTube</a></li>
-        <li><a href="#">🐦 Twitter</a></li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- Divider -->
-  <div class="footer-divider">
-    <span>✦</span>
-  </div>
-
-  <!-- Copyright -->
-  <div class="footer-bottom">
-    <p>© 2026 JB STORE • All Rights Reserved</p>
-    <p class="footer-made">Made with ❤️ in India</p>
-  </div>
-
-</footer>
-
-
-<!-- ===== BOTTOM BAR ===== -->
-<div class="bottom-bar">
-  <div class="bottom-container">
-    <a href="index.html" class="bottom-item active">
-      <span class="bottom-icon">🏠</span>
-      <span class="bottom-label">Home</span>
-    </a>
-    <a href="index.html" class="bottom-item">
-      <span class="bottom-icon">📦</span>
-      <span class="bottom-label">Products</span>
-    </a>
-    <a href="#" class="bottom-item call-item">
-      <span class="bottom-icon">📞</span>
-      <span class="bottom-label">Call</span>
-    </a>
-    <a href="cart.html" class="bottom-item cart-item">
-      <span class="bottom-icon">🛒</span>
-      <span class="cart-badge" id="cartBadge">0</span>
-      <span class="bottom-label">Cart</span>
-    </a>
-  </div>
-</div>
-
-<!-- ===== SCRIPTS ===== -->
-<script src="config.js"></script>
-<script src="mobiles.js"></script>
-<script src="refrigerator.js"></script>
-<script src="washing.js"></script>
-<script src="ac.js"></script>
-<script src="tv.js"></script>
-<script src="script.js"></script>
+            // Close sidebar on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+                    closeSidebar();
+                }
+            });
+        })();
+    </script>
 
 </body>
 </html>
