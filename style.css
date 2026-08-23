@@ -575,7 +575,7 @@ cursor:pointer;
   
   .categories {
     padding: 60px 4%;
-    background: linear-gradient(180deg, #0D0D0D 0%, #080808 100%);
+    background: #000000;
     position: relative;
   }
 
