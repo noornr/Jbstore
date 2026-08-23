@@ -186,6 +186,181 @@ const mobileProducts = [
       { label: '12GB + 512GB', price: 66999, oldPrice: 76999, storage: '512GB', ram: '12GB' },
       { label: '16GB + 512GB', price: 74999, oldPrice: 84999, storage: '512GB', ram: '16GB' }
     ]
-  }
+  },
+  {
+    id: "MOB009",
+    name: "Google Pixel 9 Pro",
+    brand: "Google Pixel",
+    category: "mobiles",
+    condition: "Seal Pack",
+    price: 89999,
+    oldPrice: 99999,
+    discount: "10% OFF",
+    rating: 4.8,
+    reviews: 92,
+    image: "images/pixel.png",
+    storage: "256GB",
+    ram: "16GB",
+    warranty: "1 Year",
+    description: "Premium Google Pixel flagship with advanced AI features and professional camera system.",
+    variants: [
+      {
+        label: "16GB + 128GB",
+        price: 84999,
+        oldPrice: 94999,
+        storage: "128GB",
+        ram: "16GB"
+      },
+      {
+        label: "16GB + 256GB",
+        price: 89999,
+        oldPrice: 99999,
+        storage: "256GB",
+        ram: "16GB"
+      },
+      {
+        label: "16GB + 512GB",
+        price: 99999,
+        oldPrice: 109999,
+        storage: "512GB",
+        ram: "16GB"
+      }
+    ]
+  },
 
+  {
+    id: "MOB010",
+    name: "Mi 14",
+    brand: "Mi",
+    category: "mobiles",
+    condition: "Seal Pack",
+    price: 44999,
+    oldPrice: 49999,
+    discount: "10% OFF",
+    rating: 4.6,
+    reviews: 84,
+    image: "images/mi.png",
+    storage: "256GB",
+    ram: "12GB",
+    warranty: "1 Year",
+    description: "Premium Mi smartphone with powerful performance, AMOLED display and advanced cameras.",
+    variants: [
+      {
+        label: "12GB + 256GB",
+        price: 44999,
+        oldPrice: 49999,
+        storage: "256GB",
+        ram: "12GB"
+      },
+      {
+        label: "12GB + 512GB",
+        price: 49999,
+        oldPrice: 55999,
+        storage: "512GB",
+        ram: "12GB"
+      }
+    ]
+  },
+
+  {
+    id: "MOB011",
+    name: "OPPO Reno 13 Pro",
+    brand: "OPPO",
+    category: "mobiles",
+    condition: "Seal Pack",
+    price: 49999,
+    oldPrice: 54999,
+    discount: "9% OFF",
+    rating: 4.6,
+    reviews: 73,
+    image: "images/oppo.png",
+    storage: "256GB",
+    ram: "12GB",
+    warranty: "1 Year",
+    description: "Premium OPPO smartphone with stylish design, powerful performance and advanced camera features.",
+    variants: [
+      {
+        label: "12GB + 256GB",
+        price: 49999,
+        oldPrice: 54999,
+        storage: "256GB",
+        ram: "12GB"
+      },
+      {
+        label: "12GB + 512GB",
+        price: 55999,
+        oldPrice: 61999,
+        storage: "512GB",
+        ram: "12GB"
+      }
+    ]
+  },
+
+  {
+    id: "MOB012",
+    name: "Realme GT 7 Pro",
+    brand: "Realme",
+    category: "mobiles",
+    condition: "Seal Pack",
+    price: 57999,
+    oldPrice: 64999,
+    discount: "11% OFF",
+    rating: 4.7,
+    reviews: 68,
+    image: "images/realme.png",
+    storage: "256GB",
+    ram: "12GB",
+    warranty: "1 Year",
+    description: "High-performance Realme flagship with powerful processor, premium display and fast charging.",
+    variants: [
+      {
+        label: "12GB + 256GB",
+        price: 57999,
+        oldPrice: 64999,
+        storage: "256GB",
+        ram: "12GB"
+      },
+      {
+        label: "16GB + 512GB",
+        price: 64999,
+        oldPrice: 71999,
+        storage: "512GB",
+        ram: "16GB"
+      }
+    ]
+  },
+
+  {
+    id: "MOB013",
+    name: "OnePlus 13R",
+    brand: "OnePlus",
+    category: "mobiles",
+    condition: "Seal Pack",
+    price: 42999,
+    oldPrice: 49999,
+    discount: "14% OFF",
+    rating: 4.7,
+    reviews: 115,
+    image: "images/oneplus.png",
+    storage: "256GB",
+    ram: "12GB",
+    warranty: "1 Year",
+    description: "Powerful OnePlus smartphone with smooth AMOLED display, flagship-level performance and fast charging.",
+    variants: [
+      {
+        label: "12GB + 256GB",
+        price: 42999,
+        oldPrice: 49999,
+        storage: "256GB",
+        ram: "12GB"
+      },
+      {
+        label: "16GB + 512GB",
+        price: 47999,
+        oldPrice: 54999,
+        storage: "512GB",
+        ram: "16GB"
+      }
+    ]
+  },
 ];
