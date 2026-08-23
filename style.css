@@ -5,7 +5,7 @@ html,body{
     width:100%;
     max-width:100%;
     overflow-x:hidden;
-    background: #0A0A0A;
+    background: #000000;
 }
 
 *{
@@ -35,14 +35,14 @@ html,body{
     align-items:center;
     justify-content:space-between;
     gap:24px;
-    background:#111;
+    background:#000000;
     position:sticky;
     top:0;
     z-index:1000;
     width:100%;
 }
 
-.logo span{color:#fff;}
+.logo span{color:#D4AF37;}
 
 .search{
 flex:1;
