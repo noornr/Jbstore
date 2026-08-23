@@ -509,15 +509,15 @@ cursor:pointer;
 }
 
 .gold-btn {
-  background: linear-gradient(135deg, #D4AF37, #F3CF55);
-  color: #FFFFFF;
-  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+  background:linear-gradient(135deg, #D4AF37, #F3CF55);
+  color:#000000;
+  box-shadow:0 4px 20px rgba(212,175,55,0.3);
 }
 
 .gold-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 35px rgba(212, 175, 55, 0.5);
-  color: #FFFFFF;
+  transform:translateY(-3px);
+  box-shadow:0 8px 35px rgba(212,175,55,0.5);
+  color:#000000;
 }
 
 .line-btn {
