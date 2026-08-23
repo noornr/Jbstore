@@ -42,7 +42,17 @@ html,body{
     width:100%;
 }
 
-.logo span{color:#D4AF37;}
+.logo {
+  color: #D4AF37;  /* JB - Gold */
+  font-weight: 700;
+  font-size: 24px;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: #FFFFFF;  /* STORE - White */
+}
 
 .search{
 flex:1;
