@@ -2599,19 +2599,20 @@ cursor:pointer;
    ========================================== */
 
   .categories {
-    padding: 30px 6px;
+    padding: 12px 6px;
   }
 
   /* ===== SECTION HEADING ===== */
   .section-head {
-    margin-bottom: 16px;
-    padding-bottom: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
   }
 
   .section-head h2 {
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.3px;
+    margin: 0;
   }
 
   .section-head h2::before {
@@ -2639,7 +2640,7 @@ cursor:pointer;
   .category-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 8px;
     width: 100%;
     margin-top: 4px;
     padding: 0;
