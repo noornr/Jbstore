@@ -2545,51 +2545,62 @@ cursor:pointer;
   /* ===== MOBILE HERO ===== */
 
   .hero {
-    height:auto !important;
-    min-height:300px;
+    height: auto !important;
+    min-height: 300px;
   }
 
   .hero-bg {
-    height:auto;
-    min-height:300px;
-    object-fit:cover;
+    height: auto;
+    min-height: 300px;
+    object-fit: cover;
   }
 
   .hero-overlay {
-    background:linear-gradient(
+    background: linear-gradient(
       180deg,
-      rgba(0,0,0,0.1) 0%,
-      rgba(0,0,0,0.8) 100%
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.8) 100%
     );
   }
 
   .hero-btns {
-    position:absolute;
-    bottom:30px;
-    left:50%;
-    transform:translateX(-50%);
-    width:90%;
-    gap:10px;
-    justify-content:center;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    gap: 10px;
+    justify-content: center;
   }
 
   .gold-btn,
   .line-btn {
-    flex:1;
-    padding:12px 18px;
-    font-size:13px;
-    justify-content:center;
-    min-width:120px;
+    flex: 1;
+    padding: 12px 18px;
+    font-size: 13px;
+    justify-content: center;
+    min-width: 120px;
+    text-decoration: none;  /* ✅ Blue underline kuda raakunda */
   }
 
+  /* ===== GOLD BUTTON - BLACK TEXT ===== */
   .gold-btn {
-    color: color: #000000;
+    color: #000000;  /* ✅ FIXED - duplicate 'color:' teesesa */
   }
 
   .gold-btn:hover {
     color: #000000;
   }
 
+  /* ===== LINE/WHATSAPP BUTTON - WHITE TEXT ===== */
+  .line-btn {
+    color: #FFFFFF;  /* ✅ White text force chesa */
+  }
+
+  .line-btn:hover {
+    color: #FFFFFF;  /* ✅ Hover time kuda white */
+  }
+  
   
   /* ==========================================
    MOBILE - PREMIUM PROFESSIONAL CARDS
