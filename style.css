@@ -510,7 +510,8 @@ cursor:pointer;
 
 .gold-btn {
   background:linear-gradient(135deg, #D4AF37, #F3CF55);
-  color:#000000;
+  color: #000000;
+  font-weight: 700;
   box-shadow:0 4px 20px rgba(212,175,55,0.3);
 }
 
@@ -522,7 +523,8 @@ cursor:pointer;
 
 .line-btn {
   border: 2px solid rgba(212, 175, 55, 0.5);
-  color: #D4AF37;
+  color: color: #FFFFFF;
+  font-weight: 700;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(5px);
 }
