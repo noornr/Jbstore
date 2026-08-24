@@ -194,7 +194,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            padding: 20px;
+            padding: 0;
             background: radial-gradient(circle at center, rgba(212, 175, 55, 0.045), transparent 55%), linear-gradient(145deg, #181818, #0f0f0f);
             border: 1px solid rgba(212, 175, 55, 0.10);
             border-radius: 16px;
@@ -1307,11 +1307,7 @@
     // Use the actual slide width.
     // The gallery box has padding, so box.clientWidth can be
     // slightly wider than each individual slide.
-    const firstSlide = track.querySelector('.gallery-slide');
-    const slideWidth = firstSlide
-        ? firstSlide.getBoundingClientRect().width
-        : track.clientWidth;
-
+    const slideWidth = track.clientWidth;
     return -(index * slideWidth);
 }
 
