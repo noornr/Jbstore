@@ -1293,8 +1293,9 @@
             }
 
             function targetTranslate(index) {
-                return -(index * box.clientWidth);
-            }
+    const slideWidth = track.parentElement.clientWidth;
+    return -(index * slideWidth);
+}
 
             function showImage(index, animate = true) {
                 if (index < 0) index = 0;
