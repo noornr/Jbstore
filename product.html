@@ -1303,13 +1303,30 @@
                 track.style.transform = `translate3d(${px}px, 0, 0)`;
             }
 
+            function getSlideWidth() {
+                return box.getBoundingClientRect().width;
+            }
+
+            function syncGalleryGeometry() {
+                const slideWidth = getSlideWidth();
+
+                // Make the track exactly N × viewport width.
+                track.style.width = `${slideWidth * validImages.length}px`;
+
+                // Make every slide exactly one viewport wide.
+                track.querySelectorAll('.gallery-slide').forEach(slide => {
+                    slide.style.width = `${slideWidth}px`;
+                    slide.style.minWidth = `${slideWidth}px`;
+                    slide.style.maxWidth = `${slideWidth}px`;
+                    slide.style.flex = `0 0 ${slideWidth}px`;
+                });
+
+                return slideWidth;
+            }
+
             function targetTranslate(index) {
-    // Use the actual slide width.
-    // The gallery box has padding, so box.clientWidth can be
-    // slightly wider than each individual slide.
-    const slideWidth = track.clientWidth;
-    return -(index * slideWidth);
-}
+                return -(index * getSlideWidth());
+            }
 
             function showImage(index, animate = true) {
                 if (index < 0) index = 0;
@@ -1361,6 +1378,8 @@
                 dot.addEventListener('click', () => showImage(index, true));
                 dots.appendChild(dot);
             });
+
+            syncGalleryGeometry();
 
             showImage(0, false);
 
@@ -1491,6 +1510,7 @@
 
             /* Keep the slide correctly positioned after rotation/resizing. */
             window.addEventListener('resize', () => {
+                syncGalleryGeometry();
                 currentTranslate = targetTranslate(currentIndex);
                 setTranslate(currentTranslate, false);
             });
