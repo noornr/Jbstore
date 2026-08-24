@@ -3832,6 +3832,17 @@ cursor:pointer;
   box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
 }
 
+
+        /* ===== CART ICON - REMOVE GOLD RING ===== */
+.cart-item .bottom-icon,
+.cart-item .bottom-icon:focus,
+.cart-item .bottom-icon:active {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+        
 /* ===== BODY PADDING ===== */
 body {
   padding-bottom: 70px;
