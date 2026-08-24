@@ -1265,7 +1265,7 @@ cursor:pointer;
 .slides {
   position: relative;
   width: 100%;
-  height: 90px;                /* fixed height poyindi */
+  height: 60px;                /* fixed height poyindi */
   aspect-ratio: 16 / 7;        /* width prakaram height automatic ga set avtadi */
   border-radius: 10px;
   overflow: hidden;
