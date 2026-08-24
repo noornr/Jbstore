@@ -632,6 +632,11 @@
     box-shadow: 0 0 6px rgba(212,175,55,0.35);
 }
 
+        #productImage {
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-drag: none;
+        }
     
 
         /* ── RESPONSIVE ── */
@@ -836,7 +841,10 @@
         // ==========================================
         // UPDATE GALLERY (Flipkart style – no boxes, auto-hide missing images)
         // ==========================================
-        function updateGallery(images) {
+        // ==========================================
+// UPDATE GALLERY - IMAGE DOTS + SWIPE
+// ==========================================
+function updateGallery(images) {
 
     const dots = document.getElementById('imageDots');
     const mainImg = document.getElementById('productImage');
@@ -845,12 +853,10 @@
 
     dots.innerHTML = '';
 
-    // Remove empty / invalid entries
     const validImages = (images || []).filter(src =>
         typeof src === 'string' && src.trim() !== ''
     );
 
-    // No images
     if (validImages.length === 0) {
         dots.style.display = 'none';
         return;
@@ -858,39 +864,115 @@
 
     dots.style.display = 'flex';
 
-    // First image
-    mainImg.src = validImages[0];
+    // Current image
+    let currentIndex = 0;
 
-    // Create only available image dots
+    function showImage(index) {
+
+        if (index < 0 || index >= validImages.length) return;
+
+        currentIndex = index;
+
+        mainImg.src = validImages[currentIndex];
+
+        // Update active dot
+        dots.querySelectorAll('.image-dot').forEach((dot, i) => {
+            dot.classList.toggle(
+                'active',
+                i === currentIndex
+            );
+        });
+    }
+
+    // Create dots
     validImages.forEach((src, index) => {
 
         const dot = document.createElement('button');
 
         dot.type = 'button';
         dot.className =
-            'image-dot' + (index === 0 ? ' active' : '');
+            'image-dot' +
+            (index === 0 ? ' active' : '');
 
         dot.setAttribute(
             'aria-label',
             `Image ${index + 1}`
         );
 
-        dot.addEventListener('click', function () {
-
-            mainImg.src = src;
-
-            dots
-                .querySelectorAll('.image-dot')
-                .forEach(d => {
-                    d.classList.remove('active');
-                });
-
-            this.classList.add('active');
+        dot.addEventListener('click', () => {
+            showImage(index);
         });
 
         dots.appendChild(dot);
     });
-        }
+
+    // First image
+    showImage(0);
+
+
+    // ======================================
+    // SWIPE SUPPORT
+    // ======================================
+
+    let startX = 0;
+    let startY = 0;
+
+    mainImg.addEventListener(
+        'touchstart',
+        function(e) {
+
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+
+        },
+        { passive: true }
+    );
+
+
+    mainImg.addEventListener(
+        'touchend',
+        function(e) {
+
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+
+            const diffX = endX - startX;
+            const diffY = endY - startY;
+
+            // Ignore vertical scrolling
+            if (Math.abs(diffY) > Math.abs(diffX)) {
+                return;
+            }
+
+            // Minimum swipe distance
+            if (Math.abs(diffX) < 40) {
+                return;
+            }
+
+
+            // Swipe LEFT → next image
+            if (diffX < 0) {
+
+                if (currentIndex < validImages.length - 1) {
+                    showImage(currentIndex + 1);
+                }
+
+            }
+
+
+            // Swipe RIGHT → previous image
+            else {
+
+                if (currentIndex > 0) {
+                    showImage(currentIndex - 1);
+                }
+
+            }
+
+        },
+        { passive: true }
+    );
+}
             
         // ==========================================
         // LOAD COLORS
