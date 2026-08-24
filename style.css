@@ -2565,7 +2565,7 @@ cursor:pointer;
     opacity: 0;
     transform: translateX(-50%) translateY(20px) scale(0.95);
   }
-
+}
 
 
 
@@ -2763,7 +2763,7 @@ cursor:pointer;
     transform: none;
   }
 
-}
+
 
   
   /* ===== MOBILE HERO ===== */
@@ -2785,7 +2785,7 @@ cursor:pointer;
       rgba(0, 0, 0, 0.1) 0%,
       rgba(0, 0, 0, 0.8) 100%
     );
-  }
+  
 
   .hero-btns {
     position: absolute;
