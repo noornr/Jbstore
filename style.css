@@ -2785,7 +2785,7 @@ cursor:pointer;
       rgba(0, 0, 0, 0.1) 0%,
       rgba(0, 0, 0, 0.8) 100%
     );
-  
+  }
 
   .hero-btns {
     position: absolute;
@@ -4189,4 +4189,4 @@ body {
     justify-content: center;
     border-radius: 12px;
   }
-
+    }
