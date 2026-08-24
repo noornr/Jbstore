@@ -163,7 +163,7 @@
             box-shadow: 0 6px 22px rgba(212, 175, 55, 0.2);
         }
 
-        /* ── COLOR SECTION (NEW) ── */
+        /* ── COLOR SECTION (UPDATED: full names) ── */
         .color-section {
             margin-top: 14px;
             padding: 17px 18px;
@@ -189,7 +189,8 @@
         .color-options {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 16px 20px;
+            /* increased gap for better spacing */
         }
 
         .color-opt {
@@ -203,7 +204,8 @@
             padding: 0;
             font-family: 'Poppins', sans-serif;
             transition: 0.25s ease;
-            min-width: 64px;
+            min-width: 70px;
+            /* slightly wider */
         }
 
         .color-opt .swatch {
@@ -227,17 +229,23 @@
             box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.15), 0 0 24px rgba(255, 215, 0, 0.13);
         }
 
+        /* ── FIX: FULL COLOR NAMES ── */
         .color-opt .color-name {
             color: #bdbdbd;
             font-size: 10px;
             font-weight: 500;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.2px;
             text-align: center;
-            line-height: 1.2;
-            max-width: 64px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            line-height: 1.3;
+            /* allow wrapping */
+            word-break: break-word;
+            /* handle long words */
+            max-width: 80px;
+            /* slightly wider, but wraps if needed */
+            white-space: normal;
+            /* wrap instead of ellipsis */
+            overflow: visible;
+            text-overflow: unset;
         }
 
         .color-opt.active .color-name {
@@ -682,16 +690,17 @@
                 max-height: 245px;
             }
             .color-options {
-                gap: 8px;
+                gap: 12px 16px;
             }
             .color-opt .swatch {
-                width: 44px;
-                height: 44px;
-                border-radius: 10px;
+                width: 48px;
+                height: 48px;
+                border-radius: 12px;
+                padding: 3px;
             }
             .color-opt .color-name {
                 font-size: 9px;
-                max-width: 50px;
+                max-width: 64px;
             }
             .variant-section {
                 margin-top: 9px;
@@ -771,14 +780,14 @@
                 max-height: 200px;
             }
             .color-opt .swatch {
-                width: 38px;
-                height: 38px;
-                border-radius: 8px;
+                width: 40px;
+                height: 40px;
+                border-radius: 10px;
                 padding: 3px;
             }
             .color-opt .color-name {
                 font-size: 8px;
-                max-width: 42px;
+                max-width: 56px;
             }
             .product-name {
                 font-size: 16px;
@@ -948,9 +957,9 @@
             const toast = document.createElement('div');
             toast.className = 'toast-notification';
             toast.innerHTML = `
-                <span>${msg}</span>
-                <button onclick="this.parentElement.remove()">✕</button>
-            `;
+                    <span>${msg}</span>
+                    <button onclick="this.parentElement.remove()">✕</button>
+                `;
             document.body.appendChild(toast);
 
             setTimeout(() => {
@@ -1001,13 +1010,13 @@
             if (!productData) {
                 console.error('No product found!');
                 document.getElementById('productPage').innerHTML = `
-                    <div style="text-align:center;padding:60px 20px;grid-column:1/-1;background:linear-gradient(145deg,#1A1A1A,#111111);border:1px solid rgba(255,215,0,0.08);border-radius:16px;">
-                        <div style="font-size:50px;margin-bottom:16px;">🔍</div>
-                        <h2 style="color:#D4AF37;font-size:24px;">Product Not Found</h2>
-                        <p style="color:#888;margin:8px 0 20px;font-size:14px;">The product you're looking for doesn't exist.</p>
-                        <a href="index.html" style="display:inline-block;padding:12px 32px;background:linear-gradient(135deg,#D4AF37,#F3CF55);color:#0A0A0A;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px;">Return to Store</a>
-                    </div>
-                `;
+                        <div style="text-align:center;padding:60px 20px;grid-column:1/-1;background:linear-gradient(145deg,#1A1A1A,#111111);border:1px solid rgba(255,215,0,0.08);border-radius:16px;">
+                            <div style="font-size:50px;margin-bottom:16px;">🔍</div>
+                            <h2 style="color:#D4AF37;font-size:24px;">Product Not Found</h2>
+                            <p style="color:#888;margin:8px 0 20px;font-size:14px;">The product you're looking for doesn't exist.</p>
+                            <a href="index.html" style="display:inline-block;padding:12px 32px;background:linear-gradient(135deg,#D4AF37,#F3CF55);color:#0A0A0A;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px;">Return to Store</a>
+                        </div>
+                    `;
                 return;
             }
 
@@ -1090,11 +1099,11 @@
                 if (val) {
                     hasSpecs = true;
                     specList.innerHTML += `
-                        <div class="spec-row">
-                            <span>${key}</span>
-                            <strong>${val}</strong>
-                        </div>
-                    `;
+                            <div class="spec-row">
+                                <span>${key}</span>
+                                <strong>${val}</strong>
+                            </div>
+                        `;
                 }
             }
             if (!hasSpecs) {
@@ -1102,7 +1111,7 @@
                     `<div style="color:#666;text-align:center;padding:8px 0;font-size:13px;">No specifications available</div>`;
             }
 
-            // ---- COLORS (NEW) ----
+            // ---- COLORS ----
             loadColors(product);
 
             // ---- VARIANTS ----
@@ -1115,7 +1124,7 @@
         }
 
         // ==========================================
-        // LOAD COLORS (Premium Swatches)
+        // LOAD COLORS (Full names, no truncation)
         // ==========================================
         let selectedColorName = null;
 
@@ -1124,10 +1133,8 @@
             const section = document.getElementById('colorSection');
             container.innerHTML = '';
 
-            // Check if product has colors
             const colors = product.colors || [];
 
-            // If no colors, hide the color section
             if (!colors || colors.length === 0) {
                 section.style.display = 'none';
                 return;
@@ -1135,7 +1142,6 @@
 
             section.style.display = 'block';
 
-            // If no main image, use first color image
             const mainImg = document.getElementById('productImage');
             if (!mainImg.src || mainImg.src.includes('placeholder') || mainImg.src === window.location.href) {
                 if (colors[0]?.image) {
@@ -1161,13 +1167,10 @@
                 btn.appendChild(swatch);
                 btn.appendChild(nameSpan);
 
-                // Click handler
                 btn.addEventListener('click', function() {
-                    // Update active state
                     document.querySelectorAll('.color-opt').forEach(el => el.classList.remove('active'));
                     this.classList.add('active');
 
-                    // Update main image
                     const imgSrc = this.dataset.image;
                     if (imgSrc) {
                         document.getElementById('productImage').src = imgSrc;
@@ -1216,9 +1219,9 @@
                 const el = document.createElement('button');
                 el.className = 'opt' + (index === 0 ? ' active' : '');
                 el.innerHTML = `
-                    <span>${variant.label}</span>
-                    <span class="variant-price">₹${variant.price.toLocaleString('en-IN')}</span>
-                `;
+                        <span>${variant.label}</span>
+                        <span class="variant-price">₹${variant.price.toLocaleString('en-IN')}</span>
+                    `;
                 el.dataset.price = variant.price;
                 el.dataset.oldPrice = variant.oldPrice || variant.price * 1.3;
                 el.dataset.label = variant.label;
@@ -1266,10 +1269,10 @@
                     window.location.href = `product.html?id=${p.id}`;
                 };
                 div.innerHTML = `
-                    <img src="${p.image || p.images?.[0] || ''}" alt="${p.name}">
-                    <div class="s-name">${p.name}</div>
-                    <div class="s-price">₹${(p.price || 0).toLocaleString('en-IN')}</div>
-                `;
+                        <img src="${p.image || p.images?.[0] || ''}" alt="${p.name}">
+                        <div class="s-name">${p.name}</div>
+                        <div class="s-price">₹${(p.price || 0).toLocaleString('en-IN')}</div>
+                    `;
                 container.appendChild(div);
             });
         }
@@ -1371,13 +1374,13 @@
             if (allProducts.length === 0) {
                 console.error('No products loaded!');
                 document.getElementById('productPage').innerHTML = `
-                    <div style="text-align:center;padding:60px 20px;grid-column:1/-1;background:linear-gradient(145deg,#1A1A1A,#111111);border:1px solid rgba(255,215,0,0.08);border-radius:16px;">
-                        <div style="font-size:50px;margin-bottom:16px;">⚠️</div>
-                        <h2 style="color:#D4AF37;font-size:24px;">No Products Loaded</h2>
-                        <p style="color:#888;margin:8px 0 20px;font-size:14px;">Please check your data files.</p>
-                        <a href="index.html" style="display:inline-block;padding:12px 32px;background:linear-gradient(135deg,#D4AF37,#F3CF55);color:#0A0A0A;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px;">Return to Store</a>
-                    </div>
-                `;
+                        <div style="text-align:center;padding:60px 20px;grid-column:1/-1;background:linear-gradient(145deg,#1A1A1A,#111111);border:1px solid rgba(255,215,0,0.08);border-radius:16px;">
+                            <div style="font-size:50px;margin-bottom:16px;">⚠️</div>
+                            <h2 style="color:#D4AF37;font-size:24px;">No Products Loaded</h2>
+                            <p style="color:#888;margin:8px 0 20px;font-size:14px;">Please check your data files.</p>
+                            <a href="index.html" style="display:inline-block;padding:12px 32px;background:linear-gradient(135deg,#D4AF37,#F3CF55);color:#0A0A0A;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px;">Return to Store</a>
+                        </div>
+                    `;
                 return;
             }
 
