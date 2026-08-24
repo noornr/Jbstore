@@ -150,16 +150,16 @@
         }
 
         .gallery-slide img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            max-width: 94%;
-            max-height: 94%;
-            object-fit: contain;
-            filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.55));
-            user-select: none;
-            -webkit-user-drag: none;
-            pointer-events: none;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 92%;
+    max-height: 92%;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+    filter: drop-shadow(0 10px 25px rgba(0,0,0,0.45));
         }
 
         /* During a finger drag, the gallery follows the finger directly.
@@ -927,10 +927,13 @@
                 border-radius: 12px;
             }
 
-            .gallery-slide img {
-                max-width: 96%;
-                max-height: 96%;
-            }
+        
+          .gallery-slide img {
+             width: auto;
+             height: auto;
+             max-width: 94%;
+             max-height: 94%;
+        }
 
             .thumbnail-strip .thumb-item {
                 flex: 0 0 52px;
