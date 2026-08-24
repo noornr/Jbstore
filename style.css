@@ -2876,16 +2876,9 @@ cursor:pointer;
   }
 
   /* ===== FIRST 4 ITEMS - 1/4th WIDTH ===== */
-  .category-grid .premium-cat-card:nth-child(1),
-  .category-grid .premium-cat-card:nth-child(2),
-  .category-grid .premium-cat-card:nth-child(3),
-  .category-grid .premium-cat-card:nth-child(4)
- .category-grid .premium-cat-card:nth-child(5),
-  .category-grid .premium-cat-card:nth-child(6),
-  .category-grid .premium-cat-card:nth-child(7)
-  .category-grid .premium-cat-card:nth-child(8){
-    flex: 0 0 calc(25% - 5px);
-    max-width: calc(25% - 5px);
+  .category-grid .premium-cat-card {
+  flex: 0 0 calc(50% - 5px);
+  max-width: calc(50% - 5px);
   }
 
 
