@@ -2565,14 +2565,20 @@ cursor:pointer;
     opacity: 0;
     transform: translateX(-50%) translateY(20px) scale(0.95);
   }
-}
 
 
-/* ==========================================
-   ALL MOBILE STYLES - SINGLE MEDIA QUERY
-========================================== */
 
-@media (max-width:768px) {
+
+
+
+
+
+
+
+
+
+
+    @media (max-width:768px) {
 
   /* ===== HEADER ===== */
   .header {
@@ -2650,8 +2656,8 @@ cursor:pointer;
 
 
   /* ==========================================
-   PREMIUM BRAND FILTER - MOBILE
-   ========================================== */
+     PREMIUM BRAND FILTER - MOBILE
+     ========================================== */
 
 
   .brand-list {
@@ -4183,4 +4189,4 @@ body {
     justify-content: center;
     border-radius: 12px;
   }
-    }
+
