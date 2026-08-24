@@ -733,7 +733,7 @@ cursor:pointer;
   }
 
   .section-head h2::after {
-    content: '✦';
+    content: none !important;
     color: #D4AF37;
     font-size: 12px;
     margin-left: 10px;
