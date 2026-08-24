@@ -789,6 +789,7 @@ cursor:pointer;
 
   /* ===== FIRST 4 ITEMS - 1/4th WIDTH ===== */
   /* ===== ALL 8 CATEGORIES - 25% WIDTH (4 per row) ===== */
+/* ===== ALL 8 CATEGORIES - 25% WIDTH (4 per row) ===== */
 .category-grid .premium-cat-card {
   flex: 0 0 calc(25% - 10px);
   max-width: calc(25% - 10px);
