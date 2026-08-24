@@ -128,39 +128,50 @@
         }
 
         .gallery-track {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            will-change: transform;
-            transform: translate3d(0, 0, 0);
-            transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
-            user-select: none;
-        }
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    user-select: none;
+}
 
-        .gallery-slide {
-            flex: 0 0 100%;
-            width: 100%;
-            height: 100%;
-            min-width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-        }
+.gallery-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 100%;
+    flex-shrink: 0;
 
-        .gallery-slide img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    padding: 0;
+}
+
+.gallery-slide img {
     display: block;
     width: auto;
     height: auto;
-    max-width: 92%;
-    max-height: 92%;
+    max-width: 94%;
+    max-height: 94%;
     object-fit: contain;
+
     user-select: none;
     -webkit-user-drag: none;
     pointer-events: none;
+
     filter: drop-shadow(0 10px 25px rgba(0,0,0,0.45));
-        }
+}
 
         /* During a finger drag, the gallery follows the finger directly.
            On release, the 300ms transition gives the Flipkart-like snap. */
