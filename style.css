@@ -1020,12 +1020,14 @@ cursor:pointer;
   }
 
   /* ===== GOLD SHINING RING - ANIMATED ===== */
-  .deal-card::before {
+  /* DESKTOP */
+.deal-card::before {
     content: '';
     position: absolute;
     inset: -2px;
     border-radius: 18px;
     padding: 2px;
+
     background: conic-gradient(
       from 0deg,
       transparent 0%,
@@ -1036,16 +1038,20 @@ cursor:pointer;
       rgba(212, 175, 55, 0) 80%,
       transparent 100%
     );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                  linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
+
     opacity: 0;
     transition: opacity 0.5s ease;
-    animation: goldShine 3s linear infinite;
+
+    animation: none;
+
     pointer-events: none;
     z-index: 1;
-  }
-
+}
   @keyframes goldShine {
     0% {
       transform: rotate(0deg);
