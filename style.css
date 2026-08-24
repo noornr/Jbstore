@@ -1008,6 +1008,7 @@ cursor:pointer;
 
   .deal-card {
     position: relative;
+    display: none !important;
     background: linear-gradient(145deg, #1A1A1A, #111111);
     border-radius: 16px;
     padding: 18px 16px 16px;
