@@ -116,11 +116,18 @@
             position: relative;
         }
 
-
-        /* ── REAL HORIZONTAL SWIPE GALLERY ── */
+        /* ── GALLERY FIX: no peeking ── */
         .product-image-box {
             touch-action: pan-y;
             cursor: grab;
+            overflow: hidden !important;
+            isolation: isolate;
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #0a0a0a;
+            border-radius: 16px;
+            padding: 12px;
         }
 
         .product-image-box.dragging {
@@ -128,42 +135,43 @@
         }
 
         .gallery-track {
-            width: 100%;
-            height: 100%;
             display: flex;
-            align-items: center;
+            flex-wrap: nowrap;
+            height: 100%;
+            width: 100%;
             will-change: transform;
             transform: translate3d(0, 0, 0);
-            transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+            transition: transform 320ms cubic-bezier(0.22, 0.61, 0.36, 1);
             user-select: none;
         }
 
-        /* Keep every slide inside one exact viewport. */
-        .product-image-box {
-            overflow: hidden !important;
-            isolation: isolate;
+        .gallery-track.is-dragging {
+            transition: none !important;
         }
 
-        .gallery-track {
-            flex: 0 0 auto;
-            max-width: none !important;
-            overflow: visible;
+        .gallery-track.is-snapping {
+            transition: transform 320ms cubic-bezier(0.22, 0.61, 0.36, 1) !important;
         }
 
         .gallery-slide {
             flex: 0 0 auto;
-            width: 100%;
             height: 100%;
-            min-width: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             padding: 0;
+            background: #0a0a0a;
         }
 
         .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
             transition: transform 0.25s ease;
+            pointer-events: none;
+            user-select: none;
         }
 
         .product-image-box:hover .gallery-slide img {
@@ -184,7 +192,7 @@
             box-shadow: 0 6px 22px rgba(212, 175, 55, 0.2);
         }
 
-        /* ── THUMBNAIL STRIP – Flipkart style (below image) ── */
+        /* ── THUMBNAIL STRIP ── */
         .thumbnail-strip-wrap {
             margin-top: 14px;
             display: flex;
@@ -248,7 +256,7 @@
             box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.2), 0 0 18px rgba(212, 175, 55, 0.08);
         }
 
-        /* ── IMAGE DOTS (for swipe indicator) ── */
+        /* ── IMAGE DOTS ── */
         .image-dots {
             display: flex;
             justify-content: center;
@@ -276,7 +284,7 @@
             box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
         }
 
-        /* ── COLOR SECTION – Flipkart style ── */
+        /* ── COLOR SECTION ── */
         .color-section {
             margin-top: 16px;
             padding: 16px 18px;
@@ -423,7 +431,7 @@
             font-weight: 700;
         }
 
-        /* ── RIGHT COLUMN: PRODUCT INFO ── */
+        /* ── RIGHT COLUMN ── */
         .product-info {
             min-width: 0;
             display: flex;
@@ -842,7 +850,7 @@
             color: #fff;
         }
 
-        /* ── RESPONSIVE BREAKPOINTS ── */
+        /* ── RESPONSIVE ── */
         @media (max-width: 920px) {
             .product-page {
                 grid-template-columns: 1fr 1fr;
@@ -855,26 +863,20 @@
                 grid-template-columns: 1fr;
                 gap: 24px;
                 width: min(96%, 600px);
-                /* centered single column */
             }
-
             .product-image-box {
                 aspect-ratio: 1 / 1;
-                /* square on tablets for better fit */
                 max-height: 500px;
             }
-
             .thumbnail-strip .thumb-item {
                 flex: 0 0 60px;
                 width: 60px;
                 height: 60px;
             }
-
             .color-opt .swatch {
                 width: 44px;
                 height: 44px;
             }
-
             .variant-options {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -886,95 +888,75 @@
                 margin: 16px auto 30px;
                 gap: 18px;
             }
-
             .product-image-box {
                 aspect-ratio: 1 / 1.05;
                 max-height: 400px;
-                padding: 14px;
+                padding: 10px;
                 border-radius: 12px;
             }
-
-        
-          .gallery-slide img {
-             width: auto;
-             height: auto;
-             max-width: 94%;
-             max-height: 94%;
-        }
-
+            .gallery-slide img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
             .thumbnail-strip .thumb-item {
                 flex: 0 0 52px;
                 width: 52px;
                 height: 52px;
                 padding: 3px;
             }
-
             .color-opt .swatch {
                 width: 40px;
                 height: 40px;
                 border-radius: 10px;
             }
-
             .color-options {
                 gap: 10px 14px;
             }
-
             .variant-options {
                 grid-template-columns: 1fr 1fr;
                 gap: 8px;
             }
-
             .variant-options .opt {
                 padding: 8px 6px;
                 font-size: 11px;
             }
-
             .variant-options .opt .variant-price {
                 font-size: 13px;
             }
-
             .product-actions {
                 grid-template-columns: 1fr;
             }
-
             .product-actions button {
                 min-height: 42px;
                 font-size: 12px;
             }
-
             .info-card {
                 padding: 14px 16px;
             }
-
             .similar-item {
                 min-width: 120px;
                 flex: 0 0 120px;
                 padding: 10px 8px;
             }
-
             .similar-item img {
                 height: 80px;
             }
-
             .sticky-cart-bar {
                 min-height: 60px;
                 padding: 8px 14px;
                 gap: 10px;
             }
-
             .sticky-cart-bar .price-tag {
                 font-size: 16px;
             }
-
             .sticky-cart-bar .price-tag small {
                 font-size: 11px;
             }
-
             .sticky-cart-bar button {
                 font-size: 11px;
                 min-height: 38px;
             }
-
             .toast-notification {
                 bottom: 72px;
                 padding: 10px 16px;
@@ -987,73 +969,55 @@
             .product-image-box {
                 aspect-ratio: 1 / 1.08;
                 max-height: 320px;
-                padding: 10px;
+                padding: 8px;
             }
-
-            .gallery-slide img {
-                max-width: 96%;
-                max-height: 96%;
-            }
-
             .thumbnail-strip .thumb-item {
                 flex: 0 0 44px;
                 width: 44px;
                 height: 44px;
                 padding: 2px;
             }
-
             .color-opt .swatch {
                 width: 34px;
                 height: 34px;
                 border-radius: 8px;
                 padding: 2px;
             }
-
             .color-opt .color-name {
                 font-size: 9px;
                 max-width: 60px;
             }
-
             .variant-options {
                 grid-template-columns: 1fr 1fr;
             }
-
             .variant-options .opt {
                 padding: 6px 4px;
                 font-size: 10px;
             }
-
             .variant-options .opt .variant-price {
                 font-size: 11px;
             }
-
             .product-name {
                 font-size: clamp(17px, 4.5vw, 22px);
             }
-
             .product-price .current {
                 font-size: clamp(20px, 5vw, 26px);
             }
-
             .sticky-cart-bar .price-tag {
                 font-size: 14px;
             }
-
             .sticky-cart-bar button {
                 font-size: 10px;
                 min-height: 34px;
             }
-
             .similar-item {
                 min-width: 100px;
                 flex: 0 0 100px;
                 padding: 6px 4px;
             }
-
             .similar-item img {
                 height: 65px;
             }
-
             .similar-item .s-name {
                 font-size: 10px;
                 min-height: 28px;
@@ -1075,7 +1039,7 @@
         <div class="product-image-section">
 
             <!-- Main Image -->
-            <div class="product-image-box">
+            <div class="product-image-box" id="galleryContainer">
                 <span id="productOffer" class="product-offer"></span>
                 <div id="galleryTrack" class="gallery-track" aria-live="polite"></div>
             </div>
@@ -1203,10 +1167,10 @@
         }
 
         // ==========================================
-        // UPDATE GALLERY – Flipkart style with thumbnails + dots + swipe
+        // GALLERY – NO PEEKING FIX
         // ==========================================
         function updateGallery(images) {
-            const box = document.querySelector('.product-image-box');
+            const box = document.getElementById('galleryContainer');
             const track = document.getElementById('galleryTrack');
             const strip = document.getElementById('thumbnailStrip');
             const dots = document.getElementById('imageDots');
@@ -1238,74 +1202,77 @@
             let isDragging = false;
             let moved = false;
 
-            /* Create every image as a real slide.
-               This is what makes the next image visible while swiping. */
+            // Build slides
             validImages.forEach((src, index) => {
                 const slide = document.createElement('div');
                 slide.className = 'gallery-slide';
-
                 const img = document.createElement('img');
                 img.src = src;
                 img.alt = `Product image ${index + 1}`;
                 img.draggable = false;
-
                 slide.appendChild(img);
                 track.appendChild(slide);
             });
 
-            function setTranslate(px, animate = true) {
-                track.classList.toggle('is-dragging', !animate);
-                track.classList.toggle('is-snapping', animate);
-                track.style.transform = `translate3d(${px}px, 0, 0)`;
-            }
-
+            // --- Helper: get the inner content width of the box (excludes padding) ---
             function getSlideWidth() {
-                // clientWidth includes padding; subtract the horizontal
-                // padding so each slide matches the visible image viewport.
                 const cs = getComputedStyle(box);
                 const padX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
                 return Math.max(1, box.clientWidth - padX);
             }
 
+            // --- Size track & slides so each slide is exactly the visible width ---
             function syncGalleryGeometry() {
                 const slideWidth = getSlideWidth();
-                track.style.width = `${slideWidth * validImages.length}px`;
+                const count = validImages.length;
+
+                // Make the track wide enough to hold all slides side-by-side
+                track.style.width = `${slideWidth * count}px`;
                 track.style.height = '100%';
 
-                track.querySelectorAll('.gallery-slide').forEach(slide => {
+                const slides = track.querySelectorAll('.gallery-slide');
+                slides.forEach((slide) => {
                     slide.style.width = `${slideWidth}px`;
                     slide.style.minWidth = `${slideWidth}px`;
                     slide.style.maxWidth = `${slideWidth}px`;
                     slide.style.height = '100%';
+                    slide.style.flex = '0 0 auto';
                 });
+
+                // If we're already on a valid index, re-apply the translate
+                if (currentIndex >= 0 && currentIndex < count) {
+                    currentTranslate = -currentIndex * slideWidth;
+                    track.style.transform = `translate3d(${currentTranslate}px, 0, 0)`;
+                }
             }
 
-            function targetTranslate(index) {
-                const slide = track.querySelectorAll('.gallery-slide')[index];
-                if (!slide) return 0;
-
-                // Use the slide's REAL rendered position instead of
-                // calculating with box width. This prevents the previous
-                // image from peeking on the 3rd/last slide.
-                return -slide.offsetLeft;
-            }
-
+            // --- Show a specific slide by index ---
             function showImage(index, animate = true) {
                 if (index < 0) index = 0;
                 if (index > validImages.length - 1) index = validImages.length - 1;
 
                 currentIndex = index;
-                currentTranslate = targetTranslate(currentIndex);
-                setTranslate(currentTranslate, animate);
+                const slideWidth = getSlideWidth();
+                currentTranslate = -index * slideWidth;
 
-                strip.querySelectorAll('.thumb-item').forEach((el, i) => {
+                // Apply the transform
+                track.classList.toggle('is-dragging', !animate);
+                track.classList.toggle('is-snapping', animate);
+                track.style.transform = `translate3d(${currentTranslate}px, 0, 0)`;
+
+                // Update thumbnails
+                const thumbs = strip.querySelectorAll('.thumb-item');
+                thumbs.forEach((el, i) => {
                     el.classList.toggle('active-thumb', i === currentIndex);
                 });
 
-                dots.querySelectorAll('.image-dot').forEach((dot, i) => {
+                // Update dots
+                const dotEls = dots.querySelectorAll('.image-dot');
+                dotEls.forEach((dot, i) => {
                     dot.classList.toggle('active', i === currentIndex);
                 });
 
+                // Scroll active thumbnail into view
                 const activeThumb = strip.querySelector('.active-thumb');
                 if (activeThumb) {
                     activeThumb.scrollIntoView({
@@ -1316,22 +1283,20 @@
                 }
             }
 
-            /* Thumbnails */
+            // --- Build thumbnails ---
             validImages.forEach((src, index) => {
                 const item = document.createElement('div');
                 item.className = 'thumb-item' + (index === 0 ? ' active-thumb' : '');
-
                 const img = document.createElement('img');
                 img.src = src;
                 img.alt = `Thumbnail ${index + 1}`;
                 img.loading = 'lazy';
-
                 item.appendChild(img);
                 item.addEventListener('click', () => showImage(index, true));
                 strip.appendChild(item);
             });
 
-            /* Dots */
+            // --- Build dots ---
             validImages.forEach((_, index) => {
                 const dot = document.createElement('button');
                 dot.type = 'button';
@@ -1341,80 +1306,78 @@
                 dots.appendChild(dot);
             });
 
+            // --- Initial sizing & positioning ---
             syncGalleryGeometry();
+            showImage(0, false);
 
-            currentIndex = 0;
-            currentTranslate = 0;
-            setTranslate(0, false);
+            // --- Re-sync on resize ---
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    syncGalleryGeometry();
+                    showImage(currentIndex, false);
+                }, 80);
+            });
 
-            /* ── Flipkart-like finger-following swipe ──
-               The track moves with the finger while dragging, so the
-               current image and next image are visible together. */
+            // ── TOUCH EVENTS ──
             function onTouchStart(e) {
                 if (!e.touches || !e.touches[0]) return;
-
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
                 dragStartTranslate = currentTranslate;
                 isDragging = true;
                 moved = false;
-
                 box.classList.add('dragging');
                 track.classList.add('is-dragging');
             }
 
             function onTouchMove(e) {
                 if (!isDragging || !e.touches || !e.touches[0]) return;
-
                 const dx = e.touches[0].clientX - startX;
                 const dy = e.touches[0].clientY - startY;
 
-                /* Let vertical page scrolling work normally. */
+                // Allow vertical page scroll if mostly vertical
                 if (Math.abs(dy) > Math.abs(dx) && Math.abs(dx) < 10) return;
-
                 moved = true;
 
                 let next = dragStartTranslate + dx;
+                const slideWidth = getSlideWidth();
+                const maxTranslate = -(validImages.length - 1) * slideWidth;
 
-                /* Rubber-band resistance at first/last image. */
+                // Rubber-band at edges
                 if (currentIndex === 0 && dx > 0) {
                     next = dragStartTranslate + dx * 0.28;
-                }
-
-                if (currentIndex === validImages.length - 1 && dx < 0) {
+                } else if (currentIndex === validImages.length - 1 && dx < 0) {
                     next = dragStartTranslate + dx * 0.28;
                 }
 
-                setTranslate(next, false);
+                // Clamp to prevent overshoot
+                if (next > 0) next = 0;
+                if (next < maxTranslate) next = maxTranslate;
+
+                track.style.transform = `translate3d(${next}px, 0, 0)`;
             }
 
             function onTouchEnd(e) {
                 if (!isDragging) return;
-
-                const endX = e.changedTouches[0].clientX;
-                const dx = endX - startX;
-                const width = box.clientWidth || 1;
+                const dx = e.changedTouches[0].clientX - startX;
+                const slideWidth = getSlideWidth();
+                const threshold = Math.max(40, slideWidth * 0.18);
 
                 isDragging = false;
                 box.classList.remove('dragging');
-
-                /* Around 18% of the screen width is enough to change image.
-                   A fast flick also changes image even with a shorter distance. */
-                const threshold = Math.max(45, width * 0.18);
 
                 if (moved && Math.abs(dx) >= threshold) {
                     if (dx < 0 && currentIndex < validImages.length - 1) {
                         showImage(currentIndex + 1, true);
                         return;
                     }
-
                     if (dx > 0 && currentIndex > 0) {
                         showImage(currentIndex - 1, true);
                         return;
                     }
                 }
-
-                /* Not enough movement: smoothly snap back. */
                 showImage(currentIndex, true);
             }
 
@@ -1422,9 +1385,8 @@
             box.addEventListener('touchmove', onTouchMove, { passive: true });
             box.addEventListener('touchend', onTouchEnd, { passive: true });
 
-            /* Mouse drag support for desktop. */
+            // ── MOUSE DRAG ──
             let mouseDown = false;
-
             box.addEventListener('mousedown', e => {
                 if (e.button !== 0) return;
                 mouseDown = true;
@@ -1437,16 +1399,19 @@
 
             window.addEventListener('mousemove', e => {
                 if (!mouseDown) return;
-
                 const dx = e.clientX - startX;
                 if (Math.abs(dx) > 4) moved = true;
 
                 let next = dragStartTranslate + dx;
+                const slideWidth = getSlideWidth();
+                const maxTranslate = -(validImages.length - 1) * slideWidth;
 
                 if (currentIndex === 0 && dx > 0) next = dragStartTranslate + dx * 0.28;
                 if (currentIndex === validImages.length - 1 && dx < 0) next = dragStartTranslate + dx * 0.28;
+                if (next > 0) next = 0;
+                if (next < maxTranslate) next = maxTranslate;
 
-                setTranslate(next, false);
+                track.style.transform = `translate3d(${next}px, 0, 0)`;
             });
 
             window.addEventListener('mouseup', e => {
@@ -1455,8 +1420,8 @@
                 box.classList.remove('dragging');
 
                 const dx = e.clientX - startX;
-                const width = box.clientWidth || 1;
-                const threshold = Math.max(45, width * 0.18);
+                const slideWidth = getSlideWidth();
+                const threshold = Math.max(40, slideWidth * 0.18);
 
                 if (moved && Math.abs(dx) >= threshold) {
                     if (dx < 0 && currentIndex < validImages.length - 1) {
@@ -1468,16 +1433,14 @@
                         return;
                     }
                 }
-
                 showImage(currentIndex, true);
             });
 
-            /* Keep the slide correctly positioned after rotation/resizing. */
-            window.addEventListener('resize', () => {
-                syncGalleryGeometry();
-                currentTranslate = targetTranslate(currentIndex);
-                setTranslate(currentTranslate, false);
-            });
+            // ── Cleanup function for when gallery updates ──
+            // (Store cleanup in a closure for potential later use)
+            const cleanup = () => {
+                // No-op for now; event listeners are on the box and window
+            };
         }
 
         // ==========================================
@@ -1827,5 +1790,3 @@
 </body>
 
 </html>
-
-
