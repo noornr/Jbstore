@@ -791,18 +791,16 @@ cursor:pointer;
   .category-grid .premium-cat-card:nth-child(1),
   .category-grid .premium-cat-card:nth-child(2),
   .category-grid .premium-cat-card:nth-child(3),
-  .category-grid .premium-cat-card:nth-child(4) {
+  .category-grid .premium-cat-card:nth-child(4) 
+.category-grid .premium-cat-card:nth-child(5),
+  .category-grid .premium-cat-card:nth-child(6),
+  .category-grid .premium-cat-card:nth-child(7)
+.category-grid .premium-cat-card:nth-child(8){
     flex: 0 0 calc(25% - 10px);
     max-width: calc(25% - 10px);
   }
 
-  /* ===== NEXT 3 ITEMS - 1/3rd WIDTH ===== */
-  .category-grid .premium-cat-card:nth-child(5),
-  .category-grid .premium-cat-card:nth-child(6),
-  .category-grid .premium-cat-card:nth-child(7) {
-    flex: 0 0 calc(33.333% - 10px);
-    max-width: calc(33.333% - 10px);
-  }
+
 
 /* ==========================================
    🔥 PREMIUM CATEGORY CARD - THIN GOLD RING
