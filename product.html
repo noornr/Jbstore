@@ -138,6 +138,18 @@
             user-select: none;
         }
 
+        /* Keep every slide inside one exact viewport. */
+        .product-image-box {
+            overflow: hidden !important;
+            isolation: isolate;
+        }
+
+        .gallery-track {
+            flex: 0 0 auto;
+            max-width: none !important;
+            overflow: visible;
+        }
+
         .gallery-slide {
             flex: 0 0 auto;
             width: 100%;
@@ -1248,7 +1260,11 @@
             }
 
             function getSlideWidth() {
-                return box.getBoundingClientRect().width;
+                // clientWidth includes padding; subtract the horizontal
+                // padding so each slide matches the visible image viewport.
+                const cs = getComputedStyle(box);
+                const padX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+                return Math.max(1, box.clientWidth - padX);
             }
 
             function syncGalleryGeometry() {
@@ -1265,7 +1281,13 @@
             }
 
             function targetTranslate(index) {
-                return -(index * getSlideWidth());
+                const slide = track.querySelectorAll('.gallery-slide')[index];
+                if (!slide) return 0;
+
+                // Use the slide's REAL rendered position instead of
+                // calculating with box width. This prevents the previous
+                // image from peeking on the 3rd/last slide.
+                return -slide.offsetLeft;
             }
 
             function showImage(index, animate = true) {
