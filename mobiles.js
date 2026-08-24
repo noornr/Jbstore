@@ -19,11 +19,11 @@ const mobileProducts = [
     colors: [
       {
         name: "Feather White",
-        image: "images/oppo_a6c_feather_white.png"
+        image: "images/oppo_a6c_feather_white.jpeg"
       },
       {
         name: "Stone Brown",
-        image: "images/oppo_a6c_stone_brown.png"
+        image: "images/oppo_a6c_stone_brown.jpeg"
       }
     ],
 
