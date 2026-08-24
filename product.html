@@ -116,6 +116,62 @@
             position: relative;
         }
 
+
+        /* ── REAL HORIZONTAL SWIPE GALLERY ── */
+        .product-image-box {
+            touch-action: pan-y;
+            cursor: grab;
+        }
+
+        .product-image-box.dragging {
+            cursor: grabbing;
+        }
+
+        .gallery-track {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
+            transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+            user-select: none;
+        }
+
+        .gallery-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            min-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .gallery-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-width: 94%;
+            max-height: 94%;
+            object-fit: contain;
+            filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.55));
+            user-select: none;
+            -webkit-user-drag: none;
+            pointer-events: none;
+        }
+
+        /* During a finger drag, the gallery follows the finger directly.
+           On release, the 300ms transition gives the Flipkart-like snap. */
+        .gallery-track.is-dragging {
+            transition: none !important;
+        }
+
+        .gallery-track.is-snapping {
+            transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1) !important;
+        }
+
         /* Main Image – perfectly responsive */
         .product-image-box {
             width: 100%;
@@ -139,22 +195,12 @@
             border-color: rgba(212, 175, 55, 0.22);
         }
 
-        .product-image-box img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            max-width: 94%;
-            max-height: 94%;
-            object-fit: contain;
-            filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.55));
-            transition: transform 0.35s ease;
-            user-select: none;
-            -webkit-user-drag: none;
-            touch-action: pan-y;
+        .gallery-slide img {
+            transition: transform 0.25s ease;
         }
 
-        .product-image-box:hover img {
-            transform: scale(1.02);
+        .product-image-box:hover .gallery-slide img {
+            transform: scale(1.01);
         }
 
         .product-offer {
@@ -881,7 +927,7 @@
                 border-radius: 12px;
             }
 
-            .product-image-box img {
+            .gallery-slide img {
                 max-width: 96%;
                 max-height: 96%;
             }
@@ -974,6 +1020,11 @@
                 padding: 10px;
             }
 
+            .gallery-slide img {
+                max-width: 96%;
+                max-height: 96%;
+            }
+
             .thumbnail-strip .thumb-item {
                 flex: 0 0 44px;
                 width: 44px;
@@ -1056,7 +1107,7 @@
             <!-- Main Image -->
             <div class="product-image-box">
                 <span id="productOffer" class="product-offer"></span>
-                <img id="productImage" src="" alt="Product" />
+                <div id="galleryTrack" class="gallery-track" aria-live="polite"></div>
             </div>
 
             <!-- Thumbnail Strip -->
@@ -1185,14 +1236,16 @@
         // UPDATE GALLERY – Flipkart style with thumbnails + dots + swipe
         // ==========================================
         function updateGallery(images) {
-            const mainImg = document.getElementById('productImage');
+            const box = document.querySelector('.product-image-box');
+            const track = document.getElementById('galleryTrack');
             const strip = document.getElementById('thumbnailStrip');
             const dots = document.getElementById('imageDots');
 
-            if (!mainImg || !strip || !dots) return;
+            if (!box || !track || !strip || !dots) return;
 
             strip.innerHTML = '';
             dots.innerHTML = '';
+            track.innerHTML = '';
 
             const validImages = (images || []).filter(src =>
                 typeof src === 'string' && src.trim() !== ''
@@ -1208,70 +1261,221 @@
             strip.style.display = 'flex';
 
             let currentIndex = 0;
+            let startX = 0;
+            let startY = 0;
+            let currentTranslate = 0;
+            let dragStartTranslate = 0;
+            let isDragging = false;
+            let moved = false;
 
-            function showImage(index) {
-                if (index < 0 || index >= validImages.length) return;
+            /* Create every image as a real slide.
+               This is what makes the next image visible while swiping. */
+            validImages.forEach((src, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'gallery-slide';
+
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Product image ${index + 1}`;
+                img.draggable = false;
+
+                slide.appendChild(img);
+                track.appendChild(slide);
+            });
+
+            function setTranslate(px, animate = true) {
+                track.classList.toggle('is-dragging', !animate);
+                track.classList.toggle('is-snapping', animate);
+                track.style.transform = `translate3d(${px}px, 0, 0)`;
+            }
+
+            function targetTranslate(index) {
+                return -(index * box.clientWidth);
+            }
+
+            function showImage(index, animate = true) {
+                if (index < 0) index = 0;
+                if (index > validImages.length - 1) index = validImages.length - 1;
+
                 currentIndex = index;
-                mainImg.src = validImages[currentIndex];
+                currentTranslate = targetTranslate(currentIndex);
+                setTranslate(currentTranslate, animate);
 
-                // Update thumbnails
                 strip.querySelectorAll('.thumb-item').forEach((el, i) => {
                     el.classList.toggle('active-thumb', i === currentIndex);
                 });
 
-                // Update dots
                 dots.querySelectorAll('.image-dot').forEach((dot, i) => {
                     dot.classList.toggle('active', i === currentIndex);
                 });
+
+                const activeThumb = strip.querySelector('.active-thumb');
+                if (activeThumb) {
+                    activeThumb.scrollIntoView({
+                        behavior: animate ? 'smooth' : 'auto',
+                        inline: 'center',
+                        block: 'nearest'
+                    });
+                }
             }
 
-            // Create thumbnails
+            /* Thumbnails */
             validImages.forEach((src, index) => {
                 const item = document.createElement('div');
                 item.className = 'thumb-item' + (index === 0 ? ' active-thumb' : '');
+
                 const img = document.createElement('img');
                 img.src = src;
                 img.alt = `Thumbnail ${index + 1}`;
                 img.loading = 'lazy';
+
                 item.appendChild(img);
-                item.addEventListener('click', () => showImage(index));
+                item.addEventListener('click', () => showImage(index, true));
                 strip.appendChild(item);
             });
 
-            // Create dots
+            /* Dots */
             validImages.forEach((_, index) => {
                 const dot = document.createElement('button');
                 dot.type = 'button';
                 dot.className = 'image-dot' + (index === 0 ? ' active' : '');
                 dot.setAttribute('aria-label', `Image ${index + 1}`);
-                dot.addEventListener('click', () => showImage(index));
+                dot.addEventListener('click', () => showImage(index, true));
                 dots.appendChild(dot);
             });
 
-            // Show first image
-            showImage(0);
+            showImage(0, false);
 
-            // ── SWIPE SUPPORT ──
-            let startX = 0,
-                startY = 0;
-            mainImg.addEventListener('touchstart', function(e) {
+            /* ── Flipkart-like finger-following swipe ──
+               The track moves with the finger while dragging, so the
+               current image and next image are visible together. */
+            function onTouchStart(e) {
+                if (!e.touches || !e.touches[0]) return;
+
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
-            }, { passive: true });
+                dragStartTranslate = currentTranslate;
+                isDragging = true;
+                moved = false;
 
-            mainImg.addEventListener('touchend', function(e) {
-                const endX = e.changedTouches[0].clientX;
-                const endY = e.changedTouches[0].clientY;
-                const diffX = endX - startX;
-                const diffY = endY - startY;
-                if (Math.abs(diffY) > Math.abs(diffX)) return;
-                if (Math.abs(diffX) < 40) return;
-                if (diffX < 0 && currentIndex < validImages.length - 1) {
-                    showImage(currentIndex + 1);
-                } else if (diffX > 0 && currentIndex > 0) {
-                    showImage(currentIndex - 1);
+                box.classList.add('dragging');
+                track.classList.add('is-dragging');
+            }
+
+            function onTouchMove(e) {
+                if (!isDragging || !e.touches || !e.touches[0]) return;
+
+                const dx = e.touches[0].clientX - startX;
+                const dy = e.touches[0].clientY - startY;
+
+                /* Let vertical page scrolling work normally. */
+                if (Math.abs(dy) > Math.abs(dx) && Math.abs(dx) < 10) return;
+
+                moved = true;
+
+                let next = dragStartTranslate + dx;
+
+                /* Rubber-band resistance at first/last image. */
+                if (currentIndex === 0 && dx > 0) {
+                    next = dragStartTranslate + dx * 0.28;
                 }
-            }, { passive: true });
+
+                if (currentIndex === validImages.length - 1 && dx < 0) {
+                    next = dragStartTranslate + dx * 0.28;
+                }
+
+                setTranslate(next, false);
+            }
+
+            function onTouchEnd(e) {
+                if (!isDragging) return;
+
+                const endX = e.changedTouches[0].clientX;
+                const dx = endX - startX;
+                const width = box.clientWidth || 1;
+
+                isDragging = false;
+                box.classList.remove('dragging');
+
+                /* Around 18% of the screen width is enough to change image.
+                   A fast flick also changes image even with a shorter distance. */
+                const threshold = Math.max(45, width * 0.18);
+
+                if (moved && Math.abs(dx) >= threshold) {
+                    if (dx < 0 && currentIndex < validImages.length - 1) {
+                        showImage(currentIndex + 1, true);
+                        return;
+                    }
+
+                    if (dx > 0 && currentIndex > 0) {
+                        showImage(currentIndex - 1, true);
+                        return;
+                    }
+                }
+
+                /* Not enough movement: smoothly snap back. */
+                showImage(currentIndex, true);
+            }
+
+            box.addEventListener('touchstart', onTouchStart, { passive: true });
+            box.addEventListener('touchmove', onTouchMove, { passive: true });
+            box.addEventListener('touchend', onTouchEnd, { passive: true });
+
+            /* Mouse drag support for desktop. */
+            let mouseDown = false;
+
+            box.addEventListener('mousedown', e => {
+                if (e.button !== 0) return;
+                mouseDown = true;
+                startX = e.clientX;
+                dragStartTranslate = currentTranslate;
+                moved = false;
+                box.classList.add('dragging');
+                track.classList.add('is-dragging');
+            });
+
+            window.addEventListener('mousemove', e => {
+                if (!mouseDown) return;
+
+                const dx = e.clientX - startX;
+                if (Math.abs(dx) > 4) moved = true;
+
+                let next = dragStartTranslate + dx;
+
+                if (currentIndex === 0 && dx > 0) next = dragStartTranslate + dx * 0.28;
+                if (currentIndex === validImages.length - 1 && dx < 0) next = dragStartTranslate + dx * 0.28;
+
+                setTranslate(next, false);
+            });
+
+            window.addEventListener('mouseup', e => {
+                if (!mouseDown) return;
+                mouseDown = false;
+                box.classList.remove('dragging');
+
+                const dx = e.clientX - startX;
+                const width = box.clientWidth || 1;
+                const threshold = Math.max(45, width * 0.18);
+
+                if (moved && Math.abs(dx) >= threshold) {
+                    if (dx < 0 && currentIndex < validImages.length - 1) {
+                        showImage(currentIndex + 1, true);
+                        return;
+                    }
+                    if (dx > 0 && currentIndex > 0) {
+                        showImage(currentIndex - 1, true);
+                        return;
+                    }
+                }
+
+                showImage(currentIndex, true);
+            });
+
+            /* Keep the slide correctly positioned after rotation/resizing. */
+            window.addEventListener('resize', () => {
+                currentTranslate = targetTranslate(currentIndex);
+                setTranslate(currentTranslate, false);
+            });
         }
 
         // ==========================================
@@ -1621,3 +1825,4 @@
 </body>
 
 </html>
+
