@@ -603,6 +603,37 @@
             background: linear-gradient(135deg, #d4af37, #f3cf55);
         }
 
+        /* ===== FLIPKART STYLE IMAGE DOTS ===== */
+
+.image-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    min-height: 12px;
+    margin-top: 8px;
+}
+
+.image-dot {
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #777;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.image-dot.active {
+    width: 7px;
+    height: 7px;
+    background: #d4af37;
+    box-shadow: 0 0 6px rgba(212,175,55,0.35);
+}
+
+    
+
         /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
             .product-page {
@@ -627,6 +658,21 @@
             .variant-options {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .image-dots {
+        gap: 5px;
+        margin-top: 6px;
+    }
+
+    .image-dot {
+        width: 5px;
+        height: 5px;
+    }
+
+    .image-dot.active {
+        width: 6px;
+        height: 6px;
+    }
+    
         }
         @media (max-width: 420px) {
             .product-image-box {
