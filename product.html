@@ -891,25 +891,7 @@
         dots.appendChild(dot);
     });
         }
-            // After a small delay, find the first visible image and set it as active
-            setTimeout(() => {
-                const visibleThumbs = strip.querySelectorAll('.thumb-item:not([style*="display: none"])');
-                if (visibleThumbs.length > 0) {
-                    // Remove active from all
-                    strip.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('active-thumb'));
-                    // Set first visible as active
-                    visibleThumbs[0].classList.add('active-thumb');
-                    // If main image not set yet, set it
-                    if (mainImg.src === '' || mainImg.src === window.location.href || mainImg.src.includes('placeholder')) {
-                        mainImg.src = visibleThumbs[0].src;
-                    }
-                } else {
-                    // If all images are broken, hide the strip
-                    strip.style.display = 'none';
-                }
-            }, 150);
-        }
-
+            
         // ==========================================
         // LOAD COLORS
         // ==========================================
