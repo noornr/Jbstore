@@ -837,51 +837,60 @@
         // UPDATE GALLERY (Flipkart style – no boxes, auto-hide missing images)
         // ==========================================
         function updateGallery(images) {
-            const strip = document.getElementById('thumbnailStrip');
-            const mainImg = document.getElementById('productImage');
-            strip.innerHTML = '';
 
-            if (!images || images.length === 0) {
-                strip.style.display = 'none';
-                return;
-            }
-            strip.style.display = 'flex';
+    const dots = document.getElementById('imageDots');
+    const mainImg = document.getElementById('productImage');
 
-            let hasValidImage = false;
+    if (!dots || !mainImg) return;
 
-            images.forEach((src) => {
-                if (!src) return;
+    dots.innerHTML = '';
 
-                const thumb = document.createElement('img');
-                thumb.src = src;
-                thumb.alt = 'Thumbnail';
-                thumb.className = 'thumb-item';
+    // Remove empty / invalid entries
+    const validImages = (images || []).filter(src =>
+        typeof src === 'string' && src.trim() !== ''
+    );
 
-                // If image fails to load, hide it instantly (no broken icon)
-                thumb.onerror = function() {
-                    this.style.display = 'none';
-                };
+    // No images
+    if (validImages.length === 0) {
+        dots.style.display = 'none';
+        return;
+    }
 
-                // If image loads successfully, mark it
-                thumb.onload = function() {
-                    hasValidImage = true;
-                    // If main image is still placeholder, set it
-                    if (mainImg.src === '' || mainImg.src === window.location.href || mainImg.src.includes('placeholder')) {
-                        mainImg.src = this.src;
-                    }
-                };
+    dots.style.display = 'flex';
 
-                thumb.addEventListener('click', function() {
-                    // Ignore clicks on hidden (broken) images
-                    if (this.style.display === 'none') return;
-                    document.querySelectorAll('.thumbnail-strip img').forEach(t => t.classList.remove('active-thumb'));
-                    this.classList.add('active-thumb');
-                    mainImg.src = this.src;
+    // First image
+    mainImg.src = validImages[0];
+
+    // Create only available image dots
+    validImages.forEach((src, index) => {
+
+        const dot = document.createElement('button');
+
+        dot.type = 'button';
+        dot.className =
+            'image-dot' + (index === 0 ? ' active' : '');
+
+        dot.setAttribute(
+            'aria-label',
+            `Image ${index + 1}`
+        );
+
+        dot.addEventListener('click', function () {
+
+            mainImg.src = src;
+
+            dots
+                .querySelectorAll('.image-dot')
+                .forEach(d => {
+                    d.classList.remove('active');
                 });
 
-                strip.appendChild(thumb);
-            });
+            this.classList.add('active');
+        });
 
+        dots.appendChild(dot);
+    });
+        }
             // After a small delay, find the first visible image and set it as active
             setTimeout(() => {
                 const visibleThumbs = strip.querySelectorAll('.thumb-item:not([style*="display: none"])');
