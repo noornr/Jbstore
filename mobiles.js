@@ -19,11 +19,19 @@ const mobileProducts = [
     colors: [
       {
         name: "Feather White",
-        image: "images/oppo_a6c_feather_white.jpeg"
+        images: [
+          "images/oppo_a6c_feather_white_1.jpeg",
+          "images/oppo_a6c_feather_white_2.jpeg",
+          "images/oppo_a6c_feather_white_3.jpeg"
+        ]
       },
       {
         name: "Stone Brown",
-        image: "images/oppo_a6c_stone_brown.jpeg"
+        images: [
+          "images/oppo_a6c_stone_brown_1.jpeg",
+          "images/oppo_a6c_stone_brown_2.jpeg",
+          "images/oppo_a6c_stone_brown_3.jpeg"
+        ]
       }
     ],
 
@@ -70,11 +78,19 @@ const mobileProducts = [
     colors: [
       {
         name: "Ice Blue",
-        image: "images/oppo_a6x_ice_blue.jpeg"
+        images: [
+          "images/oppo_a6x_ice_blue_1.jpeg",
+          "images/oppo_a6x_ice_blue_2.jpeg",
+          "images/oppo_a6x_ice_blue_3.jpeg"
+        ]
       },
       {
         name: "Olive Green",
-        image: "images/oppo_a6x_olive_green.jpeg"
+        images: [
+          "images/oppo_a6x_olive_green_1.jpeg",
+          "images/oppo_a6x_olive_green_2.jpeg",
+          "images/oppo_a6x_olive_green_3.jpeg"
+        ]
       }
     ],
 
@@ -128,11 +144,19 @@ const mobileProducts = [
     colors: [
       {
         name: "Aurora Gold",
-        image: "images/oppo_a6s_aurora_gold.jpeg"
+        images: [
+          "images/oppo_a6s_aurora_gold_1.jpeg",
+          "images/oppo_a6s_aurora_gold_2.jpeg",
+          "images/oppo_a6s_aurora_gold_3.jpeg"
+        ]
       },
       {
         name: "Plum Purple",
-        image: "images/oppo_a6s_plum_purple.jpeg"
+        images: [
+          "images/oppo_a6s_plum_purple_1.jpeg",
+          "images/oppo_a6s_plum_purple_2.jpeg",
+          "images/oppo_a6s_plum_purple_3.jpeg"
+        ]
       }
     ],
 
@@ -179,15 +203,27 @@ const mobileProducts = [
     colors: [
       {
         name: "Sapphire Blue",
-        image: "images/oppo_a6_sapphire_blue.jpeg"
+        images: [
+          "images/oppo_a6_sapphire_blue_1.jpeg",
+          "images/oppo_a6_sapphire_blue_2.jpeg",
+          "images/oppo_a6_sapphire_blue_3.jpeg"
+        ]
       },
       {
         name: "Ice White",
-        image: "images/oppo_a6_ice_white.jpeg"
+        images: [
+          "images/oppo_a6_ice_white_1.jpeg",
+          "images/oppo_a6_ice_white_2.jpeg",
+          "images/oppo_a6_ice_white_3.jpeg"
+        ]
       },
       {
         name: "Sakura Pink",
-        image: "images/oppo_a6_sakura_pink.jpeg"
+        images: [
+          "images/oppo_a6_sakura_pink_1.jpeg",
+          "images/oppo_a6_sakura_pink_2.jpeg",
+          "images/oppo_a6_sakura_pink_3.jpeg"
+        ]
       }
     ],
 
@@ -241,11 +277,19 @@ const mobileProducts = [
     colors: [
       {
         name: "Cappuccino Brown",
-        image: "images/oppo_a6_pro_cappuccino_brown.jpeg"
+        images: [
+          "images/oppo_a6_pro_cappuccino_brown_1.jpeg",
+          "images/oppo_a6_pro_cappuccino_brown_2.jpeg",
+          "images/oppo_a6_pro_cappuccino_brown_3.jpeg"
+        ]
       },
       {
         name: "Aurora Gold",
-        image: "images/oppo_a6_pro_aurora_gold.jpeg"
+        images: [
+          "images/oppo_a6_pro_aurora_gold_1.jpeg",
+          "images/oppo_a6_pro_aurora_gold_2.jpeg",
+          "images/oppo_a6_pro_aurora_gold_3.jpeg"
+        ]
       }
     ],
 
@@ -292,15 +336,27 @@ const mobileProducts = [
     colors: [
       {
         name: "Icy Blue",
-        image: "images/oppo_k14_icy_blue.jpeg"
+        images: [
+          "images/oppo_k14_icy_blue_1.jpeg",
+          "images/oppo_k14_icy_blue_2.jpeg",
+          "images/oppo_k14_icy_blue_3.jpeg"
+        ]
       },
       {
         name: "Prism White",
-        image: "images/oppo_k14_prism_white.jpeg"
+        images: [
+          "images/oppo_k14_prism_white_1.jpeg",
+          "images/oppo_k14_prism_white_2.jpeg",
+          "images/oppo_k14_prism_white_3.jpeg"
+        ]
       },
       {
         name: "Prism Violet",
-        image: "images/oppo_k14_prism_violet.jpeg"
+        images: [
+          "images/oppo_k14_prism_violet_1.jpeg",
+          "images/oppo_k14_prism_violet_2.jpeg",
+          "images/oppo_k14_prism_violet_3.jpeg"
+        ]
       }
     ],
 
@@ -354,11 +410,19 @@ const mobileProducts = [
     colors: [
       {
         name: "Icy Blue",
-        image: "images/oppo_k14x_icy_blue.jpeg"
+        images: [
+          "images/oppo_k14x_icy_blue_1.jpeg",
+          "images/oppo_k14x_icy_blue_2.jpeg",
+          "images/oppo_k14x_icy_blue_3.jpeg"
+        ]
       },
       {
         name: "Prism Violet",
-        image: "images/oppo_k14x_prism_violet.jpeg"
+        images: [
+          "images/oppo_k14x_prism_violet_1.jpeg",
+          "images/oppo_k14x_prism_violet_2.jpeg",
+          "images/oppo_k14x_prism_violet_3.jpeg"
+        ]
       }
     ],
 
@@ -412,11 +476,19 @@ const mobileProducts = [
     colors: [
       {
         name: "Pearl White",
-        image: "images/oppo_f33_pearl_white.jpeg"
+        images: [
+          "images/oppo_f33_pearl_white_1.jpeg",
+          "images/oppo_f33_pearl_white_2.jpeg",
+          "images/oppo_f33_pearl_white_3.jpeg"
+        ]
       },
       {
         name: "Forest Green",
-        image: "images/oppo_f33_forest_green.jpeg"
+        images: [
+          "images/oppo_f33_forest_green_1.jpeg",
+          "images/oppo_f33_forest_green_2.jpeg",
+          "images/oppo_f33_forest_green_3.jpeg"
+        ]
       }
     ],
 
@@ -470,15 +542,27 @@ const mobileProducts = [
     colors: [
       {
         name: "Misty Forest",
-        image: "images/oppo_f33_pro_misty_forest.jpeg"
+        images: [
+          "images/oppo_f33_pro_misty_forest_1.jpeg",
+          "images/oppo_f33_pro_misty_forest_2.jpeg",
+          "images/oppo_f33_pro_misty_forest_3.jpeg"
+        ]
       },
       {
         name: "Passion Red",
-        image: "images/oppo_f33_pro_passion_red.jpeg"
+        images: [
+          "images/oppo_f33_pro_passion_red_1.jpeg",
+          "images/oppo_f33_pro_passion_red_2.jpeg",
+          "images/oppo_f33_pro_passion_red_3.jpeg"
+        ]
       },
       {
         name: "Starry Blue",
-        image: "images/oppo_f33_pro_starry_blue.jpeg"
+        images: [
+          "images/oppo_f33_pro_starry_blue_1.jpeg",
+          "images/oppo_f33_pro_starry_blue_2.jpeg",
+          "images/oppo_f33_pro_starry_blue_3.jpeg"
+        ]
       }
     ],
 
@@ -525,15 +609,27 @@ const mobileProducts = [
     colors: [
       {
         name: "Midnight Maverick",
-        image: "images/oppo_k13_turbo_midnight_maverick.jpeg"
+        images: [
+          "images/oppo_k13_turbo_midnight_maverick_1.jpeg",
+          "images/oppo_k13_turbo_midnight_maverick_2.jpeg",
+          "images/oppo_k13_turbo_midnight_maverick_3.jpeg"
+        ]
       },
       {
         name: "White Knight",
-        image: "images/oppo_k13_turbo_white_knight.jpeg"
+        images: [
+          "images/oppo_k13_turbo_white_knight_1.jpeg",
+          "images/oppo_k13_turbo_white_knight_2.jpeg",
+          "images/oppo_k13_turbo_white_knight_3.jpeg"
+        ]
       },
       {
         name: "Purple Phantom",
-        image: "images/oppo_k13_turbo_purple_phantom.jpeg"
+        images: [
+          "images/oppo_k13_turbo_purple_phantom_1.jpeg",
+          "images/oppo_k13_turbo_purple_phantom_2.jpeg",
+          "images/oppo_k13_turbo_purple_phantom_3.jpeg"
+        ]
       }
     ],
 
@@ -580,19 +676,35 @@ const mobileProducts = [
     colors: [
       {
         name: "Pearl White",
-        image: "images/oppo_reno_14_pearl_white.jpeg"
+        images: [
+          "images/oppo_reno_14_pearl_white_1.jpeg",
+          "images/oppo_reno_14_pearl_white_2.jpeg",
+          "images/oppo_reno_14_pearl_white_3.jpeg"
+        ]
       },
       {
         name: "Forest Green",
-        image: "images/oppo_reno_14_forest_green.jpeg"
+        images: [
+          "images/oppo_reno_14_forest_green_1.jpeg",
+          "images/oppo_reno_14_forest_green_2.jpeg",
+          "images/oppo_reno_14_forest_green_3.jpeg"
+        ]
       },
       {
         name: "Mint Green",
-        image: "images/oppo_reno_14_mint_green.jpeg"
+        images: [
+          "images/oppo_reno_14_mint_green_1.jpeg",
+          "images/oppo_reno_14_mint_green_2.jpeg",
+          "images/oppo_reno_14_mint_green_3.jpeg"
+        ]
       },
       {
         name: "Diwali Gold",
-        image: "images/oppo_reno_14_diwali_gold.jpeg"
+        images: [
+          "images/oppo_reno_14_diwali_gold_1.jpeg",
+          "images/oppo_reno_14_diwali_gold_2.jpeg",
+          "images/oppo_reno_14_diwali_gold_3.jpeg"
+        ]
       }
     ],
 
@@ -646,15 +758,27 @@ const mobileProducts = [
     colors: [
       {
         name: "Glacier White",
-        image: "images/oppo_reno_15_pro_mini_glacier_white.jpeg"
+        images: [
+          "images/oppo_reno_15_pro_mini_glacier_white_1.jpeg",
+          "images/oppo_reno_15_pro_mini_glacier_white_2.jpeg",
+          "images/oppo_reno_15_pro_mini_glacier_white_3.jpeg"
+        ]
       },
       {
         name: "Cocoa Brown",
-        image: "images/oppo_reno_15_pro_mini_cocoa_brown.jpeg"
+        images: [
+          "images/oppo_reno_15_pro_mini_cocoa_brown_1.jpeg",
+          "images/oppo_reno_15_pro_mini_cocoa_brown_2.jpeg",
+          "images/oppo_reno_15_pro_mini_cocoa_brown_3.jpeg"
+        ]
       },
       {
         name: "Crystal Pink",
-        image: "images/oppo_reno_15_pro_mini_crystal_pink.jpeg"
+        images: [
+          "images/oppo_reno_15_pro_mini_crystal_pink_1.jpeg",
+          "images/oppo_reno_15_pro_mini_crystal_pink_2.jpeg",
+          "images/oppo_reno_15_pro_mini_crystal_pink_3.jpeg"
+        ]
       }
     ],
 
@@ -701,15 +825,27 @@ const mobileProducts = [
     colors: [
       {
         name: "Starry White",
-        image: "images/oppo_reno_16c_starry_white.jpeg"
+        images: [
+          "images/oppo_reno_16c_starry_white_1.jpeg",
+          "images/oppo_reno_16c_starry_white_2.jpeg",
+          "images/oppo_reno_16c_starry_white_3.jpeg"
+        ]
       },
       {
         name: "Twilight Violet",
-        image: "images/oppo_reno_16c_twilight_violet.jpeg"
+        images: [
+          "images/oppo_reno_16c_twilight_violet_1.jpeg",
+          "images/oppo_reno_16c_twilight_violet_2.jpeg",
+          "images/oppo_reno_16c_twilight_violet_3.jpeg"
+        ]
       },
       {
         name: "Stellar Purple",
-        image: "images/oppo_reno_16c_stellar_purple.jpeg"
+        images: [
+          "images/oppo_reno_16c_stellar_purple_1.jpeg",
+          "images/oppo_reno_16c_stellar_purple_2.jpeg",
+          "images/oppo_reno_16c_stellar_purple_3.jpeg"
+        ]
       }
     ],
 
@@ -763,15 +899,27 @@ const mobileProducts = [
     colors: [
       {
         name: "Starry White",
-        image: "images/oppo_reno_16_starry_white.jpeg"
+        images: [
+          "images/oppo_reno_16_starry_white_1.jpeg",
+          "images/oppo_reno_16_starry_white_2.jpeg",
+          "images/oppo_reno_16_starry_white_3.jpeg"
+        ]
       },
       {
         name: "Twilight Violet",
-        image: "images/oppo_reno_16_twilight_violet.jpeg"
+        images: [
+          "images/oppo_reno_16_twilight_violet_1.jpeg",
+          "images/oppo_reno_16_twilight_violet_2.jpeg",
+          "images/oppo_reno_16_twilight_violet_3.jpeg"
+        ]
       },
       {
         name: "Stellar Purple",
-        image: "images/oppo_reno_16_stellar_purple.jpeg"
+        images: [
+          "images/oppo_reno_16_stellar_purple_1.jpeg",
+          "images/oppo_reno_16_stellar_purple_2.jpeg",
+          "images/oppo_reno_16_stellar_purple_3.jpeg"
+        ]
       }
     ],
 
