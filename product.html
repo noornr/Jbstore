@@ -1304,7 +1304,14 @@
             }
 
             function targetTranslate(index) {
-    const slideWidth = track.parentElement.clientWidth;
+    // Use the actual slide width.
+    // The gallery box has padding, so box.clientWidth can be
+    // slightly wider than each individual slide.
+    const firstSlide = track.querySelector('.gallery-slide');
+    const slideWidth = firstSlide
+        ? firstSlide.getBoundingClientRect().width
+        : track.clientWidth;
+
     return -(index * slideWidth);
 }
 
@@ -1840,4 +1847,5 @@
 </body>
 
 </html>
+
 
