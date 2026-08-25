@@ -127,8 +127,9 @@
     aspect-ratio: 1 / 1;
     background: #ffffff;
     border-radius: 16px;
-    padding: 12px;
+    padding: 0;
 }
+
 
         .product-image-box.dragging {
             cursor: grabbing;
@@ -160,19 +161,19 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding: 0 10px;
+    padding: 0;
     background: #ffffff;
 }
 
         .gallery-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-            transition: transform 0.25s ease;
-            pointer-events: none;
-            user-select: none;
-        }
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.25s ease;
+    pointer-events: none;
+    user-select: none;
+}
 
         .product-image-box:hover .gallery-slide img {
             transform: scale(1.01);
