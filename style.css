@@ -1746,7 +1746,7 @@ cursor:pointer;
     align-items: center;
     max-width: 1320px;
     margin: 0 auto;
-    padding-top: 6px;
+    padding-top: 6px 6px;
     position: relative;
     z-index: 2;
 }
