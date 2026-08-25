@@ -3396,15 +3396,16 @@ cursor:pointer;
 }
   /* ===== FOOTER ===== */
 
+    
     /* ============================================
    PREMIUM 4-ROW FOOTER — JB STORE
-   📱 MOBILE VERSION (≤ 768px)
+   📱 MOBILE — BRIGHT & PREMIUM LOOK
    ============================================ */
 
 /* ——— BASE ——— */
 .footer-premium {
     background: linear-gradient(180deg, #0D0D0D 0%, #060606 100%);
-    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
     padding: 20px 4% 14px;
     font-family: "Poppins", sans-serif;
     width: 100%;
@@ -3420,7 +3421,7 @@ cursor:pointer;
     justify-content: center;
     gap: 4px 0;
     padding: 4px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .footer-row:last-of-type {
@@ -3434,8 +3435,9 @@ cursor:pointer;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    opacity: 0.7;
+    opacity: 0.9;
     text-align: center;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
 }
 
 /* ===== ROW 1: BRAND ===== */
@@ -3451,6 +3453,7 @@ cursor:pointer;
     font-size: 18px;
     color: #D4AF37;
     line-height: 1;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
 }
 
 .brand-group .brand-name {
@@ -3458,6 +3461,7 @@ cursor:pointer;
     font-weight: 800;
     color: #D4AF37;
     letter-spacing: 0.3px;
+    text-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
 }
 
 .brand-group .brand-name span {
@@ -3468,11 +3472,12 @@ cursor:pointer;
     color: #D4AF37;
     font-size: 11px;
     font-weight: 500;
-    opacity: 0.8;
+    opacity: 0.9;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
 }
 
 .brand-group .brand-desc {
-    color: #888;
+    color: #D0D0D0;  /* Brightened */
     font-size: 11px;
     font-weight: 400;
 }
@@ -3490,7 +3495,7 @@ cursor:pointer;
 }
 
 .inline-list li a {
-    color: #B0B0B0;
+    color: #E8E8E8;  /* Bright white */
     text-decoration: none;
     font-size: 12px;
     font-weight: 400;
@@ -3503,25 +3508,29 @@ cursor:pointer;
 .inline-list li a:active {
     color: #D4AF37;
     transform: scale(1.04);
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
 /* ——— Accessories (gold accent) ——— */
 .inline-list li a.accent-link {
     color: #D4AF37;
     font-weight: 600;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
 }
 
 .inline-list li a.accent-link:active {
     color: #F3CF55;
+    text-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
 }
 
 /* ——— WhatsApp ——— */
 .inline-list li a.whatsapp-link {
     color: #25D366;
+    text-shadow: 0 0 15px rgba(37, 211, 102, 0.1);
 }
 
 .inline-list li a.whatsapp-link:active {
-    text-shadow: 0 0 18px rgba(37, 211, 102, 0.2);
+    text-shadow: 0 0 25px rgba(37, 211, 102, 0.3);
 }
 
 /* ===== ROW 4: FOLLOW US — INSTAGRAM ===== */
@@ -3537,12 +3546,13 @@ cursor:pointer;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    filter: drop-shadow(0 0 8px rgba(225, 48, 108, 0.15));
 }
 
 .follow-row .insta-link span:first-child {
     font-size: 16px;
     -webkit-text-fill-color: initial;
-    color: #B0B0B0;
+    color: #E0E0E0;
     transition: transform 0.2s ease;
 }
 
@@ -3551,7 +3561,7 @@ cursor:pointer;
 }
 
 /* ============================================
-   DIVIDER & COPYRIGHT (old styles, mobile)
+   DIVIDER & COPYRIGHT — BRIGHTENED
    ============================================ */
 
 /* ——— DIVIDER ——— */
@@ -3572,7 +3582,7 @@ cursor:pointer;
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
 }
 
 .footer-divider span {
@@ -3583,6 +3593,7 @@ cursor:pointer;
     position: relative;
     z-index: 2;
     letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
 }
 
 /* ——— COPYRIGHT ——— */
@@ -3600,7 +3611,7 @@ cursor:pointer;
 }
 
 .footer-bottom p {
-    color: #666;
+    color: #AAAAAA;  /* Brightened */
     font-size: 10px;
     font-weight: 400;
     letter-spacing: 0.2px;
@@ -3609,15 +3620,16 @@ cursor:pointer;
 
 .footer-bottom .made {
     color: #D4AF37;
-    opacity: 0.5;
+    opacity: 0.7;
     font-weight: 500;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
 }
 
 .footer-bottom .made span {
     color: #D4AF37;
     opacity: 1;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
 }
-
 
 
   /* ===== PRODUCT DETAILS ===== */
