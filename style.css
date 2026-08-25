@@ -1602,14 +1602,14 @@ cursor:pointer;
 .brand-group .brand-name {
     font-size: 26px;
     font-weight: 800;
-    color: #D4AF37;
+    color: #D4AF37 !important;
     letter-spacing: 0.5px;
-    text-shadow: 0 0 40px rgba(212, 175, 55, 0.6), 0 0 80px rgba(212, 175, 55, 0.25);
+    text-shadow: none !important;
 }
 
 .brand-group .brand-name span {
-    color: #FFFFFF;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    color: #FFFFFF !important;
+    text-shadow: none !important;
 }
 
 .brand-group .brand-tagline {
