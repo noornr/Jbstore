@@ -3424,10 +3424,15 @@ cursor:pointer;
    📱 MOBILE — BRIGHT & PREMIUM LOOK
    ============================================ */
 
+/* ============================================
+   PREMIUM 4-ROW FOOTER — JB STORE
+   📱 MOBILE — ZERO DULLNESS / FULL BRIGHT
+   ============================================ */
+
 /* ——— BASE ——— */
 .footer-premium {
     background: linear-gradient(180deg, #0D0D0D 0%, #060606 100%);
-    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    border-top: 2px solid rgba(212, 175, 55, 0.3);
     padding: 20px 4% 14px;
     font-family: "Poppins", sans-serif;
     width: 100%;
@@ -3443,7 +3448,7 @@ cursor:pointer;
     justify-content: center;
     gap: 4px 0;
     padding: 4px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-row:last-of-type {
@@ -3454,12 +3459,12 @@ cursor:pointer;
 .row-label {
     color: #D4AF37;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.9;
+    letter-spacing: 1.5px;
+    opacity: 1;
     text-align: center;
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.6), 0 0 60px rgba(212, 175, 55, 0.2);
 }
 
 /* ===== ROW 1: BRAND ===== */
@@ -3472,35 +3477,36 @@ cursor:pointer;
 }
 
 .brand-group .brand-icon {
-    font-size: 18px;
+    font-size: 20px;
     color: #D4AF37;
     line-height: 1;
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    text-shadow: 0 0 40px rgba(212, 175, 55, 0.7), 0 0 80px rgba(212, 175, 55, 0.3);
 }
 
 .brand-group .brand-name {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 800;
     color: #D4AF37;
-    letter-spacing: 0.3px;
-    text-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 40px rgba(212, 175, 55, 0.6), 0 0 80px rgba(212, 175, 55, 0.25);
 }
 
 .brand-group .brand-name span {
     color: #FFFFFF;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
 }
 
 .brand-group .brand-tagline {
     color: #D4AF37;
-    font-size: 11px;
-    font-weight: 500;
-    opacity: 0.9;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 1;
+    text-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
 }
 
 .brand-group .brand-desc {
-    color: #D0D0D0;  /* Brightened */
-    font-size: 11px;
+    color: #F0F0F0;  /* Super bright silver */
+    font-size: 12px;
     font-weight: 400;
 }
 
@@ -3513,14 +3519,14 @@ cursor:pointer;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 4px 14px;
+    gap: 4px 16px;
 }
 
 .inline-list li a {
-    color: #E8E8E8;  /* Bright white */
+    color: #FFFFFF;  /* PURE WHITE */
     text-decoration: none;
-    font-size: 12px;
-    font-weight: 400;
+    font-size: 13px;
+    font-weight: 500;
     transition: all 0.2s ease;
     padding: 2px 0;
     white-space: nowrap;
@@ -3529,30 +3535,30 @@ cursor:pointer;
 /* ——— tap-friendly active state ——— */
 .inline-list li a:active {
     color: #D4AF37;
-    transform: scale(1.04);
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    transform: scale(1.05);
+    text-shadow: 0 0 35px rgba(212, 175, 55, 0.6), 0 0 70px rgba(212, 175, 55, 0.2);
 }
 
 /* ——— Accessories (gold accent) ——— */
 .inline-list li a.accent-link {
     color: #D4AF37;
-    font-weight: 600;
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+    font-weight: 700;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.5), 0 0 60px rgba(212, 175, 55, 0.2);
 }
 
 .inline-list li a.accent-link:active {
     color: #F3CF55;
-    text-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+    text-shadow: 0 0 45px rgba(212, 175, 55, 0.8), 0 0 90px rgba(212, 175, 55, 0.3);
 }
 
 /* ——— WhatsApp ——— */
 .inline-list li a.whatsapp-link {
     color: #25D366;
-    text-shadow: 0 0 15px rgba(37, 211, 102, 0.1);
+    text-shadow: 0 0 25px rgba(37, 211, 102, 0.3);
 }
 
 .inline-list li a.whatsapp-link:active {
-    text-shadow: 0 0 25px rgba(37, 211, 102, 0.3);
+    text-shadow: 0 0 45px rgba(37, 211, 102, 0.5), 0 0 80px rgba(37, 211, 102, 0.2);
 }
 
 /* ===== ROW 4: FOLLOW US — INSTAGRAM ===== */
@@ -3561,29 +3567,31 @@ cursor:pointer;
     align-items: center;
     gap: 6px;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 13px;
+    font-weight: 700;
+    font-size: 14px;
     transition: all 0.3s ease;
     background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 8px rgba(225, 48, 108, 0.15));
+    filter: drop-shadow(0 0 20px rgba(225, 48, 108, 0.4)) drop-shadow(0 0 40px rgba(225, 48, 108, 0.15));
 }
 
 .follow-row .insta-link span:first-child {
-    font-size: 16px;
+    font-size: 18px;
     -webkit-text-fill-color: initial;
-    color: #E0E0E0;
+    color: #FFFFFF;
     transition: transform 0.2s ease;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.15));
 }
 
 .follow-row .insta-link:active span:first-child {
-    transform: scale(1.15) rotate(-6deg);
+    transform: scale(1.2) rotate(-6deg);
+    filter: drop-shadow(0 0 30px rgba(225, 48, 108, 0.5));
 }
 
 /* ============================================
-   DIVIDER & COPYRIGHT — BRIGHTENED
+   DIVIDER & COPYRIGHT — MAX BRIGHT
    ============================================ */
 
 /* ——— DIVIDER ——— */
@@ -3603,19 +3611,20 @@ cursor:pointer;
     position: absolute;
     left: 0;
     right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.7), transparent);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
 }
 
 .footer-divider span {
     background: #0D0D0D;
-    padding: 0 12px;
+    padding: 0 14px;
     color: #D4AF37;
-    font-size: 11px;
+    font-size: 13px;
     position: relative;
     z-index: 2;
-    letter-spacing: 2px;
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    letter-spacing: 3px;
+    text-shadow: 0 0 40px rgba(212, 175, 55, 0.6), 0 0 80px rgba(212, 175, 55, 0.2);
 }
 
 /* ——— COPYRIGHT ——— */
@@ -3623,36 +3632,35 @@ cursor:pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
+    gap: 3px;
     max-width: 1320px;
     margin: 0 auto;
-    padding-top: 2px;
+    padding-top: 4px;
     text-align: center;
     position: relative;
     z-index: 2;
 }
 
 .footer-bottom p {
-    color: #AAAAAA;  /* Brightened */
-    font-size: 10px;
+    color: #F0F0F0;  /* Bright silver */
+    font-size: 11px;
     font-weight: 400;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.3px;
     margin: 0;
 }
 
 .footer-bottom .made {
     color: #D4AF37;
-    opacity: 0.7;
-    font-weight: 500;
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+    opacity: 1;
+    font-weight: 600;
+    text-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
 }
 
 .footer-bottom .made span {
     color: #D4AF37;
     opacity: 1;
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    text-shadow: 0 0 40px rgba(212, 175, 55, 0.5), 0 0 80px rgba(212, 175, 55, 0.2);
 }
-
 
   /* ===== PRODUCT DETAILS ===== */
   
