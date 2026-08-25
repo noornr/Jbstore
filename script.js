@@ -475,6 +475,19 @@ loadBrands("mobiles");
 displayProducts();
 
 // ==========================================
+// CART BADGE - INITIAL LOAD
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartBadge();
+});
+
+// Browser Back / Forward nunchi Home ki vachinappudu
+window.addEventListener("pageshow", () => {
+  updateCartBadge();
+});
+
+// ==========================================
 // 14. SHOP BY CATEGORY CARDS
 // ==========================================
 
