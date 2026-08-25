@@ -1895,7 +1895,7 @@ cursor:pointer;
         pointer-events: none;
         /* So clicks pass through to the cart link */
     }
-}
+
 /* ===== DYNAMIC PRODUCT DATA ===== */
 
 .deal-card .brand{
