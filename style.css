@@ -3988,6 +3988,22 @@ cursor:pointer;
     box-shadow: none !important;
     -webkit-tap-highlight-color: transparent !important;
 }
+
+        /* ===== BOTTOM BAR - CART SAME AS OTHER ITEMS ===== */
+.bottom-bar .cart-item {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    transform: none;
+}
+
+.bottom-bar .cart-item:hover {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    transform: none;
+}
         
 /* ===== BODY PADDING ===== */
 body {
