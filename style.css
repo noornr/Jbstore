@@ -3635,7 +3635,7 @@ cursor:pointer;
     gap: 3px;
     max-width: 1320px;
     margin: 0 auto;
-    padding-top: 4px;
+    padding: 4px 4px;
     text-align: center;
     position: relative;
     z-index: 2;
