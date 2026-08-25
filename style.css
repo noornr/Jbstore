@@ -1101,6 +1101,7 @@ cursor:pointer;
 
   /* ===== OFFER BADGE ===== */
   .deal-card .offer {
+      display: none !important;
     position: absolute;
     top: 12px;
     left: 12px;
@@ -3283,6 +3284,8 @@ cursor:pointer;
 
 /* ===== OFFER BADGE ===== */
 .deal-card .offer {
+
+ display: none !important;
   position: absolute;
   top: 8px;
   left: 8px;
