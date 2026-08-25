@@ -1772,7 +1772,8 @@ cursor:pointer;
     text-shadow: 0 0 40px rgba(212, 175, 55, 0.5), 0 0 80px rgba(212, 175, 55, 0.2);
 }
     
-/* ===== DESKTOP BOTTOM BAR ===== */
+
+    /* ===== DESKTOP BOTTOM BAR ===== */
 
     .bottom-bar {
         position: fixed;
@@ -1784,16 +1785,17 @@ cursor:pointer;
         background: linear-gradient(180deg, #111111 0%, #0A0A0A 100%);
         border-top: 2px solid rgba(212, 175, 55, 0.15);
         box-shadow: 0 -4px 40px rgba(0, 0, 0, 0.5);
+        padding: 0 20px;
     }
 
     .bottom-container {
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
-        gap: 80px;
-        padding: 10px 20px;
-        max-width: 700px;
+        padding: 10px 0;
+        max-width: 600px;
         margin: 0 auto;
+        gap: 10px;
     }
 
     .bottom-item {
@@ -1801,35 +1803,99 @@ cursor:pointer;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 3px;
+        gap: 4px;
         text-decoration: none;
         color: #888;
-        padding: 5px 15px;
+        padding: 8px 12px;
         border-radius: 12px;
         position: relative;
-        min-width: 70px;
+        flex: 1;
+        max-width: 100px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        /* Ensures the badge stays inside this box */
+        overflow: visible;
+    }
+
+    /* Gold underline animation on active/hover */
+    .bottom-item::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: #D4AF37;
+        border-radius: 2px;
+        transition: width 0.3s ease;
+    }
+
+    .bottom-item.active::after,
+    .bottom-item:hover::after {
+        width: 60%;
     }
 
     .bottom-icon {
-        font-size: 22px;
+        font-size: 24px;
+        line-height: 1;
+        transition: transform 0.3s ease;
+    }
+
+    .bottom-item:hover .bottom-icon {
+        transform: translateY(-2px);
     }
 
     .bottom-label {
         font-size: 11px;
         font-weight: 600;
         color: #888;
+        letter-spacing: 0.3px;
+        transition: color 0.3s ease;
     }
 
-    .bottom-item.active,
+    /* --- Active State --- */
+    .bottom-item.active .bottom-icon,
     .bottom-item.active .bottom-label {
         color: #D4AF37;
     }
 
-    .bottom-item:hover,
+    .bottom-item.active .bottom-icon {
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    }
+
+    /* --- Hover State --- */
+    .bottom-item:hover .bottom-icon {
+        color: #D4AF37;
+    }
     .bottom-item:hover .bottom-label {
         color: #D4AF37;
     }
 
+    /* --- CART BADGE (perfectly placed on top-right of the icon) --- */
+    .bottom-item .cart-badge {
+        position: absolute;
+        top: 2px;
+        right: 6px;
+        background: #D4AF37;
+        color: #000;
+        font-size: 10px;
+        font-weight: 700;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        z-index: 10;
+        /* Keeps it on top of the icon */
+        pointer-events: none;
+        /* So clicks pass through to the cart link */
+    }
+}
 /* ===== DYNAMIC PRODUCT DATA ===== */
 
 .deal-card .brand{
