@@ -1772,7 +1772,63 @@ cursor:pointer;
     text-shadow: 0 0 40px rgba(212, 175, 55, 0.5), 0 0 80px rgba(212, 175, 55, 0.2);
 }
     
+/* ===== DESKTOP BOTTOM BAR ===== */
 
+    .bottom-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        display: block !important;
+        background: linear-gradient(180deg, #111111 0%, #0A0A0A 100%);
+        border-top: 2px solid rgba(212, 175, 55, 0.15);
+        box-shadow: 0 -4px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .bottom-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 80px;
+        padding: 10px 20px;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .bottom-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        text-decoration: none;
+        color: #888;
+        padding: 5px 15px;
+        border-radius: 12px;
+        position: relative;
+        min-width: 70px;
+    }
+
+    .bottom-icon {
+        font-size: 22px;
+    }
+
+    .bottom-label {
+        font-size: 11px;
+        font-weight: 600;
+        color: #888;
+    }
+
+    .bottom-item.active,
+    .bottom-item.active .bottom-label {
+        color: #D4AF37;
+    }
+
+    .bottom-item:hover,
+    .bottom-item:hover .bottom-label {
+        color: #D4AF37;
+    }
 
 /* ===== DYNAMIC PRODUCT DATA ===== */
 
