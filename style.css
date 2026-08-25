@@ -3395,205 +3395,166 @@ cursor:pointer;
   transform: scale(1.08);
 }
   /* ===== FOOTER ===== */
-  /* ============================================
-   PREMIUM FOOTER — JB STORE
+
+    /* ============================================
+   PREMIUM 4-ROW FOOTER — JB STORE
    📱 MOBILE VERSION (≤ 768px)
    ============================================ */
 
-/* ——— RESET & BASE ——— */
-.footer {
-    position: relative;
-    margin-top: auto;
+/* ——— BASE ——— */
+.footer-premium {
     background: linear-gradient(180deg, #0D0D0D 0%, #060606 100%);
-    border-top: 1px solid rgba(212, 175, 55, 0.12);
-    padding: 28px 4% 20px;
-    overflow: hidden;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    padding: 20px 4% 14px;
     font-family: "Poppins", sans-serif;
+    width: 100%;
 }
 
-/* ——— subtle gold glow (scaled) ——— */
-.footer-glow {
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 80px;
-    background: radial-gradient(ellipse, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-/* ——— grid container ——— */
-.footer-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 22px 14px;
-    max-width: 1320px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-/* ===== BRAND COLUMN — full width, centered ===== */
-.footer-brand {
-    grid-column: 1 / -1;
+/* ============================================
+   ROW STYLES — CENTERED / STACKED
+   ============================================ */
+.footer-row {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 4px 0;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.footer-row:last-of-type {
+    border-bottom: none;
+}
+
+/* ——— Row Label ——— */
+.row-label {
+    color: #D4AF37;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
     text-align: center;
-    gap: 4px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.08);
 }
 
-.footer-brand .brand-head {
+/* ===== ROW 1: BRAND ===== */
+.brand-group {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 4px 10px;
+    text-align: center;
 }
 
-.footer-brand .brand-icon {
+.brand-group .brand-icon {
     font-size: 18px;
     color: #D4AF37;
     line-height: 1;
 }
 
-.footer-brand h3 {
-    font-size: 22px;
+.brand-group .brand-name {
+    font-size: 20px;
     font-weight: 800;
     color: #D4AF37;
-    letter-spacing: 0.5px;
-    margin: 0;
+    letter-spacing: 0.3px;
 }
 
-.footer-brand h3 span {
+.brand-group .brand-name span {
     color: #FFFFFF;
 }
 
-.footer-brand .tagline {
+.brand-group .brand-tagline {
     color: #D4AF37;
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    opacity: 0.7;
-    margin-top: 0;
+    font-size: 11px;
+    font-weight: 500;
+    opacity: 0.8;
 }
 
-.footer-brand .desc {
+.brand-group .brand-desc {
     color: #888;
     font-size: 11px;
-    line-height: 1.5;
-    max-width: 100%;
-    margin-top: 0;
+    font-weight: 400;
 }
 
-/* ===== FOOTER COLUMNS — centered ===== */
-.footer-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.footer-col h4 {
-    color: #D4AF37;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 0 0 10px 0;
-    padding-bottom: 8px;
-    position: relative;
-}
-
-.footer-col h4::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 24px;
-    height: 2px;
-    background: linear-gradient(90deg, #D4AF37, rgba(212, 175, 55, 0.2));
-    border-radius: 2px;
-}
-
-.footer-col ul {
+/* ===== ROW 2 & 3: CATEGORIES & CONTACT ===== */
+.inline-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 4px 14px;
 }
 
-.footer-col ul li a {
+.inline-list li a {
     color: #B0B0B0;
     text-decoration: none;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 400;
-    transition: all 0.25s ease;
-    display: inline-block;
-    padding: 2px 6px;
-    border-radius: 4px;
+    transition: all 0.2s ease;
+    padding: 2px 0;
+    white-space: nowrap;
 }
 
-/* ——— tap-friendly hover ——— */
-.footer-col ul li a:active {
+/* ——— tap-friendly active state ——— */
+.inline-list li a:active {
     color: #D4AF37;
-    transform: scale(1.05);
-    background: rgba(212, 175, 55, 0.06);
+    transform: scale(1.04);
 }
 
-/* ——— Accessories link ——— */
-.footer-col ul li a.accessory-link {
+/* ——— Accessories (gold accent) ——— */
+.inline-list li a.accent-link {
     color: #D4AF37;
     font-weight: 600;
 }
 
-.footer-col ul li a.accessory-link:active {
+.inline-list li a.accent-link:active {
     color: #F3CF55;
 }
 
 /* ——— WhatsApp ——— */
-.footer-col ul li a.whatsapp-link {
+.inline-list li a.whatsapp-link {
     color: #25D366;
 }
 
-.footer-col ul li a.whatsapp-link:active {
+.inline-list li a.whatsapp-link:active {
     text-shadow: 0 0 18px rgba(37, 211, 102, 0.2);
 }
 
-/* ===== FOLLOW — INSTAGRAM ONLY ===== */
-.footer-col.follow-col ul li a {
+/* ===== ROW 4: FOLLOW US — INSTAGRAM ===== */
+.follow-row .insta-link {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-weight: 500;
-}
-
-.footer-col.follow-col ul li a .insta-icon {
-    font-size: 16px;
-    transition: transform 0.2s ease;
-}
-
-.footer-col.follow-col ul li a:active .insta-icon {
-    transform: scale(1.15) rotate(-6deg);
-}
-
-.footer-col.follow-col ul li a .insta-label {
+    gap: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.3s ease;
     background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-weight: 600;
-    font-size: 11px;
 }
 
-/* ===== DIVIDER ===== */
+.follow-row .insta-link span:first-child {
+    font-size: 16px;
+    -webkit-text-fill-color: initial;
+    color: #B0B0B0;
+    transition: transform 0.2s ease;
+}
+
+.follow-row .insta-link:active span:first-child {
+    transform: scale(1.15) rotate(-6deg);
+}
+
+/* ============================================
+   DIVIDER & COPYRIGHT (old styles, mobile)
+   ============================================ */
+
+/* ——— DIVIDER ——— */
 .footer-divider {
     display: flex;
     justify-content: center;
@@ -3616,7 +3577,7 @@ cursor:pointer;
 
 .footer-divider span {
     background: #0D0D0D;
-    padding: 0 14px;
+    padding: 0 12px;
     color: #D4AF37;
     font-size: 11px;
     position: relative;
@@ -3624,18 +3585,18 @@ cursor:pointer;
     letter-spacing: 2px;
 }
 
-/* ===== COPYRIGHT ===== */
+/* ——— COPYRIGHT ——— */
 .footer-bottom {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3px;
+    gap: 2px;
     max-width: 1320px;
     margin: 0 auto;
     padding-top: 2px;
+    text-align: center;
     position: relative;
     z-index: 2;
-    text-align: center;
 }
 
 .footer-bottom p {
@@ -3656,6 +3617,8 @@ cursor:pointer;
     color: #D4AF37;
     opacity: 1;
 }
+
+
 
   /* ===== PRODUCT DETAILS ===== */
   
