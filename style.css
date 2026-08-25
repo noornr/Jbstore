@@ -1,7 +1,7 @@
 /* ===== WIDTH FIX ===== */
 html,body{
     margin:0;
-    padding-bottom: 60px;
+    padding: 0;
     width:100%;
     max-width:100%;
     overflow-x:hidden;
@@ -24,7 +24,9 @@ html,body{
     width:100%;
 }
 
-
+body {
+        padding-bottom: 60px !important;
+}
 
 /* ===== DESKTOP HEADER ===== */
 
