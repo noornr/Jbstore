@@ -1,7 +1,7 @@
 /* ===== WIDTH FIX ===== */
 html,body{
     margin:0;
-    padding:0;
+    padding-bottom: 80px;
     width:100%;
     max-width:100%;
     overflow-x:hidden;
