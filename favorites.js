@@ -227,6 +227,34 @@
     }
   }
 
+  // ---------- 🆕 Back / Forward Cache నుండి వచ్చినప్పుడు Refresh చేయడం ----------
+  function setupPageShowRefresh() {
+    // 1. pageshow event – browser back/forward వల్ల పేజీ లోడ్ అయినప్పుడు
+    window.addEventListener('pageshow', function(event) {
+      // event.persisted = true అంటే bfcache నుండి వచ్చింది
+      if (event.persisted) {
+        console.log('Page restored from bfcache – updating hearts');
+        setTimeout(function() {
+          injectHearts();       // Main product grid hearts update
+          renderBestSellers();  // Best sellers grid hearts update
+          updateFavBadge();     // Bottom bar badge update
+        }, 100);
+      }
+    });
+
+    // 2. visibilitychange – ట్యాబ్ switch అయి మళ్ళీ వచ్చినా refresh
+    document.addEventListener('visibilitychange', function() {
+      if (!document.hidden) {
+        // Page visible అయినప్పుడు hearts update
+        setTimeout(function() {
+          injectHearts();
+          renderBestSellers();
+          updateFavBadge();
+        }, 200);
+      }
+    });
+  }
+
   // ---------- Init ----------
   function init() {
     fixCallButtons();
@@ -234,6 +262,8 @@
     updateFavBadge();
     renderBestSellers();
     setupDisplayOverride();
+    // 🆕 pageshow & visibilitychange listeners call
+    setupPageShowRefresh();
   }
 
   // ---------- Expose ----------
@@ -242,6 +272,7 @@
   global.isFavorite = isFavorite;
   global.toggleFavorite = toggleFavorite;
   global.updateFavBadge = updateFavBadge;
+  global.injectHearts = injectHearts; // బయట నుండి కూడా call చేయొచ్చు
 
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
     setTimeout(init, 100);
