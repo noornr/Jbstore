@@ -152,6 +152,11 @@
       box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
     }
 
+    /* ✅ Favorites Page - Remove Heart Button From Cards */
+    .fav-grid .best-card .favorite-btn {
+      display: none !important;
+    }
+
     /* Mobile Responsive - 2 columns */
     @media (max-width: 768px) {
       .fav-grid {
@@ -243,10 +248,8 @@
       card.style.cursor = 'pointer';
       card.setAttribute('onclick', `viewProduct('${p.id}')`);
 
+      // ✅ Favorites page లో Heart button తీసేశాను (కేవలం ఇమేజ్, పేరు, ధర, View Details మాత్రమే)
       card.innerHTML = `
-        <button class="favorite-btn is-fav" data-product-id="${p.id}" onclick="event.stopPropagation(); toggleFavorite('${p.id}')">
-          <i class="fa-solid fa-heart"></i>
-        </button>
         <img src="${p.image || 'images/placeholder.png'}" alt="${p.name}" loading="lazy">
         <h3>${p.name}</h3>
         <p class="brand">${p.brand}</p>
