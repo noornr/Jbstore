@@ -2895,6 +2895,46 @@ cursor:pointer;
   box-shadow: 0 8px 40px rgba(212, 175, 55, 0.3);
 }
 
+
+/* ==========================================
+   PRODUCT PAGE FLOATING FAVORITE BUTTON
+   Flipkart Style - Add to END of style.css
+   ========================================== */
+.product-fav-btn {
+    position: absolute !important;
+    top: 16px !important;
+    right: 16px !important;
+    z-index: 20 !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    color: #fff !important;
+}
+
+.product-fav-btn:hover {
+    transform: scale(1.1) !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+}
+
+.product-fav-btn .fa-heart {
+    font-size: 22px !important;
+}
+
+/* Red heart when favorited */
+.product-fav-btn.is-fav .fa-heart {
+    color: #ff1744 !important;
+    text-shadow: 0 0 20px rgba(255, 23, 68, 0.5) !important;
+}
 /* ============================================================
    MOBILE RESPONSIVE – Favorites
    ============================================================ */
@@ -4731,3 +4771,13 @@ body {
     right: 2px;
     top: -2px;
   }
+    .product-fav-btn {
+        width: 36px !important;
+        height: 36px !important;
+        top: 10px !important;
+        right: 10px !important;
+    }
+
+    .product-fav-btn .fa-heart {
+        font-size: 18px !important;
+    }
