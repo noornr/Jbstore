@@ -12,7 +12,6 @@
 </header>
 <main class="favorites-page">
   <div class="page-head">
-    <!-- ✅ Back button తీసేశాను. ఇప్పుడు నేరుగా టైటిల్ మరియు కౌంట్ మాత్రమే ఉన్నాయి -->
     <h1>Your Favorites</h1>
     <span class="fav-count" id="favCount">0 items</span>
   </div>
@@ -34,24 +33,65 @@
 <script src="favorites.js"></script>
 <script>
   function renderFavoritesGrid() {
-    const grid = document.getElementById('favoritesGrid'); const countEl = document.getElementById('favCount');
-    const favIds = getFavorites(); const all = [...(window.mobileProducts||[]),...(window.refrigeratorProducts||[]),...(window.washingProducts||[]),...(window.acProducts||[]),...(window.tvProducts||[])];
+    const grid = document.getElementById('favoritesGrid');
+    const countEl = document.getElementById('favCount');
+    const favIds = getFavorites();
+
+    // ✅ FIX: 'script.js' లో ఉన్న 'allProducts' ని ఉపయోగించండి (window.allProducts గా లభిస్తుంది)
+    const all = window.allProducts || [];
+    
     const favProducts = all.filter(p => favIds.includes(p.id));
-    if (!favProducts.length) { grid.innerHTML=`<div class="fav-empty"><span class="empty-icon">💔</span><h2>No favorites yet</h2><p>Tap the heart ❤️ on any product to save it here.</p><a href="index.html" class="shop-now-btn">Browse Products</a></div>`; countEl.textContent='0 items'; return; }
-    countEl.textContent = favProducts.length + ' items'; grid.innerHTML='';
+
+    if (!favProducts.length) {
+      grid.innerHTML = `<div class="fav-empty"><span class="empty-icon">💔</span><h2>No favorites yet</h2><p>Tap the heart ❤️ on any product to save it here.</p><a href="index.html" class="shop-now-btn">Browse Products</a></div>`;
+      countEl.textContent = '0 items';
+      return;
+    }
+
+    countEl.textContent = favProducts.length + ' items';
+    grid.innerHTML = '';
+
     favProducts.forEach(p => {
-      const card = document.createElement('div'); card.className='best-card'; card.style.position='relative'; card.style.cursor='pointer'; card.setAttribute('onclick', `viewProduct('${p.id}')`);
-      card.innerHTML = `<button class="favorite-btn is-fav" data-product-id="${p.id}" onclick="event.stopPropagation(); toggleFavorite('${p.id}')"><i class="fa-solid fa-heart"></i></button><img src="${p.image||'images/placeholder.png'}" alt="${p.name}"><h3>${p.name}</h3><p class="brand">${p.brand}</p><div class="price-row"><span class="new">₹${(p.price||0).toLocaleString('en-IN')}</span><span class="old">₹${(p.oldPrice||0).toLocaleString('en-IN')}</span></div><button onclick="event.stopPropagation(); viewProduct('${p.id}')">View Details</button>`;
+      const card = document.createElement('div');
+      card.className = 'best-card';
+      card.style.position = 'relative';
+      card.style.cursor = 'pointer';
+      card.setAttribute('onclick', `viewProduct('${p.id}')`);
+
+      card.innerHTML = `
+        <button class="favorite-btn is-fav" data-product-id="${p.id}" onclick="event.stopPropagation(); toggleFavorite('${p.id}')">
+          <i class="fa-solid fa-heart"></i>
+        </button>
+        <img src="${p.image || 'images/placeholder.png'}" alt="${p.name}">
+        <h3>${p.name}</h3>
+        <p class="brand">${p.brand}</p>
+        <div class="price-row">
+          <span class="new">₹${(p.price || 0).toLocaleString('en-IN')}</span>
+          <span class="old">₹${(p.oldPrice || 0).toLocaleString('en-IN')}</span>
+        </div>
+        <button onclick="event.stopPropagation(); viewProduct('${p.id}')">View Details</button>
+      `;
       grid.appendChild(card);
     });
   }
+
   document.addEventListener('DOMContentLoaded', function() {
-    const phone = window.STORE_PHONE || '919999999999'; const tel = 'tel:' + phone;
+    const phone = window.STORE_PHONE || '919999999999';
+    const tel = 'tel:' + phone;
     document.getElementById('bottomCall')?.setAttribute('href', tel);
-    renderFavoritesGrid(); updateFavBadge(); if (typeof updateCartBadge === 'function') updateCartBadge();
+    renderFavoritesGrid();
+    updateFavBadge();
+    if (typeof updateCartBadge === 'function') updateCartBadge();
   });
+
+  // toggleFavorite ఇప్పటికే favorites.js లో ఉంది, కానీ ఫేవరెట్స్ పేజీ మళ్ళీ రెండర్ అవ్వడానికి ఓవర్రైడ్ చేస్తున్నాం
   const originalToggle = window.toggleFavorite;
-  window.toggleFavorite = function(id) { originalToggle(id); if (window.location.pathname.includes('favorites.html')) renderFavoritesGrid(); };
+  window.toggleFavorite = function(id) {
+    originalToggle(id);
+    if (window.location.pathname.includes('favorites.html')) {
+      renderFavoritesGrid();
+    }
+  };
 </script>
 </body>
 </html>
