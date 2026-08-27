@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
     <style>
         /* ── RESET & BASE ── */
@@ -1586,6 +1587,43 @@
         }
 
         // ==========================================
+        // 🆕 RENDER FAVORITE BUTTON (Flipkart Style)
+        // ==========================================
+        function renderFavoriteButton(product) {
+            const container = document.getElementById('galleryContainer');
+            if (!container) return;
+
+            // Remove old button if exists
+            const oldBtn = container.querySelector('.product-fav-btn');
+            if (oldBtn) oldBtn.remove();
+
+            let isFav = false;
+            if (typeof isFavorite === 'function') {
+                isFav = isFavorite(product.id);
+            }
+
+            const btn = document.createElement('button');
+            btn.className = `product-fav-btn ${isFav ? 'is-fav' : ''}`;
+            btn.setAttribute('data-product-id', product.id);
+            btn.innerHTML = `<i class="fa-${isFav ? 'solid' : 'regular'} fa-heart"></i>`;
+
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (typeof toggleFavorite === 'function') {
+                    toggleFavorite(product.id);
+                    const isNowFav = isFavorite(product.id);
+                    this.classList.toggle('is-fav', isNowFav);
+                    this.innerHTML = `<i class="fa-${isNowFav ? 'solid' : 'regular'} fa-heart"></i>`;
+                } else {
+                    showToast('Favorites feature not loaded');
+                }
+            });
+
+            container.style.position = 'relative';
+            container.appendChild(btn);
+        }
+
+        // ==========================================
         // RENDER PRODUCT
         // ==========================================
         function renderProduct(product) {
@@ -1646,6 +1684,9 @@
             loadColors(product);
             loadVariants(product);
             loadSimilarProducts(product);
+
+            // 🆕 Call Favorite Button Render
+            renderFavoriteButton(product);
         }
 
         // ==========================================
