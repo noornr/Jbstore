@@ -1,117 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Favorites | JB STORE</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <style>
-    .fav-header-custom {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-    .fav-back-btn {
-      color: #D4AF37;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      padding: 8px 20px;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      border-radius: 30px;
-      transition: 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .fav-back-btn:hover {
-      background: rgba(212, 175, 55, 0.08);
-      border-color: #D4AF37;
-      transform: translateX(-3px);
-    }
-    .fav-grid .best-card {
-      border: 1px solid #FFD700 !important;
-      box-shadow: 0 0 6px rgba(255, 215, 0, 0.04) !important;
-      transition: all 0.3s ease;
-    }
-    .fav-grid .best-card:hover {
-      transform: translateY(-6px);
-      border-color: #FFD700 !important;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.4), 0 0 20px rgba(212,175,55,0.05) !important;
-    }
-    @media (max-width: 768px) {
-      .fav-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
-      }
-      .fav-header-custom h1 {
-        font-size: 20px !important;
-      }
-    }
-    @media (max-width: 480px) {
-      .fav-grid {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 8px !important;
-      }
-      .fav-back-btn {
-        font-size: 12px;
-        padding: 6px 14px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>My Favorites | JB STORE</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-
-<!-- ===== HEADER ===== -->
-<header class="header">
-  <div class="logo">JB <span>STORE</span></div>
-  <div class="search">
-    <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off" />
-    <button type="button" id="searchButton">🔍</button>
-    <div id="searchSuggestions" class="search-suggestions"></div>
-  </div>
+<header class="header"><div class="logo">JB <span>STORE</span></div>
+  <div class="search"><input type="text" id="searchInput" placeholder="Search..."><button id="searchButton">🔍</button><div id="searchSuggestions" class="search-suggestions"></div></div>
 </header>
-
-<!-- ===== FAVORITES PAGE ===== -->
 <main class="favorites-page">
-  <div class="page-head">
-    <div class="fav-header-custom">
-      <a href="index.html" class="fav-back-btn">← Back</a>
-      <h1>Your Favorites</h1>
-    </div>
-    <span class="fav-count" id="favCount">0 items</span>
-  </div>
-
-  <div id="favoritesGrid" class="fav-grid">
-    <!-- Rendered by JavaScript -->
-  </div>
+  <div class="page-head"><div style="display:flex;align-items:center;gap:18px;"><a href="index.html" style="color:#D4AF37;text-decoration:none;font-weight:600;padding:8px 20px;border:1px solid rgba(212,175,55,0.2);border-radius:30px;">← Back</a><h1>Your Favorites</h1></div><span class="fav-count" id="favCount">0 items</span></div>
+  <div id="favoritesGrid" class="fav-grid"></div>
 </main>
-
-<!-- ===== BOTTOM BAR ===== -->
-<div class="bottom-bar">
-  <div class="bottom-container">
-    <a href="index.html" class="bottom-item" id="bottomHome">
-      <span class="bottom-icon">🏠</span><span class="bottom-label">Home</span>
-    </a>
-    <a href="favorites.html" class="bottom-item active fav-active" id="bottomFav">
-      <span class="bottom-icon" style="color:#ff1744;">❤️</span>
-      <span class="fav-badge" id="favBadge">0</span>
-      <span class="bottom-label" style="color:#ff1744;font-weight:700;">Favorites</span>
-    </a>
-    <a href="#" class="bottom-item call-item" id="bottomCall">
-      <span class="bottom-icon">📞</span><span class="bottom-label">Call</span>
-    </a>
-    <a href="cart.html" class="bottom-item cart-item">
-      <span class="bottom-icon">🛒</span>
-      <span class="cart-badge" id="cartBadge">0</span>
-      <span class="bottom-label">Cart</span>
-    </a>
-  </div>
-</div>
-
-<!-- ===== SCRIPTS ===== -->
+<div class="bottom-bar"><div class="bottom-container">
+  <a href="index.html" class="bottom-item" id="bottomHome"><span class="bottom-icon">🏠</span><span class="bottom-label">Home</span></a>
+  <a href="favorites.html" class="bottom-item active fav-active" id="bottomFav"><span class="bottom-icon" style="color:#ff1744;">❤️</span><span class="fav-badge" id="favBadge">0</span><span class="bottom-label" style="color:#ff1744;font-weight:700;">Favorites</span></a>
+  <a href="#" class="bottom-item call-item" id="bottomCall"><span class="bottom-icon">📞</span><span class="bottom-label">Call</span></a>
+  <a href="cart.html" class="bottom-item cart-item"><span class="bottom-icon">🛒</span><span class="cart-badge" id="cartBadge">0</span><span class="bottom-label">Cart</span></a>
+</div></div>
 <script src="config.js"></script>
 <script src="mobiles.js"></script>
 <script src="refrigerator.js"></script>
@@ -120,97 +28,26 @@
 <script src="tv.js"></script>
 <script src="script.js"></script>
 <script src="favorites.js"></script>
-
 <script>
-  // ============================================================
-  //  RENDER FAVORITES GRID (specific to this page)
-  // ============================================================
   function renderFavoritesGrid() {
-    const grid = document.getElementById('favoritesGrid');
-    const countEl = document.getElementById('favCount');
-    const favIds = getFavorites();
-
-    const all = [
-      ...(window.mobileProducts || []),
-      ...(window.refrigeratorProducts || []),
-      ...(window.washingProducts || []),
-      ...(window.acProducts || []),
-      ...(window.tvProducts || [])
-    ];
-
+    const grid = document.getElementById('favoritesGrid'); const countEl = document.getElementById('favCount');
+    const favIds = getFavorites(); const all = [...(window.mobileProducts||[]),...(window.refrigeratorProducts||[]),...(window.washingProducts||[]),...(window.acProducts||[]),...(window.tvProducts||[])];
     const favProducts = all.filter(p => favIds.includes(p.id));
-
-    if (favProducts.length === 0) {
-      grid.innerHTML = `
-        <div class="fav-empty">
-          <span class="empty-icon">💔</span>
-          <h2>No favorites yet</h2>
-          <p>Tap the heart ❤️ on any product to save it here.</p>
-          <a href="index.html" class="shop-now-btn">Browse Products</a>
-        </div>
-      `;
-      countEl.textContent = '0 items';
-      return;
-    }
-
-    countEl.textContent = favProducts.length + ' items';
-    grid.innerHTML = '';
-
+    if (!favProducts.length) { grid.innerHTML=`<div class="fav-empty"><span class="empty-icon">💔</span><h2>No favorites yet</h2><p>Tap the heart ❤️ on any product to save it here.</p><a href="index.html" class="shop-now-btn">Browse Products</a></div>`; countEl.textContent='0 items'; return; }
+    countEl.textContent = favProducts.length + ' items'; grid.innerHTML='';
     favProducts.forEach(p => {
-      const card = document.createElement('div');
-      card.className = 'best-card';
-      card.style.position = 'relative';
-      card.style.cursor = 'pointer';
-      card.setAttribute('onclick', `viewProduct('${p.id}')`);
-
-      card.innerHTML = `
-        <button class="favorite-btn is-fav"
-                data-product-id="${p.id}"
-                onclick="event.stopPropagation(); toggleFavorite('${p.id}')"
-                aria-label="Remove from favorites">
-          <i class="fa-solid fa-heart"></i>
-        </button>
-        <img src="${p.image || 'images/placeholder.png'}" alt="${p.name}" loading="lazy">
-        <h3>${p.name}</h3>
-        <p class="brand">${p.brand}</p>
-        <div class="price-row">
-          <span class="new">₹${(p.price || 0).toLocaleString('en-IN')}</span>
-          <span class="old">₹${(p.oldPrice || 0).toLocaleString('en-IN')}</span>
-        </div>
-        <button onclick="event.stopPropagation(); viewProduct('${p.id}')">View Details</button>
-      `;
+      const card = document.createElement('div'); card.className='best-card'; card.style.position='relative'; card.style.cursor='pointer'; card.setAttribute('onclick', `viewProduct('${p.id}')`);
+      card.innerHTML = `<button class="favorite-btn is-fav" data-product-id="${p.id}" onclick="event.stopPropagation(); toggleFavorite('${p.id}')"><i class="fa-solid fa-heart"></i></button><img src="${p.image||'images/placeholder.png'}" alt="${p.name}"><h3>${p.name}</h3><p class="brand">${p.brand}</p><div class="price-row"><span class="new">₹${(p.price||0).toLocaleString('en-IN')}</span><span class="old">₹${(p.oldPrice||0).toLocaleString('en-IN')}</span></div><button onclick="event.stopPropagation(); viewProduct('${p.id}')">View Details</button>`;
       grid.appendChild(card);
     });
   }
-
-  // ============================================================
-  //  INIT
-  // ============================================================
   document.addEventListener('DOMContentLoaded', function() {
-    // Fix call buttons locally
-    const phone = window.STORE_PHONE || '919999999999';
-    const tel = 'tel:' + phone;
+    const phone = window.STORE_PHONE || '919999999999'; const tel = 'tel:' + phone;
     document.getElementById('bottomCall')?.setAttribute('href', tel);
-    document.querySelectorAll('.call-item').forEach(el => {
-      if (!el.href || el.href === '#' || el.href.endsWith('#')) el.href = tel;
-    });
-
-    renderFavoritesGrid();
-    updateFavBadge();
-
-    // Update cart badge
-    if (typeof updateCartBadge === 'function') updateCartBadge();
+    renderFavoritesGrid(); updateFavBadge(); if (typeof updateCartBadge === 'function') updateCartBadge();
   });
-
-  // Override toggleFavorite to re-render this page when removing
   const originalToggle = window.toggleFavorite;
-  window.toggleFavorite = function(productId) {
-    originalToggle(productId);
-    if (window.location.pathname.includes('favorites.html')) {
-      renderFavoritesGrid();
-    }
-  };
+  window.toggleFavorite = function(id) { originalToggle(id); if (window.location.pathname.includes('favorites.html')) renderFavoritesGrid(); };
 </script>
-
 </body>
 </html>
