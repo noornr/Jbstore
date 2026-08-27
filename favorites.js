@@ -52,23 +52,8 @@
     }
     saveFavorites(favs);
 
-    // Update all heart buttons
-    document.querySelectorAll(`.favorite-btn[data-product-id="${productId}"]`).forEach(btn => {
-      const isFav = favs.includes(productId);
-      btn.classList.toggle('is-fav', isFav);
-      const icon = btn.querySelector('.fa-heart');
-      if (icon) {
-        icon.className = `fa-${isFav ? 'solid' : 'regular'} fa-heart`;
-      }
-      // Re-trigger animation
-      if (isFav) {
-        btn.style.animation = 'none';
-        requestAnimationFrame(() => {
-          btn.style.animation = 'heartPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        });
-      }
-    });
-
+    // ✅ Update ALL heart buttons on the page immediately
+    updateAllHeartButtons();
     updateFavBadge();
 
     // Re-render favorites grid if on favorites page
@@ -86,7 +71,29 @@
     });
   }
 
-  // ---------- Inject Hearts into Deal Cards ----------
+  // ---------- 🆕 UPDATE EXISTING HEART BUTTONS (Without Skipping) ----------
+  function updateAllHeartButtons() {
+    // Select ALL favorite buttons on the page (deal-cards, best-cards, product-page)
+    const allButtons = document.querySelectorAll('.favorite-btn');
+    
+    allButtons.forEach(btn => {
+      const productId = btn.getAttribute('data-product-id');
+      if (!productId) return;
+
+      const isFav = isFavorite(productId);
+      
+      // Toggle the 'is-fav' class
+      btn.classList.toggle('is-fav', isFav);
+      
+      // Update the icon
+      const icon = btn.querySelector('.fa-heart');
+      if (icon) {
+        icon.className = `fa-${isFav ? 'solid' : 'regular'} fa-heart`;
+      }
+    });
+  }
+
+  // ---------- Inject Hearts into Newly Loaded Deal Cards ----------
   function injectHearts() {
     const grid = document.getElementById('productGrid');
     if (!grid) return;
@@ -125,6 +132,9 @@
       card.style.position = 'relative';
       card.appendChild(btn);
     });
+
+    // ✅ After injecting new hearts, ensure ALL hearts (old + new) are in sync
+    updateAllHeartButtons();
   }
 
   // ---------- Override displayProducts ----------
@@ -229,25 +239,21 @@
 
   // ---------- 🆕 Back / Forward Cache నుండి వచ్చినప్పుడు Refresh చేయడం ----------
   function setupPageShowRefresh() {
-    // 1. pageshow event – browser back/forward వల్ల పేజీ లోడ్ అయినప్పుడు
     window.addEventListener('pageshow', function(event) {
-      // event.persisted = true అంటే bfcache నుండి వచ్చింది
       if (event.persisted) {
         console.log('Page restored from bfcache – updating hearts');
         setTimeout(function() {
-          injectHearts();       // Main product grid hearts update
-          renderBestSellers();  // Best sellers grid hearts update
-          updateFavBadge();     // Bottom bar badge update
+          updateAllHeartButtons(); 
+          renderBestSellers();  
+          updateFavBadge();     
         }, 100);
       }
     });
 
-    // 2. visibilitychange – ట్యాబ్ switch అయి మళ్ళీ వచ్చినా refresh
     document.addEventListener('visibilitychange', function() {
       if (!document.hidden) {
-        // Page visible అయినప్పుడు hearts update
         setTimeout(function() {
-          injectHearts();
+          updateAllHeartButtons();
           renderBestSellers();
           updateFavBadge();
         }, 200);
@@ -262,7 +268,6 @@
     updateFavBadge();
     renderBestSellers();
     setupDisplayOverride();
-    // 🆕 pageshow & visibilitychange listeners call
     setupPageShowRefresh();
   }
 
@@ -272,7 +277,8 @@
   global.isFavorite = isFavorite;
   global.toggleFavorite = toggleFavorite;
   global.updateFavBadge = updateFavBadge;
-  global.injectHearts = injectHearts; // బయట నుండి కూడా call చేయొచ్చు
+  global.injectHearts = injectHearts;
+  global.updateAllHeartButtons = updateAllHeartButtons;
 
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
     setTimeout(init, 100);
