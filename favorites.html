@@ -6,15 +6,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
-    /* ==========================================
-       ✅ Favorites Page - Center Align Fix
-       ========================================== */
+    /* Center Fix */
     .favorites-page .page-head {
       display: flex;
-      flex-direction: column;        /* ఒకదాని కింద ఒకటి వచ్చేలా */
-      align-items: center;           /* అన్నీ సెంటర్ లోకి */
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      gap: 4px;                      /* టైటిల్ మరియు కౌంట్ మధ్య ఖాళీ */
+      gap: 4px;
       border-bottom: 2px solid rgba(212, 175, 55, 0.1);
       padding-bottom: 18px;
       margin-bottom: 32px;
@@ -24,10 +22,9 @@
       font-size: 28px;
       font-weight: 700;
       color: #fff;
-      text-align: center;            /* టైటిల్ సెంటర్ లో */
+      text-align: center;
       letter-spacing: 0.5px;
     }
-    /* టైటిల్ ముందు హార్ట్ ఐకాన్ */
     .favorites-page .page-head h1::before {
       content: '❤️ ';
       font-size: 28px;
@@ -50,7 +47,6 @@
 </header>
 <main class="favorites-page">
   <div class="page-head">
-    <!-- ✅ ఇప్పుడు h1 మరియు కౌంట్ రెండూ సెంటర్ లో ఉంటాయి -->
     <h1>Your Favorites</h1>
     <span class="fav-count" id="favCount">0 items</span>
   </div>
@@ -76,8 +72,8 @@
     const countEl = document.getElementById('favCount');
     const favIds = getFavorites();
 
-    // ✅ 'script.js' లో ఉన్న 'allProducts' ని ఉపయోగించండి
-    const all = window.allProducts || [];
+    // ✅ FIX: script.js లోని 'allProducts' ని డైరెక్ట్ గా ఉపయోగించండి (window.allProducts కాదు)
+    const all = allProducts || [];  // ← ఇక్కడ మార్పు చేశాను
     
     const favProducts = all.filter(p => favIds.includes(p.id));
 
@@ -123,7 +119,6 @@
     if (typeof updateCartBadge === 'function') updateCartBadge();
   });
 
-  // toggleFavorite ఇప్పటికే favorites.js లో ఉంది, కానీ ఫేవరెట్స్ పేజీ మళ్ళీ రెండర్ అవ్వడానికి ఓవర్రైడ్ చేస్తున్నాం
   const originalToggle = window.toggleFavorite;
   window.toggleFavorite = function(id) {
     originalToggle(id);
