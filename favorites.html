@@ -11,7 +11,11 @@
   <div class="search"><input type="text" id="searchInput" placeholder="Search..."><button id="searchButton">🔍</button><div id="searchSuggestions" class="search-suggestions"></div></div>
 </header>
 <main class="favorites-page">
-  <div class="page-head"><div style="display:flex;align-items:center;gap:18px;"><a href="index.html" style="color:#D4AF37;text-decoration:none;font-weight:600;padding:8px 20px;border:1px solid rgba(212,175,55,0.2);border-radius:30px;">← Back</a><h1>Your Favorites</h1></div><span class="fav-count" id="favCount">0 items</span></div>
+  <div class="page-head">
+    <!-- ✅ Back button తీసేశాను. ఇప్పుడు నేరుగా టైటిల్ మరియు కౌంట్ మాత్రమే ఉన్నాయి -->
+    <h1>Your Favorites</h1>
+    <span class="fav-count" id="favCount">0 items</span>
+  </div>
   <div id="favoritesGrid" class="fav-grid"></div>
 </main>
 <div class="bottom-bar"><div class="bottom-container">
