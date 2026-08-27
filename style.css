@@ -2676,8 +2676,163 @@ cursor:pointer;
   }
 }
 
+/* ==========================================
+   FAVORITE HEART BUTTON — GLOBAL
+   ========================================== */
+.favorite-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.25s ease;
+    color: #ffffff88;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    -webkit-tap-highlight-color: transparent;
+}
+.favorite-btn:hover {
+    transform: scale(1.12);
+    background: rgba(0, 0, 0, 0.7);
+}
+.favorite-btn:active {
+    transform: scale(0.92);
+}
+.favorite-btn .fa-heart {
+    transition: all 0.25s ease;
+}
+.favorite-btn.is-fav .fa-heart {
+    color: #ff1744 !important;
+    text-shadow: 0 0 20px rgba(255, 23, 68, 0.5);
+}
+.favorite-btn:not(.is-fav) .fa-heart {
+    color: #ffffffcc;
+}
 
+/* ==========================================
+   BOTTOM BAR — FAVORITES ACTIVE STATE
+   ========================================== */
+.bottom-item.fav-active .bottom-icon {
+    color: #ff1744 !important;
+}
+.bottom-item.fav-active .bottom-label {
+    color: #ff1744 !important;
+}
+.bottom-item.fav-active::after {
+    width: 60% !important;
+    background: #ff1744 !important;
+}
 
+/* ==========================================
+   PRODUCT PAGE — FAVORITE BUTTON (if used)
+   ========================================== */
+.product-fav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.03);
+    color: #ccc;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 6px;
+}
+.product-fav-btn:hover {
+    border-color: rgba(255, 23, 68, 0.3);
+    background: rgba(255, 23, 68, 0.05);
+}
+.product-fav-btn .fa-heart {
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+.product-fav-btn.is-fav {
+    border-color: #ff1744;
+    background: rgba(255, 23, 68, 0.08);
+    color: #ff1744;
+}
+.product-fav-btn.is-fav .fa-heart {
+    color: #ff1744;
+    text-shadow: 0 0 30px rgba(255, 23, 68, 0.3);
+}
+
+/* ==========================================
+   FAVORITES PAGE — GRID (optional)
+   ========================================== */
+.favorites-page {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px 80px;
+    min-height: 60vh;
+}
+.favorites-page .page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+.favorites-page .page-head h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+.favorites-page .page-head h1::before {
+    content: '❤️ ';
+    font-size: 26px;
+}
+.favorites-page .page-head .fav-count {
+    color: #D4AF37;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 18px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 20px;
+    background: rgba(212, 175, 55, 0.05);
+}
+.fav-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+.fav-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(145deg, #1A1A1A, #111);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.fav-empty .empty-icon {
+    font-size: 60px;
+    display: block;
+    margin-bottom: 16px;
+}
+.fav-empty h2 {
+    color: #fff;
+    font-size: 24px;
+    margin: 0 0 6px;
+}
+.fav-empty p {
+    color: #888;
+    font-size: 14px;
+    margin: 0 0 24px;
+}
 
 
 
@@ -4479,4 +4634,23 @@ body {
     justify-content: center;
     border-radius: 12px;
   }
+
+        .fav-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
+    .favorites-page .page-head h1 {
+        font-size: 20px;
+    }
+    .favorites-page .page-head .fav-count {
+        font-size: 11px;
+        padding: 4px 12px;
+    }
+    .favorite-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+        top: 6px;
+        right: 8px;
+    }
+    
