@@ -642,7 +642,8 @@ cursor:pointer;
 }
 .gold-btn i {
   color: #000000 !important;
-  text-shadow: none;
+  text-shadow: none !important;
+  font-size: 18px;
 }
 
 /* ===== LINE BUTTON - WHITE TEXT ===== */
