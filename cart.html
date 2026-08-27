@@ -75,7 +75,7 @@
 <div class="bottom-bar">
   <div class="bottom-container">
     <!-- HOME -->
-    <a href="index.html" class="bottom-item">
+    <a href="index.html" class="bottom-item" id="bottomHome">
       <span class="bottom-icon">🏠</span>
       <span class="bottom-label">Home</span>
     </a>
@@ -88,7 +88,7 @@
     </a>
     
     <!-- CALL (fixed with tel link) -->
-    <a href="tel:919999999999" class="bottom-item call-item">
+    <a href="tel:919999999999" class="bottom-item call-item" id="bottomCall">
       <span class="bottom-icon">📞</span>
       <span class="bottom-label">Call</span>
     </a>
@@ -102,14 +102,14 @@
   </div>
 </div>
 
-<!-- ===== SCRIPTS ===== -->
+<!-- ===== SCRIPTS (All logic in external files) ===== -->
 <script src="config.js"></script>
 <script src="mobiles.js"></script>
 <script src="refrigerator.js"></script>
 <script src="washing.js"></script>
 <script src="ac.js"></script>
 <script src="tv.js"></script>
-<script src="script.js"></script>   <!-- ✅ అన్ని కార్ట్ లాజిక్ ఇక్కడే ఉంటుంది -->
-<script src="favorites.js"></script>
+<script src="script.js"></script>   <!-- contains cart logic -->
+<script src="favorites.js"></script> <!-- favorites & badge updates -->
 </body>
 </html>
