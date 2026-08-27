@@ -640,6 +640,10 @@ cursor:pointer;
   box-shadow:0 8px 35px rgba(212,175,55,0.5);
   color:#000000;
 }
+.gold-btn i {
+  color: #000000 !important;
+  text-shadow: none;
+}
 
 /* ===== LINE BUTTON - WHITE TEXT ===== */
 .line-btn {
