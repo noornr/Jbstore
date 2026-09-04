@@ -3009,30 +3009,51 @@ cursor:pointer;
 
   /* ===== MOBILE MENU ===== */
 /* ===== MOBILE CATEGORY MENU - FORCED SCROLL ===== */
+/* ===== MOBILE CATEGORY MENU – INLINE-BLOCK SCROLL (Pure CSS) ===== */
 .menu {
-  display: flex !important;
-  flex-wrap: nowrap !important;      /* NEVER wrap to next line */
-  overflow-x: auto !important;       /* Force horizontal scroll */
+  display: block !important;                /* ★ Disable flex */
+  overflow-x: auto !important;
   overflow-y: hidden !important;
-  justify-content: flex-start !important; /* Align left so overflow goes right */
-  gap: 6px;
-  padding: 10px 12px;
+  white-space: nowrap !important;           /* ★ Keep all buttons in one line */
+  padding: 10px 12px !important;
+  width: 100% !important;
   -webkit-overflow-scrolling: touch !important;
   touch-action: pan-x !important;
-  scrollbar-width: none;             /* Hide scrollbar */
-  overscroll-behavior-x: contain;
+  scrollbar-width: none !important;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.15);
+  background: #000000;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  /* Remove all flex properties that block touch-scroll */
+  flex-wrap: unset !important;
+  justify-content: unset !important;
+  gap: unset !important;
+  align-items: unset !important;
 }
 
 .menu::-webkit-scrollbar {
-  display: none;                     /* Hide scrollbar on Chrome/Safari */
+  display: none !important;
 }
 
 .menu .cat {
-  flex: 0 0 auto !important;        /* CRITICAL: Prevent stretching/shrinking */
-  white-space: nowrap !important;    /* Prevent text wrapping */
-  padding: 8px 14px;
-  font-size: 12px;
-  flex-shrink: 0 !important;
+  display: inline-block !important;         /* ★ Use inline-block instead of flex */
+  white-space: nowrap !important;
+  padding: 8px 14px !important;
+  font-size: 12px !important;
+  margin-right: 4px;                        /* Space between buttons */
+  background: transparent;
+  border: 0;
+  color: #B8B8B8;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  /* Remove flex overrides */
+  flex: unset !important;
+  flex-shrink: unset !important;
+  flex-grow: unset !important;
 }
   .cat-icon {
     font-size: 13px;
