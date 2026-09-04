@@ -3012,12 +3012,12 @@ cursor:pointer;
   padding: 10px 12px;
   gap: 4px;
   justify-content: flex-start;
-  overflow-x: scroll !important;
-  overflow-y: hidden;
+  overflow-x: auto !important;
+   overflow-y: hidden !important;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap !important;
   overscroll-behavior-x: contain;
 }
 
@@ -3028,7 +3028,7 @@ cursor:pointer;
 .menu .cat {
   padding: 8px 14px;
   font-size: 12px;
-  flex-shrink: 0;
+  flex-shrink: 0 !important;
   white-space: nowrap;
 }
   .cat-icon {
