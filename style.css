@@ -3021,7 +3021,7 @@ cursor:pointer;
   /* ★ Viewport width force + negative margin trick ★ */
   width: 100vw !important;
   margin-left: calc(-50vw + 50%) !important;
-  padding: 10px calc(12px + 5%) !important; /* 5% original padding maintain cheyadaniki */
+  padding: 10px 4px !important; /* 5% original padding maintain cheyadaniki */
   
   gap: 6px;
   -webkit-overflow-scrolling: touch !important;
