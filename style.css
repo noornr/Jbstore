@@ -3007,16 +3007,18 @@ cursor:pointer;
    MOBILE MENU
 ========================================== */
 
-  .menu {
+  /* ===== MOBILE MENU ===== */
+.menu {
   padding: 10px 12px;
   gap: 4px;
   justify-content: flex-start;
-  overflow-x: scroll;
+  overflow-x: scroll !important;
   overflow-y: hidden;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
-  white-space: nowrap;
+  flex-wrap: nowrap;
+  overscroll-behavior-x: contain;
 }
 
 .menu::-webkit-scrollbar {
@@ -3029,7 +3031,6 @@ cursor:pointer;
   flex-shrink: 0;
   white-space: nowrap;
 }
-
   .cat-icon {
     font-size: 13px;
   }
