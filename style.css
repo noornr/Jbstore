@@ -3002,12 +3002,22 @@ cursor:pointer;
     font-size:10px;
   }
 
-  /* ===== MOBILE MENU ===== */
+
+  /* ==========================================
+   MOBILE MENU
+========================================== */
+
   .menu {
     padding: 10px 12px;
     gap: 4px;
     justify-content: flex-start;
+
+    /* ONLY SCROLL FIX */
     overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+
     scrollbar-width: none;
   }
 
@@ -3019,6 +3029,7 @@ cursor:pointer;
     padding: 8px 14px;
     font-size: 12px;
     flex-shrink: 0;
+    white-space: nowrap;
   }
 
   .cat-icon {
@@ -3029,6 +3040,7 @@ cursor:pointer;
     width: 20px;
     bottom: 2px;
   }
+
 
   /* ===== MOBILE FILTERS ===== */
   .filters {
